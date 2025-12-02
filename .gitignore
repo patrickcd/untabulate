@@ -87,6 +87,7 @@ dmypy.json
 
 # Cython generated files (keep .pyx source)
 *.html
+!tests/fixtures/*.html
 
 # OS
 .DS_Store

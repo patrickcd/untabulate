@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cellpath Test Fixtures</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <style>
+    :root {
+        --pico-font-size: 80%;
+    }
+    table.fix-table {
+        max-width: 600px;
+    }
+    dl {
+        display: grid;
+        max-width: 350px;
+        grid-template-columns: 1fr auto;
+        gap: 0.25rem 1rem;
+        margin-bottom: 40px;
+    }
+    dt {
+        font-weight: normal;
+    }
+    dd {
+        margin: 0;
+        text-align: right;
+        font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+<main class="container">
+
+    <!-- ============================================================
+        TABLE 1: Simple - Basic row and column headers
+        ============================================================ -->
+    <section id="simple">
+        <h2>Simple Table</h2>
+        <table class="striped fix-table" id="simple-table">
+            <tr>
+                <th></th>
+                <th>Q1</th>
+                <th>Q2</th>
+            </tr>
+            <tr>
+                <th>Revenue</th>
+                <td>100</td>
+                <td>120</td>
+            </tr>
+            <tr>
+                <th>Costs</th>
+                <td>50</td>
+                <td>60</td>
+            </tr>
+        </table>
+
+        <h4>Expected Paths:</h4>
+        <dl id="simple-expected">
+            <dt>Revenue → Q1</dt><dd data-row="2" data-col="2">100</dd>
+            <dt>Revenue → Q2</dt><dd data-row="2" data-col="3">120</dd>
+            <dt>Costs → Q1</dt><dd data-row="3" data-col="2">50</dd>
+            <dt>Costs → Q2</dt><dd data-row="3" data-col="3">60</dd>
+        </dl>
+    </section>
+
+    <!-- ============================================================
+        TABLE 2: Colspan - Column headers spanning multiple columns
+        ============================================================ -->
+    <section id="colspan">
+        <h2>Column Span Headers</h2>
+        <table class="striped fix-table" id="colspan-table">
+            <tr>
+                <th></th>
+                <th colspan="2">2023</th>
+                <th colspan="2">2024</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Q1</th>
+                <th>Q2</th>
+                <th>Q1</th>
+                <th>Q2</th>
+            </tr>
+            <tr>
+                <th>Sales</th>
+                <td>100</td>
+                <td>110</td>
+                <td>120</td>
+                <td>130</td>
+            </tr>
+        </table>
+        
+        <h4>Expected Paths:</h4>
+        <dl id="colspan-expected">
+            <dt>Sales → 2023 → Q1</dt><dd data-row="3" data-col="2">100</dd>
+            <dt>Sales → 2023 → Q2</dt><dd data-row="3" data-col="3">110</dd>
+            <dt>Sales → 2024 → Q1</dt><dd data-row="3" data-col="4">120</dd>
+            <dt>Sales → 2024 → Q2</dt><dd data-row="3" data-col="5">130</dd>
+        </dl>
+    </section>
+
+    <!-- ============================================================
+        TABLE 3: Rowspan - Row headers spanning multiple rows
+        ============================================================ -->
+    <section id="rowspan">
+        <h2>Row Span Headers</h2>
+        <table class="striped fix-table" id="rowspan-table">
+            <tr>
+                <th></th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <th rowspan="2">Group A</th>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>20</td>
+            </tr>
+            <tr>
+                <th rowspan="2">Group B</th>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>40</td>
+            </tr>
+        </table>
+        
+        <h4>Expected Paths:</h4>
+        <dl id="rowspan-expected">
+            <dt>Group A → Value</dt><dd data-row="2" data-col="2">10</dd>
+            <dt>Group A → Value</dt><dd data-row="3" data-col="2">20</dd>
+            <dt>Group B → Value</dt><dd data-row="4" data-col="2">30</dd>
+            <dt>Group B → Value</dt><dd data-row="5" data-col="2">40</dd>
+        </dl>
+    </section>
+
+    <!-- ============================================================
+        TABLE 4: Complex - Mixed rowspan and colspan
+        ============================================================ -->
+    <section id="complex">
+        <h2>Complex Mixed Spans</h2>
+        <table class="striped fix-table" id="complex-table">
+            <tr>
+                <th></th>
+                <th colspan="2">Financial</th>
+                <th>Count</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Revenue</th>
+                <th>Profit</th>
+                <th>Units</th>
+            </tr>
+            <tr>
+                <th rowspan="2">Product A</th>
+                <td>500</td>
+                <td>100</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>550</td>
+                <td>120</td>
+                <td>55</td>
+            </tr>
+            <tr>
+                <th>Product B</th>
+                <td>300</td>
+                <td>80</td>
+                <td>30</td>
+            </tr>
+        </table>
+        
+        <h4>Expected Paths:</h4>
+        <dl id="complex-expected">
+            <dt>Product A → Financial → Revenue</dt><dd data-row="3" data-col="2">500</dd>
+            <dt>Product A → Financial → Profit</dt><dd data-row="3" data-col="3">100</dd>
+            <dt>Product A → Count → Units</dt><dd data-row="3" data-col="4">50</dd>
+            <dt>Product A → Financial → Revenue</dt><dd data-row="4" data-col="2">550</dd>
+            <dt>Product B → Financial → Revenue</dt><dd data-row="5" data-col="2">300</dd>
+            <dt>Product B → Count → Units</dt><dd data-row="5" data-col="4">30</dd>
+        </dl>
+    </section>
+
+    <!-- ============================================================
+        TABLE 5: Empty cells - Headers with empty/whitespace content
+        ============================================================ -->
+    <section id="empty">
+        <h2>Empty Cell Handling</h2>
+        <table class="striped fix-table" id="empty-table">
+            <tr>
+                <th></th>
+                <th>   </th>
+                <th>Valid</th>
+            </tr>
+            <tr>
+                <th>Row 1</th>
+                <td>A</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>C</td>
+                <td>D</td>
+            </tr>
+        </table>
+        
+        <h4>Expected Paths:</h4>
+        <dl id="empty-expected">
+            <dt>Row 1</dt><dd data-row="2" data-col="2">A</dd>
+            <dt>Row 1 → Valid</dt><dd data-row="2" data-col="3">B</dd>
+            <dt>Valid</dt><dd data-row="3" data-col="3">D</dd>
+        </dl>
+    </section>
+
+    <!-- ============================================================
+        TABLE 6: Thead - Using thead/tbody structure
+        ============================================================ -->
+    <section id="thead">
+        <h2>Thead/Tbody Structure</h2>
+        <table class="striped fix-table" id="thead-table">
+            <thead data-theme="dark">
+                <tr>
+                    <th></th>
+                    <th colspan="2">Revenue</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>Actual</th>
+                    <th>Budget</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>January</th>
+                    <td>100</td>
+                    <td>90</td>
+                </tr>
+                <tr>
+                    <th>February</th>
+                    <td>120</td>
+                    <td>100</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h4>Expected Paths:</h4>
+        <dl id="thead-expected">
+            <dt>January → Revenue → Actual</dt><dd data-row="3" data-col="2">100</dd>
+            <dt>January → Revenue → Budget</dt><dd data-row="3" data-col="3">90</dd>
+            <dt>February → Revenue → Actual</dt><dd data-row="4" data-col="2">120</dd>
+            <dt>February → Revenue → Budget</dt><dd data-row="4" data-col="3">100</dd>
+        </dl>
+    </section>
+
+    <!-- ============================================================
+        TABLE 7: No row headers - Only column headers
+        ============================================================ -->
+    <section id="no-row-headers">
+        <h2>No Row Headers</h2>
+        <table class="striped fix-table" id="no-row-headers-table">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
+            </tr>
+            <tr>
+                <td>Alice</td>
+                <td>30</td>
+                <td>London</td>
+            </tr>
+            <tr>
+                <td>Bob</td>
+                <td>25</td>
+                <td>Paris</td>
+            </tr>
+        </table>
+        
+        <h4>Expected Paths:</h4>
+        <dl id="no-row-headers-expected">
+            <dt>Name</dt><dd data-row="2" data-col="1">Alice</dd>
+            <dt>Age</dt><dd data-row="2" data-col="2">30</dd>
+            <dt>City</dt><dd data-row="2" data-col="3">London</dd>
+            <dt>Name</dt><dd data-row="3" data-col="1">Bob</dd>
+            <dt>Age</dt><dd data-row="3" data-col="2">25</dd>
+            <dt>City</dt><dd data-row="3" data-col="3">Paris</dd>
+        </dl>
+    </section>
+
+    <!-- ============================================================
+        TABLE 8: No column headers - Only row headers
+        ============================================================ -->
+    <section id="no-col-headers">
+        <h2>No Column Headers</h2>
+        <table class="striped fix-table" id="no-col-headers-table">
+            <tr>
+                <th>Width</th>
+                <td>100</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <th>Height</th>
+                <td>50</td>
+                <td>75</td>
+            </tr>
+        </table>
+        
+        <h4>Expected Paths:</h4>
+        <dl id="no-col-headers-expected">
+            <dt>Width</dt><dd data-row="1" data-col="2">100</dd>
+            <dt>Width</dt><dd data-row="1" data-col="3">200</dd>
+            <dt>Height</dt><dd data-row="2" data-col="2">50</dd>
+            <dt>Height</dt><dd data-row="2" data-col="3">75</dd>
+        </dl>
+    </section>
+
+    <!-- ============================================================
+        TABLE 9: No headers - Plain data table
+        ============================================================ -->
+    <section id="no-headers">
+        <h2>No Headers</h2>
+        <table class="striped fix-table" id="no-headers-table">
+            <tr>
+                <td>A1</td>
+                <td>B1</td>
+                <td>C1</td>
+            </tr>
+            <tr>
+                <td>A2</td>
+                <td>B2</td>
+                <td>C2</td>
+            </tr>
+        </table>
+        
+        <h4>Expected Paths:</h4>
+        <dl id="no-headers-expected">
+            <dt><em>(empty path)</em></dt><dd data-row="1" data-col="1">A1</dd>
+            <dt><em>(empty path)</em></dt><dd data-row="1" data-col="2">B1</dd>
+            <dt><em>(empty path)</em></dt><dd data-row="2" data-col="2">B2</dd>
+        </dl>
+    </section>
+
+    <!-- ============================================================
+        TABLE 10: Hierarchical Row Headers - Row headers in multiple columns
+        ============================================================ -->
+    <section id="hierarchical-row-headers">
+        <h2>Hierarchical Row Headers</h2>
+        <table class="striped fix-table" id="hierarchical-row-headers-table">
+            <tr>
+                <th>Region</th>
+                <th>City</th>
+                <th>Sales</th>
+            </tr>
+            <tr>
+                <th rowspan="2">North</th>
+                <th>New York</th>
+                <td>100</td>
+            </tr>
+            <tr>
+                <th>Boston</th>
+                <td>80</td>
+            </tr>
+            <tr>
+                <th>South</th>
+                <th>Miami</th>
+                <td>120</td>
+            </tr>
+        </table>
+        
+        <h4>Expected Paths:</h4>
+        <dl id="hierarchical-row-headers-expected">
+            <dt>North → New York → Sales</dt><dd data-row="2" data-col="3">100</dd>
+            <dt>North → Boston → Sales</dt><dd data-row="3" data-col="3">80</dd>
+            <dt>South → Miami → Sales</dt><dd data-row="4" data-col="3">120</dd>
+        </dl>
+    </section>
+</main>
+</body>
+</html>
