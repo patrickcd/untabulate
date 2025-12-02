@@ -63,9 +63,9 @@ def _format_results(
     results = []
 
     for el in elements:
-        if el.el_type == "DT":
+        if not el.is_header:
             path = grid.get_path(el.row, el.col)
-            value = el.label
+            value = el.value
 
             if format == "strings":
                 context = separator.join(path) + f": {value}" if path else value
@@ -94,9 +94,9 @@ def untabulate(
 
     Accepts various input formats:
     - List of GridElement instances
-    - List of dicts with keys: el_type, row, col, rowspan, colspan, label
-    - List of tuples: (el_type, row, col, rowspan, colspan, label)
-    - List of objects with attributes: el_type, row, col, rowspan, colspan, label
+    - List of dicts with keys: is_header, row, col, rowspan, colspan, value
+    - List of tuples: (is_header, row, col, rowspan, colspan, value)
+    - List of objects with attributes: is_header, row, col, rowspan, colspan, value
 
     Args:
         data: List of elements in any supported format
@@ -111,10 +111,10 @@ def untabulate(
 
     Example:
         >>> data = [
-        ...     {"el_type": "LB", "row": 1, "col": 1, "rowspan": 1, "colspan": 1, "label": "Name"},
-        ...     {"el_type": "LB", "row": 1, "col": 2, "rowspan": 1, "colspan": 1, "label": "Age"},
-        ...     {"el_type": "DT", "row": 2, "col": 1, "rowspan": 1, "colspan": 1, "label": "Alice"},
-        ...     {"el_type": "DT", "row": 2, "col": 2, "rowspan": 1, "colspan": 1, "label": "30"},
+        ...     {"is_header": True, "row": 1, "col": 1, "rowspan": 1, "colspan": 1, "value": "Name"},
+        ...     {"is_header": True, "row": 1, "col": 2, "rowspan": 1, "colspan": 1, "value": "Age"},
+        ...     {"is_header": False, "row": 2, "col": 1, "rowspan": 1, "colspan": 1, "value": "Alice"},
+        ...     {"is_header": False, "row": 2, "col": 2, "rowspan": 1, "colspan": 1, "value": "30"},
         ... ]
         >>> untabulate(data, format="strings")
         ['Alice', 'Age: 30']
@@ -129,29 +129,29 @@ def untabulate(
             elements.append(item)
         elif isinstance(item, dict):
             elements.append(GridElement(
-                item["el_type"],
+                item["is_header"],
                 item["row"],
                 item["col"],
                 item.get("rowspan", 1),
                 item.get("colspan", 1),
-                item.get("label", ""),
+                item.get("value", ""),
             ))
         elif isinstance(item, (list, tuple)):
-            # Assume order: el_type, row, col, rowspan, colspan, label
-            el_type, row, col = item[0], item[1], item[2]
+            # Assume order: is_header, row, col, rowspan, colspan, value
+            is_header, row, col = item[0], item[1], item[2]
             rowspan = item[3] if len(item) > 3 else 1
             colspan = item[4] if len(item) > 4 else 1
-            label = item[5] if len(item) > 5 else ""
-            elements.append(GridElement(el_type, row, col, rowspan, colspan, label))
+            value = item[5] if len(item) > 5 else ""
+            elements.append(GridElement(is_header, row, col, rowspan, colspan, value))
         else:
             # Assume object with attributes
             elements.append(GridElement(
-                item.el_type,
+                item.is_header,
                 item.row,
                 item.col,
                 getattr(item, "rowspan", 1),
                 getattr(item, "colspan", 1),
-                getattr(item, "label", ""),
+                getattr(item, "value", ""),
             ))
 
     grid = ProjectionGrid(elements)

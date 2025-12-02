@@ -1522,17 +1522,17 @@ struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid;
  * # Declaration file for cimport from other Cython modules
  * 
  * cdef class GridElement:             # <<<<<<<<<<<<<<
- *     cdef public str el_type
+ *     cdef public bint is_header
  *     cdef public int row
 */
 struct __pyx_obj_10untabulate_15projection_grid_GridElement {
   PyObject_HEAD
-  PyObject *el_type;
+  int is_header;
   int row;
   int col;
   int rowspan;
   int colspan;
-  PyObject *label;
+  PyObject *value;
 };
 
 
@@ -1553,7 +1553,7 @@ struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid {
 
 
 
-/* "untabulate/projection_grid.pyx":27
+/* "untabulate/projection_grid.pyx":36
  * 
  * 
  * cdef class ProjectionGrid:             # <<<<<<<<<<<<<<
@@ -2454,12 +2454,11 @@ int __pyx_module_is_main_untabulate__projection_grid = 0;
 /* #### Code section: global_var ### */
 /* #### Code section: string_decls ### */
 static const char __pyx_k_max_row_col_headers_row_headers[] = "_max_row, col_headers, row_headers";
-static const char __pyx_k_col_colspan_el_type_label_row_ro[] = "col, colspan, el_type, label, row, rowspan";
+static const char __pyx_k_col_colspan_is_header_row_rowspa[] = "col, colspan, is_header, row, rowspan, value";
 /* #### Code section: decls ### */
-static int __pyx_pf_10untabulate_15projection_grid_11GridElement___init__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_el_type, int __pyx_v_row, int __pyx_v_col, int __pyx_v_rowspan, int __pyx_v_colspan, PyObject *__pyx_v_label); /* proto */
-static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_7el_type___get__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self); /* proto */
-static int __pyx_pf_10untabulate_15projection_grid_11GridElement_7el_type_2__set__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_10untabulate_15projection_grid_11GridElement_7el_type_4__del__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self); /* proto */
+static int __pyx_pf_10untabulate_15projection_grid_11GridElement___init__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, int __pyx_v_is_header, int __pyx_v_row, int __pyx_v_col, int __pyx_v_rowspan, int __pyx_v_colspan, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_9is_header___get__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self); /* proto */
+static int __pyx_pf_10untabulate_15projection_grid_11GridElement_9is_header_2__set__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_3row___get__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self); /* proto */
 static int __pyx_pf_10untabulate_15projection_grid_11GridElement_3row_2__set__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_3col___get__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self); /* proto */
@@ -2468,9 +2467,9 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_7rowspan_
 static int __pyx_pf_10untabulate_15projection_grid_11GridElement_7rowspan_2__set__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_7colspan___get__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self); /* proto */
 static int __pyx_pf_10untabulate_15projection_grid_11GridElement_7colspan_2__set__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_5label___get__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self); /* proto */
-static int __pyx_pf_10untabulate_15projection_grid_11GridElement_5label_2__set__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static int __pyx_pf_10untabulate_15projection_grid_11GridElement_5label_4__del__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_5value___get__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self); /* proto */
+static int __pyx_pf_10untabulate_15projection_grid_11GridElement_5value_2__set__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_10untabulate_15projection_grid_11GridElement_5value_4__del__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_2__reduce_cython__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_4__setstate_cython__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
 static int __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid *__pyx_v_self, PyObject *__pyx_v_elements); /* proto */
@@ -2518,7 +2517,7 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
   PyObject *__pyx_tuple[2];
   PyObject *__pyx_codeobj_tab[9];
-  PyObject *__pyx_string_tab[88];
+  PyObject *__pyx_string_tab[87];
   PyObject *__pyx_number_tab[3];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
@@ -2569,88 +2568,87 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_gc __pyx_string_tab[6]
 #define __pyx_kp_u_isenabled __pyx_string_tab[7]
 #define __pyx_kp_u_self_col_headers_is_not_None_or __pyx_string_tab[8]
-#define __pyx_kp_u_self_el_type_is_not_None_or_self __pyx_string_tab[9]
+#define __pyx_kp_u_self_value_is_not_None __pyx_string_tab[9]
 #define __pyx_kp_u_src_untabulate_projection_grid_p __pyx_string_tab[10]
 #define __pyx_kp_u_stringsource __pyx_string_tab[11]
-#define __pyx_n_u_DT __pyx_string_tab[12]
-#define __pyx_n_u_GridElement __pyx_string_tab[13]
-#define __pyx_n_u_GridElement___reduce_cython __pyx_string_tab[14]
-#define __pyx_n_u_GridElement___setstate_cython __pyx_string_tab[15]
-#define __pyx_n_u_LB __pyx_string_tab[16]
-#define __pyx_n_u_ProjectionGrid __pyx_string_tab[17]
-#define __pyx_n_u_ProjectionGrid___reduce_cython __pyx_string_tab[18]
-#define __pyx_n_u_ProjectionGrid___setstate_cython __pyx_string_tab[19]
-#define __pyx_n_u_ProjectionGrid__finalize_locals __pyx_string_tab[20]
-#define __pyx_n_u_ProjectionGrid_get_path __pyx_string_tab[21]
-#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[22]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[23]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[24]
-#define __pyx_n_u_col __pyx_string_tab[25]
-#define __pyx_n_u_collections __pyx_string_tab[26]
-#define __pyx_n_u_colspan __pyx_string_tab[27]
-#define __pyx_n_u_data_col __pyx_string_tab[28]
-#define __pyx_n_u_data_row __pyx_string_tab[29]
-#define __pyx_n_u_defaultdict __pyx_string_tab[30]
-#define __pyx_n_u_dict __pyx_string_tab[31]
-#define __pyx_n_u_dict_2 __pyx_string_tab[32]
-#define __pyx_n_u_el_type __pyx_string_tab[33]
-#define __pyx_n_u_elements __pyx_string_tab[34]
-#define __pyx_n_u_func __pyx_string_tab[35]
-#define __pyx_n_u_get __pyx_string_tab[36]
-#define __pyx_n_u_get_path __pyx_string_tab[37]
-#define __pyx_n_u_getstate __pyx_string_tab[38]
-#define __pyx_n_u_header_row __pyx_string_tab[39]
-#define __pyx_n_u_headers __pyx_string_tab[40]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[41]
-#define __pyx_n_u_items __pyx_string_tab[42]
-#define __pyx_n_u_key __pyx_string_tab[43]
-#define __pyx_n_u_label __pyx_string_tab[44]
-#define __pyx_n_u_lambda __pyx_string_tab[45]
-#define __pyx_n_u_main __pyx_string_tab[46]
-#define __pyx_n_u_module __pyx_string_tab[47]
-#define __pyx_n_u_name __pyx_string_tab[48]
-#define __pyx_n_u_new __pyx_string_tab[49]
-#define __pyx_n_u_path __pyx_string_tab[50]
-#define __pyx_n_u_pop __pyx_string_tab[51]
-#define __pyx_n_u_pyx_checksum __pyx_string_tab[52]
-#define __pyx_n_u_pyx_result __pyx_string_tab[53]
-#define __pyx_n_u_pyx_state __pyx_string_tab[54]
-#define __pyx_n_u_pyx_type __pyx_string_tab[55]
-#define __pyx_n_u_pyx_unpickle_GridElement __pyx_string_tab[56]
-#define __pyx_n_u_pyx_unpickle_ProjectionGrid __pyx_string_tab[57]
-#define __pyx_n_u_pyx_vtable __pyx_string_tab[58]
-#define __pyx_n_u_qualname __pyx_string_tab[59]
-#define __pyx_n_u_reduce __pyx_string_tab[60]
-#define __pyx_n_u_reduce_cython __pyx_string_tab[61]
-#define __pyx_n_u_reduce_ex __pyx_string_tab[62]
-#define __pyx_n_u_row __pyx_string_tab[63]
-#define __pyx_n_u_rowspan __pyx_string_tab[64]
-#define __pyx_n_u_seen __pyx_string_tab[65]
-#define __pyx_n_u_self __pyx_string_tab[66]
-#define __pyx_n_u_set_name __pyx_string_tab[67]
-#define __pyx_n_u_setdefault __pyx_string_tab[68]
-#define __pyx_n_u_setstate __pyx_string_tab[69]
-#define __pyx_n_u_setstate_cython __pyx_string_tab[70]
-#define __pyx_n_u_sort __pyx_string_tab[71]
-#define __pyx_n_u_state __pyx_string_tab[72]
-#define __pyx_n_u_strip __pyx_string_tab[73]
-#define __pyx_n_u_test __pyx_string_tab[74]
-#define __pyx_n_u_untabulate_projection_grid __pyx_string_tab[75]
-#define __pyx_n_u_update __pyx_string_tab[76]
-#define __pyx_n_u_use_setstate __pyx_string_tab[77]
-#define __pyx_n_u_values __pyx_string_tab[78]
-#define __pyx_n_u_x __pyx_string_tab[79]
-#define __pyx_kp_b_iso88591_1AQ __pyx_string_tab[80]
-#define __pyx_kp_b_iso88591_AV1 __pyx_string_tab[81]
-#define __pyx_kp_b_iso88591_A_1_9Ba_d_d_Q_IQ_c_vWA_G1A_D_l_a __pyx_string_tab[82]
-#define __pyx_kp_b_iso88591_T_D_d_G1F_a_vWE_Q_q_q_t1G_gQ_t1 __pyx_string_tab[83]
-#define __pyx_kp_b_iso88591_T_t_T_4xt6_Q_G1F_a_vWE_Q_q_q_D __pyx_string_tab[84]
-#define __pyx_kp_b_iso88591__3 __pyx_string_tab[85]
-#define __pyx_kp_b_iso88591_q_0_kQR_7_0_1B_PQ_1 __pyx_string_tab[86]
-#define __pyx_kp_b_iso88591_q_0_kQR_haq_7_QnN_1 __pyx_string_tab[87]
+#define __pyx_n_u_GridElement __pyx_string_tab[12]
+#define __pyx_n_u_GridElement___reduce_cython __pyx_string_tab[13]
+#define __pyx_n_u_GridElement___setstate_cython __pyx_string_tab[14]
+#define __pyx_n_u_ProjectionGrid __pyx_string_tab[15]
+#define __pyx_n_u_ProjectionGrid___reduce_cython __pyx_string_tab[16]
+#define __pyx_n_u_ProjectionGrid___setstate_cython __pyx_string_tab[17]
+#define __pyx_n_u_ProjectionGrid__finalize_locals __pyx_string_tab[18]
+#define __pyx_n_u_ProjectionGrid_get_path __pyx_string_tab[19]
+#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[20]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[21]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[22]
+#define __pyx_n_u_col __pyx_string_tab[23]
+#define __pyx_n_u_collections __pyx_string_tab[24]
+#define __pyx_n_u_colspan __pyx_string_tab[25]
+#define __pyx_n_u_data_col __pyx_string_tab[26]
+#define __pyx_n_u_data_row __pyx_string_tab[27]
+#define __pyx_n_u_defaultdict __pyx_string_tab[28]
+#define __pyx_n_u_dict __pyx_string_tab[29]
+#define __pyx_n_u_dict_2 __pyx_string_tab[30]
+#define __pyx_n_u_elements __pyx_string_tab[31]
+#define __pyx_n_u_func __pyx_string_tab[32]
+#define __pyx_n_u_get __pyx_string_tab[33]
+#define __pyx_n_u_get_path __pyx_string_tab[34]
+#define __pyx_n_u_getstate __pyx_string_tab[35]
+#define __pyx_n_u_header_row __pyx_string_tab[36]
+#define __pyx_n_u_headers __pyx_string_tab[37]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[38]
+#define __pyx_n_u_is_header __pyx_string_tab[39]
+#define __pyx_n_u_items __pyx_string_tab[40]
+#define __pyx_n_u_key __pyx_string_tab[41]
+#define __pyx_n_u_label __pyx_string_tab[42]
+#define __pyx_n_u_lambda __pyx_string_tab[43]
+#define __pyx_n_u_main __pyx_string_tab[44]
+#define __pyx_n_u_module __pyx_string_tab[45]
+#define __pyx_n_u_name __pyx_string_tab[46]
+#define __pyx_n_u_new __pyx_string_tab[47]
+#define __pyx_n_u_path __pyx_string_tab[48]
+#define __pyx_n_u_pop __pyx_string_tab[49]
+#define __pyx_n_u_pyx_checksum __pyx_string_tab[50]
+#define __pyx_n_u_pyx_result __pyx_string_tab[51]
+#define __pyx_n_u_pyx_state __pyx_string_tab[52]
+#define __pyx_n_u_pyx_type __pyx_string_tab[53]
+#define __pyx_n_u_pyx_unpickle_GridElement __pyx_string_tab[54]
+#define __pyx_n_u_pyx_unpickle_ProjectionGrid __pyx_string_tab[55]
+#define __pyx_n_u_pyx_vtable __pyx_string_tab[56]
+#define __pyx_n_u_qualname __pyx_string_tab[57]
+#define __pyx_n_u_reduce __pyx_string_tab[58]
+#define __pyx_n_u_reduce_cython __pyx_string_tab[59]
+#define __pyx_n_u_reduce_ex __pyx_string_tab[60]
+#define __pyx_n_u_row __pyx_string_tab[61]
+#define __pyx_n_u_rowspan __pyx_string_tab[62]
+#define __pyx_n_u_seen __pyx_string_tab[63]
+#define __pyx_n_u_self __pyx_string_tab[64]
+#define __pyx_n_u_set_name __pyx_string_tab[65]
+#define __pyx_n_u_setdefault __pyx_string_tab[66]
+#define __pyx_n_u_setstate __pyx_string_tab[67]
+#define __pyx_n_u_setstate_cython __pyx_string_tab[68]
+#define __pyx_n_u_sort __pyx_string_tab[69]
+#define __pyx_n_u_state __pyx_string_tab[70]
+#define __pyx_n_u_strip __pyx_string_tab[71]
+#define __pyx_n_u_test __pyx_string_tab[72]
+#define __pyx_n_u_untabulate_projection_grid __pyx_string_tab[73]
+#define __pyx_n_u_update __pyx_string_tab[74]
+#define __pyx_n_u_use_setstate __pyx_string_tab[75]
+#define __pyx_n_u_value __pyx_string_tab[76]
+#define __pyx_n_u_values __pyx_string_tab[77]
+#define __pyx_n_u_x __pyx_string_tab[78]
+#define __pyx_kp_b_iso88591_1AQ __pyx_string_tab[79]
+#define __pyx_kp_b_iso88591_AV1 __pyx_string_tab[80]
+#define __pyx_kp_b_iso88591_A_1_9Ba_d_d_Q_IQ_c_vWA_G1A_D_l_a __pyx_string_tab[81]
+#define __pyx_kp_b_iso88591_T_D_d_G1F_a_vWE_Q_q_q_t1G_gQ_t1 __pyx_string_tab[82]
+#define __pyx_kp_b_iso88591_T_t_T_T_t_TQR_G1F_a_vWE_Q_q_q_D __pyx_string_tab[83]
+#define __pyx_kp_b_iso88591__3 __pyx_string_tab[84]
+#define __pyx_kp_b_iso88591_q_0_kQR_7_0_1B_PQ_1 __pyx_string_tab[85]
+#define __pyx_kp_b_iso88591_q_0_kQR_haq_7_QnN_1 __pyx_string_tab[86]
 #define __pyx_int_1 __pyx_number_tab[0]
-#define __pyx_int_135806601 __pyx_number_tab[1]
-#define __pyx_int_176636785 __pyx_number_tab[2]
+#define __pyx_int_1483297 __pyx_number_tab[1]
+#define __pyx_int_135806601 __pyx_number_tab[2]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
 static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
@@ -2671,7 +2669,7 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_type_10untabulate_15projection_grid_ProjectionGrid);
   for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<9; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<88; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<87; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<3; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -2701,7 +2699,7 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_type_10untabulate_15projection_grid_ProjectionGrid);
   for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<9; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<88; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<87; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<3; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -2716,23 +2714,23 @@ return 0;
 #endif
 /* #### Code section: module_code ### */
 
-/* "untabulate/projection_grid.pyx":15
+/* "untabulate/projection_grid.pyx":24
  *     # Attributes declared in projection_grid.pxd
  * 
  *     def __init__(             # <<<<<<<<<<<<<<
- *         self, str el_type, int row, int col, int rowspan, int colspan,
- *         str label
+ *         self, bint is_header, int row, int col, int rowspan, int colspan,
+ *         str value
 */
 
 /* Python wrapper */
 static int __pyx_pw_10untabulate_15projection_grid_11GridElement_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static int __pyx_pw_10untabulate_15projection_grid_11GridElement_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_el_type = 0;
+  int __pyx_v_is_header;
   int __pyx_v_row;
   int __pyx_v_col;
   int __pyx_v_rowspan;
   int __pyx_v_colspan;
-  PyObject *__pyx_v_label = 0;
+  PyObject *__pyx_v_value = 0;
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject* values[6] = {0,0,0,0,0,0};
@@ -2749,69 +2747,69 @@ static int __pyx_pw_10untabulate_15projection_grid_11GridElement_1__init__(PyObj
   #endif
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
   {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_el_type,&__pyx_mstate_global->__pyx_n_u_row,&__pyx_mstate_global->__pyx_n_u_col,&__pyx_mstate_global->__pyx_n_u_rowspan,&__pyx_mstate_global->__pyx_n_u_colspan,&__pyx_mstate_global->__pyx_n_u_label,0};
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_is_header,&__pyx_mstate_global->__pyx_n_u_row,&__pyx_mstate_global->__pyx_n_u_col,&__pyx_mstate_global->__pyx_n_u_rowspan,&__pyx_mstate_global->__pyx_n_u_colspan,&__pyx_mstate_global->__pyx_n_u_value,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 15, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 24, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  6:
         values[5] = __Pyx_ArgRef_VARARGS(__pyx_args, 5);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[5])) __PYX_ERR(0, 15, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[5])) __PYX_ERR(0, 24, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  5:
         values[4] = __Pyx_ArgRef_VARARGS(__pyx_args, 4);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 15, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 24, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  4:
         values[3] = __Pyx_ArgRef_VARARGS(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 15, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 24, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_VARARGS(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 15, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 24, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_VARARGS(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 15, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 24, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 15, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 24, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 15, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 24, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 6; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, i); __PYX_ERR(0, 15, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, i); __PYX_ERR(0, 24, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 6)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 15, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 24, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_VARARGS(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 15, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 24, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_VARARGS(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 15, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 24, __pyx_L3_error)
       values[3] = __Pyx_ArgRef_VARARGS(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 15, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 24, __pyx_L3_error)
       values[4] = __Pyx_ArgRef_VARARGS(__pyx_args, 4);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 15, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 24, __pyx_L3_error)
       values[5] = __Pyx_ArgRef_VARARGS(__pyx_args, 5);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[5])) __PYX_ERR(0, 15, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[5])) __PYX_ERR(0, 24, __pyx_L3_error)
     }
-    __pyx_v_el_type = ((PyObject*)values[0]);
-    __pyx_v_row = __Pyx_PyLong_As_int(values[1]); if (unlikely((__pyx_v_row == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 16, __pyx_L3_error)
-    __pyx_v_col = __Pyx_PyLong_As_int(values[2]); if (unlikely((__pyx_v_col == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 16, __pyx_L3_error)
-    __pyx_v_rowspan = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_rowspan == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 16, __pyx_L3_error)
-    __pyx_v_colspan = __Pyx_PyLong_As_int(values[4]); if (unlikely((__pyx_v_colspan == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 16, __pyx_L3_error)
-    __pyx_v_label = ((PyObject*)values[5]);
+    __pyx_v_is_header = __Pyx_PyObject_IsTrue(values[0]); if (unlikely((__pyx_v_is_header == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L3_error)
+    __pyx_v_row = __Pyx_PyLong_As_int(values[1]); if (unlikely((__pyx_v_row == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L3_error)
+    __pyx_v_col = __Pyx_PyLong_As_int(values[2]); if (unlikely((__pyx_v_col == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L3_error)
+    __pyx_v_rowspan = __Pyx_PyLong_As_int(values[3]); if (unlikely((__pyx_v_rowspan == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L3_error)
+    __pyx_v_colspan = __Pyx_PyLong_As_int(values[4]); if (unlikely((__pyx_v_colspan == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L3_error)
+    __pyx_v_value = ((PyObject*)values[5]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 15, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 24, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2822,9 +2820,8 @@ static int __pyx_pw_10untabulate_15projection_grid_11GridElement_1__init__(PyObj
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_el_type), (&PyUnicode_Type), 1, "el_type", 1))) __PYX_ERR(0, 16, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_label), (&PyUnicode_Type), 1, "label", 1))) __PYX_ERR(0, 17, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement___init__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self), __pyx_v_el_type, __pyx_v_row, __pyx_v_col, __pyx_v_rowspan, __pyx_v_colspan, __pyx_v_label);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_value), (&PyUnicode_Type), 1, "value", 1))) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement___init__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self), __pyx_v_is_header, __pyx_v_row, __pyx_v_col, __pyx_v_rowspan, __pyx_v_colspan, __pyx_v_value);
 
   /* function exit code */
   goto __pyx_L0;
@@ -2843,35 +2840,31 @@ static int __pyx_pw_10untabulate_15projection_grid_11GridElement_1__init__(PyObj
   return __pyx_r;
 }
 
-static int __pyx_pf_10untabulate_15projection_grid_11GridElement___init__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_el_type, int __pyx_v_row, int __pyx_v_col, int __pyx_v_rowspan, int __pyx_v_colspan, PyObject *__pyx_v_label) {
+static int __pyx_pf_10untabulate_15projection_grid_11GridElement___init__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, int __pyx_v_is_header, int __pyx_v_row, int __pyx_v_col, int __pyx_v_rowspan, int __pyx_v_colspan, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "untabulate/projection_grid.pyx":19
- *         str label
+  /* "untabulate/projection_grid.pyx":28
+ *         str value
  *     ):
- *         self.el_type = el_type             # <<<<<<<<<<<<<<
+ *         self.is_header = is_header             # <<<<<<<<<<<<<<
  *         self.row = row
  *         self.col = col
 */
-  __Pyx_INCREF(__pyx_v_el_type);
-  __Pyx_GIVEREF(__pyx_v_el_type);
-  __Pyx_GOTREF(__pyx_v_self->el_type);
-  __Pyx_DECREF(__pyx_v_self->el_type);
-  __pyx_v_self->el_type = __pyx_v_el_type;
+  __pyx_v_self->is_header = __pyx_v_is_header;
 
-  /* "untabulate/projection_grid.pyx":20
+  /* "untabulate/projection_grid.pyx":29
  *     ):
- *         self.el_type = el_type
+ *         self.is_header = is_header
  *         self.row = row             # <<<<<<<<<<<<<<
  *         self.col = col
  *         self.rowspan = rowspan
 */
   __pyx_v_self->row = __pyx_v_row;
 
-  /* "untabulate/projection_grid.pyx":21
- *         self.el_type = el_type
+  /* "untabulate/projection_grid.pyx":30
+ *         self.is_header = is_header
  *         self.row = row
  *         self.col = col             # <<<<<<<<<<<<<<
  *         self.rowspan = rowspan
@@ -2879,43 +2872,43 @@ static int __pyx_pf_10untabulate_15projection_grid_11GridElement___init__(struct
 */
   __pyx_v_self->col = __pyx_v_col;
 
-  /* "untabulate/projection_grid.pyx":22
+  /* "untabulate/projection_grid.pyx":31
  *         self.row = row
  *         self.col = col
  *         self.rowspan = rowspan             # <<<<<<<<<<<<<<
  *         self.colspan = colspan
- *         self.label = label
+ *         self.value = value
 */
   __pyx_v_self->rowspan = __pyx_v_rowspan;
 
-  /* "untabulate/projection_grid.pyx":23
+  /* "untabulate/projection_grid.pyx":32
  *         self.col = col
  *         self.rowspan = rowspan
  *         self.colspan = colspan             # <<<<<<<<<<<<<<
- *         self.label = label
+ *         self.value = value
  * 
 */
   __pyx_v_self->colspan = __pyx_v_colspan;
 
-  /* "untabulate/projection_grid.pyx":24
+  /* "untabulate/projection_grid.pyx":33
  *         self.rowspan = rowspan
  *         self.colspan = colspan
- *         self.label = label             # <<<<<<<<<<<<<<
+ *         self.value = value             # <<<<<<<<<<<<<<
  * 
  * 
 */
-  __Pyx_INCREF(__pyx_v_label);
-  __Pyx_GIVEREF(__pyx_v_label);
-  __Pyx_GOTREF(__pyx_v_self->label);
-  __Pyx_DECREF(__pyx_v_self->label);
-  __pyx_v_self->label = __pyx_v_label;
+  __Pyx_INCREF(__pyx_v_value);
+  __Pyx_GIVEREF(__pyx_v_value);
+  __Pyx_GOTREF(__pyx_v_self->value);
+  __Pyx_DECREF(__pyx_v_self->value);
+  __pyx_v_self->value = __pyx_v_value;
 
-  /* "untabulate/projection_grid.pyx":15
+  /* "untabulate/projection_grid.pyx":24
  *     # Attributes declared in projection_grid.pxd
  * 
  *     def __init__(             # <<<<<<<<<<<<<<
- *         self, str el_type, int row, int col, int rowspan, int colspan,
- *         str label
+ *         self, bint is_header, int row, int col, int rowspan, int colspan,
+ *         str value
 */
 
   /* function exit code */
@@ -2927,36 +2920,46 @@ static int __pyx_pf_10untabulate_15projection_grid_11GridElement___init__(struct
 /* "untabulate/projection_grid.pxd":5
  * 
  * cdef class GridElement:
- *     cdef public str el_type             # <<<<<<<<<<<<<<
+ *     cdef public bint is_header             # <<<<<<<<<<<<<<
  *     cdef public int row
  *     cdef public int col
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10untabulate_15projection_grid_11GridElement_7el_type_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10untabulate_15projection_grid_11GridElement_7el_type_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_10untabulate_15projection_grid_11GridElement_9is_header_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_10untabulate_15projection_grid_11GridElement_9is_header_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement_7el_type___get__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement_9is_header___get__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_7el_type___get__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self) {
+static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_9is_header___get__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_self->el_type);
-  __pyx_r = __pyx_v_self->el_type;
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->is_header); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
   goto __pyx_L0;
 
   /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("untabulate.projection_grid.GridElement.is_header.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -2964,83 +2967,42 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_7el_type_
 }
 
 /* Python wrapper */
-static int __pyx_pw_10untabulate_15projection_grid_11GridElement_7el_type_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_10untabulate_15projection_grid_11GridElement_7el_type_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_10untabulate_15projection_grid_11GridElement_9is_header_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_10untabulate_15projection_grid_11GridElement_9is_header_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement_7el_type_2__set__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement_9is_header_2__set__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_10untabulate_15projection_grid_11GridElement_7el_type_2__set__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_10untabulate_15projection_grid_11GridElement_9is_header_2__set__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_1;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __pyx_v_value;
-  __Pyx_INCREF(__pyx_t_1);
-  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(1, 5, __pyx_L1_error)
-  __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v_self->el_type);
-  __Pyx_DECREF(__pyx_v_self->el_type);
-  __pyx_v_self->el_type = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_v_self->is_header = __pyx_t_1;
 
   /* function exit code */
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("untabulate.projection_grid.GridElement.el_type.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("untabulate.projection_grid.GridElement.is_header.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* Python wrapper */
-static int __pyx_pw_10untabulate_15projection_grid_11GridElement_7el_type_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_10untabulate_15projection_grid_11GridElement_7el_type_5__del__(PyObject *__pyx_v_self) {
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement_7el_type_4__del__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static int __pyx_pf_10untabulate_15projection_grid_11GridElement_7el_type_4__del__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self) {
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__del__", 0);
-  __Pyx_INCREF(Py_None);
-  __Pyx_GIVEREF(Py_None);
-  __Pyx_GOTREF(__pyx_v_self->el_type);
-  __Pyx_DECREF(__pyx_v_self->el_type);
-  __pyx_v_self->el_type = ((PyObject*)Py_None);
-
-  /* function exit code */
-  __pyx_r = 0;
-  __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
 /* "untabulate/projection_grid.pxd":6
  * cdef class GridElement:
- *     cdef public str el_type
+ *     cdef public bint is_header
  *     cdef public int row             # <<<<<<<<<<<<<<
  *     cdef public int col
  *     cdef public int rowspan
@@ -3122,7 +3084,7 @@ static int __pyx_pf_10untabulate_15projection_grid_11GridElement_3row_2__set__(s
 }
 
 /* "untabulate/projection_grid.pxd":7
- *     cdef public str el_type
+ *     cdef public bint is_header
  *     cdef public int row
  *     cdef public int col             # <<<<<<<<<<<<<<
  *     cdef public int rowspan
@@ -3209,7 +3171,7 @@ static int __pyx_pf_10untabulate_15projection_grid_11GridElement_3col_2__set__(s
  *     cdef public int col
  *     cdef public int rowspan             # <<<<<<<<<<<<<<
  *     cdef public int colspan
- *     cdef public str label
+ *     cdef public str value
 */
 
 /* Python wrapper */
@@ -3291,7 +3253,7 @@ static int __pyx_pf_10untabulate_15projection_grid_11GridElement_7rowspan_2__set
  *     cdef public int col
  *     cdef public int rowspan
  *     cdef public int colspan             # <<<<<<<<<<<<<<
- *     cdef public str label
+ *     cdef public str value
  * 
 */
 
@@ -3373,33 +3335,33 @@ static int __pyx_pf_10untabulate_15projection_grid_11GridElement_7colspan_2__set
 /* "untabulate/projection_grid.pxd":10
  *     cdef public int rowspan
  *     cdef public int colspan
- *     cdef public str label             # <<<<<<<<<<<<<<
+ *     cdef public str value             # <<<<<<<<<<<<<<
  * 
  * 
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10untabulate_15projection_grid_11GridElement_5label_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10untabulate_15projection_grid_11GridElement_5label_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_10untabulate_15projection_grid_11GridElement_5value_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_10untabulate_15projection_grid_11GridElement_5value_1__get__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement_5label___get__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement_5value___get__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_5label___get__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self) {
+static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_5value___get__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_self->label);
-  __pyx_r = __pyx_v_self->label;
+  __Pyx_INCREF(__pyx_v_self->value);
+  __pyx_r = __pyx_v_self->value;
   goto __pyx_L0;
 
   /* function exit code */
@@ -3410,21 +3372,21 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_5label___
 }
 
 /* Python wrapper */
-static int __pyx_pw_10untabulate_15projection_grid_11GridElement_5label_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_10untabulate_15projection_grid_11GridElement_5label_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_10untabulate_15projection_grid_11GridElement_5value_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_10untabulate_15projection_grid_11GridElement_5value_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement_5label_2__set__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement_5value_2__set__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_10untabulate_15projection_grid_11GridElement_5label_2__set__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_10untabulate_15projection_grid_11GridElement_5value_2__set__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3436,9 +3398,9 @@ static int __pyx_pf_10untabulate_15projection_grid_11GridElement_5label_2__set__
   __Pyx_INCREF(__pyx_t_1);
   if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(1, 10, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
-  __Pyx_GOTREF(__pyx_v_self->label);
-  __Pyx_DECREF(__pyx_v_self->label);
-  __pyx_v_self->label = ((PyObject*)__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->value);
+  __Pyx_DECREF(__pyx_v_self->value);
+  __pyx_v_self->value = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
   /* function exit code */
@@ -3446,7 +3408,7 @@ static int __pyx_pf_10untabulate_15projection_grid_11GridElement_5label_2__set__
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("untabulate.projection_grid.GridElement.label.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("untabulate.projection_grid.GridElement.value.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -3454,29 +3416,29 @@ static int __pyx_pf_10untabulate_15projection_grid_11GridElement_5label_2__set__
 }
 
 /* Python wrapper */
-static int __pyx_pw_10untabulate_15projection_grid_11GridElement_5label_5__del__(PyObject *__pyx_v_self); /*proto*/
-static int __pyx_pw_10untabulate_15projection_grid_11GridElement_5label_5__del__(PyObject *__pyx_v_self) {
+static int __pyx_pw_10untabulate_15projection_grid_11GridElement_5value_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_10untabulate_15projection_grid_11GridElement_5value_5__del__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement_5label_4__del__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10untabulate_15projection_grid_11GridElement_5value_4__del__(((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_10untabulate_15projection_grid_11GridElement_5label_4__del__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self) {
+static int __pyx_pf_10untabulate_15projection_grid_11GridElement_5value_4__del__(struct __pyx_obj_10untabulate_15projection_grid_GridElement *__pyx_v_self) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__", 0);
   __Pyx_INCREF(Py_None);
   __Pyx_GIVEREF(Py_None);
-  __Pyx_GOTREF(__pyx_v_self->label);
-  __Pyx_DECREF(__pyx_v_self->label);
-  __pyx_v_self->label = ((PyObject*)Py_None);
+  __Pyx_GOTREF(__pyx_v_self->value);
+  __Pyx_DECREF(__pyx_v_self->value);
+  __pyx_v_self->value = ((PyObject*)Py_None);
 
   /* function exit code */
   __pyx_r = 0;
@@ -3543,8 +3505,9 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_2__reduce
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
-  int __pyx_t_6;
+  PyObject *__pyx_t_6 = NULL;
   int __pyx_t_7;
+  int __pyx_t_8;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3553,7 +3516,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_2__reduce
   /* "(tree fragment)":5
  *     cdef object _dict
  *     cdef bint use_setstate
- *     state = (self.col, self.colspan, self.el_type, self.label, self.row, self.rowspan)             # <<<<<<<<<<<<<<
+ *     state = (self.col, self.colspan, self.is_header, self.row, self.rowspan, self.value)             # <<<<<<<<<<<<<<
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None and _dict:
 */
@@ -3561,62 +3524,64 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_2__reduce
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = __Pyx_PyLong_From_int(__pyx_v_self->colspan); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->row); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 5, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_v_self->is_header); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_self->rowspan); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 5, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_self->row); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(6); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 5, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_self->rowspan); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = PyTuple_New(6); if (unlikely(!__pyx_t_6)) __PYX_ERR(2, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1) != (0)) __PYX_ERR(2, 5, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1) != (0)) __PYX_ERR(2, 5, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2) != (0)) __PYX_ERR(2, 5, __pyx_L1_error);
-  __Pyx_INCREF(__pyx_v_self->el_type);
-  __Pyx_GIVEREF(__pyx_v_self->el_type);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_v_self->el_type) != (0)) __PYX_ERR(2, 5, __pyx_L1_error);
-  __Pyx_INCREF(__pyx_v_self->label);
-  __Pyx_GIVEREF(__pyx_v_self->label);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_v_self->label) != (0)) __PYX_ERR(2, 5, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_2) != (0)) __PYX_ERR(2, 5, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 4, __pyx_t_3) != (0)) __PYX_ERR(2, 5, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_t_3) != (0)) __PYX_ERR(2, 5, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 5, __pyx_t_4) != (0)) __PYX_ERR(2, 5, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 3, __pyx_t_4) != (0)) __PYX_ERR(2, 5, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_5);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 4, __pyx_t_5) != (0)) __PYX_ERR(2, 5, __pyx_L1_error);
+  __Pyx_INCREF(__pyx_v_self->value);
+  __Pyx_GIVEREF(__pyx_v_self->value);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 5, __pyx_v_self->value) != (0)) __PYX_ERR(2, 5, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
-  __pyx_v_state = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
+  __pyx_v_state = ((PyObject*)__pyx_t_6);
+  __pyx_t_6 = 0;
 
   /* "(tree fragment)":6
  *     cdef bint use_setstate
- *     state = (self.col, self.colspan, self.el_type, self.label, self.row, self.rowspan)
+ *     state = (self.col, self.colspan, self.is_header, self.row, self.rowspan, self.value)
  *     _dict = getattr(self, '__dict__', None)             # <<<<<<<<<<<<<<
  *     if _dict is not None and _dict:
  *         state += (_dict,)
 */
-  __pyx_t_5 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_dict, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 6, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_v__dict = __pyx_t_5;
-  __pyx_t_5 = 0;
+  __pyx_t_6 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_dict, Py_None); if (unlikely(!__pyx_t_6)) __PYX_ERR(2, 6, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_v__dict = __pyx_t_6;
+  __pyx_t_6 = 0;
 
   /* "(tree fragment)":7
- *     state = (self.col, self.colspan, self.el_type, self.label, self.row, self.rowspan)
+ *     state = (self.col, self.colspan, self.is_header, self.row, self.rowspan, self.value)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None and _dict:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
  *         use_setstate = True
 */
-  __pyx_t_7 = (__pyx_v__dict != Py_None);
-  if (__pyx_t_7) {
+  __pyx_t_8 = (__pyx_v__dict != Py_None);
+  if (__pyx_t_8) {
   } else {
-    __pyx_t_6 = __pyx_t_7;
+    __pyx_t_7 = __pyx_t_8;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_v__dict); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(2, 7, __pyx_L1_error)
-  __pyx_t_6 = __pyx_t_7;
+  __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v__dict); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(2, 7, __pyx_L1_error)
+  __pyx_t_7 = __pyx_t_8;
   __pyx_L4_bool_binop_done:;
-  if (__pyx_t_6) {
+  if (__pyx_t_7) {
 
     /* "(tree fragment)":8
  *     _dict = getattr(self, '__dict__', None)
@@ -3625,28 +3590,28 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_2__reduce
  *         use_setstate = True
  *     else:
 */
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(2, 8, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
     __Pyx_INCREF(__pyx_v__dict);
     __Pyx_GIVEREF(__pyx_v__dict);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v__dict) != (0)) __PYX_ERR(2, 8, __pyx_L1_error);
-    __pyx_t_4 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_4));
-    __pyx_t_4 = 0;
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v__dict) != (0)) __PYX_ERR(2, 8, __pyx_L1_error);
+    __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 8, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_5));
+    __pyx_t_5 = 0;
 
     /* "(tree fragment)":9
  *     if _dict is not None and _dict:
  *         state += (_dict,)
  *         use_setstate = True             # <<<<<<<<<<<<<<
  *     else:
- *         use_setstate = ('self.el_type is not None or self.label is not None',)
+ *         use_setstate = ('self.value is not None',)
 */
     __pyx_v_use_setstate = 1;
 
     /* "(tree fragment)":7
- *     state = (self.col, self.colspan, self.el_type, self.label, self.row, self.rowspan)
+ *     state = (self.col, self.colspan, self.is_header, self.row, self.rowspan, self.value)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None and _dict:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
@@ -3658,102 +3623,102 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_2__reduce
   /* "(tree fragment)":11
  *         use_setstate = True
  *     else:
- *         use_setstate = ('self.el_type is not None or self.label is not None',)             # <<<<<<<<<<<<<<
+ *         use_setstate = ('self.value is not None',)             # <<<<<<<<<<<<<<
  *     if use_setstate:
- *         return __pyx_unpickle_GridElement, (type(self), 0xa874371, None), state
+ *         return __pyx_unpickle_GridElement, (type(self), 0x016a221, None), state
 */
   /*else*/ {
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_mstate_global->__pyx_tuple[0]); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(2, 11, __pyx_L1_error)
-    __pyx_v_use_setstate = __pyx_t_6;
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_mstate_global->__pyx_tuple[0]); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(2, 11, __pyx_L1_error)
+    __pyx_v_use_setstate = __pyx_t_7;
   }
   __pyx_L3:;
 
   /* "(tree fragment)":12
  *     else:
- *         use_setstate = ('self.el_type is not None or self.label is not None',)
+ *         use_setstate = ('self.value is not None',)
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_GridElement, (type(self), 0xa874371, None), state
+ *         return __pyx_unpickle_GridElement, (type(self), 0x016a221, None), state
  *     else:
 */
   if (__pyx_v_use_setstate) {
 
     /* "(tree fragment)":13
- *         use_setstate = ('self.el_type is not None or self.label is not None',)
+ *         use_setstate = ('self.value is not None',)
  *     if use_setstate:
- *         return __pyx_unpickle_GridElement, (type(self), 0xa874371, None), state             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_GridElement, (type(self), 0x016a221, None), state             # <<<<<<<<<<<<<<
  *     else:
- *         return __pyx_unpickle_GridElement, (type(self), 0xa874371, state)
+ *         return __pyx_unpickle_GridElement, (type(self), 0x016a221, state)
 */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_GridElement); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 13, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_GridElement); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 13, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(2, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self)))) != (0)) __PYX_ERR(2, 13, __pyx_L1_error);
-    __Pyx_INCREF(__pyx_mstate_global->__pyx_int_176636785);
-    __Pyx_GIVEREF(__pyx_mstate_global->__pyx_int_176636785);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_mstate_global->__pyx_int_176636785) != (0)) __PYX_ERR(2, 13, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self)))) != (0)) __PYX_ERR(2, 13, __pyx_L1_error);
+    __Pyx_INCREF(__pyx_mstate_global->__pyx_int_1483297);
+    __Pyx_GIVEREF(__pyx_mstate_global->__pyx_int_1483297);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_mstate_global->__pyx_int_1483297) != (0)) __PYX_ERR(2, 13, __pyx_L1_error);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 2, Py_None) != (0)) __PYX_ERR(2, 13, __pyx_L1_error);
-    __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_GIVEREF(__pyx_t_4);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4) != (0)) __PYX_ERR(2, 13, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 2, Py_None) != (0)) __PYX_ERR(2, 13, __pyx_L1_error);
+    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_5);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_5) != (0)) __PYX_ERR(2, 13, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5) != (0)) __PYX_ERR(2, 13, __pyx_L1_error);
+    __Pyx_GIVEREF(__pyx_t_6);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_6) != (0)) __PYX_ERR(2, 13, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_state) != (0)) __PYX_ERR(2, 13, __pyx_L1_error);
-    __pyx_t_4 = 0;
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_v_state) != (0)) __PYX_ERR(2, 13, __pyx_L1_error);
     __pyx_t_5 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
+    __pyx_t_6 = 0;
+    __pyx_r = __pyx_t_4;
+    __pyx_t_4 = 0;
     goto __pyx_L0;
 
     /* "(tree fragment)":12
  *     else:
- *         use_setstate = ('self.el_type is not None or self.label is not None',)
+ *         use_setstate = ('self.value is not None',)
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_GridElement, (type(self), 0xa874371, None), state
+ *         return __pyx_unpickle_GridElement, (type(self), 0x016a221, None), state
  *     else:
 */
   }
 
   /* "(tree fragment)":15
- *         return __pyx_unpickle_GridElement, (type(self), 0xa874371, None), state
+ *         return __pyx_unpickle_GridElement, (type(self), 0x016a221, None), state
  *     else:
- *         return __pyx_unpickle_GridElement, (type(self), 0xa874371, state)             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_GridElement, (type(self), 0x016a221, state)             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_GridElement__set_state(self, __pyx_state)
 */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_GridElement); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_GridElement); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(2, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self)))) != (0)) __PYX_ERR(2, 15, __pyx_L1_error);
-    __Pyx_INCREF(__pyx_mstate_global->__pyx_int_176636785);
-    __Pyx_GIVEREF(__pyx_mstate_global->__pyx_int_176636785);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_mstate_global->__pyx_int_176636785) != (0)) __PYX_ERR(2, 15, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self)))) != (0)) __PYX_ERR(2, 15, __pyx_L1_error);
+    __Pyx_INCREF(__pyx_mstate_global->__pyx_int_1483297);
+    __Pyx_GIVEREF(__pyx_mstate_global->__pyx_int_1483297);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_mstate_global->__pyx_int_1483297) != (0)) __PYX_ERR(2, 15, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_v_state) != (0)) __PYX_ERR(2, 15, __pyx_L1_error);
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GIVEREF(__pyx_t_3);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3) != (0)) __PYX_ERR(2, 15, __pyx_L1_error);
-    __Pyx_GIVEREF(__pyx_t_5);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_5) != (0)) __PYX_ERR(2, 15, __pyx_L1_error);
-    __pyx_t_3 = 0;
-    __pyx_t_5 = 0;
-    __pyx_r = __pyx_t_4;
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_v_state) != (0)) __PYX_ERR(2, 15, __pyx_L1_error);
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GIVEREF(__pyx_t_4);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4) != (0)) __PYX_ERR(2, 15, __pyx_L1_error);
+    __Pyx_GIVEREF(__pyx_t_6);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_6) != (0)) __PYX_ERR(2, 15, __pyx_L1_error);
     __pyx_t_4 = 0;
+    __pyx_t_6 = 0;
+    __pyx_r = __pyx_t_5;
+    __pyx_t_5 = 0;
     goto __pyx_L0;
   }
 
@@ -3770,6 +3735,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_2__reduce
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_AddTraceback("untabulate.projection_grid.GridElement.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -3782,7 +3748,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_2__reduce
 
 /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_GridElement, (type(self), 0xa874371, state)
+ *         return __pyx_unpickle_GridElement, (type(self), 0x016a221, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_GridElement__set_state(self, __pyx_state)
 */
@@ -3883,7 +3849,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_4__setsta
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":17
- *         return __pyx_unpickle_GridElement, (type(self), 0xa874371, state)
+ *         return __pyx_unpickle_GridElement, (type(self), 0x016a221, state)
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_GridElement__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
 */
@@ -3901,7 +3867,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_4__setsta
 
   /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_GridElement, (type(self), 0xa874371, state)
+ *         return __pyx_unpickle_GridElement, (type(self), 0x016a221, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_GridElement__set_state(self, __pyx_state)
 */
@@ -3920,7 +3886,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_11GridElement_4__setsta
   return __pyx_r;
 }
 
-/* "untabulate/projection_grid.pyx":40
+/* "untabulate/projection_grid.pyx":49
  *     # Attributes declared in projection_grid.pxd
  * 
  *     def __init__(self, list elements):             # <<<<<<<<<<<<<<
@@ -3954,32 +3920,32 @@ static int __pyx_pw_10untabulate_15projection_grid_14ProjectionGrid_1__init__(Py
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_elements,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 40, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 49, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 40, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 49, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 40, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 49, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, i); __PYX_ERR(0, 40, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, i); __PYX_ERR(0, 49, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 40, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 49, __pyx_L3_error)
     }
     __pyx_v_elements = ((PyObject*)values[0]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 40, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 49, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3990,7 +3956,7 @@ static int __pyx_pw_10untabulate_15projection_grid_14ProjectionGrid_1__init__(Py
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_elements), (&PyList_Type), 1, "elements", 1))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_elements), (&PyList_Type), 1, "elements", 1))) __PYX_ERR(0, 49, __pyx_L1_error)
   __pyx_r = __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(((struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid *)__pyx_v_self), __pyx_v_elements);
 
   /* function exit code */
@@ -4024,7 +3990,7 @@ static int __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "untabulate/projection_grid.pyx":44
+  /* "untabulate/projection_grid.pyx":53
  * 
  *         # Initialize Python dicts
  *         self.row_headers = defaultdict(list)             # <<<<<<<<<<<<<<
@@ -4032,7 +3998,7 @@ static int __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(str
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_defaultdict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_defaultdict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -4051,7 +4017,7 @@ static int __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(str
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_GIVEREF(__pyx_t_1);
@@ -4060,7 +4026,7 @@ static int __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(str
   __pyx_v_self->row_headers = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "untabulate/projection_grid.pyx":45
+  /* "untabulate/projection_grid.pyx":54
  *         # Initialize Python dicts
  *         self.row_headers = defaultdict(list)
  *         self.col_headers = defaultdict(list)             # <<<<<<<<<<<<<<
@@ -4068,7 +4034,7 @@ static int __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(str
  *         if not elements:
 */
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_defaultdict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_defaultdict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -4087,7 +4053,7 @@ static int __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(str
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_GIVEREF(__pyx_t_1);
@@ -4096,7 +4062,7 @@ static int __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(str
   __pyx_v_self->col_headers = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "untabulate/projection_grid.pyx":47
+  /* "untabulate/projection_grid.pyx":56
  *         self.col_headers = defaultdict(list)
  * 
  *         if not elements:             # <<<<<<<<<<<<<<
@@ -4107,14 +4073,14 @@ static int __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(str
   else
   {
     Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_v_elements);
-    if (unlikely(((!CYTHON_ASSUME_SAFE_SIZE) && __pyx_temp < 0))) __PYX_ERR(0, 47, __pyx_L1_error)
+    if (unlikely(((!CYTHON_ASSUME_SAFE_SIZE) && __pyx_temp < 0))) __PYX_ERR(0, 56, __pyx_L1_error)
     __pyx_t_5 = (__pyx_temp != 0);
   }
 
   __pyx_t_6 = (!__pyx_t_5);
   if (__pyx_t_6) {
 
-    /* "untabulate/projection_grid.pyx":48
+    /* "untabulate/projection_grid.pyx":57
  * 
  *         if not elements:
  *             return             # <<<<<<<<<<<<<<
@@ -4124,7 +4090,7 @@ static int __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(str
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "untabulate/projection_grid.pyx":47
+    /* "untabulate/projection_grid.pyx":56
  *         self.col_headers = defaultdict(list)
  * 
  *         if not elements:             # <<<<<<<<<<<<<<
@@ -4133,18 +4099,18 @@ static int __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(str
 */
   }
 
-  /* "untabulate/projection_grid.pyx":50
+  /* "untabulate/projection_grid.pyx":59
  *             return
  * 
  *         self._build_projections(elements)             # <<<<<<<<<<<<<<
  * 
  *     cdef _build_projections(self, list elements):
 */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_10untabulate_15projection_grid_ProjectionGrid *)__pyx_v_self->__pyx_vtab)->_build_projections(__pyx_v_self, __pyx_v_elements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_10untabulate_15projection_grid_ProjectionGrid *)__pyx_v_self->__pyx_vtab)->_build_projections(__pyx_v_self, __pyx_v_elements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "untabulate/projection_grid.pyx":40
+  /* "untabulate/projection_grid.pyx":49
  *     # Attributes declared in projection_grid.pxd
  * 
  *     def __init__(self, list elements):             # <<<<<<<<<<<<<<
@@ -4166,7 +4132,7 @@ static int __pyx_pf_10untabulate_15projection_grid_14ProjectionGrid___init__(str
   return __pyx_r;
 }
 
-/* "untabulate/projection_grid.pyx":52
+/* "untabulate/projection_grid.pyx":61
  *         self._build_projections(elements)
  * 
  *     cdef _build_projections(self, list elements):             # <<<<<<<<<<<<<<
@@ -4182,7 +4148,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__build_
   int __pyx_v_el_col;
   int __pyx_v_el_rowspan;
   int __pyx_v_el_colspan;
-  PyObject *__pyx_v_label = 0;
+  PyObject *__pyx_v_value = 0;
   PyObject *__pyx_v_el = 0;
   int __pyx_v_first_data_row;
   int __pyx_v_first_data_col;
@@ -4206,7 +4172,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__build_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_build_projections", 0);
 
-  /* "untabulate/projection_grid.pyx":61
+  /* "untabulate/projection_grid.pyx":70
  * 
  *         # Find max row for propagation
  *         max_row = 0             # <<<<<<<<<<<<<<
@@ -4215,127 +4181,12 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__build_
 */
   __pyx_v_max_row = 0;
 
-  /* "untabulate/projection_grid.pyx":62
- *         # Find max row for propagation
- *         max_row = 0
- *         for el in elements:             # <<<<<<<<<<<<<<
- *             r = el.row + el.rowspan - 1
- *             if r > max_row:
-*/
-  if (unlikely(__pyx_v_elements == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 62, __pyx_L1_error)
-  }
-  __pyx_t_1 = __pyx_v_elements; __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_2 = 0;
-  for (;;) {
-    {
-      Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
-      #if !CYTHON_ASSUME_SAFE_SIZE
-      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 62, __pyx_L1_error)
-      #endif
-      if (__pyx_t_2 >= __pyx_temp) break;
-    }
-    __pyx_t_3 = __Pyx_PyList_GetItemRefFast(__pyx_t_1, __pyx_t_2, __Pyx_ReferenceSharing_OwnStrongReference);
-    ++__pyx_t_2;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_XDECREF_SET(__pyx_v_el, __pyx_t_3);
-    __pyx_t_3 = 0;
-
-    /* "untabulate/projection_grid.pyx":63
- *         max_row = 0
- *         for el in elements:
- *             r = el.row + el.rowspan - 1             # <<<<<<<<<<<<<<
- *             if r > max_row:
- *                 max_row = r
-*/
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_row); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_rowspan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 63, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyNumber_Add(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 63, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyLong_SubtractObjC(__pyx_t_5, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 63, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 63, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_v_r = __pyx_t_6;
-
-    /* "untabulate/projection_grid.pyx":64
- *         for el in elements:
- *             r = el.row + el.rowspan - 1
- *             if r > max_row:             # <<<<<<<<<<<<<<
- *                 max_row = r
- *         self._max_row = max_row
-*/
-    __pyx_t_7 = (__pyx_v_r > __pyx_v_max_row);
-    if (__pyx_t_7) {
-
-      /* "untabulate/projection_grid.pyx":65
- *             r = el.row + el.rowspan - 1
- *             if r > max_row:
- *                 max_row = r             # <<<<<<<<<<<<<<
- *         self._max_row = max_row
- * 
-*/
-      __pyx_v_max_row = __pyx_v_r;
-
-      /* "untabulate/projection_grid.pyx":64
- *         for el in elements:
- *             r = el.row + el.rowspan - 1
- *             if r > max_row:             # <<<<<<<<<<<<<<
- *                 max_row = r
- *         self._max_row = max_row
-*/
-    }
-
-    /* "untabulate/projection_grid.pyx":62
- *         # Find max row for propagation
- *         max_row = 0
- *         for el in elements:             # <<<<<<<<<<<<<<
- *             r = el.row + el.rowspan - 1
- *             if r > max_row:
-*/
-  }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "untabulate/projection_grid.pyx":66
- *             if r > max_row:
- *                 max_row = r
- *         self._max_row = max_row             # <<<<<<<<<<<<<<
- * 
- *         # First pass: find the first data row and column to distinguish header rows/cols
-*/
-  __pyx_v_self->_max_row = __pyx_v_max_row;
-
-  /* "untabulate/projection_grid.pyx":69
- * 
- *         # First pass: find the first data row and column to distinguish header rows/cols
- *         cdef int first_data_row = max_row + 1             # <<<<<<<<<<<<<<
- *         cdef int first_data_col = 2147483647  # Max int
- *         for el in elements:
-*/
-  __pyx_v_first_data_row = (__pyx_v_max_row + 1);
-
-  /* "untabulate/projection_grid.pyx":70
- *         # First pass: find the first data row and column to distinguish header rows/cols
- *         cdef int first_data_row = max_row + 1
- *         cdef int first_data_col = 2147483647  # Max int             # <<<<<<<<<<<<<<
- *         for el in elements:
- *             if el.el_type == "DT":
-*/
-  __pyx_v_first_data_col = 0x7FFFFFFF;
-
   /* "untabulate/projection_grid.pyx":71
- *         cdef int first_data_row = max_row + 1
- *         cdef int first_data_col = 2147483647  # Max int
+ *         # Find max row for propagation
+ *         max_row = 0
  *         for el in elements:             # <<<<<<<<<<<<<<
- *             if el.el_type == "DT":
- *                 if el.row < first_data_row:
+ *             r = el.row + el.rowspan - 1
+ *             if r > max_row:
 */
   if (unlikely(__pyx_v_elements == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
@@ -4351,135 +4202,110 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__build_
       #endif
       if (__pyx_t_2 >= __pyx_temp) break;
     }
-    __pyx_t_4 = __Pyx_PyList_GetItemRefFast(__pyx_t_1, __pyx_t_2, __Pyx_ReferenceSharing_OwnStrongReference);
+    __pyx_t_3 = __Pyx_PyList_GetItemRefFast(__pyx_t_1, __pyx_t_2, __Pyx_ReferenceSharing_OwnStrongReference);
     ++__pyx_t_2;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_XDECREF_SET(__pyx_v_el, __pyx_t_4);
-    __pyx_t_4 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 71, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_XDECREF_SET(__pyx_v_el, __pyx_t_3);
+    __pyx_t_3 = 0;
 
     /* "untabulate/projection_grid.pyx":72
- *         cdef int first_data_col = 2147483647  # Max int
+ *         max_row = 0
  *         for el in elements:
- *             if el.el_type == "DT":             # <<<<<<<<<<<<<<
- *                 if el.row < first_data_row:
- *                     first_data_row = el.row
+ *             r = el.row + el.rowspan - 1             # <<<<<<<<<<<<<<
+ *             if r > max_row:
+ *                 max_row = r
 */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_el_type); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_row); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_rowspan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_DT, Py_EQ)); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 72, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_Add(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyLong_SubtractObjC(__pyx_t_5, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_v_r = __pyx_t_6;
+
+    /* "untabulate/projection_grid.pyx":73
+ *         for el in elements:
+ *             r = el.row + el.rowspan - 1
+ *             if r > max_row:             # <<<<<<<<<<<<<<
+ *                 max_row = r
+ *         self._max_row = max_row
+*/
+    __pyx_t_7 = (__pyx_v_r > __pyx_v_max_row);
     if (__pyx_t_7) {
+
+      /* "untabulate/projection_grid.pyx":74
+ *             r = el.row + el.rowspan - 1
+ *             if r > max_row:
+ *                 max_row = r             # <<<<<<<<<<<<<<
+ *         self._max_row = max_row
+ * 
+*/
+      __pyx_v_max_row = __pyx_v_r;
 
       /* "untabulate/projection_grid.pyx":73
  *         for el in elements:
- *             if el.el_type == "DT":
- *                 if el.row < first_data_row:             # <<<<<<<<<<<<<<
- *                     first_data_row = el.row
- *                 if el.col < first_data_col:
-*/
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_row); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 73, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_first_data_row); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 73, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = PyObject_RichCompare(__pyx_t_4, __pyx_t_5, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 73, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 73, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (__pyx_t_7) {
-
-        /* "untabulate/projection_grid.pyx":74
- *             if el.el_type == "DT":
- *                 if el.row < first_data_row:
- *                     first_data_row = el.row             # <<<<<<<<<<<<<<
- *                 if el.col < first_data_col:
- *                     first_data_col = el.col
-*/
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_row); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 74, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_3); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_v_first_data_row = __pyx_t_6;
-
-        /* "untabulate/projection_grid.pyx":73
- *         for el in elements:
- *             if el.el_type == "DT":
- *                 if el.row < first_data_row:             # <<<<<<<<<<<<<<
- *                     first_data_row = el.row
- *                 if el.col < first_data_col:
-*/
-      }
-
-      /* "untabulate/projection_grid.pyx":75
- *                 if el.row < first_data_row:
- *                     first_data_row = el.row
- *                 if el.col < first_data_col:             # <<<<<<<<<<<<<<
- *                     first_data_col = el.col
- * 
-*/
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_col); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_first_data_col); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_t_5, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 75, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (__pyx_t_7) {
-
-        /* "untabulate/projection_grid.pyx":76
- *                     first_data_row = el.row
- *                 if el.col < first_data_col:
- *                     first_data_col = el.col             # <<<<<<<<<<<<<<
- * 
- *         # Process each label element
-*/
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_col); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 76, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 76, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_v_first_data_col = __pyx_t_6;
-
-        /* "untabulate/projection_grid.pyx":75
- *                 if el.row < first_data_row:
- *                     first_data_row = el.row
- *                 if el.col < first_data_col:             # <<<<<<<<<<<<<<
- *                     first_data_col = el.col
- * 
-*/
-      }
-
-      /* "untabulate/projection_grid.pyx":72
- *         cdef int first_data_col = 2147483647  # Max int
- *         for el in elements:
- *             if el.el_type == "DT":             # <<<<<<<<<<<<<<
- *                 if el.row < first_data_row:
- *                     first_data_row = el.row
+ *             r = el.row + el.rowspan - 1
+ *             if r > max_row:             # <<<<<<<<<<<<<<
+ *                 max_row = r
+ *         self._max_row = max_row
 */
     }
 
     /* "untabulate/projection_grid.pyx":71
- *         cdef int first_data_row = max_row + 1
- *         cdef int first_data_col = 2147483647  # Max int
+ *         # Find max row for propagation
+ *         max_row = 0
  *         for el in elements:             # <<<<<<<<<<<<<<
- *             if el.el_type == "DT":
- *                 if el.row < first_data_row:
+ *             r = el.row + el.rowspan - 1
+ *             if r > max_row:
 */
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "untabulate/projection_grid.pyx":79
+  /* "untabulate/projection_grid.pyx":75
+ *             if r > max_row:
+ *                 max_row = r
+ *         self._max_row = max_row             # <<<<<<<<<<<<<<
  * 
- *         # Process each label element
+ *         # First pass: find the first data row and column to distinguish header rows/cols
+*/
+  __pyx_v_self->_max_row = __pyx_v_max_row;
+
+  /* "untabulate/projection_grid.pyx":78
+ * 
+ *         # First pass: find the first data row and column to distinguish header rows/cols
+ *         cdef int first_data_row = max_row + 1             # <<<<<<<<<<<<<<
+ *         cdef int first_data_col = 2147483647  # Max int
+ *         for el in elements:
+*/
+  __pyx_v_first_data_row = (__pyx_v_max_row + 1);
+
+  /* "untabulate/projection_grid.pyx":79
+ *         # First pass: find the first data row and column to distinguish header rows/cols
+ *         cdef int first_data_row = max_row + 1
+ *         cdef int first_data_col = 2147483647  # Max int             # <<<<<<<<<<<<<<
+ *         for el in elements:
+ *             if not el.is_header:
+*/
+  __pyx_v_first_data_col = 0x7FFFFFFF;
+
+  /* "untabulate/projection_grid.pyx":80
+ *         cdef int first_data_row = max_row + 1
+ *         cdef int first_data_col = 2147483647  # Max int
  *         for el in elements:             # <<<<<<<<<<<<<<
- *             if el.el_type != "LB" or not el.label:
- *                 continue
+ *             if not el.is_header:
+ *                 if el.row < first_data_row:
 */
   if (unlikely(__pyx_v_elements == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 79, __pyx_L1_error)
+    __PYX_ERR(0, 80, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_elements; __Pyx_INCREF(__pyx_t_1);
   __pyx_t_2 = 0;
@@ -4487,68 +4313,210 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__build_
     {
       Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
       #if !CYTHON_ASSUME_SAFE_SIZE
-      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 79, __pyx_L1_error)
+      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 80, __pyx_L1_error)
       #endif
       if (__pyx_t_2 >= __pyx_temp) break;
     }
     __pyx_t_4 = __Pyx_PyList_GetItemRefFast(__pyx_t_1, __pyx_t_2, __Pyx_ReferenceSharing_OwnStrongReference);
     ++__pyx_t_2;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_XDECREF_SET(__pyx_v_el, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "untabulate/projection_grid.pyx":80
- *         # Process each label element
+    /* "untabulate/projection_grid.pyx":81
+ *         cdef int first_data_col = 2147483647  # Max int
  *         for el in elements:
- *             if el.el_type != "LB" or not el.label:             # <<<<<<<<<<<<<<
+ *             if not el.is_header:             # <<<<<<<<<<<<<<
+ *                 if el.row < first_data_row:
+ *                     first_data_row = el.row
+*/
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_is_header); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_8 = (!__pyx_t_7);
+    if (__pyx_t_8) {
+
+      /* "untabulate/projection_grid.pyx":82
+ *         for el in elements:
+ *             if not el.is_header:
+ *                 if el.row < first_data_row:             # <<<<<<<<<<<<<<
+ *                     first_data_row = el.row
+ *                 if el.col < first_data_col:
+*/
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_row); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 82, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_first_data_row); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 82, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_3 = PyObject_RichCompare(__pyx_t_4, __pyx_t_5, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 82, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 82, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if (__pyx_t_8) {
+
+        /* "untabulate/projection_grid.pyx":83
+ *             if not el.is_header:
+ *                 if el.row < first_data_row:
+ *                     first_data_row = el.row             # <<<<<<<<<<<<<<
+ *                 if el.col < first_data_col:
+ *                     first_data_col = el.col
+*/
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_row); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_3); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 83, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __pyx_v_first_data_row = __pyx_t_6;
+
+        /* "untabulate/projection_grid.pyx":82
+ *         for el in elements:
+ *             if not el.is_header:
+ *                 if el.row < first_data_row:             # <<<<<<<<<<<<<<
+ *                     first_data_row = el.row
+ *                 if el.col < first_data_col:
+*/
+      }
+
+      /* "untabulate/projection_grid.pyx":84
+ *                 if el.row < first_data_row:
+ *                     first_data_row = el.row
+ *                 if el.col < first_data_col:             # <<<<<<<<<<<<<<
+ *                     first_data_col = el.col
+ * 
+*/
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_col); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_first_data_col); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_4 = PyObject_RichCompare(__pyx_t_3, __pyx_t_5, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 84, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (__pyx_t_8) {
+
+        /* "untabulate/projection_grid.pyx":85
+ *                     first_data_row = el.row
+ *                 if el.col < first_data_col:
+ *                     first_data_col = el.col             # <<<<<<<<<<<<<<
+ * 
+ *         # Process each header element
+*/
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_col); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 85, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __pyx_v_first_data_col = __pyx_t_6;
+
+        /* "untabulate/projection_grid.pyx":84
+ *                 if el.row < first_data_row:
+ *                     first_data_row = el.row
+ *                 if el.col < first_data_col:             # <<<<<<<<<<<<<<
+ *                     first_data_col = el.col
+ * 
+*/
+      }
+
+      /* "untabulate/projection_grid.pyx":81
+ *         cdef int first_data_col = 2147483647  # Max int
+ *         for el in elements:
+ *             if not el.is_header:             # <<<<<<<<<<<<<<
+ *                 if el.row < first_data_row:
+ *                     first_data_row = el.row
+*/
+    }
+
+    /* "untabulate/projection_grid.pyx":80
+ *         cdef int first_data_row = max_row + 1
+ *         cdef int first_data_col = 2147483647  # Max int
+ *         for el in elements:             # <<<<<<<<<<<<<<
+ *             if not el.is_header:
+ *                 if el.row < first_data_row:
+*/
+  }
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "untabulate/projection_grid.pyx":88
+ * 
+ *         # Process each header element
+ *         for el in elements:             # <<<<<<<<<<<<<<
+ *             if not el.is_header or not el.value:
+ *                 continue
+*/
+  if (unlikely(__pyx_v_elements == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+    __PYX_ERR(0, 88, __pyx_L1_error)
+  }
+  __pyx_t_1 = __pyx_v_elements; __Pyx_INCREF(__pyx_t_1);
+  __pyx_t_2 = 0;
+  for (;;) {
+    {
+      Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
+      #if !CYTHON_ASSUME_SAFE_SIZE
+      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 88, __pyx_L1_error)
+      #endif
+      if (__pyx_t_2 >= __pyx_temp) break;
+    }
+    __pyx_t_4 = __Pyx_PyList_GetItemRefFast(__pyx_t_1, __pyx_t_2, __Pyx_ReferenceSharing_OwnStrongReference);
+    ++__pyx_t_2;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_XDECREF_SET(__pyx_v_el, __pyx_t_4);
+    __pyx_t_4 = 0;
+
+    /* "untabulate/projection_grid.pyx":89
+ *         # Process each header element
+ *         for el in elements:
+ *             if not el.is_header or not el.value:             # <<<<<<<<<<<<<<
  *                 continue
  * 
 */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_el_type); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_is_header); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_LB, Py_NE)); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (!__pyx_t_8) {
+    __pyx_t_9 = (!__pyx_t_7);
+    if (!__pyx_t_9) {
     } else {
-      __pyx_t_7 = __pyx_t_8;
+      __pyx_t_8 = __pyx_t_9;
       goto __pyx_L16_bool_binop_done;
     }
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_label); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_9 = (!__pyx_t_8);
-    __pyx_t_7 = __pyx_t_9;
+    __pyx_t_7 = (!__pyx_t_9);
+    __pyx_t_8 = __pyx_t_7;
     __pyx_L16_bool_binop_done:;
-    if (__pyx_t_7) {
+    if (__pyx_t_8) {
 
-      /* "untabulate/projection_grid.pyx":81
+      /* "untabulate/projection_grid.pyx":90
  *         for el in elements:
- *             if el.el_type != "LB" or not el.label:
+ *             if not el.is_header or not el.value:
  *                 continue             # <<<<<<<<<<<<<<
  * 
- *             label = el.label.strip()
+ *             value = el.value.strip()
 */
       goto __pyx_L13_continue;
 
-      /* "untabulate/projection_grid.pyx":80
- *         # Process each label element
+      /* "untabulate/projection_grid.pyx":89
+ *         # Process each header element
  *         for el in elements:
- *             if el.el_type != "LB" or not el.label:             # <<<<<<<<<<<<<<
+ *             if not el.is_header or not el.value:             # <<<<<<<<<<<<<<
  *                 continue
  * 
 */
     }
 
-    /* "untabulate/projection_grid.pyx":83
+    /* "untabulate/projection_grid.pyx":92
  *                 continue
  * 
- *             label = el.label.strip()             # <<<<<<<<<<<<<<
- *             if not label:
+ *             value = el.value.strip()             # <<<<<<<<<<<<<<
+ *             if not value:
  *                 continue
 */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_label); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = __pyx_t_3;
     __Pyx_INCREF(__pyx_t_5);
@@ -4558,124 +4526,124 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__build_
       __pyx_t_4 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_strip, __pyx_callargs+__pyx_t_10, (1-__pyx_t_10) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_4))) __PYX_ERR(0, 83, __pyx_L1_error)
-    __Pyx_XDECREF_SET(__pyx_v_label, ((PyObject*)__pyx_t_4));
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_4))) __PYX_ERR(0, 92, __pyx_L1_error)
+    __Pyx_XDECREF_SET(__pyx_v_value, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "untabulate/projection_grid.pyx":84
+    /* "untabulate/projection_grid.pyx":93
  * 
- *             label = el.label.strip()
- *             if not label:             # <<<<<<<<<<<<<<
+ *             value = el.value.strip()
+ *             if not value:             # <<<<<<<<<<<<<<
  *                 continue
  * 
 */
-    if (__pyx_v_label == Py_None) __pyx_t_7 = 0;
+    if (__pyx_v_value == Py_None) __pyx_t_8 = 0;
     else
     {
-      Py_ssize_t __pyx_temp = __Pyx_PyUnicode_IS_TRUE(__pyx_v_label);
-      if (unlikely(((!CYTHON_ASSUME_SAFE_SIZE) && __pyx_temp < 0))) __PYX_ERR(0, 84, __pyx_L1_error)
-      __pyx_t_7 = (__pyx_temp != 0);
+      Py_ssize_t __pyx_temp = __Pyx_PyUnicode_IS_TRUE(__pyx_v_value);
+      if (unlikely(((!CYTHON_ASSUME_SAFE_SIZE) && __pyx_temp < 0))) __PYX_ERR(0, 93, __pyx_L1_error)
+      __pyx_t_8 = (__pyx_temp != 0);
     }
 
-    __pyx_t_9 = (!__pyx_t_7);
-    if (__pyx_t_9) {
+    __pyx_t_7 = (!__pyx_t_8);
+    if (__pyx_t_7) {
 
-      /* "untabulate/projection_grid.pyx":85
- *             label = el.label.strip()
- *             if not label:
+      /* "untabulate/projection_grid.pyx":94
+ *             value = el.value.strip()
+ *             if not value:
  *                 continue             # <<<<<<<<<<<<<<
  * 
  *             el_row = el.row
 */
       goto __pyx_L13_continue;
 
-      /* "untabulate/projection_grid.pyx":84
+      /* "untabulate/projection_grid.pyx":93
  * 
- *             label = el.label.strip()
- *             if not label:             # <<<<<<<<<<<<<<
+ *             value = el.value.strip()
+ *             if not value:             # <<<<<<<<<<<<<<
  *                 continue
  * 
 */
     }
 
-    /* "untabulate/projection_grid.pyx":87
+    /* "untabulate/projection_grid.pyx":96
  *                 continue
  * 
  *             el_row = el.row             # <<<<<<<<<<<<<<
  *             el_col = el.col
  *             el_rowspan = el.rowspan
 */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_row); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 87, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_row); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 87, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_el_row = __pyx_t_6;
 
-    /* "untabulate/projection_grid.pyx":88
+    /* "untabulate/projection_grid.pyx":97
  * 
  *             el_row = el.row
  *             el_col = el.col             # <<<<<<<<<<<<<<
  *             el_rowspan = el.rowspan
  *             el_colspan = el.colspan
 */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_col); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_col); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 88, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_el_col = __pyx_t_6;
 
-    /* "untabulate/projection_grid.pyx":89
+    /* "untabulate/projection_grid.pyx":98
  *             el_row = el.row
  *             el_col = el.col
  *             el_rowspan = el.rowspan             # <<<<<<<<<<<<<<
  *             el_colspan = el.colspan
  * 
 */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_rowspan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_rowspan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_el_rowspan = __pyx_t_6;
 
-    /* "untabulate/projection_grid.pyx":90
+    /* "untabulate/projection_grid.pyx":99
  *             el_col = el.col
  *             el_rowspan = el.rowspan
  *             el_colspan = el.colspan             # <<<<<<<<<<<<<<
  * 
  *             if el_col < first_data_col and el_row >= first_data_row:
 */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_colspan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 90, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_el, __pyx_mstate_global->__pyx_n_u_colspan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 90, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_el_colspan = __pyx_t_6;
 
-    /* "untabulate/projection_grid.pyx":92
+    /* "untabulate/projection_grid.pyx":101
  *             el_colspan = el.colspan
  * 
  *             if el_col < first_data_col and el_row >= first_data_row:             # <<<<<<<<<<<<<<
  *                 # Row header (left of data, in or after data rows):
  *                 # applies only to the rows it spans
 */
-    __pyx_t_7 = (__pyx_v_el_col < __pyx_v_first_data_col);
-    if (__pyx_t_7) {
+    __pyx_t_8 = (__pyx_v_el_col < __pyx_v_first_data_col);
+    if (__pyx_t_8) {
     } else {
-      __pyx_t_9 = __pyx_t_7;
+      __pyx_t_7 = __pyx_t_8;
       goto __pyx_L20_bool_binop_done;
     }
-    __pyx_t_7 = (__pyx_v_el_row >= __pyx_v_first_data_row);
-    __pyx_t_9 = __pyx_t_7;
+    __pyx_t_8 = (__pyx_v_el_row >= __pyx_v_first_data_row);
+    __pyx_t_7 = __pyx_t_8;
     __pyx_L20_bool_binop_done:;
-    if (__pyx_t_9) {
+    if (__pyx_t_7) {
 
-      /* "untabulate/projection_grid.pyx":95
+      /* "untabulate/projection_grid.pyx":104
  *                 # Row header (left of data, in or after data rows):
  *                 # applies only to the rows it spans
  *                 for r in range(el_row, el_row + el_rowspan):             # <<<<<<<<<<<<<<
- *                     (<list>self.row_headers[r]).append((el_row, label))
+ *                     (<list>self.row_headers[r]).append((el_row, value))
  *             else:
 */
       __pyx_t_6 = (__pyx_v_el_row + __pyx_v_el_rowspan);
@@ -4683,35 +4651,35 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__build_
       for (__pyx_t_12 = __pyx_v_el_row; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
         __pyx_v_r = __pyx_t_12;
 
-        /* "untabulate/projection_grid.pyx":96
+        /* "untabulate/projection_grid.pyx":105
  *                 # applies only to the rows it spans
  *                 for r in range(el_row, el_row + el_rowspan):
- *                     (<list>self.row_headers[r]).append((el_row, label))             # <<<<<<<<<<<<<<
+ *                     (<list>self.row_headers[r]).append((el_row, value))             # <<<<<<<<<<<<<<
  *             else:
  *                 # Column header: applies to the columns it spans.
 */
-        __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_self->row_headers, __pyx_v_r, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1, __Pyx_ReferenceSharing_SharedReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_self->row_headers, __pyx_v_r, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1, __Pyx_ReferenceSharing_SharedReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         if (unlikely(__pyx_t_4 == Py_None)) {
           PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-          __PYX_ERR(0, 96, __pyx_L1_error)
+          __PYX_ERR(0, 105, __pyx_L1_error)
         }
-        __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_el_row); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_el_row); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_GIVEREF(__pyx_t_3);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 96, __pyx_L1_error);
-        __Pyx_INCREF(__pyx_v_label);
-        __Pyx_GIVEREF(__pyx_v_label);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_label) != (0)) __PYX_ERR(0, 96, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 105, __pyx_L1_error);
+        __Pyx_INCREF(__pyx_v_value);
+        __Pyx_GIVEREF(__pyx_v_value);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_value) != (0)) __PYX_ERR(0, 105, __pyx_L1_error);
         __pyx_t_3 = 0;
-        __pyx_t_13 = __Pyx_PyList_Append(((PyObject*)__pyx_t_4), __pyx_t_5); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 96, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyList_Append(((PyObject*)__pyx_t_4), __pyx_t_5); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 105, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
 
-      /* "untabulate/projection_grid.pyx":92
+      /* "untabulate/projection_grid.pyx":101
  *             el_colspan = el.colspan
  * 
  *             if el_col < first_data_col and el_row >= first_data_row:             # <<<<<<<<<<<<<<
@@ -4721,11 +4689,11 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__build_
       goto __pyx_L19;
     }
 
-    /* "untabulate/projection_grid.pyx":101
+    /* "untabulate/projection_grid.pyx":110
  *                 # This includes headers above data rows, and headers in
  *                 # data columns (if any)
  *                 for c in range(el_col, el_col + el_colspan):             # <<<<<<<<<<<<<<
- *                     (<list>self.col_headers[c]).append((el_row, label))
+ *                     (<list>self.col_headers[c]).append((el_row, value))
  * 
 */
     /*else*/ {
@@ -4734,59 +4702,59 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__build_
       for (__pyx_t_12 = __pyx_v_el_col; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
         __pyx_v_c = __pyx_t_12;
 
-        /* "untabulate/projection_grid.pyx":102
+        /* "untabulate/projection_grid.pyx":111
  *                 # data columns (if any)
  *                 for c in range(el_col, el_col + el_colspan):
- *                     (<list>self.col_headers[c]).append((el_row, label))             # <<<<<<<<<<<<<<
+ *                     (<list>self.col_headers[c]).append((el_row, value))             # <<<<<<<<<<<<<<
  * 
  *         self._finalize()
 */
-        __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_self->col_headers, __pyx_v_c, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1, __Pyx_ReferenceSharing_SharedReference); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_self->col_headers, __pyx_v_c, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1, __Pyx_ReferenceSharing_SharedReference); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         if (unlikely(__pyx_t_5 == Py_None)) {
           PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-          __PYX_ERR(0, 102, __pyx_L1_error)
+          __PYX_ERR(0, 111, __pyx_L1_error)
         }
-        __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_el_row); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_el_row); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 102, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GIVEREF(__pyx_t_4);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4) != (0)) __PYX_ERR(0, 102, __pyx_L1_error);
-        __Pyx_INCREF(__pyx_v_label);
-        __Pyx_GIVEREF(__pyx_v_label);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_label) != (0)) __PYX_ERR(0, 102, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4) != (0)) __PYX_ERR(0, 111, __pyx_L1_error);
+        __Pyx_INCREF(__pyx_v_value);
+        __Pyx_GIVEREF(__pyx_v_value);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_value) != (0)) __PYX_ERR(0, 111, __pyx_L1_error);
         __pyx_t_4 = 0;
-        __pyx_t_13 = __Pyx_PyList_Append(((PyObject*)__pyx_t_5), __pyx_t_3); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 102, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyList_Append(((PyObject*)__pyx_t_5), __pyx_t_3); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
     }
     __pyx_L19:;
 
-    /* "untabulate/projection_grid.pyx":79
+    /* "untabulate/projection_grid.pyx":88
  * 
- *         # Process each label element
+ *         # Process each header element
  *         for el in elements:             # <<<<<<<<<<<<<<
- *             if el.el_type != "LB" or not el.label:
+ *             if not el.is_header or not el.value:
  *                 continue
 */
     __pyx_L13_continue:;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "untabulate/projection_grid.pyx":104
- *                     (<list>self.col_headers[c]).append((el_row, label))
+  /* "untabulate/projection_grid.pyx":113
+ *                     (<list>self.col_headers[c]).append((el_row, value))
  * 
  *         self._finalize()             # <<<<<<<<<<<<<<
  * 
  *     cdef _finalize(self):
 */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_10untabulate_15projection_grid_ProjectionGrid *)__pyx_v_self->__pyx_vtab)->_finalize(__pyx_v_self); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_10untabulate_15projection_grid_ProjectionGrid *)__pyx_v_self->__pyx_vtab)->_finalize(__pyx_v_self); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "untabulate/projection_grid.pyx":52
+  /* "untabulate/projection_grid.pyx":61
  *         self._build_projections(elements)
  * 
  *     cdef _build_projections(self, list elements):             # <<<<<<<<<<<<<<
@@ -4805,14 +4773,14 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__build_
   __Pyx_AddTraceback("untabulate.projection_grid.ProjectionGrid._build_projections", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_label);
+  __Pyx_XDECREF(__pyx_v_value);
   __Pyx_XDECREF(__pyx_v_el);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "untabulate/projection_grid.pyx":114
+/* "untabulate/projection_grid.pyx":123
  *         # Sort and deduplicate row headers
  *         for r in self.row_headers:
  *             (<list>self.row_headers[r]).sort(key=lambda x: x[0])             # <<<<<<<<<<<<<<
@@ -4859,32 +4827,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_x,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 114, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 123, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 114, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 123, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lambda", 0) < (0)) __PYX_ERR(0, 114, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lambda", 0) < (0)) __PYX_ERR(0, 123, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lambda", 1, 1, 1, i); __PYX_ERR(0, 114, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lambda", 1, 1, 1, i); __PYX_ERR(0, 123, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 114, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 123, __pyx_L3_error)
     }
     __pyx_v_x = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lambda", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 114, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lambda", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 123, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4914,7 +4882,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_x, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_x, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4931,7 +4899,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self,
   return __pyx_r;
 }
 
-/* "untabulate/projection_grid.pyx":125
+/* "untabulate/projection_grid.pyx":134
  *         # Sort column headers
  *         for c in self.col_headers:
  *             (<list>self.col_headers[c]).sort(key=lambda x: x[0])             # <<<<<<<<<<<<<<
@@ -4978,32 +4946,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_x,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 125, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 134, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 125, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 134, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lambda1", 0) < (0)) __PYX_ERR(0, 125, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "lambda1", 0) < (0)) __PYX_ERR(0, 134, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lambda1", 1, 1, 1, i); __PYX_ERR(0, 125, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lambda1", 1, 1, 1, i); __PYX_ERR(0, 134, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 125, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 134, __pyx_L3_error)
     }
     __pyx_v_x = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lambda1", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 125, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lambda1", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 134, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5033,7 +5001,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda1", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_x, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_x, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5050,7 +5018,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "untabulate/projection_grid.pyx":106
+/* "untabulate/projection_grid.pyx":115
  *         self._finalize()
  * 
  *     cdef _finalize(self):             # <<<<<<<<<<<<<<
@@ -5087,7 +5055,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_finalize", 0);
 
-  /* "untabulate/projection_grid.pyx":113
+  /* "untabulate/projection_grid.pyx":122
  * 
  *         # Sort and deduplicate row headers
  *         for r in self.row_headers:             # <<<<<<<<<<<<<<
@@ -5099,9 +5067,9 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
     __pyx_t_2 = 0;
     __pyx_t_3 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_self->row_headers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_self->row_headers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_3 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 122, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_3)) {
@@ -5109,7 +5077,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 113, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 122, __pyx_L1_error)
           #endif
           if (__pyx_t_2 >= __pyx_temp) break;
         }
@@ -5119,7 +5087,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 113, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 122, __pyx_L1_error)
           #endif
           if (__pyx_t_2 >= __pyx_temp) break;
         }
@@ -5130,93 +5098,93 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
         #endif
         ++__pyx_t_2;
       }
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)
     } else {
       __pyx_t_4 = __pyx_t_3(__pyx_t_1);
       if (unlikely(!__pyx_t_4)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 113, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 122, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
       }
     }
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_r = __pyx_t_5;
 
-    /* "untabulate/projection_grid.pyx":114
+    /* "untabulate/projection_grid.pyx":123
  *         # Sort and deduplicate row headers
  *         for r in self.row_headers:
  *             (<list>self.row_headers[r]).sort(key=lambda x: x[0])             # <<<<<<<<<<<<<<
  *             seen = set()
  *             deduped = []
 */
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_self->row_headers, __pyx_v_r, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1, __Pyx_ReferenceSharing_SharedReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_self->row_headers, __pyx_v_r, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1, __Pyx_ReferenceSharing_SharedReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 123, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_6 = __pyx_t_7;
     __Pyx_INCREF(__pyx_t_6);
-    __pyx_t_8 = __Pyx_CyFunction_New(&__pyx_mdef_10untabulate_15projection_grid_14ProjectionGrid_9_finalize_lambda, 0, __pyx_mstate_global->__pyx_n_u_ProjectionGrid__finalize_locals, NULL, __pyx_mstate_global->__pyx_n_u_untabulate_projection_grid, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_CyFunction_New(&__pyx_mdef_10untabulate_15projection_grid_14ProjectionGrid_9_finalize_lambda, 0, __pyx_mstate_global->__pyx_n_u_ProjectionGrid__finalize_locals, NULL, __pyx_mstate_global->__pyx_n_u_untabulate_projection_grid, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 123, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_9 = 0;
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_6, NULL};
-      __pyx_t_10 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 123, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_key, __pyx_t_8, __pyx_t_10, __pyx_callargs+1, 0) < (0)) __PYX_ERR(0, 114, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_key, __pyx_t_8, __pyx_t_10, __pyx_callargs+1, 0) < (0)) __PYX_ERR(0, 123, __pyx_L1_error)
       __pyx_t_4 = __Pyx_Object_VectorcallMethod_CallFromBuilder((PyObject*)__pyx_mstate_global->__pyx_n_u_sort, __pyx_callargs+__pyx_t_9, (1-__pyx_t_9) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_10);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "untabulate/projection_grid.pyx":115
+    /* "untabulate/projection_grid.pyx":124
  *         for r in self.row_headers:
  *             (<list>self.row_headers[r]).sort(key=lambda x: x[0])
  *             seen = set()             # <<<<<<<<<<<<<<
  *             deduped = []
  *             for row_idx, lbl in self.row_headers[r]:
 */
-    __pyx_t_4 = PySet_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 115, __pyx_L1_error)
+    __pyx_t_4 = PySet_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 124, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_XDECREF_SET(__pyx_v_seen, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "untabulate/projection_grid.pyx":116
+    /* "untabulate/projection_grid.pyx":125
  *             (<list>self.row_headers[r]).sort(key=lambda x: x[0])
  *             seen = set()
  *             deduped = []             # <<<<<<<<<<<<<<
  *             for row_idx, lbl in self.row_headers[r]:
  *                 if lbl not in seen:
 */
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_XDECREF_SET(__pyx_v_deduped, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "untabulate/projection_grid.pyx":117
+    /* "untabulate/projection_grid.pyx":126
  *             seen = set()
  *             deduped = []
  *             for row_idx, lbl in self.row_headers[r]:             # <<<<<<<<<<<<<<
  *                 if lbl not in seen:
  *                     deduped.append((row_idx, lbl))
 */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_self->row_headers, __pyx_v_r, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1, __Pyx_ReferenceSharing_SharedReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_self->row_headers, __pyx_v_r, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1, __Pyx_ReferenceSharing_SharedReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
       __pyx_t_7 = __pyx_t_4; __Pyx_INCREF(__pyx_t_7);
       __pyx_t_11 = 0;
       __pyx_t_12 = NULL;
     } else {
-      __pyx_t_11 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 117, __pyx_L1_error)
+      __pyx_t_11 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 126, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_12 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_7); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 117, __pyx_L1_error)
+      __pyx_t_12 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_7); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 126, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     for (;;) {
@@ -5225,7 +5193,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_7);
             #if !CYTHON_ASSUME_SAFE_SIZE
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 117, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 126, __pyx_L1_error)
             #endif
             if (__pyx_t_11 >= __pyx_temp) break;
           }
@@ -5235,7 +5203,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_7);
             #if !CYTHON_ASSUME_SAFE_SIZE
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 117, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 126, __pyx_L1_error)
             #endif
             if (__pyx_t_11 >= __pyx_temp) break;
           }
@@ -5246,13 +5214,13 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
           #endif
           ++__pyx_t_11;
         }
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
       } else {
         __pyx_t_4 = __pyx_t_12(__pyx_t_7);
         if (unlikely(!__pyx_t_4)) {
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
-            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 117, __pyx_L1_error)
+            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 126, __pyx_L1_error)
             PyErr_Clear();
           }
           break;
@@ -5265,7 +5233,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 117, __pyx_L1_error)
+          __PYX_ERR(0, 126, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -5275,22 +5243,22 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
           __Pyx_INCREF(__pyx_t_8);
         } else {
           __pyx_t_10 = __Pyx_PyList_GetItemRefFast(sequence, 0, __Pyx_ReferenceSharing_SharedReference);
-          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 117, __pyx_L1_error)
+          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 126, __pyx_L1_error)
           __Pyx_XGOTREF(__pyx_t_10);
           __pyx_t_8 = __Pyx_PyList_GetItemRefFast(sequence, 1, __Pyx_ReferenceSharing_SharedReference);
-          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 117, __pyx_L1_error)
+          if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 126, __pyx_L1_error)
           __Pyx_XGOTREF(__pyx_t_8);
         }
         #else
-        __pyx_t_10 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 117, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 126, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_8 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 117, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 126, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_6 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 117, __pyx_L1_error)
+        __pyx_t_6 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 126, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_13 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_6);
@@ -5298,7 +5266,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
         __Pyx_GOTREF(__pyx_t_10);
         index = 1; __pyx_t_8 = __pyx_t_13(__pyx_t_6); if (unlikely(!__pyx_t_8)) goto __pyx_L7_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_8);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_6), 2) < (0)) __PYX_ERR(0, 117, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_6), 2) < (0)) __PYX_ERR(0, 126, __pyx_L1_error)
         __pyx_t_13 = NULL;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         goto __pyx_L8_unpacking_done;
@@ -5306,7 +5274,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __pyx_t_13 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 117, __pyx_L1_error)
+        __PYX_ERR(0, 126, __pyx_L1_error)
         __pyx_L8_unpacking_done:;
       }
       __Pyx_XDECREF_SET(__pyx_v_row_idx, __pyx_t_10);
@@ -5314,44 +5282,44 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
       __Pyx_XDECREF_SET(__pyx_v_lbl, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "untabulate/projection_grid.pyx":118
+      /* "untabulate/projection_grid.pyx":127
  *             deduped = []
  *             for row_idx, lbl in self.row_headers[r]:
  *                 if lbl not in seen:             # <<<<<<<<<<<<<<
  *                     deduped.append((row_idx, lbl))
  *                     seen.add(lbl)
 */
-      __pyx_t_14 = (__Pyx_PySet_ContainsTF(__pyx_v_lbl, __pyx_v_seen, Py_NE)); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 118, __pyx_L1_error)
+      __pyx_t_14 = (__Pyx_PySet_ContainsTF(__pyx_v_lbl, __pyx_v_seen, Py_NE)); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 127, __pyx_L1_error)
       if (__pyx_t_14) {
 
-        /* "untabulate/projection_grid.pyx":119
+        /* "untabulate/projection_grid.pyx":128
  *             for row_idx, lbl in self.row_headers[r]:
  *                 if lbl not in seen:
  *                     deduped.append((row_idx, lbl))             # <<<<<<<<<<<<<<
  *                     seen.add(lbl)
  *             self.row_headers[r] = deduped
 */
-        __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_INCREF(__pyx_v_row_idx);
         __Pyx_GIVEREF(__pyx_v_row_idx);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_row_idx) != (0)) __PYX_ERR(0, 119, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_row_idx) != (0)) __PYX_ERR(0, 128, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_lbl);
         __Pyx_GIVEREF(__pyx_v_lbl);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_lbl) != (0)) __PYX_ERR(0, 119, __pyx_L1_error);
-        __pyx_t_15 = __Pyx_PyList_Append(__pyx_v_deduped, __pyx_t_4); if (unlikely(__pyx_t_15 == ((int)-1))) __PYX_ERR(0, 119, __pyx_L1_error)
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_lbl) != (0)) __PYX_ERR(0, 128, __pyx_L1_error);
+        __pyx_t_15 = __Pyx_PyList_Append(__pyx_v_deduped, __pyx_t_4); if (unlikely(__pyx_t_15 == ((int)-1))) __PYX_ERR(0, 128, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "untabulate/projection_grid.pyx":120
+        /* "untabulate/projection_grid.pyx":129
  *                 if lbl not in seen:
  *                     deduped.append((row_idx, lbl))
  *                     seen.add(lbl)             # <<<<<<<<<<<<<<
  *             self.row_headers[r] = deduped
  * 
 */
-        __pyx_t_15 = PySet_Add(__pyx_v_seen, __pyx_v_lbl); if (unlikely(__pyx_t_15 == ((int)-1))) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_15 = PySet_Add(__pyx_v_seen, __pyx_v_lbl); if (unlikely(__pyx_t_15 == ((int)-1))) __PYX_ERR(0, 129, __pyx_L1_error)
 
-        /* "untabulate/projection_grid.pyx":118
+        /* "untabulate/projection_grid.pyx":127
  *             deduped = []
  *             for row_idx, lbl in self.row_headers[r]:
  *                 if lbl not in seen:             # <<<<<<<<<<<<<<
@@ -5360,7 +5328,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
 */
       }
 
-      /* "untabulate/projection_grid.pyx":117
+      /* "untabulate/projection_grid.pyx":126
  *             seen = set()
  *             deduped = []
  *             for row_idx, lbl in self.row_headers[r]:             # <<<<<<<<<<<<<<
@@ -5370,16 +5338,16 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
     }
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "untabulate/projection_grid.pyx":121
+    /* "untabulate/projection_grid.pyx":130
  *                     deduped.append((row_idx, lbl))
  *                     seen.add(lbl)
  *             self.row_headers[r] = deduped             # <<<<<<<<<<<<<<
  * 
  *         # Sort column headers
 */
-    if (unlikely((__Pyx_SetItemInt(__pyx_v_self->row_headers, __pyx_v_r, __pyx_v_deduped, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1, __Pyx_ReferenceSharing_SharedReference) < 0))) __PYX_ERR(0, 121, __pyx_L1_error)
+    if (unlikely((__Pyx_SetItemInt(__pyx_v_self->row_headers, __pyx_v_r, __pyx_v_deduped, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1, __Pyx_ReferenceSharing_SharedReference) < 0))) __PYX_ERR(0, 130, __pyx_L1_error)
 
-    /* "untabulate/projection_grid.pyx":113
+    /* "untabulate/projection_grid.pyx":122
  * 
  *         # Sort and deduplicate row headers
  *         for r in self.row_headers:             # <<<<<<<<<<<<<<
@@ -5389,7 +5357,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "untabulate/projection_grid.pyx":124
+  /* "untabulate/projection_grid.pyx":133
  * 
  *         # Sort column headers
  *         for c in self.col_headers:             # <<<<<<<<<<<<<<
@@ -5401,9 +5369,9 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
     __pyx_t_2 = 0;
     __pyx_t_3 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_self->col_headers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_self->col_headers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
+    __pyx_t_3 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_3)) {
@@ -5411,7 +5379,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 124, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 133, __pyx_L1_error)
           #endif
           if (__pyx_t_2 >= __pyx_temp) break;
         }
@@ -5421,7 +5389,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 124, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 133, __pyx_L1_error)
           #endif
           if (__pyx_t_2 >= __pyx_temp) break;
         }
@@ -5432,53 +5400,53 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
         #endif
         ++__pyx_t_2;
       }
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 124, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 133, __pyx_L1_error)
     } else {
       __pyx_t_7 = __pyx_t_3(__pyx_t_1);
       if (unlikely(!__pyx_t_7)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 124, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 133, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
       }
     }
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = __Pyx_PyLong_As_int(__pyx_t_7); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 124, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyLong_As_int(__pyx_t_7); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_v_c = __pyx_t_5;
 
-    /* "untabulate/projection_grid.pyx":125
+    /* "untabulate/projection_grid.pyx":134
  *         # Sort column headers
  *         for c in self.col_headers:
  *             (<list>self.col_headers[c]).sort(key=lambda x: x[0])             # <<<<<<<<<<<<<<
  * 
  *     def get_path(self, int data_row, int data_col):
 */
-    __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_self->col_headers, __pyx_v_c, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1, __Pyx_ReferenceSharing_SharedReference); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 125, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_self->col_headers, __pyx_v_c, int, 1, __Pyx_PyLong_From_int, 0, 0, 0, 1, __Pyx_ReferenceSharing_SharedReference); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_4 = __pyx_t_8;
     __Pyx_INCREF(__pyx_t_4);
-    __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_10untabulate_15projection_grid_14ProjectionGrid_9_finalize_1lambda1, 0, __pyx_mstate_global->__pyx_n_u_ProjectionGrid__finalize_locals, NULL, __pyx_mstate_global->__pyx_n_u_untabulate_projection_grid, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 125, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_10untabulate_15projection_grid_14ProjectionGrid_9_finalize_1lambda1, 0, __pyx_mstate_global->__pyx_n_u_ProjectionGrid__finalize_locals, NULL, __pyx_mstate_global->__pyx_n_u_untabulate_projection_grid, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_9 = 0;
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_4, NULL};
-      __pyx_t_6 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 125, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_key, __pyx_t_10, __pyx_t_6, __pyx_callargs+1, 0) < (0)) __PYX_ERR(0, 125, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_key, __pyx_t_10, __pyx_t_6, __pyx_callargs+1, 0) < (0)) __PYX_ERR(0, 134, __pyx_L1_error)
       __pyx_t_7 = __Pyx_Object_VectorcallMethod_CallFromBuilder((PyObject*)__pyx_mstate_global->__pyx_n_u_sort, __pyx_callargs+__pyx_t_9, (1-__pyx_t_9) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_6);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 125, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
     }
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "untabulate/projection_grid.pyx":124
+    /* "untabulate/projection_grid.pyx":133
  * 
  *         # Sort column headers
  *         for c in self.col_headers:             # <<<<<<<<<<<<<<
@@ -5488,7 +5456,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "untabulate/projection_grid.pyx":106
+  /* "untabulate/projection_grid.pyx":115
  *         self._finalize()
  * 
  *     cdef _finalize(self):             # <<<<<<<<<<<<<<
@@ -5518,7 +5486,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finali
   return __pyx_r;
 }
 
-/* "untabulate/projection_grid.pyx":127
+/* "untabulate/projection_grid.pyx":136
  *             (<list>self.col_headers[c]).sort(key=lambda x: x[0])
  * 
  *     def get_path(self, int data_row, int data_col):             # <<<<<<<<<<<<<<
@@ -5567,39 +5535,39 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_data_row,&__pyx_mstate_global->__pyx_n_u_data_col,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 127, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 136, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 127, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 136, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 127, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 136, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_path", 0) < (0)) __PYX_ERR(0, 127, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_path", 0) < (0)) __PYX_ERR(0, 136, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_path", 1, 2, 2, i); __PYX_ERR(0, 127, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_path", 1, 2, 2, i); __PYX_ERR(0, 136, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 127, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 136, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 127, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 136, __pyx_L3_error)
     }
-    __pyx_v_data_row = __Pyx_PyLong_As_int(values[0]); if (unlikely((__pyx_v_data_row == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 127, __pyx_L3_error)
-    __pyx_v_data_col = __Pyx_PyLong_As_int(values[1]); if (unlikely((__pyx_v_data_col == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 127, __pyx_L3_error)
+    __pyx_v_data_row = __Pyx_PyLong_As_int(values[0]); if (unlikely((__pyx_v_data_row == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 136, __pyx_L3_error)
+    __pyx_v_data_col = __Pyx_PyLong_As_int(values[1]); if (unlikely((__pyx_v_data_col == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 136, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_path", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 127, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_path", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 136, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5644,31 +5612,31 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_path", 0);
 
-  /* "untabulate/projection_grid.pyx":135
+  /* "untabulate/projection_grid.pyx":144
  *         2. Column headers that govern this column - only those above
  *         """
  *         cdef list path = []             # <<<<<<<<<<<<<<
  *         cdef set seen = set()
  *         cdef int header_row
 */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_path = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "untabulate/projection_grid.pyx":136
+  /* "untabulate/projection_grid.pyx":145
  *         """
  *         cdef list path = []
  *         cdef set seen = set()             # <<<<<<<<<<<<<<
  *         cdef int header_row
  *         cdef str label
 */
-  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_seen = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "untabulate/projection_grid.pyx":143
+  /* "untabulate/projection_grid.pyx":152
  *         # 1. Row headers that apply to this row
  *         # (only if data is not in column 1)
  *         if data_col > 1:             # <<<<<<<<<<<<<<
@@ -5678,7 +5646,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
   __pyx_t_2 = (__pyx_v_data_col > 1);
   if (__pyx_t_2) {
 
-    /* "untabulate/projection_grid.pyx":144
+    /* "untabulate/projection_grid.pyx":153
  *         # (only if data is not in column 1)
  *         if data_col > 1:
  *             headers = self.row_headers.get(data_row, [])             # <<<<<<<<<<<<<<
@@ -5687,9 +5655,9 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
 */
     __pyx_t_3 = __pyx_v_self->row_headers;
     __Pyx_INCREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_data_row); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_data_row); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = 0;
     {
@@ -5698,14 +5666,14 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
-    if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_1))) __PYX_ERR(0, 144, __pyx_L1_error)
+    if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_1))) __PYX_ERR(0, 153, __pyx_L1_error)
     __pyx_v_headers = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "untabulate/projection_grid.pyx":145
+    /* "untabulate/projection_grid.pyx":154
  *         if data_col > 1:
  *             headers = self.row_headers.get(data_row, [])
  *             for header_row, label in headers:             # <<<<<<<<<<<<<<
@@ -5714,7 +5682,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
 */
     if (unlikely(__pyx_v_headers == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      __PYX_ERR(0, 145, __pyx_L1_error)
+      __PYX_ERR(0, 154, __pyx_L1_error)
     }
     __pyx_t_1 = __pyx_v_headers; __Pyx_INCREF(__pyx_t_1);
     __pyx_t_7 = 0;
@@ -5722,13 +5690,13 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
       {
         Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
         #if !CYTHON_ASSUME_SAFE_SIZE
-        if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 145, __pyx_L1_error)
+        if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 154, __pyx_L1_error)
         #endif
         if (__pyx_t_7 >= __pyx_temp) break;
       }
       __pyx_t_5 = __Pyx_PyList_GetItemRefFast(__pyx_t_1, __pyx_t_7, __Pyx_ReferenceSharing_OwnStrongReference);
       ++__pyx_t_7;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 145, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 154, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       if ((likely(PyTuple_CheckExact(__pyx_t_5))) || (PyList_CheckExact(__pyx_t_5))) {
         PyObject* sequence = __pyx_t_5;
@@ -5736,7 +5704,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 145, __pyx_L1_error)
+          __PYX_ERR(0, 154, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -5746,22 +5714,22 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
           __Pyx_INCREF(__pyx_t_3);
         } else {
           __pyx_t_4 = __Pyx_PyList_GetItemRefFast(sequence, 0, __Pyx_ReferenceSharing_SharedReference);
-          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
+          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
           __Pyx_XGOTREF(__pyx_t_4);
           __pyx_t_3 = __Pyx_PyList_GetItemRefFast(sequence, 1, __Pyx_ReferenceSharing_SharedReference);
-          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
+          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
           __Pyx_XGOTREF(__pyx_t_3);
         }
         #else
-        __pyx_t_4 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_3 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_8 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_8 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 154, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __pyx_t_9 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_8);
@@ -5769,7 +5737,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
         __Pyx_GOTREF(__pyx_t_4);
         index = 1; __pyx_t_3 = __pyx_t_9(__pyx_t_8); if (unlikely(!__pyx_t_3)) goto __pyx_L6_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_3);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < (0)) __PYX_ERR(0, 145, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < (0)) __PYX_ERR(0, 154, __pyx_L1_error)
         __pyx_t_9 = NULL;
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         goto __pyx_L7_unpacking_done;
@@ -5777,17 +5745,17 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_t_9 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 145, __pyx_L1_error)
+        __PYX_ERR(0, 154, __pyx_L1_error)
         __pyx_L7_unpacking_done:;
       }
-      __pyx_t_10 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (!(likely(PyUnicode_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_3))) __PYX_ERR(0, 145, __pyx_L1_error)
+      if (!(likely(PyUnicode_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_3))) __PYX_ERR(0, 154, __pyx_L1_error)
       __pyx_v_header_row = __pyx_t_10;
       __Pyx_XDECREF_SET(__pyx_v_label, ((PyObject*)__pyx_t_3));
       __pyx_t_3 = 0;
 
-      /* "untabulate/projection_grid.pyx":146
+      /* "untabulate/projection_grid.pyx":155
  *             headers = self.row_headers.get(data_row, [])
  *             for header_row, label in headers:
  *                 if header_row <= data_row:  # Include same-row and above             # <<<<<<<<<<<<<<
@@ -5797,35 +5765,35 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
       __pyx_t_2 = (__pyx_v_header_row <= __pyx_v_data_row);
       if (__pyx_t_2) {
 
-        /* "untabulate/projection_grid.pyx":147
+        /* "untabulate/projection_grid.pyx":156
  *             for header_row, label in headers:
  *                 if header_row <= data_row:  # Include same-row and above
  *                     if label not in seen:             # <<<<<<<<<<<<<<
  *                         path.append(label)
  *                         seen.add(label)
 */
-        __pyx_t_2 = (__Pyx_PySet_ContainsTF(__pyx_v_label, __pyx_v_seen, Py_NE)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 147, __pyx_L1_error)
+        __pyx_t_2 = (__Pyx_PySet_ContainsTF(__pyx_v_label, __pyx_v_seen, Py_NE)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 156, __pyx_L1_error)
         if (__pyx_t_2) {
 
-          /* "untabulate/projection_grid.pyx":148
+          /* "untabulate/projection_grid.pyx":157
  *                 if header_row <= data_row:  # Include same-row and above
  *                     if label not in seen:
  *                         path.append(label)             # <<<<<<<<<<<<<<
  *                         seen.add(label)
  * 
 */
-          __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_path, __pyx_v_label); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 148, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_path, __pyx_v_label); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 157, __pyx_L1_error)
 
-          /* "untabulate/projection_grid.pyx":149
+          /* "untabulate/projection_grid.pyx":158
  *                     if label not in seen:
  *                         path.append(label)
  *                         seen.add(label)             # <<<<<<<<<<<<<<
  * 
  *         # 2. Column headers that apply to this column
 */
-          __pyx_t_11 = PySet_Add(__pyx_v_seen, __pyx_v_label); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 149, __pyx_L1_error)
+          __pyx_t_11 = PySet_Add(__pyx_v_seen, __pyx_v_label); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 158, __pyx_L1_error)
 
-          /* "untabulate/projection_grid.pyx":147
+          /* "untabulate/projection_grid.pyx":156
  *             for header_row, label in headers:
  *                 if header_row <= data_row:  # Include same-row and above
  *                     if label not in seen:             # <<<<<<<<<<<<<<
@@ -5834,7 +5802,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
 */
         }
 
-        /* "untabulate/projection_grid.pyx":146
+        /* "untabulate/projection_grid.pyx":155
  *             headers = self.row_headers.get(data_row, [])
  *             for header_row, label in headers:
  *                 if header_row <= data_row:  # Include same-row and above             # <<<<<<<<<<<<<<
@@ -5843,7 +5811,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
 */
       }
 
-      /* "untabulate/projection_grid.pyx":145
+      /* "untabulate/projection_grid.pyx":154
  *         if data_col > 1:
  *             headers = self.row_headers.get(data_row, [])
  *             for header_row, label in headers:             # <<<<<<<<<<<<<<
@@ -5853,7 +5821,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "untabulate/projection_grid.pyx":143
+    /* "untabulate/projection_grid.pyx":152
  *         # 1. Row headers that apply to this row
  *         # (only if data is not in column 1)
  *         if data_col > 1:             # <<<<<<<<<<<<<<
@@ -5862,7 +5830,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
 */
   }
 
-  /* "untabulate/projection_grid.pyx":153
+  /* "untabulate/projection_grid.pyx":162
  *         # 2. Column headers that apply to this column
  *         # (only those defined ABOVE this row)
  *         headers = self.col_headers.get(data_col, [])             # <<<<<<<<<<<<<<
@@ -5871,9 +5839,9 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
 */
   __pyx_t_5 = __pyx_v_self->col_headers;
   __Pyx_INCREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_data_col); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_data_col); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_6 = 0;
   {
@@ -5882,14 +5850,14 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_1))) __PYX_ERR(0, 153, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_1))) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_XDECREF_SET(__pyx_v_headers, ((PyObject*)__pyx_t_1));
   __pyx_t_1 = 0;
 
-  /* "untabulate/projection_grid.pyx":154
+  /* "untabulate/projection_grid.pyx":163
  *         # (only those defined ABOVE this row)
  *         headers = self.col_headers.get(data_col, [])
  *         for header_row, label in headers:             # <<<<<<<<<<<<<<
@@ -5898,7 +5866,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
 */
   if (unlikely(__pyx_v_headers == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 154, __pyx_L1_error)
+    __PYX_ERR(0, 163, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_headers; __Pyx_INCREF(__pyx_t_1);
   __pyx_t_7 = 0;
@@ -5906,13 +5874,13 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
     {
       Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
       #if !CYTHON_ASSUME_SAFE_SIZE
-      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 154, __pyx_L1_error)
+      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 163, __pyx_L1_error)
       #endif
       if (__pyx_t_7 >= __pyx_temp) break;
     }
     __pyx_t_4 = __Pyx_PyList_GetItemRefFast(__pyx_t_1, __pyx_t_7, __Pyx_ReferenceSharing_OwnStrongReference);
     ++__pyx_t_7;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if ((likely(PyTuple_CheckExact(__pyx_t_4))) || (PyList_CheckExact(__pyx_t_4))) {
       PyObject* sequence = __pyx_t_4;
@@ -5920,7 +5888,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 154, __pyx_L1_error)
+        __PYX_ERR(0, 163, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -5930,22 +5898,22 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
         __Pyx_INCREF(__pyx_t_5);
       } else {
         __pyx_t_3 = __Pyx_PyList_GetItemRefFast(sequence, 0, __Pyx_ReferenceSharing_SharedReference);
-        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
+        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
         __Pyx_XGOTREF(__pyx_t_3);
         __pyx_t_5 = __Pyx_PyList_GetItemRefFast(sequence, 1, __Pyx_ReferenceSharing_SharedReference);
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 154, __pyx_L1_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 163, __pyx_L1_error)
         __Pyx_XGOTREF(__pyx_t_5);
       }
       #else
-      __pyx_t_3 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 163, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       #endif
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_8 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __pyx_t_8 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 163, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_9 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_8);
@@ -5953,7 +5921,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
       __Pyx_GOTREF(__pyx_t_3);
       index = 1; __pyx_t_5 = __pyx_t_9(__pyx_t_8); if (unlikely(!__pyx_t_5)) goto __pyx_L13_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_5);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < (0)) __PYX_ERR(0, 154, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < (0)) __PYX_ERR(0, 163, __pyx_L1_error)
       __pyx_t_9 = NULL;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       goto __pyx_L14_unpacking_done;
@@ -5961,17 +5929,17 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_9 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 154, __pyx_L1_error)
+      __PYX_ERR(0, 163, __pyx_L1_error)
       __pyx_L14_unpacking_done:;
     }
-    __pyx_t_10 = __Pyx_PyLong_As_int(__pyx_t_3); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyLong_As_int(__pyx_t_3); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 163, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_5))) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_5))) __PYX_ERR(0, 163, __pyx_L1_error)
     __pyx_v_header_row = __pyx_t_10;
     __Pyx_XDECREF_SET(__pyx_v_label, ((PyObject*)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "untabulate/projection_grid.pyx":155
+    /* "untabulate/projection_grid.pyx":164
  *         headers = self.col_headers.get(data_col, [])
  *         for header_row, label in headers:
  *             if header_row < data_row:  # Only include headers from above             # <<<<<<<<<<<<<<
@@ -5981,35 +5949,35 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
     __pyx_t_2 = (__pyx_v_header_row < __pyx_v_data_row);
     if (__pyx_t_2) {
 
-      /* "untabulate/projection_grid.pyx":156
+      /* "untabulate/projection_grid.pyx":165
  *         for header_row, label in headers:
  *             if header_row < data_row:  # Only include headers from above
  *                 if label not in seen:             # <<<<<<<<<<<<<<
  *                     path.append(label)
  *                     seen.add(label)
 */
-      __pyx_t_2 = (__Pyx_PySet_ContainsTF(__pyx_v_label, __pyx_v_seen, Py_NE)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_2 = (__Pyx_PySet_ContainsTF(__pyx_v_label, __pyx_v_seen, Py_NE)); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 165, __pyx_L1_error)
       if (__pyx_t_2) {
 
-        /* "untabulate/projection_grid.pyx":157
+        /* "untabulate/projection_grid.pyx":166
  *             if header_row < data_row:  # Only include headers from above
  *                 if label not in seen:
  *                     path.append(label)             # <<<<<<<<<<<<<<
  *                     seen.add(label)
  * 
 */
-        __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_path, __pyx_v_label); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 157, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_path, __pyx_v_label); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 166, __pyx_L1_error)
 
-        /* "untabulate/projection_grid.pyx":158
+        /* "untabulate/projection_grid.pyx":167
  *                 if label not in seen:
  *                     path.append(label)
  *                     seen.add(label)             # <<<<<<<<<<<<<<
  * 
  *         return path
 */
-        __pyx_t_11 = PySet_Add(__pyx_v_seen, __pyx_v_label); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 158, __pyx_L1_error)
+        __pyx_t_11 = PySet_Add(__pyx_v_seen, __pyx_v_label); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 167, __pyx_L1_error)
 
-        /* "untabulate/projection_grid.pyx":156
+        /* "untabulate/projection_grid.pyx":165
  *         for header_row, label in headers:
  *             if header_row < data_row:  # Only include headers from above
  *                 if label not in seen:             # <<<<<<<<<<<<<<
@@ -6018,7 +5986,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
 */
       }
 
-      /* "untabulate/projection_grid.pyx":155
+      /* "untabulate/projection_grid.pyx":164
  *         headers = self.col_headers.get(data_col, [])
  *         for header_row, label in headers:
  *             if header_row < data_row:  # Only include headers from above             # <<<<<<<<<<<<<<
@@ -6027,7 +5995,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
 */
     }
 
-    /* "untabulate/projection_grid.pyx":154
+    /* "untabulate/projection_grid.pyx":163
  *         # (only those defined ABOVE this row)
  *         headers = self.col_headers.get(data_col, [])
  *         for header_row, label in headers:             # <<<<<<<<<<<<<<
@@ -6037,7 +6005,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "untabulate/projection_grid.pyx":160
+  /* "untabulate/projection_grid.pyx":169
  *                     seen.add(label)
  * 
  *         return path             # <<<<<<<<<<<<<<
@@ -6047,7 +6015,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_2get_p
   __pyx_r = __pyx_v_path;
   goto __pyx_L0;
 
-  /* "untabulate/projection_grid.pyx":127
+  /* "untabulate/projection_grid.pyx":136
  *             (<list>self.col_headers[c]).sort(key=lambda x: x[0])
  * 
  *     def get_path(self, int data_row, int data_col):             # <<<<<<<<<<<<<<
@@ -6698,7 +6666,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid_14ProjectionGrid_6__set
  *     int __Pyx_UpdateUnpickledDict(object, object, Py_ssize_t) except -1
  * def __pyx_unpickle_GridElement(__pyx_type, long __pyx_checksum, tuple __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_result
- *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0xa874371, 0xfade50b, 0x55d7dfa, b'col, colspan, el_type, label, row, rowspan')
+ *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0x016a221, 0xa2de6f4, 0x0c35e32, b'col, colspan, is_header, row, rowspan, value')
 */
 
 /* Python wrapper */
@@ -6829,15 +6797,15 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid___pyx_unpickle_GridElem
   /* "(tree fragment)":6
  * def __pyx_unpickle_GridElement(__pyx_type, long __pyx_checksum, tuple __pyx_state):
  *     cdef object __pyx_result
- *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0xa874371, 0xfade50b, 0x55d7dfa, b'col, colspan, el_type, label, row, rowspan')             # <<<<<<<<<<<<<<
+ *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0x016a221, 0xa2de6f4, 0x0c35e32, b'col, colspan, is_header, row, rowspan, value')             # <<<<<<<<<<<<<<
  *     __pyx_result = GridElement.__new__(__pyx_type)
  *     if __pyx_state is not None:
 */
-  __pyx_t_1 = __Pyx_CheckUnpickleChecksum(__pyx_v___pyx_checksum, 0xa874371, 0xfade50b, 0x55d7dfa, __pyx_k_col_colspan_el_type_label_row_ro); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(2, 6, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CheckUnpickleChecksum(__pyx_v___pyx_checksum, 0x016a221, 0xa2de6f4, 0x0c35e32, __pyx_k_col_colspan_is_header_row_rowspa); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(2, 6, __pyx_L1_error)
 
   /* "(tree fragment)":7
  *     cdef object __pyx_result
- *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0xa874371, 0xfade50b, 0x55d7dfa, b'col, colspan, el_type, label, row, rowspan')
+ *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0x016a221, 0xa2de6f4, 0x0c35e32, b'col, colspan, is_header, row, rowspan, value')
  *     __pyx_result = GridElement.__new__(__pyx_type)             # <<<<<<<<<<<<<<
  *     if __pyx_state is not None:
  *         __pyx_unpickle_GridElement__set_state(<GridElement> __pyx_result, __pyx_state)
@@ -6856,7 +6824,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid___pyx_unpickle_GridElem
   __pyx_t_2 = 0;
 
   /* "(tree fragment)":8
- *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0xa874371, 0xfade50b, 0x55d7dfa, b'col, colspan, el_type, label, row, rowspan')
+ *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0x016a221, 0xa2de6f4, 0x0c35e32, b'col, colspan, is_header, row, rowspan, value')
  *     __pyx_result = GridElement.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_GridElement__set_state(<GridElement> __pyx_result, __pyx_state)
@@ -6881,7 +6849,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid___pyx_unpickle_GridElem
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
     /* "(tree fragment)":8
- *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0xa874371, 0xfade50b, 0x55d7dfa, b'col, colspan, el_type, label, row, rowspan')
+ *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0x016a221, 0xa2de6f4, 0x0c35e32, b'col, colspan, is_header, row, rowspan, value')
  *     __pyx_result = GridElement.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_GridElement__set_state(<GridElement> __pyx_result, __pyx_state)
@@ -6894,7 +6862,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid___pyx_unpickle_GridElem
  *         __pyx_unpickle_GridElement__set_state(<GridElement> __pyx_result, __pyx_state)
  *     return __pyx_result             # <<<<<<<<<<<<<<
  * cdef __pyx_unpickle_GridElement__set_state(GridElement __pyx_result, __pyx_state: tuple):
- *     __pyx_result.col = __pyx_state[0]; __pyx_result.colspan = __pyx_state[1]; __pyx_result.el_type = __pyx_state[2]; __pyx_result.label = __pyx_state[3]; __pyx_result.row = __pyx_state[4]; __pyx_result.rowspan = __pyx_state[5]
+ *     __pyx_result.col = __pyx_state[0]; __pyx_result.colspan = __pyx_state[1]; __pyx_result.is_header = __pyx_state[2]; __pyx_result.row = __pyx_state[3]; __pyx_result.rowspan = __pyx_state[4]; __pyx_result.value = __pyx_state[5]
 */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v___pyx_result);
@@ -6906,7 +6874,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid___pyx_unpickle_GridElem
  *     int __Pyx_UpdateUnpickledDict(object, object, Py_ssize_t) except -1
  * def __pyx_unpickle_GridElement(__pyx_type, long __pyx_checksum, tuple __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_result
- *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0xa874371, 0xfade50b, 0x55d7dfa, b'col, colspan, el_type, label, row, rowspan')
+ *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0x016a221, 0xa2de6f4, 0x0c35e32, b'col, colspan, is_header, row, rowspan, value')
 */
 
   /* function exit code */
@@ -6926,7 +6894,7 @@ static PyObject *__pyx_pf_10untabulate_15projection_grid___pyx_unpickle_GridElem
  *         __pyx_unpickle_GridElement__set_state(<GridElement> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_GridElement__set_state(GridElement __pyx_result, __pyx_state: tuple):             # <<<<<<<<<<<<<<
- *     __pyx_result.col = __pyx_state[0]; __pyx_result.colspan = __pyx_state[1]; __pyx_result.el_type = __pyx_state[2]; __pyx_result.label = __pyx_state[3]; __pyx_result.row = __pyx_state[4]; __pyx_result.rowspan = __pyx_state[5]
+ *     __pyx_result.col = __pyx_state[0]; __pyx_result.colspan = __pyx_state[1]; __pyx_result.is_header = __pyx_state[2]; __pyx_result.row = __pyx_state[3]; __pyx_result.rowspan = __pyx_state[4]; __pyx_result.value = __pyx_state[5]
  *     __Pyx_UpdateUnpickledDict(__pyx_result, __pyx_state, 6)
 */
 
@@ -6934,7 +6902,8 @@ static PyObject *__pyx_f_10untabulate_15projection_grid___pyx_unpickle_GridEleme
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -6943,37 +6912,31 @@ static PyObject *__pyx_f_10untabulate_15projection_grid___pyx_unpickle_GridEleme
   /* "(tree fragment)":12
  *     return __pyx_result
  * cdef __pyx_unpickle_GridElement__set_state(GridElement __pyx_result, __pyx_state: tuple):
- *     __pyx_result.col = __pyx_state[0]; __pyx_result.colspan = __pyx_state[1]; __pyx_result.el_type = __pyx_state[2]; __pyx_result.label = __pyx_state[3]; __pyx_result.row = __pyx_state[4]; __pyx_result.rowspan = __pyx_state[5]             # <<<<<<<<<<<<<<
+ *     __pyx_result.col = __pyx_state[0]; __pyx_result.colspan = __pyx_state[1]; __pyx_result.is_header = __pyx_state[2]; __pyx_result.row = __pyx_state[3]; __pyx_result.rowspan = __pyx_state[4]; __pyx_result.value = __pyx_state[5]             # <<<<<<<<<<<<<<
  *     __Pyx_UpdateUnpickledDict(__pyx_result, __pyx_state, 6)
 */
   __pyx_t_1 = __Pyx_PyLong_As_int(__Pyx_PyTuple_GET_ITEM(__pyx_v___pyx_state, 0)); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L1_error)
   __pyx_v___pyx_result->col = __pyx_t_1;
   __pyx_t_1 = __Pyx_PyLong_As_int(__Pyx_PyTuple_GET_ITEM(__pyx_v___pyx_state, 1)); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L1_error)
   __pyx_v___pyx_result->colspan = __pyx_t_1;
-  __pyx_t_2 = __Pyx_PyTuple_GET_ITEM(__pyx_v___pyx_state, 2);
-  __Pyx_INCREF(__pyx_t_2);
-  if (!(likely(PyUnicode_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_2))) __PYX_ERR(2, 12, __pyx_L1_error)
-  __Pyx_GIVEREF(__pyx_t_2);
-  __Pyx_GOTREF(__pyx_v___pyx_result->el_type);
-  __Pyx_DECREF(__pyx_v___pyx_result->el_type);
-  __pyx_v___pyx_result->el_type = ((PyObject*)__pyx_t_2);
-  __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyTuple_GET_ITEM(__pyx_v___pyx_state, 3);
-  __Pyx_INCREF(__pyx_t_2);
-  if (!(likely(PyUnicode_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_2))) __PYX_ERR(2, 12, __pyx_L1_error)
-  __Pyx_GIVEREF(__pyx_t_2);
-  __Pyx_GOTREF(__pyx_v___pyx_result->label);
-  __Pyx_DECREF(__pyx_v___pyx_result->label);
-  __pyx_v___pyx_result->label = ((PyObject*)__pyx_t_2);
-  __pyx_t_2 = 0;
-  __pyx_t_1 = __Pyx_PyLong_As_int(__Pyx_PyTuple_GET_ITEM(__pyx_v___pyx_state, 4)); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__Pyx_PyTuple_GET_ITEM(__pyx_v___pyx_state, 2)); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L1_error)
+  __pyx_v___pyx_result->is_header = __pyx_t_2;
+  __pyx_t_1 = __Pyx_PyLong_As_int(__Pyx_PyTuple_GET_ITEM(__pyx_v___pyx_state, 3)); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L1_error)
   __pyx_v___pyx_result->row = __pyx_t_1;
-  __pyx_t_1 = __Pyx_PyLong_As_int(__Pyx_PyTuple_GET_ITEM(__pyx_v___pyx_state, 5)); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_As_int(__Pyx_PyTuple_GET_ITEM(__pyx_v___pyx_state, 4)); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(2, 12, __pyx_L1_error)
   __pyx_v___pyx_result->rowspan = __pyx_t_1;
+  __pyx_t_3 = __Pyx_PyTuple_GET_ITEM(__pyx_v___pyx_state, 5);
+  __Pyx_INCREF(__pyx_t_3);
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_3))) __PYX_ERR(2, 12, __pyx_L1_error)
+  __Pyx_GIVEREF(__pyx_t_3);
+  __Pyx_GOTREF(__pyx_v___pyx_result->value);
+  __Pyx_DECREF(__pyx_v___pyx_result->value);
+  __pyx_v___pyx_result->value = ((PyObject*)__pyx_t_3);
+  __pyx_t_3 = 0;
 
   /* "(tree fragment)":13
  * cdef __pyx_unpickle_GridElement__set_state(GridElement __pyx_result, __pyx_state: tuple):
- *     __pyx_result.col = __pyx_state[0]; __pyx_result.colspan = __pyx_state[1]; __pyx_result.el_type = __pyx_state[2]; __pyx_result.label = __pyx_state[3]; __pyx_result.row = __pyx_state[4]; __pyx_result.rowspan = __pyx_state[5]
+ *     __pyx_result.col = __pyx_state[0]; __pyx_result.colspan = __pyx_state[1]; __pyx_result.is_header = __pyx_state[2]; __pyx_result.row = __pyx_state[3]; __pyx_result.rowspan = __pyx_state[4]; __pyx_result.value = __pyx_state[5]
  *     __Pyx_UpdateUnpickledDict(__pyx_result, __pyx_state, 6)             # <<<<<<<<<<<<<<
 */
   __pyx_t_1 = __Pyx_UpdateUnpickledDict(((PyObject *)__pyx_v___pyx_result), __pyx_v___pyx_state, 6); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(2, 13, __pyx_L1_error)
@@ -6982,7 +6945,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid___pyx_unpickle_GridEleme
  *         __pyx_unpickle_GridElement__set_state(<GridElement> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_GridElement__set_state(GridElement __pyx_result, __pyx_state: tuple):             # <<<<<<<<<<<<<<
- *     __pyx_result.col = __pyx_state[0]; __pyx_result.colspan = __pyx_state[1]; __pyx_result.el_type = __pyx_state[2]; __pyx_result.label = __pyx_state[3]; __pyx_result.row = __pyx_state[4]; __pyx_result.rowspan = __pyx_state[5]
+ *     __pyx_result.col = __pyx_state[0]; __pyx_result.colspan = __pyx_state[1]; __pyx_result.is_header = __pyx_state[2]; __pyx_result.row = __pyx_state[3]; __pyx_result.rowspan = __pyx_state[4]; __pyx_result.value = __pyx_state[5]
  *     __Pyx_UpdateUnpickledDict(__pyx_result, __pyx_state, 6)
 */
 
@@ -6990,7 +6953,7 @@ static PyObject *__pyx_f_10untabulate_15projection_grid___pyx_unpickle_GridEleme
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_AddTraceback("untabulate.projection_grid.__pyx_unpickle_GridElement__set_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
@@ -7304,8 +7267,7 @@ static PyObject *__pyx_tp_new_10untabulate_15projection_grid_GridElement(PyTypeO
   o = __Pyx_AllocateExtensionType(t, 0);
   if (unlikely(!o)) return 0;
   p = ((struct __pyx_obj_10untabulate_15projection_grid_GridElement *)o);
-  p->el_type = ((PyObject*)Py_None); Py_INCREF(Py_None);
-  p->label = ((PyObject*)Py_None); Py_INCREF(Py_None);
+  p->value = ((PyObject*)Py_None); Py_INCREF(Py_None);
   return o;
 }
 
@@ -7318,8 +7280,7 @@ static void __pyx_tp_dealloc_10untabulate_15projection_grid_GridElement(PyObject
     }
   }
   #endif
-  Py_CLEAR(p->el_type);
-  Py_CLEAR(p->label);
+  Py_CLEAR(p->value);
   PyTypeObject *tp = Py_TYPE(o);
   #if CYTHON_USE_TYPE_SLOTS
   (*tp->tp_free)(o);
@@ -7334,16 +7295,17 @@ static void __pyx_tp_dealloc_10untabulate_15projection_grid_GridElement(PyObject
   #endif
 }
 
-static PyObject *__pyx_getprop_10untabulate_15projection_grid_11GridElement_el_type(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_10untabulate_15projection_grid_11GridElement_7el_type_1__get__(o);
+static PyObject *__pyx_getprop_10untabulate_15projection_grid_11GridElement_is_header(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_10untabulate_15projection_grid_11GridElement_9is_header_1__get__(o);
 }
 
-static int __pyx_setprop_10untabulate_15projection_grid_11GridElement_el_type(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_10untabulate_15projection_grid_11GridElement_is_header(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_10untabulate_15projection_grid_11GridElement_7el_type_3__set__(o, v);
+    return __pyx_pw_10untabulate_15projection_grid_11GridElement_9is_header_3__set__(o, v);
   }
   else {
-    return __pyx_pw_10untabulate_15projection_grid_11GridElement_7el_type_5__del__(o);
+    PyErr_SetString(PyExc_NotImplementedError, "__del__");
+    return -1;
   }
 }
 
@@ -7403,16 +7365,16 @@ static int __pyx_setprop_10untabulate_15projection_grid_11GridElement_colspan(Py
   }
 }
 
-static PyObject *__pyx_getprop_10untabulate_15projection_grid_11GridElement_label(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_10untabulate_15projection_grid_11GridElement_5label_1__get__(o);
+static PyObject *__pyx_getprop_10untabulate_15projection_grid_11GridElement_value(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_10untabulate_15projection_grid_11GridElement_5value_1__get__(o);
 }
 
-static int __pyx_setprop_10untabulate_15projection_grid_11GridElement_label(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_10untabulate_15projection_grid_11GridElement_value(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_10untabulate_15projection_grid_11GridElement_5label_3__set__(o, v);
+    return __pyx_pw_10untabulate_15projection_grid_11GridElement_5value_3__set__(o, v);
   }
   else {
-    return __pyx_pw_10untabulate_15projection_grid_11GridElement_5label_5__del__(o);
+    return __pyx_pw_10untabulate_15projection_grid_11GridElement_5value_5__del__(o);
   }
 }
 
@@ -7423,18 +7385,18 @@ static PyMethodDef __pyx_methods_10untabulate_15projection_grid_GridElement[] = 
 };
 
 static struct PyGetSetDef __pyx_getsets_10untabulate_15projection_grid_GridElement[] = {
-  {"el_type", __pyx_getprop_10untabulate_15projection_grid_11GridElement_el_type, __pyx_setprop_10untabulate_15projection_grid_11GridElement_el_type, 0, 0},
+  {"is_header", __pyx_getprop_10untabulate_15projection_grid_11GridElement_is_header, __pyx_setprop_10untabulate_15projection_grid_11GridElement_is_header, 0, 0},
   {"row", __pyx_getprop_10untabulate_15projection_grid_11GridElement_row, __pyx_setprop_10untabulate_15projection_grid_11GridElement_row, 0, 0},
   {"col", __pyx_getprop_10untabulate_15projection_grid_11GridElement_col, __pyx_setprop_10untabulate_15projection_grid_11GridElement_col, 0, 0},
   {"rowspan", __pyx_getprop_10untabulate_15projection_grid_11GridElement_rowspan, __pyx_setprop_10untabulate_15projection_grid_11GridElement_rowspan, 0, 0},
   {"colspan", __pyx_getprop_10untabulate_15projection_grid_11GridElement_colspan, __pyx_setprop_10untabulate_15projection_grid_11GridElement_colspan, 0, 0},
-  {"label", __pyx_getprop_10untabulate_15projection_grid_11GridElement_label, __pyx_setprop_10untabulate_15projection_grid_11GridElement_label, 0, 0},
+  {"value", __pyx_getprop_10untabulate_15projection_grid_11GridElement_value, __pyx_setprop_10untabulate_15projection_grid_11GridElement_value, 0, 0},
   {0, 0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
 static PyType_Slot __pyx_type_10untabulate_15projection_grid_GridElement_slots[] = {
   {Py_tp_dealloc, (void *)__pyx_tp_dealloc_10untabulate_15projection_grid_GridElement},
-  {Py_tp_doc, (void *)PyDoc_STR("\n    A lightweight element struct for use with ProjectionGrid.\n\n    Construct from database rows to avoid SQLAlchemy ORM overhead:\n        elements = [GridElement(el_type, row, col, rowspan, colspan,\n                               label)\n                    for el_type, row, col, rowspan, colspan, label in cursor]\n    ")},
+  {Py_tp_doc, (void *)PyDoc_STR("\n    A lightweight element struct for use with ProjectionGrid.\n\n    Represents a cell in a table grid with position, span, and value.\n\n    Args:\n        is_header: True if this cell is a header, False if it's a data cell\n        row: 1-based row index\n        col: 1-based column index\n        rowspan: Number of rows this cell spans\n        colspan: Number of columns this cell spans\n        value: Text content of the cell\n\n    Example:\n        elements = [GridElement(is_header, row, col, rowspan, colspan, value)\n                    for is_header, row, col, rowspan, colspan, value in cursor]\n    ")},
   {Py_tp_methods, (void *)__pyx_methods_10untabulate_15projection_grid_GridElement},
   {Py_tp_getset, (void *)__pyx_getsets_10untabulate_15projection_grid_GridElement},
   {Py_tp_init, (void *)__pyx_pw_10untabulate_15projection_grid_11GridElement_1__init__},
@@ -7471,7 +7433,7 @@ static PyTypeObject __pyx_type_10untabulate_15projection_grid_GridElement = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
-  PyDoc_STR("\n    A lightweight element struct for use with ProjectionGrid.\n\n    Construct from database rows to avoid SQLAlchemy ORM overhead:\n        elements = [GridElement(el_type, row, col, rowspan, colspan,\n                               label)\n                    for el_type, row, col, rowspan, colspan, label in cursor]\n    "), /*tp_doc*/
+  PyDoc_STR("\n    A lightweight element struct for use with ProjectionGrid.\n\n    Represents a cell in a table grid with position, span, and value.\n\n    Args:\n        is_header: True if this cell is a header, False if it's a data cell\n        row: 1-based row index\n        col: 1-based column index\n        rowspan: Number of rows this cell spans\n        colspan: Number of columns this cell spans\n        value: Text content of the cell\n\n    Example:\n        elements = [GridElement(is_header, row, col, rowspan, colspan, value)\n                    for is_header, row, col, rowspan, colspan, value in cursor]\n    "), /*tp_doc*/
   0, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -7631,7 +7593,7 @@ static struct PyGetSetDef __pyx_getsets_10untabulate_15projection_grid_Projectio
 #if CYTHON_USE_TYPE_SPECS
 static PyType_Slot __pyx_type_10untabulate_15projection_grid_ProjectionGrid_slots[] = {
   {Py_tp_dealloc, (void *)__pyx_tp_dealloc_10untabulate_15projection_grid_ProjectionGrid},
-  {Py_tp_doc, (void *)PyDoc_STR("\n    A Cython-optimized semantic header scope engine for table flattening.\n\n    Maps each data cell coordinate to the set of headers that govern it.\n    Row headers (column 1) apply to all rows from their position downward.\n    Column headers apply to the columns they span, for all rows below.\n\n    Accepts a list of objects with .el_type, .row, .col, .rowspan, .colspan, .label\n    attributes. Use GridElement for maximum performance when fetching from DB.\n    ")},
+  {Py_tp_doc, (void *)PyDoc_STR("\n    A Cython-optimized semantic header scope engine for table flattening.\n\n    Maps each data cell coordinate to the set of headers that govern it.\n    Row headers (column 1) apply to all rows from their position downward.\n    Column headers apply to the columns they span, for all rows below.\n\n    Accepts a list of objects with .is_header, .row, .col, .rowspan, .colspan, .value\n    attributes. Use GridElement for maximum performance when fetching from DB.\n    ")},
   {Py_tp_traverse, (void *)__pyx_tp_traverse_10untabulate_15projection_grid_ProjectionGrid},
   {Py_tp_clear, (void *)__pyx_tp_clear_10untabulate_15projection_grid_ProjectionGrid},
   {Py_tp_methods, (void *)__pyx_methods_10untabulate_15projection_grid_ProjectionGrid},
@@ -7670,7 +7632,7 @@ static PyTypeObject __pyx_type_10untabulate_15projection_grid_ProjectionGrid = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  PyDoc_STR("\n    A Cython-optimized semantic header scope engine for table flattening.\n\n    Maps each data cell coordinate to the set of headers that govern it.\n    Row headers (column 1) apply to all rows from their position downward.\n    Column headers apply to the columns they span, for all rows below.\n\n    Accepts a list of objects with .el_type, .row, .col, .rowspan, .colspan, .label\n    attributes. Use GridElement for maximum performance when fetching from DB.\n    "), /*tp_doc*/
+  PyDoc_STR("\n    A Cython-optimized semantic header scope engine for table flattening.\n\n    Maps each data cell coordinate to the set of headers that govern it.\n    Row headers (column 1) apply to all rows from their position downward.\n    Column headers apply to the columns they span, for all rows below.\n\n    Accepts a list of objects with .is_header, .row, .col, .rowspan, .colspan, .value\n    attributes. Use GridElement for maximum performance when fetching from DB.\n    "), /*tp_doc*/
   __pyx_tp_traverse_10untabulate_15projection_grid_ProjectionGrid, /*tp_traverse*/
   __pyx_tp_clear_10untabulate_15projection_grid_ProjectionGrid, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -7800,15 +7762,15 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __pyx_vtable_10untabulate_15projection_grid_ProjectionGrid._build_projections = (PyObject *(*)(struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid *, PyObject *))__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__build_projections;
   __pyx_vtable_10untabulate_15projection_grid_ProjectionGrid._finalize = (PyObject *(*)(struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid *))__pyx_f_10untabulate_15projection_grid_14ProjectionGrid__finalize;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10untabulate_15projection_grid_ProjectionGrid_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid)) __PYX_ERR(0, 27, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10untabulate_15projection_grid_ProjectionGrid_spec, __pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid) < (0)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10untabulate_15projection_grid_ProjectionGrid_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid)) __PYX_ERR(0, 36, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10untabulate_15projection_grid_ProjectionGrid_spec, __pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid) < (0)) __PYX_ERR(0, 36, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid = &__pyx_type_10untabulate_15projection_grid_ProjectionGrid;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid) < (0)) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid) < (0)) __PYX_ERR(0, 36, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid);
@@ -7820,7 +7782,7 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   #endif
   #if CYTHON_UPDATE_DESCRIPTOR_DOC
   {
-    PyObject *wrapper = PyObject_GetAttrString((PyObject *)__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid, "__init__"); if (unlikely(!wrapper)) __PYX_ERR(0, 27, __pyx_L1_error)
+    PyObject *wrapper = PyObject_GetAttrString((PyObject *)__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid, "__init__"); if (unlikely(!wrapper)) __PYX_ERR(0, 36, __pyx_L1_error)
     if (__Pyx_IS_TYPE(wrapper, &PyWrapperDescr_Type)) {
       __pyx_wrapperbase_10untabulate_15projection_grid_14ProjectionGrid___init__ = *((PyWrapperDescrObject *)wrapper)->d_base;
       __pyx_wrapperbase_10untabulate_15projection_grid_14ProjectionGrid___init__.doc = __pyx_doc_10untabulate_15projection_grid_14ProjectionGrid___init__;
@@ -7828,10 +7790,10 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
     }
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid, __pyx_vtabptr_10untabulate_15projection_grid_ProjectionGrid) < (0)) __PYX_ERR(0, 27, __pyx_L1_error)
-  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid) < (0)) __PYX_ERR(0, 27, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_ProjectionGrid, (PyObject *) __pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid) < (0)) __PYX_ERR(0, 27, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid) < (0)) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid, __pyx_vtabptr_10untabulate_15projection_grid_ProjectionGrid) < (0)) __PYX_ERR(0, 36, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid) < (0)) __PYX_ERR(0, 36, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_ProjectionGrid, (PyObject *) __pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid) < (0)) __PYX_ERR(0, 36, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid) < (0)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -8171,7 +8133,7 @@ __Pyx_RefNannySetupContext("PyInit_projection_grid", 0);
 
   /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_GridElement, (type(self), 0xa874371, state)
+ *         return __pyx_unpickle_GridElement, (type(self), 0x016a221, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_GridElement__set_state(self, __pyx_state)
 */
@@ -8183,19 +8145,19 @@ __Pyx_RefNannySetupContext("PyInit_projection_grid", 0);
   if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_10untabulate_15projection_grid_GridElement, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_2) < (0)) __PYX_ERR(2, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "untabulate/projection_grid.pyx":127
+  /* "untabulate/projection_grid.pyx":136
  *             (<list>self.col_headers[c]).sort(key=lambda x: x[0])
  * 
  *     def get_path(self, int data_row, int data_col):             # <<<<<<<<<<<<<<
  *         """
  *         Get all headers that apply to a data cell at the given coordinates.
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10untabulate_15projection_grid_14ProjectionGrid_3get_path, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ProjectionGrid_get_path, NULL, __pyx_mstate_global->__pyx_n_u_untabulate_projection_grid, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10untabulate_15projection_grid_14ProjectionGrid_3get_path, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_ProjectionGrid_get_path, NULL, __pyx_mstate_global->__pyx_n_u_untabulate_projection_grid, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid, __pyx_mstate_global->__pyx_n_u_get_path, __pyx_t_2) < (0)) __PYX_ERR(0, 127, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid, __pyx_mstate_global->__pyx_n_u_get_path, __pyx_t_2) < (0)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":1
@@ -8230,7 +8192,7 @@ __Pyx_RefNannySetupContext("PyInit_projection_grid", 0);
  *     int __Pyx_UpdateUnpickledDict(object, object, Py_ssize_t) except -1
  * def __pyx_unpickle_GridElement(__pyx_type, long __pyx_checksum, tuple __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_result
- *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0xa874371, 0xfade50b, 0x55d7dfa, b'col, colspan, el_type, label, row, rowspan')
+ *     __Pyx_CheckUnpickleChecksum(__pyx_checksum, 0x016a221, 0xa2de6f4, 0x0c35e32, b'col, colspan, is_header, row, rowspan, value')
 */
   __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10untabulate_15projection_grid_1__pyx_unpickle_GridElement, 0, __pyx_mstate_global->__pyx_n_u_pyx_unpickle_GridElement, NULL, __pyx_mstate_global->__pyx_n_u_untabulate_projection_grid, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -8320,11 +8282,11 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   /* "(tree fragment)":11
  *         use_setstate = True
  *     else:
- *         use_setstate = ('self.el_type is not None or self.label is not None',)             # <<<<<<<<<<<<<<
+ *         use_setstate = ('self.value is not None',)             # <<<<<<<<<<<<<<
  *     if use_setstate:
- *         return __pyx_unpickle_GridElement, (type(self), 0xa874371, None), state
+ *         return __pyx_unpickle_GridElement, (type(self), 0x016a221, None), state
 */
-  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(1, __pyx_mstate_global->__pyx_kp_u_self_el_type_is_not_None_or_self); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(2, 11, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(1, __pyx_mstate_global->__pyx_kp_u_self_value_is_not_None); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(2, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
   __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(1, __pyx_mstate_global->__pyx_kp_u_self_col_headers_is_not_None_or); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(2, 11, __pyx_L1_error)
@@ -8353,39 +8315,39 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 8; } index[] = {{1},{179},{1},{8},{7},{6},{2},{9},{60},{50},{34},{14},{2},{11},{29},{31},{2},{14},{32},{34},{42},{23},{20},{18},{18},{3},{11},{7},{8},{8},{11},{8},{5},{7},{8},{8},{3},{8},{12},{10},{7},{13},{5},{3},{5},{8},{8},{10},{8},{7},{4},{3},{14},{12},{11},{10},{26},{29},{14},{12},{10},{17},{13},{3},{7},{4},{4},{12},{10},{12},{19},{4},{5},{5},{8},{26},{6},{12},{6},{1},{8},{11},{152},{99},{111},{11},{57},{55}};
-    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (948 bytes) */
-const char* const cstring = "(\265/\375`}\005U\035\000\2261\2468 \223\332\000\034u\010\007\241f:\020\030F\030F\355A8\010SEeO+\333-\322_\267\355s\345\252CZ\266\003\021\216\312LO\341\347Y\\\265\251fw\213\353\347\320\242\207\000\212\000\236\000\367k\262\216:\307\307\331%n\375u~J\336LG\247\373\273nKQ\370\377\232\346\266\365e\255\263d\364\373N\225wYmk\264@a+q\266|\362\214\361\264\210\374w\304\237\342{\262b\346\261\376\343\310eX<\261\304\321~\026\214Gl\371\265\234)\236r\334\277\367\274\324\304\355\2709}\232\327\261\342\0319>82^R^\"\326\317\251\325|G\330}>\365\233\354\375\032\267\2158\2478\354$\362\231\342\361yv\031\005\260W\355\325s+\267\225\233?JJ\212\271\223\224\373e\345\227\2535Y\313\311g\305\223\265\367\275\231\252\3504=\235\232Kl\345\245\373\261\345\\\326\331R\014\333\363\3640\374\365.\222S\213\362\202\245\370dI\376(\222YM\253I\262\357\244\371\216\214\336\306\336\211\355\351\305\244\205O\276\371o)\251|\312\325\327R\2168\376\325\337\224\225\030\024\222\247\232\313[\363=\362\202\261F\325jT\326,\215\347\363r\246\3111\247A\365}\323\2742\023\375Ff\020\032\350-\262\020h\343M\217\302\273\035E\2470\000\000\332A\360<\036\312\346\255\364\010\207\220\344\315tW\327\260\020\"x\264\213t\n\007a\311c\351\241\356 \024\226\300\220O\364U\017\243\327\216!\024\316\316\244\003\221\205\006\000\nv\266\016\001\n\021\372\303\000\300\301\016)\266\2012\037\351\303\370\204\236XiF\232m\263\007\360\265\237\273\323\365\233\253,n$\245\316[\342\377-_/\357\344Z\246\311]\177U\324\2620\267_\257\270\255\242\237\242\254\314\2225\277\232\370/W\263\234+)\003\233\214\340\023\212h.3\374\225\276\214Vj\223\021\274\324F9&[\315\003nt\217\016G\344\340\221t\n\237\020\246TS\021\200\033\261\326\352\022\037\035O\314\003V|\010\337\305\246#\242y\344\020\314\032@\017\210\362a\224h\013\264\216\034>{\201\034\340\303\027\343\205t\3361L\235\022\r\225#2[\0017\220\177\032\0065\003P\330\362t\007\220N\253k\000\205\242.\001\024\226\372BO\351fd\256\230\300'\234*\335\326\255\310B\237P\004\326\257\000\242\213\221\025\004xb-\231\001H\247\324I\375\323\352\002""\335a!\364x\r\275\203\324\003z\250Q\235\201\312\210\224\314\214\024\246\225a\014 \2040Tf\036\202\322\024\212\210RH\346,Ir\377\317\377k%\223\274\343\262$\001&\032\023<\203\242\r\314\361H\"\237\354!\243\245\t\177\224K\365\357\317\274\277\342@\n\316d\305h\\q\260\247$\333u\\\244\021\005\0259\214Y\002\354\212\223\247\214\264\030\351*\021\274\r]\306\225\321\203\264e\313\231\021h\371\237#}\361\017\272\376\273\010\025\215M\340\323\\D\253\262\370\207\312\322\016\017\026\360\307n\001\n7\340B\021\235\007r~\253#\035c$\370M\351\223\357Cl0\345}ou\243\033\023\232\374Z\332\307\302Dw\204|{\217\351)\366*o\257 N7\323P\312\235\337\3348!\233\216\334\247\220\252P\rB\225`\207\2733\350\rXD\337\201vj4\026\271\335\036\010\335\217a\251Qo\326\221{\200p\355\037\360\010{\210\246\227\327l\332!d\263\356\240\025\212t\001\n\353\220\005\325+\241\204P\003";
-    PyObject *data = __Pyx_DecompressString(cstring, 948, 3);
+    const struct { const unsigned int length: 8; } index[] = {{1},{179},{1},{8},{7},{6},{2},{9},{60},{22},{34},{14},{11},{29},{31},{14},{32},{34},{42},{23},{20},{18},{18},{3},{11},{7},{8},{8},{11},{8},{5},{8},{8},{3},{8},{12},{10},{7},{13},{9},{5},{3},{5},{8},{8},{10},{8},{7},{4},{3},{14},{12},{11},{10},{26},{29},{14},{12},{10},{17},{13},{3},{7},{4},{4},{12},{10},{12},{19},{4},{5},{5},{8},{26},{6},{12},{5},{6},{1},{8},{11},{152},{99},{112},{11},{57},{55}};
+    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (939 bytes) */
+const char* const cstring = "(\265/\375`e\005\r\035\000\326p\2438 \223\332\000\034u\210t\200\006\006\002\303\010\303\250=\010\007a\252\250\354ie7\211\364\327m\373\\\271\352\220\226\355@\204\2432\323S\370y\026Wm\252\331\335\342\3729\264(\204\000\207\000\233\000YG\235\343\343\354\022\267\376:_%o\246$\324\375]\267\245)\374\177Os\333\372\262\326YB\372}\247\312\273\254\2665Z\244\260\2258[>y\306xZD\376;\342W\361=\267\230y\254\3778r\031\026Q,\221\264\177\203\361\210-\277\226;ET\216\373\367\236\227\236\270\0357\247O\363:V<#\307\007G\306K\312K\304\3729\265\232\357\010\273\317\247\376\223\275_\343\266\021g\025\207\235D>U<>\317.\244\027\366\253\315zn\345\266r\363OII1\207\222r\277\254\374r\265&k9\371\254xn{\337\233\351\212\316\323\323\251\271\304V^\272\037[\316e\235-\305\260=Q\017\303_\357\"9\265(/\230\212\317M\362O\221\314zbM\222}'\315w\204\3646\366NlQ/|\362\315\177KI\345S\256\276\226\222\304\361\263\376\246\254\220<\325\\\336\232\357\221\027l#U\253SYo\032\317\347\345N\223cN\203\352\347\356t\325\004\023\375Ff \032\350-2\021h\343M\217\302\273\035E\2470\000\020\352A\360>\036\212\346\255\364\010\207\260\344\315tW\327\260\020\"x\264\213t\n\007\241\311c\351\242\356@\024\232\300\220o\364U\017\243\327\216A\024\316\316\244\003\221\211\006\000\nz\264\016\021\n\021\372\303\000\300AO)\246\2012_\351\303\000\205\237\230iV\232i\263\007\360\265\177su\343H:o\211\377\267|\275\274\223k\235&w\375]Q\273an\277fq{E_E\267\274\311\232gM\374\227\253YN\226\224\367O3\232\214\000\024\216t\\f\3703}\031-\225&#\000\205\246\227\035R\216\211\266\363\0017\272G\2073r\360H:\205\025\001\270\021wZ]\002\304\363\211}\300\212\017\341\273\320xF:\0369\004\263\006\360\003\242|\0300\246\235\030\235\220\034>c\230\305\200\021_\214\027\322y\3070uR9\"\263\025P\003\371\247a\260c\020\n[\237\356\020\342iu\r\241p\324%\204BS_\350)\335\214\314\025\023\000\205S\245\323\272\025\231\010\024\216\300\372\025@t1\262\202\200O\254%3\010\361\230z\251\203Z]\240;,\204\037\257\241w\224z|\250a!a\n\021)\021\031Q\240Ia\030\003 \2048TW\035\322\272\224j\210RH\252*Na?\366\014""\357l\016\245#\014g1G&\226ck\334R\207\\\336\006\335\277O\230o4)\253\026\266g\352\377\317\344\363\332\201\240!i\312glM\020\245\037Y\250h\332U\247*\r(@\031\246\355\022\001\260\003N\334\262H32|\"\004o\241\324\327\347\021d\276&\206f\327_\204Z\324\276\001$\276\267-\242\242q\t\242\346\\\241\375\326xNg\003U\034\346`\037\222\373AX\003\210\034\010\036+\347\0338\275Y\246\214\\\207z_\013\214\262=\203wh\343Ym}\230\300\220\224DV\032?\300\317cv\217\352.\025|T4\014\323m\246E\206\253\336\302\310V\3047Q3\036@\325\r;\363i\345\367\304\244\003\306\364[e7\347i\217\006_%\330\257D\322\300\277\034\202\224\241M\205^1\026\333\351\020\263\r\360Q#\205\301\\\320\013J+!:U\003";
+    PyObject *data = __Pyx_DecompressString(cstring, 939, 3);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1058 bytes) */
-const char* const cstring = "BZh91AY&SY\307a\240\322\000\000p\177\377\346\355\375\334\365\247\345\375\277\245u\200\277\377\377\374@@@@@@@@@@@@@\000@\000P\003\236\332\247@)\326\267\034%S)\223D\362\232\006\236\221\352i\223&CCF\3244\320\003C@\321\247\2441\036\246\231\0323(%\023@BL\364@\236\223S\312bM\25040L\203@\000\003@2\030\217L\220%L\201(i\352\032d\0004\323@\000\000\000\000\000\0004\000\007\003@h4h\0314\000\032\000\014M\r4\r4\000\321\243@\003F\202Q&T\3651\251\264\236\240z\206\201\241\240\000\000dd\006C@\001\240h\000\342B\312\333\003\336\302\245\203\324xP\374\004\375\024l\222\001\031\374\215p\252\250(\251\004|\t\235\004\022\2572y\354\251\223\376\010hP\205\006\351.\3114\221u\346B\211\022\014h\321\t+0.**0\3030\326\211,d\363\311/=I \365?[\316+\026\020\365\364\250B,\375\274\244\271\3424ngF6\3476h\316b2\273\\<]\275QE\365\017\016\314\337=O\203\014\025K\332BP\262S\004'\231\030\310 \226\272d44\223[6\265Ua\304@\211\221Wmb(M\230\214-\307\376IB\224\243\263\036\307\353.-\033yfXn\332\023$\247 o\354\370\225\215E\230\223t\036\254\030a\371\267S$J\370\\\217%Z\365\362\034\032\234\327\377\007\351y\0328\225\310\033\026j;k\220'\2055\001\\\301\021\343n/`\371\337\177?5\017\022\312\324\253\301{\334K#aFX\214\254\026nI\213\313\222\021}.Q\302\026Y\353\260\222W\255\2262\271\303,\311\220\026\024W\023\363~\366\006h\366s\370\372. \232y4w\024\201\252\027\214TJ\253,Qbv6\2075\365/5\237\352\206e2W\266\351 \374a\335i\226p\230\355\363\323K\334\371!$A\204\337k=\020\325`\372j\273V\354\030.z\265\250\230]\243O\0367p\026\361t\350cu\351\261U\314\223feUU\234h\014\275\000O\211\325\233\336\204\354js\353\032\021\326cK(\204\332h-\317\201\300\203\3435H\027Z\220-\333\003h\252\252\240\362\034<\375Ly\352\206d\211'_G\203\367\262\014\233\2652\006\372^sgL\350&yum\343\243\312J\326\020u8\320\233\241X\317\000\031\372U*0\3650\355y\210\225\"j\035\215\252\235\240\261\022Y\346\264Ade&\302\223\246\271\203\230n\"\305b\243\004@DQ]2\021\226BB3\220Rn\036\360\3319\222\205\2100\275m\005.\337n\260*\207V\"(\212\233\301vD\201\215P\212\340\324D\255\030\235\351Y\004""\305\273\307\211\024M\035\215\351\315\33713\034&\265\254\310\245@)\023\037\371\t\352\"\260\322\022\354\200\211\364\237-\033\004b\203\322!a5\346\271_\303\n\273\225\365\0324\032\344/]\253}\271l\334\213\224\212\241M\357p\274\213\022\360vT\306\240\311\215J\327\262&\033\307\001#\340\260\001\"\263VV\262\010L\n\014b\311<\210\014\244\tX\215m\020\322\260H\256\316C\271\227\246\323\0242\365\321\315\224_N\324\353B\234\n.wN!k\220\270\030\250\213'R\\\346\266\332j\037Q\211\206\372\242C\213\2150\331\325^X\357\036\254'1\336\026\t\305b\275Q\322\316\340\210\004)\201\3621\331k\352\340\224:\025\375\372\014\037\244\025\307.\320\265\367yTJ\370\037\226\371\247\370X\324\220\233\256k\333\251>d\333/\273;\022\224\211\370\250\351\177\030WR\374\235\332u\214M\217\251u\261\330\320l\016h\031\370&\212\3129\010vc\263Qf\021@7\276i\355\\\347\n#O[\024\276\035D\272\022\230\362\223\307\217\032\202,'+`4A\257H\r\037a\017\361w$S\205\t\014v\032\r ";
-    PyObject *data = __Pyx_DecompressString(cstring, 1058, 2);
+    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1050 bytes) */
+const char* const cstring = "BZh91AY&SY\232F\t\245\000\000m\377\377\346\355\375\334\365\247\345\375\277\245u\200\277\377\377\374@@@@@@@@@@@@@\000@\000P\003\231@\365\322\226\262\343\270J\211OI\232\236\246\324\000\365=C\324d\364@\r\250\032\000\00026\220\310z\217MM4\314Pd\247\250\324\332\251\376\224z\247\341OQ\223H\363T\300\000F\004h\300\230\000\000\000\000\022\202\001M&\320OJ\237\265#d\232\232\000z \000\320\000\000\003A\243\323G\245?T8\032\003A\243@\311\240\000\320\000bhi\240i\240\006\215\032\000\0324\022\212)\376\244\203\324<\325\036\223F\203\324\0314\000\0324\032\000\000\000\000\000\010\225\\\235\340<=*\235'\3708\241\326\t\377\nB\305\3027\004\204EUAEH\244\"P\336E3\300\313\343\266s/\000\217\032\204j?YvZ$\313\264\031J\244\205\246\2610\314\224\271,TT]yJ\314l\233\202V\303-?\264\242\037\335\365\265IU\005\241P\024Z\3042\352\220\362\310\355)[1\303V\223`\352\332\343\337\364\360\222/\232~\030\337\362\347;\332t\212\2720h\253\234\037\370\270\311\230\341\3136\327\201\203\034\374\177'\301$\246\352\313\030D\240s\177\253\277\035_\3218\332\325k\316\211rj\347\221C\227\220&IN\320r\3677+\230\026\304\243<]3\347\374_\261\226FE\007If\315\220\273Ky7\376\351y\031F\220'\221\003]Y\033c i\017\003\000\320AV#\343\332\224to\361x\253\021p\330e\362\243\030\034Tym\342\230\231\205\243%\005\206\354\262xV\345\030B\326\363\234I\254\026\314\2522\314\231e\215U\212t\376vB\371z:\273\373\322\021\222m\354\231*1l\316\037#\0225}`E\200\245x\024\035\030\342w\302\204JX\347\350i\241\014c\335z\026\330c\331\361\327\0104&\204\321\007\023vG\202!\256\304+\256\355{fR\"}\025\304\315\025\265\024\326\2427W\366\241G\336cr\210\362\231\325B\204D\205\237B\0257\201N\303h\244 \205\032\235[\007\204vNa&\222\013hT\271\010Jj\0212\331\"Z\370\235\221UUB\016\261\362:\271vxs\205\351\"m\266\260\010nt\0346\353r\005\206\312<'3\220e\251e\324\265\360\332\216PC\315\244\010dV@\310f\0002\n\020\347\036\035\317\001\022\362\006\261\261\262\247t*$\364\321j\243Q;n\222\355\303D\020\202\037\022\264\332l \252\n\2544.\224\370\250Rz\224b\214B\t\215(N6A\305\274\2346+\016\240\001!""\026X\n\002\206\301J\314\200U\220\006$\312\322dj\210e2T+E\207\266R\004I1\245JT\313\202+rr\307\023\254!\024s\323=\302\212\210\257\025\331\202U\021\ta7\254/\305p\020\253cxWW\304\010\375X$z\356H\025\215\017\304D\251t\222\272;mE\314IP\256\3500\274\353#B6d\350\346K\235o\212L\364\"@\nFM \026m\241\270\235$\245\301\314\210\324\343&\003\251\022vG\311T0X\311y9\317W7[\205b#7\305\345\214&\003\215\344\r\265A\366x[2\221\365}\204P\036BQ\326\266Uf\256n2\"|\264\241\0149G\010\340\246\237\026Z\276\250\"\251\334\025G\016\243\302\351Xy\3212\tE\270\306\013\326 \367\024K\301\027\3179s\370\222\240\354\032\226m\302\252[|\217>3G\364\363\243\224\244\016\352\331\247Bt\372\361\274\344H\244P\213cB\351zZ?3w7\273H\232#G\333Ev$\326\032\031\323\234d:\331\306L\346\222\236s\020\341\207~odZ\201\212M\343wP\371Dk\362_\027\224b\203\0140\372\212\322\324\317!\305\036+!\310\341/\374]\311\024\341BBi\030&\224";
+    PyObject *data = __Pyx_DecompressString(cstring, 1050, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (935 bytes) */
-const char* const cstring = "x\332\235SKo\333F\020\266\000\025\221a\301\217\332\210\r\247@WE\320\240\200#G\200\221\227\003\027r\355\030\001\002\303\n\214\346\270X\221#\211\325j)q\227\212\224\366\240\243\216<\356\221G\036y\324\321G\035}\344\321?\301?\241\263\242lK\266{\251@\221\037wf\276y|\303\342\251\253\200\250\006S\344\217\276j\270\2028\222\330\300\235*xL\001\357\023\251<\307R\340\031'A\316\216\317^\356\275\335#L\330\304\203\277\300R\222H\277jq&%H\342\326H\325w\270r\004Q\3756\310\"\371T#}\327'\002\300&\312%m\364\233\rP\r\020D\2022\200\274`B\270\212)\307\025\024\303\035Q\177Al\307\303$N\027L\364G\306%\024\177g\266M\321\021lG\262*\007\020\346^\267\034\231\"[\002\257\025-\227\323\0060\033<izB\177r\352\n \256G&v\317\375\366\230}b\003n\362\303\243q\234U\201\317Ex\326\256/\024\253\372\034'\266\333\366\\3\026\323C\335s\354b\273\337\373`f(\352\322\365=\013\016\216\316O\360\374\230C\013\204\232\201EJ=\260}\013\2505Q\202\322y#NI\342p\356\314\237\017\317ns\031\327\371\267\207t\017\354\017\030\357{\324\034\301\270\363\035\212\037\270k\341\354\017\020\260V\325f\007\367<\353\240h\233\251\006R\364{\370?\302\225\241\247\320S_\240\306d_X\216\213\202x\256\217\233\001\322\342x\247\016\212\3541\013\252\314j\242Xx\361\224Q\"\224m\3340\246\030E<y\242\\6r\371\\\331\206\233\246\367\311c\252\026\244\223\222\224\326|aQ\2125\335\225U\277iu\252\271\341\233\252O\035Ioks\024\264d\023\372\023\225o\232\245\264\305\260Z\374\265\\\333\347`\220`\255\364\t\337\350$G\333m#\300\356\255\006XM\351\267\3227\017$\326\234\342i\005\006\232\202S\344\213\266c5\221tF\355{\226\371a\247\306\2562\253n*\350\370\214\337T3U\234>\320\376\366\000z\324\364\216\227\031\261\304\217\307l\365d\027\246=!\232NzfC\350#\333\"]/=1\353\215\315\033@\351\335\247P\274\367)\370mT\022|\t\267T]\306}\220\275x{T\032\225G\225A&\311\356D\345\350\317\2704(_\257.,n\353\265$\367L\227\256\227\027\026\363\303w\301a\300\222\374\323\300\326;\241\035\025\242\367q%\311\257\006y\375)\254$\253\353\301\276\266\302\265dc3\350\352\257a9\331\372I\237\204\245\024\034\205\231p\355:""\267\260\270\036<\017x\370<d\341\367\030\311\363\303\317z\021\203\362+\303\277\365/\272lh^\353\3150\223ll\351'\272\223\202\254.\353\312Une\330\031d\220\344\207\345\341y\360\0149\227#;.$\331\374\360$(\005\037\261*\226d\237\014\272\303\257\301\261\336\320\225$\367cPHr\233A\347*\267\2453\306\326Ir+\227+\273\221\212K\361\311h\377\242>6\274\263'\354.\305\323@\351\367\341y\264\035\357\305\275\221\272x=\336\030W\376G\272\235\350(\316\304\233\243\245\2137\343\302\325\374I\311\014\375\267h-\3725\316\0142W\331\237u\347\222\274\212\227\260\222\346e\345K\222]\017\016\302-\264\027\014\337?\301\033\215)^\305\231\313\322\341E\361\362\014\313Y\032\226\376#p_7p\316\235\231\300\227Q%\022\243\323qa\022\366/\032\363\213G";
-    PyObject *data = __Pyx_DecompressString(cstring, 935, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (926 bytes) */
+const char* const cstring = "x\332\235SMk\033G\030\266@%2\026\376\250\215m\222@G%4\024\0349\202\3204vpQj\307\004\212\261\202i\216\303h\367\225\264\325hV\332\231U\254\244\007\035u\334\343\034\367\270\307=\352\350\243\217:\356\321?\301?\241\357\354\312\266d\247\024*V\263\317\276\037\317\3739\345\023W\001Q-\246\310\357\003\325r\005q$\261\201;u\360\230\002> Ry\216\245\3003F\202\234\036\235\276x\365\353+\302\204M<\370\013,%\211\364\353\026gR\202$n\203\324}\207+G\0205\350\202,\223\017\r2p}\"\000l\242\\\322E\273Y\007\325\002A$(\003\310s&\204\253\230r\\A\321\335\021\315\347\304v<\014\342\364\301x\277g\\B\3717f\333\024\r\301v$\253s\000a\316\246\345\310\014\331\022x\243l\271\234\266\200\331\340IS\023\332\223\023W\000q=\222\352=\367\363\267\364\251\256\317\270\017sR\317\332\365\205bu\237cWv\273\236kJ7y6=\307.w\007\347oM\237DS\272\276g\301\3011J\2178t@\250\031X\246\324\003\333\267\200Zi\257)\235Wb\037$\226\177\247>\275\215c\014\347\277\036\222=\320\377\007_\2316\034\301\270\363\005\312o\271kao\017\020\260N\335f\007\367,\233\240h\227\251\026R\014\316\361\177\210+AO\340\\}\204\006\223\003a9.6\334s}\234<H\213\343I\035\034\242\307,\2503\253\215\303\300\207g\214\022\241\354\342\0061\305(\342\364\215\343\260\221\313\347\3126\3344;\323\027d\r\222\2246|aQ\212\311\334\345\323\274\251q:LC4\035+u$\275M\nq&v\024td\033\006\234\325\201\337\224Ki\207a\276\370\353\270\266\317\301 \301:\331\033>\3234X\327\355\"\300\372\255\026Xm\351w\262/\017$f\235\341i*\006\232\375\317\220/\272\216\325F\322\231i\337\323\314\267;S\366\225Yf\223A\317g\374&\233\351\314\351\203\351\337\n\340\234\232&\340c\232,\361z\230\235N\267aZ\023\242i\257gv\204~c_\244\353e\022\263\334X\274\001\224\336]\204\362\275\213\340wq\226\340K\270\245JoRz\310\363\370\361\2702\256\216k\303\\\222\337\211\252\321\237qeX\275^]X|\254\327\222\302\023]\271^^X,\216\336\004\357\002\226\0247\003[\357\204vT\212\366\342ZR\\\r\212\372CXKV\327\203}m\205k\311\306V\320\327\237\302j\262\375T\037\207\225\014\034\206\271p\355\272\260\260\270\036<\013x\370,d\341\227\030\311\213\243?""\364\":\025WF_\365\217\272jh~\321[a.\331\330\326\217t/\003y]\325\265\253\302\312\2507\314!\311w\313\243\263\340\tr.Gv\\J\362\305\321qP\t\336cV,\311?\032\366G\237\202#\275\241kI\341\373\240\224\024\266\202\336Ua[\347\214\256\227\024V&+\273\221\212+\361\361x\377\242yixg%\354.\304f\240\364^x\026=\215\317\306\233cu\261wy6\251}\374\037\361v\242\3038\027o\215\227.^_\226\256\346%\025\323\365\237\243\265\350\24787\314]\345\177\320\275\ty\031/a*\3554\332zp\020n\243\276d\370\376\016^k\014\3612\316M*\357.\312\223\323Z\222_\032U\376\305q_\267\260\321\275\031\307\027Q-\022\343\223\313R\352\366\017\003N\203k";
+    PyObject *data = __Pyx_DecompressString(cstring, 926, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (1661 bytes) */
-const char* const bytes = ".Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.?add_notedisableenablegcisenabledself.col_headers is not None or self.row_headers is not Noneself.el_type is not None or self.label is not Nonesrc/untabulate/projection_grid.pyx<stringsource>DTGridElementGridElement.__reduce_cython__GridElement.__setstate_cython__LBProjectionGridProjectionGrid.__reduce_cython__ProjectionGrid.__setstate_cython__ProjectionGrid._finalize.<locals>.<lambda>ProjectionGrid.get_path__Pyx_PyDict_NextRefasyncio.coroutinescline_in_tracebackcolcollectionscolspandata_coldata_rowdefaultdict__dict___dictel_typeelements__func__getget_path__getstate__header_rowheaders_is_coroutineitemskeylabel<lambda>__main____module____name____new__pathpop__pyx_checksum__pyx_result__pyx_state__pyx_type__pyx_unpickle_GridElement__pyx_unpickle_ProjectionGrid__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__rowrowspanseenself__set_name__setdefault__setstate____setstate_cython__sortstatestrip__test__untabulate.projection_gridupdateuse_setstatevaluesx\260\032\2701\270A\270Q\200\001\330\004,\250A\250V\2601\200A\360\020\000\t\032\230\021\330\010\033\2301\360\016\000\t\014\2109\220B\220a\330\014\026\220d\230,\240d\250!\250:\260Q\330\014\020\220\014\230I\240Q\330\020\023\220;\230c\240\021\330\024\027\220v\230W\240A\330\030\034\230G\2401\240A\330\030\034\230D\240\001\240\021\360\010\000\t\023\220$\220l\240$\240a\240z\260\021\330\010\014\210L\230\t\240\021\330\014\017\210{\230\"\230A\330\020\023\2206\230\027\240\001\330\024\030\230\007\230q\240\001\330\024\030\230\004\230A\230Q\340\010\017\210q\200\001\360\010\000\005\016\210T\220\033\230D\240\016\250d\260!\330\004\014\210G\2201\220F\230,\240a\330\004\007\200v\210W\220E\230\024\230Q\330\010\022\220!\330\010\027\220q\340\010\030\230\001\330\004\007\200q\330\010\017\320\017/\250t\2601\260G\270;\300g\310Q\340\010\017\320\017/\250t\2601""\260G\270;\300a\200\001\360\010\000\005\016\210T\220\026\220t\230:\240T\250\032\2604\260x\270t\3006\310\024\310Q\330\004\014\210G\2201\220F\230,\240a\330\004\007\200v\210W\220E\230\024\230Q\330\010\022\220!\330\010\027\220q\340\010\030\230\001\330\004\007\200q\330\010\017\320\017,\250D\260\001\260\027\270\013\3007\310!\340\010\017\320\017,\250D\260\001\260\027\270\013\3001\200\001\330\004)\250\021\250&\260\001\200\001\340\004\037\230q\320 0\260\013\270;\300k\320QR\330\004\023\220>\240\030\250\021\250!\330\004\007\200|\2207\230!\330\0100\260\001\3201B\300.\320PQ\330\004\013\2101\200\001\340\004\037\230q\320 0\260\013\270;\300k\320QR\330\004\023\220;\230h\240a\240q\330\004\007\200|\2207\230!\330\010-\250Q\250n\270N\310!\330\004\013\2101";
+    #else /* compression: none (1637 bytes) */
+const char* const bytes = ".Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.?add_notedisableenablegcisenabledself.col_headers is not None or self.row_headers is not Noneself.value is not Nonesrc/untabulate/projection_grid.pyx<stringsource>GridElementGridElement.__reduce_cython__GridElement.__setstate_cython__ProjectionGridProjectionGrid.__reduce_cython__ProjectionGrid.__setstate_cython__ProjectionGrid._finalize.<locals>.<lambda>ProjectionGrid.get_path__Pyx_PyDict_NextRefasyncio.coroutinescline_in_tracebackcolcollectionscolspandata_coldata_rowdefaultdict__dict___dictelements__func__getget_path__getstate__header_rowheaders_is_coroutineis_headeritemskeylabel<lambda>__main____module____name____new__pathpop__pyx_checksum__pyx_result__pyx_state__pyx_type__pyx_unpickle_GridElement__pyx_unpickle_ProjectionGrid__pyx_vtable____qualname____reduce____reduce_cython____reduce_ex__rowrowspanseenself__set_name__setdefault__setstate____setstate_cython__sortstatestrip__test__untabulate.projection_gridupdateuse_setstatevaluevaluesx\260\032\2701\270A\270Q\200\001\330\004,\250A\250V\2601\200A\360\020\000\t\032\230\021\330\010\033\2301\360\016\000\t\014\2109\220B\220a\330\014\026\220d\230,\240d\250!\250:\260Q\330\014\020\220\014\230I\240Q\330\020\023\220;\230c\240\021\330\024\027\220v\230W\240A\330\030\034\230G\2401\240A\330\030\034\230D\240\001\240\021\360\010\000\t\023\220$\220l\240$\240a\240z\260\021\330\010\014\210L\230\t\240\021\330\014\017\210{\230\"\230A\330\020\023\2206\230\027\240\001\330\024\030\230\007\230q\240\001\330\024\030\230\004\230A\230Q\340\010\017\210q\200\001\360\010\000\005\016\210T\220\033\230D\240\016\250d\260!\330\004\014\210G\2201\220F\230,\240a\330\004\007\200v\210W\220E\230\024\230Q\330\010\022\220!\330\010\027\220q\340\010\030\230\001\330\004\007\200q\330\010\017\320\017/\250t\2601\260G\270;\300g\310Q\340\010\017\320\017/\250t\2601\260G\270;\300a\200\001""\360\010\000\005\016\210T\220\026\220t\230:\240T\250\034\260T\270\026\270t\300:\310T\320QR\330\004\014\210G\2201\220F\230,\240a\330\004\007\200v\210W\220E\230\024\230Q\330\010\022\220!\330\010\027\220q\340\010\030\230\001\330\004\007\200q\330\010\017\320\017,\250D\260\001\260\027\270\013\3007\310!\340\010\017\320\017,\250D\260\001\260\027\270\013\3001\200\001\330\004)\250\021\250&\260\001\200\001\340\004\037\230q\320 0\260\013\270;\300k\320QR\330\004\023\220>\240\030\250\021\250!\330\004\007\200|\2207\230!\330\0100\260\001\3201B\300.\320PQ\330\004\013\2101\200\001\340\004\037\230q\320 0\260\013\270;\300k\320QR\330\004\023\220;\230h\240a\240q\330\004\007\200|\2207\230!\330\010-\250Q\250n\270N\310!\330\004\013\2101";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 80; i++) {
+    for (int i = 0; i < 79; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
       if (likely(string) && i >= 12) PyUnicode_InternInPlace(&string);
@@ -8396,7 +8358,7 @@ const char* const bytes = ".Note that Cython is deliberately stricter than PEP-4
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 80; i < 88; i++) {
+    for (int i = 79; i < 87; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -8407,14 +8369,14 @@ const char* const bytes = ".Note that Cython is deliberately stricter than PEP-4
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 88; i++) {
+    for (Py_ssize_t i = 0; i < 87; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 80;
+      PyObject **table = stringtab + 79;
       for (Py_ssize_t i=0; i<8; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         Py_SET_REFCNT(table[i], _Py_IMMORTAL_REFCNT_LOCAL);
@@ -8428,7 +8390,7 @@ const char* const bytes = ".Note that Cython is deliberately stricter than PEP-4
   {
     PyObject **numbertab = __pyx_mstate->__pyx_number_tab + 0;
     int8_t const cint_constants_1[] = {1};
-    int32_t const cint_constants_4[] = {135806601L,176636785L};
+    int32_t const cint_constants_4[] = {1483297L,135806601L};
     for (int i = 0; i < 3; i++) {
       numbertab[i] = PyLong_FromLong((i < 1 ? cint_constants_1[i - 0] : cint_constants_4[i - 1]));
       if (unlikely(!numbertab[i])) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -8457,7 +8419,7 @@ typedef struct {
     unsigned int num_kwonly_args : 1;
     unsigned int nlocals : 4;
     unsigned int flags : 10;
-    unsigned int first_line : 7;
+    unsigned int first_line : 8;
 } __Pyx_PyCode_New_function_description;
 /* NewCodeObj.proto */
 static PyObject* __Pyx_PyCode_New(
@@ -8474,19 +8436,19 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 114};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 123};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_x};
     __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_untabulate_projection_grid_p, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_1AQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 125};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 134};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_x};
     __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_untabulate_projection_grid_p, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_1AQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 1};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_state, __pyx_mstate->__pyx_n_u_dict_2, __pyx_mstate->__pyx_n_u_use_setstate};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_mstate->__pyx_kp_b_iso88591_T_t_T_4xt6_Q_G1F_a_vWE_Q_q_q_D, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_reduce_cython, __pyx_mstate->__pyx_kp_b_iso88591_T_t_T_T_t_TQR_G1F_a_vWE_Q_q_q_D, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 16};
@@ -8494,7 +8456,7 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_mstate->__pyx_kp_b_iso88591__3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 127};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 136};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_data_row, __pyx_mstate->__pyx_n_u_data_col, __pyx_mstate->__pyx_n_u_path, __pyx_mstate->__pyx_n_u_seen, __pyx_mstate->__pyx_n_u_header_row, __pyx_mstate->__pyx_n_u_label, __pyx_mstate->__pyx_n_u_headers};
     __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_untabulate_projection_grid_p, __pyx_mstate->__pyx_n_u_get_path, __pyx_mstate->__pyx_kp_b_iso88591_A_1_9Ba_d_d_Q_IQ_c_vWA_G1A_D_l_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }

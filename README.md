@@ -31,17 +31,16 @@ pip install "untabulate[lxml,openpyxl]"
 
 When you extract data from a table like this:
 
-|           | Q1  | Q2  |
-|-----------|-----|-----|
-| Revenue   | 100 | 120 |
-| ↳ North America | 40 | 50 |
-| ↳ Europe  | 60  | 70  |
+|           |              | Q1  | Q2  |
+|-----------|--------------|-----|-----|
+| Revenue   |              | 100 | 120 |
+|           |North America | 40  | 50 |
+|           | Europe       | 60  | 70  |
 
-Traditional parsers give you `value=40` at position `(3, 2)`. But for LLM embeddings, you need:
+Traditional parsers give you `value=40` at position `(3, 3)`. But for LLM embeddings, you need:
 
 > **Revenue → North America → Q1: 40**
 
-This library address such problems. 
 
 ## Quick Start
 
@@ -115,9 +114,9 @@ from untabulate import untabulate
 
 # From database rows or API responses
 data = [
-    {"el_type": "LB", "row": 1, "col": 2, "label": "Q1"},
-    {"el_type": "LB", "row": 2, "col": 1, "label": "Revenue"},
-    {"el_type": "DT", "row": 2, "col": 2, "label": "100"},
+    {"is_header": True, "row": 1, "col": 2, "value": "Q1"},
+    {"is_header": True, "row": 2, "col": 1, "value": "Revenue"},
+    {"is_header": False, "row": 2, "col": 2, "value": "100"},
 ]
 
 results = untabulate(data, format="strings")
@@ -196,14 +195,14 @@ Build a semantic header projection from elements.
 
 Get headers governing a cell position.
 
-#### `GridElement(el_type, row, col, rowspan, colspan, label)`
+#### `GridElement(is_header, row, col, rowspan, colspan, value)`
 
 Lightweight element for table cells.
 
-- **el_type**: `"LB"` (label/header) or `"DT"` (data)
+- **is_header**: `True` if this cell is a header, `False` for data cells
 - **row/col**: 1-based position
 - **rowspan/colspan**: Cell span
-- **label**: Text content
+- **value**: Text content of the cell
 
 ## Performance
 

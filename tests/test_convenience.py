@@ -117,10 +117,10 @@ def test_untabulate_html_empty_table():
 def test_untabulate_from_grid_elements():
     """Test with list of GridElement instances."""
     elements = [
-        GridElement("LB", 1, 1, 1, 1, "Name"),
-        GridElement("LB", 1, 2, 1, 1, "Age"),
-        GridElement("DT", 2, 1, 1, 1, "Alice"),
-        GridElement("DT", 2, 2, 1, 1, "30"),
+        GridElement(True, 1, 1, 1, 1, "Name"),
+        GridElement(True, 1, 2, 1, 1, "Age"),
+        GridElement(False, 2, 1, 1, 1, "Alice"),
+        GridElement(False, 2, 2, 1, 1, "30"),
     ]
     results = untabulate(elements, format="strings")
 
@@ -131,10 +131,10 @@ def test_untabulate_from_grid_elements():
 def test_untabulate_from_dicts():
     """Test with list of dicts."""
     data = [
-        {"el_type": "LB", "row": 1, "col": 1, "rowspan": 1, "colspan": 1, "label": "Name"},
-        {"el_type": "LB", "row": 1, "col": 2, "rowspan": 1, "colspan": 1, "label": "Age"},
-        {"el_type": "DT", "row": 2, "col": 1, "rowspan": 1, "colspan": 1, "label": "Alice"},
-        {"el_type": "DT", "row": 2, "col": 2, "rowspan": 1, "colspan": 1, "label": "30"},
+        {"is_header": True, "row": 1, "col": 1, "rowspan": 1, "colspan": 1, "value": "Name"},
+        {"is_header": True, "row": 1, "col": 2, "rowspan": 1, "colspan": 1, "value": "Age"},
+        {"is_header": False, "row": 2, "col": 1, "rowspan": 1, "colspan": 1, "value": "Alice"},
+        {"is_header": False, "row": 2, "col": 2, "rowspan": 1, "colspan": 1, "value": "30"},
     ]
     results = untabulate(data, format="strings")
 
@@ -145,8 +145,8 @@ def test_untabulate_from_dicts():
 def test_untabulate_from_dicts_minimal():
     """Test with dicts using minimal required keys."""
     data = [
-        {"el_type": "LB", "row": 1, "col": 2, "label": "Header"},
-        {"el_type": "DT", "row": 2, "col": 2, "label": "Value"},
+        {"is_header": True, "row": 1, "col": 2, "value": "Header"},
+        {"is_header": False, "row": 2, "col": 2, "value": "Value"},
     ]
     results = untabulate(data, format="strings")
 
@@ -156,10 +156,10 @@ def test_untabulate_from_dicts_minimal():
 def test_untabulate_from_tuples():
     """Test with list of tuples."""
     data = [
-        ("LB", 1, 1, 1, 1, "Name"),
-        ("LB", 1, 2, 1, 1, "Age"),
-        ("DT", 2, 1, 1, 1, "Alice"),
-        ("DT", 2, 2, 1, 1, "30"),
+        (True, 1, 1, 1, 1, "Name"),
+        (True, 1, 2, 1, 1, "Age"),
+        (False, 2, 1, 1, 1, "Alice"),
+        (False, 2, 2, 1, 1, "30"),
     ]
     results = untabulate(data, format="strings")
 
@@ -170,8 +170,8 @@ def test_untabulate_from_tuples():
 def test_untabulate_from_tuples_minimal():
     """Test with tuples using minimal elements."""
     data = [
-        ("LB", 1, 2),  # Minimal: el_type, row, col
-        ("DT", 2, 2, 1, 1, "Value"),
+        (True, 1, 2),  # Minimal: is_header, row, col
+        (False, 2, 2, 1, 1, "Value"),
     ]
     results = untabulate(data, format="tuples")
 
@@ -182,17 +182,17 @@ def test_untabulate_from_objects():
     """Test with list of objects with attributes."""
 
     class Cell:
-        def __init__(self, el_type, row, col, label):
-            self.el_type = el_type
+        def __init__(self, is_header, row, col, value):
+            self.is_header = is_header
             self.row = row
             self.col = col
             self.rowspan = 1
             self.colspan = 1
-            self.label = label
+            self.value = value
 
     data = [
-        Cell("LB", 1, 2, "Header"),
-        Cell("DT", 2, 2, "Value"),
+        Cell(True, 1, 2, "Header"),
+        Cell(False, 2, 2, "Value"),
     ]
     results = untabulate(data, format="strings")
 
@@ -207,8 +207,8 @@ def test_untabulate_empty_list():
 def test_untabulate_dict_format_structure():
     """Test dict format has correct structure."""
     data = [
-        {"el_type": "LB", "row": 1, "col": 2, "label": "Header"},
-        {"el_type": "DT", "row": 2, "col": 2, "label": "Value"},
+        {"is_header": True, "row": 1, "col": 2, "value": "Header"},
+        {"is_header": False, "row": 2, "col": 2, "value": "Value"},
     ]
     results = untabulate(data, format="dict")
 

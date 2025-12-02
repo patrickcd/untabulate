@@ -58,20 +58,20 @@ def parsed_fixtures(tables_html):
 
 def test_create_grid_element():
     """Test creating a GridElement."""
-    el = GridElement("LB", 1, 1, 1, 1, "Header")
-    assert el.el_type == "LB"
+    el = GridElement(True, 1, 1, 1, 1, "Header")
+    assert el.is_header == True
     assert el.row == 1
     assert el.col == 1
     assert el.rowspan == 1
     assert el.colspan == 1
-    assert el.label == "Header"
+    assert el.value == "Header"
 
 
 def test_grid_element_data_type():
     """Test creating a data GridElement."""
-    el = GridElement("DT", 2, 3, 1, 1, "Value")
-    assert el.el_type == "DT"
-    assert el.label == "Value"
+    el = GridElement(False, 2, 3, 1, 1, "Value")
+    assert el.is_header == False
+    assert el.value == "Value"
 
 
 # ProjectionGrid tests
@@ -86,8 +86,8 @@ def test_empty_grid():
 def test_simple_row_header():
     """Test a simple row header in column 1."""
     elements = [
-        GridElement("LB", 1, 1, 1, 1, "Category"),
-        GridElement("DT", 1, 2, 1, 1, "Value"),
+        GridElement(True, 1, 1, 1, 1, "Category"),
+        GridElement(False, 1, 2, 1, 1, "Value"),
     ]
     grid = ProjectionGrid(elements)
     path = grid.get_path(1, 2)
@@ -97,8 +97,8 @@ def test_simple_row_header():
 def test_column_header():
     """Test a column header."""
     elements = [
-        GridElement("LB", 1, 2, 1, 1, "Q1"),
-        GridElement("DT", 2, 2, 1, 1, "100"),
+        GridElement(True, 1, 2, 1, 1, "Q1"),
+        GridElement(False, 2, 2, 1, 1, "100"),
     ]
     grid = ProjectionGrid(elements)
     path = grid.get_path(2, 2)
@@ -123,8 +123,8 @@ def test_span_as_label():
     </table>
     """
     elements = parse_html_table(html, span_as_label=True)
-    merged = [e for e in elements if e.label == "Merged"][0]
-    assert merged.el_type == "LB"
+    merged = [e for e in elements if e.value == "Merged"][0]
+    assert merged.is_header == True
 
 
 # Fixture-based integration tests

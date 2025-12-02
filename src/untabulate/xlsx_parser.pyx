@@ -5,7 +5,7 @@ def parse_xlsx_worksheet(filepath: str, sheet_name: str = None) -> list:
     """
     Parse an Excel worksheet into GridElement instances.
 
-    Merged cells are treated as labels (LB), regular cells as data (DT).
+    Merged cells are treated as headers, regular cells as data.
     """
     try:
         from openpyxl import load_workbook
@@ -44,14 +44,14 @@ def parse_xlsx_worksheet(filepath: str, sheet_name: str = None) -> list:
                 if merge_info
                 else (1, 1)
             )
-            label = str(cell.value or "").strip()
+            value = str(cell.value or "").strip()
 
             # Merged cells or column 1 = headers
-            el_type = "LB" if (merge_info or col_idx == 1) else "DT"
+            is_header = bool(merge_info or col_idx == 1)
 
             elements.append(
                 GridElement(
-                    el_type, row_idx, col_idx, rowspan, colspan, label
+                    is_header, row_idx, col_idx, rowspan, colspan, value
                 )
             )
 

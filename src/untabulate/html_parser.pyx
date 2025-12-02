@@ -63,7 +63,8 @@ def parse_html_table(
 cdef _parse_single_table(object table, list[GridElement] elements, bint span_as_label):
     """Parse a single table element and append GridElements to the list."""
     cdef int row_idx, col_idx, rs, cs, r, c
-    cdef str el_type, label
+    cdef bint is_header
+    cdef str value
     cdef dict occupied = {}  # (row, col) -> True
 
     row_idx = 1
@@ -80,18 +81,18 @@ cdef _parse_single_table(object table, list[GridElement] elements, bint span_as_
             # Extract attributes
             rs = int(cell.get("rowspan", 1) or 1)
             cs = int(cell.get("colspan", 1) or 1)
-            label = (cell.text_content() or "").strip()
+            value = (cell.text_content() or "").strip()
 
-            # Determine element type
+            # Determine if this is a header cell
             if cell.tag == "th":
-                el_type = "LB"
+                is_header = True
             elif (rs > 1 or cs > 1) and span_as_label:
-                el_type = "LB"
+                is_header = True
             else:
-                el_type = "DT"
+                is_header = False
 
             # Create GridElement
-            elements.append(GridElement(el_type, row_idx, col_idx, rs, cs, label))
+            elements.append(GridElement(is_header, row_idx, col_idx, rs, cs, value))
 
             # Mark occupied cells for rowspan (future rows only)
             for r in range(row_idx + 1, row_idx + rs):

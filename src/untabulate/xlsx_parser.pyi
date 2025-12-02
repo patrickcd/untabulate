@@ -10,7 +10,7 @@ def parse_xlsx_worksheet(
     """
     Parse an Excel worksheet into GridElement instances.
     
-    Merged cells are treated as labels (LB), regular cells as data (DT).
+    Merged cells are treated as headers, regular cells as data.
     
     Args:
         filepath: Path to the Excel file (.xlsx)

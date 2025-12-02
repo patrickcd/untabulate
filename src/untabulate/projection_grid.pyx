@@ -5,23 +5,32 @@ cdef class GridElement:
     """
     A lightweight element struct for use with ProjectionGrid.
 
-    Construct from database rows to avoid SQLAlchemy ORM overhead:
-        elements = [GridElement(el_type, row, col, rowspan, colspan,
-                               label)
-                    for el_type, row, col, rowspan, colspan, label in cursor]
+    Represents a cell in a table grid with position, span, and value.
+
+    Args:
+        is_header: True if this cell is a header, False if it's a data cell
+        row: 1-based row index
+        col: 1-based column index
+        rowspan: Number of rows this cell spans
+        colspan: Number of columns this cell spans
+        value: Text content of the cell
+
+    Example:
+        elements = [GridElement(is_header, row, col, rowspan, colspan, value)
+                    for is_header, row, col, rowspan, colspan, value in cursor]
     """
     # Attributes declared in projection_grid.pxd
 
     def __init__(
-        self, str el_type, int row, int col, int rowspan, int colspan,
-        str label
+        self, bint is_header, int row, int col, int rowspan, int colspan,
+        str value
     ):
-        self.el_type = el_type
+        self.is_header = is_header
         self.row = row
         self.col = col
         self.rowspan = rowspan
         self.colspan = colspan
-        self.label = label
+        self.value = value
 
 
 cdef class ProjectionGrid:
@@ -32,7 +41,7 @@ cdef class ProjectionGrid:
     Row headers (column 1) apply to all rows from their position downward.
     Column headers apply to the columns they span, for all rows below.
 
-    Accepts a list of objects with .el_type, .row, .col, .rowspan, .colspan, .label
+    Accepts a list of objects with .is_header, .row, .col, .rowspan, .colspan, .value
     attributes. Use GridElement for maximum performance when fetching from DB.
     """
     # Attributes declared in projection_grid.pxd
@@ -54,7 +63,7 @@ cdef class ProjectionGrid:
 
         cdef int r, c, max_row
         cdef int el_row, el_col, el_rowspan, el_colspan
-        cdef str label
+        cdef str value
         cdef object el
 
         # Find max row for propagation
@@ -69,19 +78,19 @@ cdef class ProjectionGrid:
         cdef int first_data_row = max_row + 1
         cdef int first_data_col = 2147483647  # Max int
         for el in elements:
-            if el.el_type == "DT":
+            if not el.is_header:
                 if el.row < first_data_row:
                     first_data_row = el.row
                 if el.col < first_data_col:
                     first_data_col = el.col
 
-        # Process each label element
+        # Process each header element
         for el in elements:
-            if el.el_type != "LB" or not el.label:
+            if not el.is_header or not el.value:
                 continue
 
-            label = el.label.strip()
-            if not label:
+            value = el.value.strip()
+            if not value:
                 continue
 
             el_row = el.row
@@ -93,13 +102,13 @@ cdef class ProjectionGrid:
                 # Row header (left of data, in or after data rows):
                 # applies only to the rows it spans
                 for r in range(el_row, el_row + el_rowspan):
-                    (<list>self.row_headers[r]).append((el_row, label))
+                    (<list>self.row_headers[r]).append((el_row, value))
             else:
                 # Column header: applies to the columns it spans.
                 # This includes headers above data rows, and headers in
                 # data columns (if any)
                 for c in range(el_col, el_col + el_colspan):
-                    (<list>self.col_headers[c]).append((el_row, label))
+                    (<list>self.col_headers[c]).append((el_row, value))
 
         self._finalize()
 

@@ -6,29 +6,29 @@ class GridElement:
     A lightweight element struct for use with ProjectionGrid.
 
     Attributes:
-        el_type: Element type ('LB' for label/header, 'DT' for data)
+        is_header: True if this cell is a header, False if it's a data cell
         row: 1-based row index
         col: 1-based column index
         rowspan: Number of rows this element spans
         colspan: Number of columns this element spans
-        label: Text content of the element
+        value: Text content of the cell
     """
 
-    el_type: str
+    is_header: bool
     row: int
     col: int
     rowspan: int
     colspan: int
-    label: str
+    value: str
 
     def __init__(
         self,
-        el_type: str,
+        is_header: bool,
         row: int,
         col: int,
         rowspan: int,
         colspan: int,
-        label: str,
+        value: str,
     ) -> None: ...
 
 

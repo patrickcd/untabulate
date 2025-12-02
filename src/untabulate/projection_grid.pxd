@@ -2,12 +2,12 @@
 # Declaration file for cimport from other Cython modules
 
 cdef class GridElement:
-    cdef public str el_type
+    cdef public bint is_header
     cdef public int row
     cdef public int col
     cdef public int rowspan
     cdef public int colspan
-    cdef public str label
+    cdef public str value
 
 
 cdef class ProjectionGrid:
