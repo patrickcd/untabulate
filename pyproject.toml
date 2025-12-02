@@ -3,14 +3,14 @@ requires = ["setuptools>=61.0", "wheel", "cython>=3.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cellpath"
+name = "untabulate"
 version = "0.1.0"
-description = "Cython-accelerated library for extracting semantic context from HTML tables"
+description = "Untabulate grid data for friendly llm embedddings or similar analysis"
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.9"
+requires-python = ">=3.12"
 authors = [
-    { name = "Patrick", email = "patrick@example.com" }
+    { name = "Patrick Dobbs", email = "patrick.dobbs@gmail.com" }
 ]
 keywords = [
     "tables",
@@ -30,33 +30,35 @@ classifiers = [
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: Cython",
     "Topic :: Text Processing :: Markup :: HTML",
     "Topic :: Scientific/Engineering :: Information Analysis",
 ]
-dependencies = [
-    "lxml>=4.9.0",
-    "openpyxl>=3.1.0",
-]
+dependencies = []
 
 [project.optional-dependencies]
+lxml = ["lxml>=4.9.0"]
+openpyxl = ["openpyxl>=3.1.0"]
+html = ["lxml>=4.9.0"]
+excel = ["openpyxl>=3.1.0"]
 dev = [
     "pytest>=7.0",
     "pytest-cov>=4.0",
     "cython>=3.0",
     "build",
     "twine",
+    "lxml>=4.9.0",
+    "openpyxl>=3.1.0",
 ]
 
 [project.urls]
-Homepage = "https://github.com/patrick/cellpath"
-Documentation = "https://github.com/patrick/cellpath#readme"
-Repository = "https://github.com/patrick/cellpath.git"
-Issues = "https://github.com/patrick/cellpath/issues"
+Homepage = "https://github.com/patrick/untabulate"
+Documentation = "https://github.com/patrick/untabulate#readme"
+Repository = "https://github.com/patrick/untabulate.git"
+Issues = "https://github.com/patrick/untabulate/issues"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

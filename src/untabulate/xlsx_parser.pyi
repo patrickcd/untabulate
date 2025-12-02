@@ -1,6 +1,6 @@
-"""Type stubs for cellpath.xlsx_parser"""
+"""Type stubs for untabulate.xlsx_parser"""
 
-from cellpath.projection_grid import GridElement
+from untabulate.projection_grid import GridElement
 
 
 def parse_xlsx_worksheet(

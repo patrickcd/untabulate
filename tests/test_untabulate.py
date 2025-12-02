@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 from lxml import html as lxml_html
 
-from cellpath import (
+from untabulate import (
     GridElement,
     ProjectionGrid,
     parse_html_table,

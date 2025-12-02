@@ -10,16 +10,16 @@ from Cython.Build import cythonize
 
 extensions = [
     Extension(
-        "cellpath.projection_grid",
-        ["src/cellpath/projection_grid.pyx"],
+        "untabulate.projection_grid",
+        ["src/untabulate/projection_grid.pyx"],
     ),
     Extension(
-        "cellpath.html_parser",
-        ["src/cellpath/html_parser.pyx"],
+        "untabulate.html_parser",
+        ["src/untabulate/html_parser.pyx"],
     ),
     Extension(
-        "cellpath.xlsx_parser",
-        ["src/cellpath/xlsx_parser.pyx"],
+        "untabulate.xlsx_parser",
+        ["src/untabulate/xlsx_parser.pyx"],
     ),
 ]
 

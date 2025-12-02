@@ -1,1 +1,1 @@
-"""Tests package for cellpath."""
+"""Tests package for untabulate."""

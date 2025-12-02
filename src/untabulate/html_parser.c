@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "cellpath.html_parser",
+        "name": "untabulate.html_parser",
         "sources": [
-            "src/cellpath/html_parser.pyx"
+            "src/untabulate/html_parser.pyx"
         ]
     },
-    "module_name": "cellpath.html_parser"
+    "module_name": "untabulate.html_parser"
 }
 END: Cython Metadata */
 
@@ -1126,8 +1126,8 @@ static int __Pyx_init_co_variables(void) {
   #endif
 #endif
 
-#define __PYX_HAVE__cellpath__html_parser
-#define __PYX_HAVE_API__cellpath__html_parser
+#define __PYX_HAVE__untabulate__html_parser
+#define __PYX_HAVE_API__untabulate__html_parser
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -1336,8 +1336,8 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "src/cellpath/html_parser.pyx",
-  "src/cellpath/projection_grid.pxd",
+  "src/untabulate/html_parser.pyx",
+  "src/untabulate/projection_grid.pxd",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* Atomics.proto (used by UnpackUnboundCMethod) */
@@ -1514,8 +1514,8 @@ static const char* const __pyx_f[] = {
 /* #### Code section: type_declarations ### */
 
 /*--- Type declarations ---*/
-struct __pyx_obj_8cellpath_15projection_grid_GridElement;
-struct __pyx_obj_8cellpath_15projection_grid_ProjectionGrid;
+struct __pyx_obj_10untabulate_15projection_grid_GridElement;
+struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid;
 
 /* "projection_grid.pxd":4
  * # Declaration file for cimport from other Cython modules
@@ -1524,7 +1524,7 @@ struct __pyx_obj_8cellpath_15projection_grid_ProjectionGrid;
  *     cdef public str el_type
  *     cdef public int row
 */
-struct __pyx_obj_8cellpath_15projection_grid_GridElement {
+struct __pyx_obj_10untabulate_15projection_grid_GridElement {
   PyObject_HEAD
   PyObject *el_type;
   int row;
@@ -1542,9 +1542,9 @@ struct __pyx_obj_8cellpath_15projection_grid_GridElement {
  *     cdef public object row_headers
  *     cdef public object col_headers
 */
-struct __pyx_obj_8cellpath_15projection_grid_ProjectionGrid {
+struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid {
   PyObject_HEAD
-  struct __pyx_vtabstruct_8cellpath_15projection_grid_ProjectionGrid *__pyx_vtab;
+  struct __pyx_vtabstruct_10untabulate_15projection_grid_ProjectionGrid *__pyx_vtab;
   PyObject *row_headers;
   PyObject *col_headers;
   int _max_row;
@@ -1552,11 +1552,11 @@ struct __pyx_obj_8cellpath_15projection_grid_ProjectionGrid {
 
 
 
-struct __pyx_vtabstruct_8cellpath_15projection_grid_ProjectionGrid {
-  PyObject *(*_build_projections)(struct __pyx_obj_8cellpath_15projection_grid_ProjectionGrid *, PyObject *);
-  PyObject *(*_finalize)(struct __pyx_obj_8cellpath_15projection_grid_ProjectionGrid *);
+struct __pyx_vtabstruct_10untabulate_15projection_grid_ProjectionGrid {
+  PyObject *(*_build_projections)(struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid *, PyObject *);
+  PyObject *(*_finalize)(struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid *);
 };
-static struct __pyx_vtabstruct_8cellpath_15projection_grid_ProjectionGrid *__pyx_vtabptr_8cellpath_15projection_grid_ProjectionGrid;
+static struct __pyx_vtabstruct_10untabulate_15projection_grid_ProjectionGrid *__pyx_vtabptr_10untabulate_15projection_grid_ProjectionGrid;
 /* #### Code section: utility_code_proto ### */
 
 /* --- Runtime support code (head) --- */
@@ -1892,8 +1892,89 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
 #define __Pyx_ErrFetch(type, value, tb)  PyErr_Fetch(type, value, tb)
 #endif
 
-/* PyObjectGetAttrStrNoError.proto (used by GetBuiltinName) */
+/* PyObjectGetAttrStrNoError.proto (used by HasAttr) */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, PyObject* attr_name);
+
+/* HasAttr.proto (used by ImportImpl) */
+#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
+#define __Pyx_HasAttr(o, n)  PyObject_HasAttrWithError(o, n)
+#else
+static CYTHON_INLINE int __Pyx_HasAttr(PyObject *, PyObject *);
+#endif
+
+/* ImportImpl.export */
+static PyObject *__Pyx__Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, PyObject *moddict, int level);
+
+/* Import.proto */
+static CYTHON_INLINE PyObject *__Pyx_Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, int level);
+
+/* ImportFrom.proto */
+static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name);
+
+/* PyObjectFastCallMethod.proto */
+#if CYTHON_VECTORCALL && PY_VERSION_HEX >= 0x03090000
+#define __Pyx_PyObject_FastCallMethod(name, args, nargsf) PyObject_VectorcallMethod(name, args, nargsf, NULL)
+#else
+static PyObject *__Pyx_PyObject_FastCallMethod(PyObject *name, PyObject *const *args, size_t nargsf);
+#endif
+
+/* GetTopmostException.proto (used by SaveResetException) */
+#if CYTHON_USE_EXC_INFO_STACK && CYTHON_FAST_THREAD_STATE
+static _PyErr_StackItem * __Pyx_PyErr_GetTopmostException(PyThreadState *tstate);
+#endif
+
+/* SaveResetException.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_ExceptionSave(type, value, tb)  __Pyx__ExceptionSave(__pyx_tstate, type, value, tb)
+static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
+#define __Pyx_ExceptionReset(type, value, tb)  __Pyx__ExceptionReset(__pyx_tstate, type, value, tb)
+static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb);
+#else
+#define __Pyx_ExceptionSave(type, value, tb)   PyErr_GetExcInfo(type, value, tb)
+#define __Pyx_ExceptionReset(type, value, tb)  PyErr_SetExcInfo(type, value, tb)
+#endif
+
+/* PyImportError_Check.proto */
+#define __Pyx_PyExc_ImportError_Check(obj)  __Pyx_TypeCheck(obj, PyExc_ImportError)
+
+/* GetException.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_GetException(type, value, tb)  __Pyx__GetException(__pyx_tstate, type, value, tb)
+static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
+#else
+static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb);
+#endif
+
+/* RaiseException.export */
+static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
+
+/* PyValueError_Check.proto */
+#define __Pyx_PyExc_ValueError_Check(obj)  __Pyx_TypeCheck(obj, PyExc_ValueError)
+
+/* PyObjectFormatSimple.proto */
+#if CYTHON_COMPILING_IN_PYPY
+    #define __Pyx_PyObject_FormatSimple(s, f) (\
+        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
+        PyObject_Format(s, f))
+#elif CYTHON_USE_TYPE_SLOTS
+    #define __Pyx_PyObject_FormatSimple(s, f) (\
+        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
+        likely(PyLong_CheckExact(s)) ? PyLong_Type.tp_repr(s) :\
+        likely(PyFloat_CheckExact(s)) ? PyFloat_Type.tp_repr(s) :\
+        PyObject_Format(s, f))
+#else
+    #define __Pyx_PyObject_FormatSimple(s, f) (\
+        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
+        PyObject_Format(s, f))
+#endif
+
+/* SwapException.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_ExceptionSwap(type, value, tb)  __Pyx__ExceptionSwap(__pyx_tstate, type, value, tb)
+static CYTHON_INLINE void __Pyx__ExceptionSwap(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
+#else
+static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb);
+#endif
 
 /* GetBuiltinName.proto (used by GetModuleGlobalName) */
 static PyObject *__Pyx_GetBuiltinName(PyObject *name);
@@ -1943,68 +2024,6 @@ static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_ve
 #define __Pyx_GetModuleGlobalName(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
 #define __Pyx_GetModuleGlobalNameUncached(var, name)  (var) = __Pyx__GetModuleGlobalName(name)
 static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
-#endif
-
-/* GetTopmostException.proto (used by SaveResetException) */
-#if CYTHON_USE_EXC_INFO_STACK && CYTHON_FAST_THREAD_STATE
-static _PyErr_StackItem * __Pyx_PyErr_GetTopmostException(PyThreadState *tstate);
-#endif
-
-/* SaveResetException.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_ExceptionSave(type, value, tb)  __Pyx__ExceptionSave(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#define __Pyx_ExceptionReset(type, value, tb)  __Pyx__ExceptionReset(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb);
-#else
-#define __Pyx_ExceptionSave(type, value, tb)   PyErr_GetExcInfo(type, value, tb)
-#define __Pyx_ExceptionReset(type, value, tb)  PyErr_SetExcInfo(type, value, tb)
-#endif
-
-/* GetException.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_GetException(type, value, tb)  __Pyx__GetException(__pyx_tstate, type, value, tb)
-static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#else
-static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb);
-#endif
-
-/* PyValueError_Check.proto */
-#define __Pyx_PyExc_ValueError_Check(obj)  __Pyx_TypeCheck(obj, PyExc_ValueError)
-
-/* PyObjectFormatSimple.proto */
-#if CYTHON_COMPILING_IN_PYPY
-    #define __Pyx_PyObject_FormatSimple(s, f) (\
-        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
-        PyObject_Format(s, f))
-#elif CYTHON_USE_TYPE_SLOTS
-    #define __Pyx_PyObject_FormatSimple(s, f) (\
-        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
-        likely(PyLong_CheckExact(s)) ? PyLong_Type.tp_repr(s) :\
-        likely(PyFloat_CheckExact(s)) ? PyFloat_Type.tp_repr(s) :\
-        PyObject_Format(s, f))
-#else
-    #define __Pyx_PyObject_FormatSimple(s, f) (\
-        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
-        PyObject_Format(s, f))
-#endif
-
-/* RaiseException.export */
-static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
-
-/* SwapException.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_ExceptionSwap(type, value, tb)  __Pyx__ExceptionSwap(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx__ExceptionSwap(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#else
-static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb);
-#endif
-
-/* PyObjectFastCallMethod.proto */
-#if CYTHON_VECTORCALL && PY_VERSION_HEX >= 0x03090000
-#define __Pyx_PyObject_FastCallMethod(name, args, nargsf) PyObject_VectorcallMethod(name, args, nargsf, NULL)
-#else
-static PyObject *__Pyx_PyObject_FastCallMethod(PyObject *name, PyObject *const *args, size_t nargsf);
 #endif
 
 /* ListAppend.proto */
@@ -2080,22 +2099,6 @@ static PyTypeObject *__Pyx_ImportType_3_2_2(PyObject* module, const char *module
 
 /* GetVTable.proto */
 static void* __Pyx_GetVtable(PyTypeObject *type);
-
-/* HasAttr.proto (used by ImportImpl) */
-#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
-#define __Pyx_HasAttr(o, n)  PyObject_HasAttrWithError(o, n)
-#else
-static CYTHON_INLINE int __Pyx_HasAttr(PyObject *, PyObject *);
-#endif
-
-/* ImportImpl.export */
-static PyObject *__Pyx__Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, PyObject *moddict, int level);
-
-/* Import.proto */
-static CYTHON_INLINE PyObject *__Pyx_Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, int level);
-
-/* ImportFrom.proto */
-static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name);
 
 /* Py3UpdateBases.proto */
 static PyObject* __Pyx_PEP560_update_bases(PyObject *bases);
@@ -2439,22 +2442,22 @@ static int __Pyx_State_RemoveModule(void*);
 #define __PYX_TYPE_MODULE_PREFIX __PYX_ABI_MODULE_NAME "."
 
 
-/* Module declarations from "cellpath.projection_grid" */
+/* Module declarations from "untabulate.projection_grid" */
 
-/* Module declarations from "cellpath.html_parser" */
-static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *, PyObject *, int); /*proto*/
+/* Module declarations from "untabulate.html_parser" */
+static PyObject *__pyx_f_10untabulate_11html_parser__parse_single_table(PyObject *, PyObject *, int); /*proto*/
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "cellpath.html_parser"
-extern int __pyx_module_is_main_cellpath__html_parser;
-int __pyx_module_is_main_cellpath__html_parser = 0;
+#define __Pyx_MODULE_NAME "untabulate.html_parser"
+extern int __pyx_module_is_main_untabulate__html_parser;
+int __pyx_module_is_main_untabulate__html_parser = 0;
 
-/* Implementation of "cellpath.html_parser" */
+/* Implementation of "untabulate.html_parser" */
 /* #### Code section: global_var ### */
 /* #### Code section: string_decls ### */
 static const char __pyx_k_Fast_HTML_table_parser_that_pro[] = "\nFast HTML table parser that produces GridElement instances for use with ProjectionGrid.\n";
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_html_string, int __pyx_v_span_as_label, int __pyx_v_all_tables); /* proto */
+static PyObject *__pyx_pf_10untabulate_11html_parser_parse_html_table(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_html_string, int __pyx_v_span_as_label, int __pyx_v_all_tables); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 /* SmallCodeConfig */
@@ -2475,14 +2478,14 @@ typedef struct {
   PyObject *__pyx_empty_tuple;
   PyObject *__pyx_empty_bytes;
   PyObject *__pyx_empty_unicode;
-  PyTypeObject *__pyx_ptype_8cellpath_15projection_grid_GridElement;
-  PyTypeObject *__pyx_ptype_8cellpath_15projection_grid_ProjectionGrid;
+  PyTypeObject *__pyx_ptype_10untabulate_15projection_grid_GridElement;
+  PyTypeObject *__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_items;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
   PyObject *__pyx_tuple[2];
   PyObject *__pyx_codeobj_tab[1];
-  PyObject *__pyx_string_tab[62];
+  PyObject *__pyx_string_tab[63];
   PyObject *__pyx_number_tab[1];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
@@ -2532,17 +2535,17 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u__2 __pyx_string_tab[5]
 #define __pyx_kp_u__3 __pyx_string_tab[6]
 #define __pyx_kp_u_add_note __pyx_string_tab[7]
-#define __pyx_kp_u_src_cellpath_html_parser_pyx __pyx_string_tab[8]
-#define __pyx_kp_u_table __pyx_string_tab[9]
-#define __pyx_kp_u_td_th __pyx_string_tab[10]
-#define __pyx_kp_u_tr __pyx_string_tab[11]
-#define __pyx_n_u_DT __pyx_string_tab[12]
-#define __pyx_n_u_LB __pyx_string_tab[13]
-#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[14]
-#define __pyx_n_u_TableNotFoundError __pyx_string_tab[15]
-#define __pyx_n_u_all_tables __pyx_string_tab[16]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[17]
-#define __pyx_n_u_cellpath_html_parser __pyx_string_tab[18]
+#define __pyx_kp_u_lxml_is_required_to_parse_HTML_t __pyx_string_tab[8]
+#define __pyx_kp_u_src_untabulate_html_parser_pyx __pyx_string_tab[9]
+#define __pyx_kp_u_table __pyx_string_tab[10]
+#define __pyx_kp_u_td_th __pyx_string_tab[11]
+#define __pyx_kp_u_tr __pyx_string_tab[12]
+#define __pyx_n_u_DT __pyx_string_tab[13]
+#define __pyx_n_u_LB __pyx_string_tab[14]
+#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[15]
+#define __pyx_n_u_TableNotFoundError __pyx_string_tab[16]
+#define __pyx_n_u_all_tables __pyx_string_tab[17]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[18]
 #define __pyx_n_u_cline_in_traceback __pyx_string_tab[19]
 #define __pyx_n_u_colspan __pyx_string_tab[20]
 #define __pyx_n_u_doc __pyx_string_tab[21]
@@ -2583,9 +2586,10 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_text_content __pyx_string_tab[56]
 #define __pyx_n_u_th __pyx_string_tab[57]
 #define __pyx_n_u_tree __pyx_string_tab[58]
-#define __pyx_n_u_values __pyx_string_tab[59]
-#define __pyx_n_u_xpath __pyx_string_tab[60]
-#define __pyx_kp_b_iso88591_ZZ_a_y_1Kwaq_j_1_A_T_q_t1_q_IQ __pyx_string_tab[61]
+#define __pyx_n_u_untabulate_html_parser __pyx_string_tab[59]
+#define __pyx_n_u_values __pyx_string_tab[60]
+#define __pyx_n_u_xpath __pyx_string_tab[61]
+#define __pyx_kp_b_iso88591_ZZ_a_y_1Kwaq_k_j_1_A_T_q_t1_q_I __pyx_string_tab[62]
 #define __pyx_int_1 __pyx_number_tab[0]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
@@ -2601,11 +2605,11 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   __Pyx_State_RemoveModule(NULL);
   #endif
-  Py_CLEAR(clear_module_state->__pyx_ptype_8cellpath_15projection_grid_GridElement);
-  Py_CLEAR(clear_module_state->__pyx_ptype_8cellpath_15projection_grid_ProjectionGrid);
+  Py_CLEAR(clear_module_state->__pyx_ptype_10untabulate_15projection_grid_GridElement);
+  Py_CLEAR(clear_module_state->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid);
   for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<62; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<63; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -2629,11 +2633,11 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_tuple);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_bytes);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_unicode);
-  Py_VISIT(traverse_module_state->__pyx_ptype_8cellpath_15projection_grid_GridElement);
-  Py_VISIT(traverse_module_state->__pyx_ptype_8cellpath_15projection_grid_ProjectionGrid);
+  Py_VISIT(traverse_module_state->__pyx_ptype_10untabulate_15projection_grid_GridElement);
+  Py_VISIT(traverse_module_state->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid);
   for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<62; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<63; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -2648,7 +2652,7 @@ return 0;
 #endif
 /* #### Code section: module_code ### */
 
-/* "cellpath/html_parser.pyx":16
+/* "untabulate/html_parser.pyx":14
  * 
  * 
  * def parse_html_table(str html_string, bint span_as_label=False, bint all_tables=False) -> list:             # <<<<<<<<<<<<<<
@@ -2657,16 +2661,16 @@ return 0;
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8cellpath_11html_parser_1parse_html_table(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10untabulate_11html_parser_1parse_html_table(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8cellpath_11html_parser_parse_html_table, "\n    Parse HTML table(s) into a list of GridElement instances.\n    \n    Args:\n        html_string: HTML string containing one or more <table> elements\n        span_as_label: If True, treat cells with rowspan/colspan > 1 as labels (LB)\n        all_tables: If True, parse all tables and return a list of lists of elements.\n                    If False (default), parse only the first table.\n        \n    Returns:\n        List of GridElement instances suitable for ProjectionGrid.\n        If all_tables=True, returns a list of lists of GridElement instances.\n        \n    Raises:\n        TableNotFoundError: If no <table> element is found in the HTML\n    ");
-static PyMethodDef __pyx_mdef_8cellpath_11html_parser_1parse_html_table = {"parse_html_table", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8cellpath_11html_parser_1parse_html_table, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8cellpath_11html_parser_parse_html_table};
-static PyObject *__pyx_pw_8cellpath_11html_parser_1parse_html_table(PyObject *__pyx_self, 
+PyDoc_STRVAR(__pyx_doc_10untabulate_11html_parser_parse_html_table, "\n    Parse HTML table(s) into a list of GridElement instances.\n    \n    Args:\n        html_string: HTML string containing one or more <table> elements\n        span_as_label: If True, treat cells with rowspan/colspan > 1 as labels (LB)\n        all_tables: If True, parse all tables and return a list of lists of elements.\n                    If False (default), parse only the first table.\n        \n    Returns:\n        List of GridElement instances suitable for ProjectionGrid.\n        If all_tables=True, returns a list of lists of GridElement instances.\n        \n    Raises:\n        TableNotFoundError: If no <table> element is found in the HTML\n        ImportError: If lxml is not installed\n    ");
+static PyMethodDef __pyx_mdef_10untabulate_11html_parser_1parse_html_table = {"parse_html_table", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10untabulate_11html_parser_1parse_html_table, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10untabulate_11html_parser_parse_html_table};
+static PyObject *__pyx_pw_10untabulate_11html_parser_1parse_html_table(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2698,73 +2702,73 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_html_string,&__pyx_mstate_global->__pyx_n_u_span_as_label,&__pyx_mstate_global->__pyx_n_u_all_tables,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 16, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 14, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 16, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 16, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 16, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "parse_html_table", 0) < (0)) __PYX_ERR(0, 16, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "parse_html_table", 0) < (0)) __PYX_ERR(0, 14, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("parse_html_table", 0, 1, 3, i); __PYX_ERR(0, 16, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("parse_html_table", 0, 1, 3, i); __PYX_ERR(0, 14, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 16, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 16, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 16, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 14, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_html_string = ((PyObject*)values[0]);
     if (values[1]) {
-      __pyx_v_span_as_label = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_span_as_label == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 16, __pyx_L3_error)
+      __pyx_v_span_as_label = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_span_as_label == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
     } else {
       __pyx_v_span_as_label = ((int)((int)0));
     }
     if (values[2]) {
-      __pyx_v_all_tables = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_all_tables == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 16, __pyx_L3_error)
+      __pyx_v_all_tables = __Pyx_PyObject_IsTrue(values[2]); if (unlikely((__pyx_v_all_tables == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
     } else {
       __pyx_v_all_tables = ((int)((int)0));
     }
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("parse_html_table", 0, 1, 3, __pyx_nargs); __PYX_ERR(0, 16, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("parse_html_table", 0, 1, 3, __pyx_nargs); __PYX_ERR(0, 14, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("cellpath.html_parser.parse_html_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("untabulate.html_parser.parse_html_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_html_string), (&PyUnicode_Type), 1, "html_string", 1))) __PYX_ERR(0, 16, __pyx_L1_error)
-  __pyx_r = __pyx_pf_8cellpath_11html_parser_parse_html_table(__pyx_self, __pyx_v_html_string, __pyx_v_span_as_label, __pyx_v_all_tables);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_html_string), (&PyUnicode_Type), 1, "html_string", 1))) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10untabulate_11html_parser_parse_html_table(__pyx_self, __pyx_v_html_string, __pyx_v_span_as_label, __pyx_v_all_tables);
 
   /* function exit code */
   goto __pyx_L0;
@@ -2783,8 +2787,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_html_string, int __pyx_v_span_as_label, int __pyx_v_all_tables) {
+static PyObject *__pyx_pf_10untabulate_11html_parser_parse_html_table(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_html_string, int __pyx_v_span_as_label, int __pyx_v_all_tables) {
   PyObject *__pyx_v_elements = 0;
+  PyObject *__pyx_v_lxml_html = NULL;
   PyObject *__pyx_v_tree = NULL;
   PyObject *__pyx_v_e = NULL;
   PyObject *__pyx_v_tables = NULL;
@@ -2798,24 +2803,24 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
+  Py_ssize_t __pyx_t_6;
   PyObject *__pyx_t_7 = NULL;
-  size_t __pyx_t_8;
-  int __pyx_t_9;
-  PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_8 = NULL;
+  size_t __pyx_t_9;
+  int __pyx_t_10;
   PyObject *__pyx_t_11 = NULL;
   PyObject *__pyx_t_12 = NULL;
-  int __pyx_t_13;
-  char const *__pyx_t_14;
-  PyObject *__pyx_t_15 = NULL;
-  PyObject *__pyx_t_16 = NULL;
+  PyObject *__pyx_t_13 = NULL;
+  PyObject *__pyx_t_14 = NULL;
+  int __pyx_t_15;
+  char const *__pyx_t_16;
   PyObject *__pyx_t_17 = NULL;
   PyObject *__pyx_t_18 = NULL;
   PyObject *__pyx_t_19 = NULL;
   PyObject *__pyx_t_20 = NULL;
-  int __pyx_t_21;
+  PyObject *__pyx_t_21 = NULL;
   int __pyx_t_22;
-  Py_ssize_t __pyx_t_23;
+  int __pyx_t_23;
   PyObject *(*__pyx_t_24)(PyObject *);
   int __pyx_t_25;
   int __pyx_lineno = 0;
@@ -2823,24 +2828,24 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("parse_html_table", 0);
 
-  /* "cellpath/html_parser.pyx":33
- *         TableNotFoundError: If no <table> element is found in the HTML
+  /* "untabulate/html_parser.pyx":32
+ *         ImportError: If lxml is not installed
  *     """
  *     cdef list[GridElement] elements = []             # <<<<<<<<<<<<<<
  * 
  *     # Parse HTML
 */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_elements = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "cellpath/html_parser.pyx":36
+  /* "untabulate/html_parser.pyx":35
  * 
  *     # Parse HTML
  *     try:             # <<<<<<<<<<<<<<
+ *         from lxml import html as lxml_html
  *         tree = lxml_html.fromstring(html_string.encode('utf-8'))
- *     except Exception as e:
 */
   {
     __Pyx_PyThreadState_declare
@@ -2851,55 +2856,69 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
     __Pyx_XGOTREF(__pyx_t_4);
     /*try:*/ {
 
-      /* "cellpath/html_parser.pyx":37
+      /* "untabulate/html_parser.pyx":36
  *     # Parse HTML
  *     try:
- *         tree = lxml_html.fromstring(html_string.encode('utf-8'))             # <<<<<<<<<<<<<<
- *     except Exception as e:
- *         raise ValueError(f"Failed to parse HTML: {e}") from e
+ *         from lxml import html as lxml_html             # <<<<<<<<<<<<<<
+ *         tree = lxml_html.fromstring(html_string.encode('utf-8'))
+ *     except ImportError:
 */
-      __pyx_t_5 = NULL;
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_lxml_html); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 37, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_fromstring); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 37, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_7);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      {
+        PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_html};
+        __pyx_t_5 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_lxml, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 36, __pyx_L3_error)
+      }
+      __pyx_t_1 = __pyx_t_5;
+      __Pyx_GOTREF(__pyx_t_1);
+      {
+        PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_html};
+        __pyx_t_6 = 0; {
+          __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_1, __pyx_imported_names[__pyx_t_6]); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 36, __pyx_L3_error)
+          __Pyx_GOTREF(__pyx_t_7);
+          switch (__pyx_t_6) {
+            case 0:
+            __Pyx_INCREF(__pyx_t_7);
+            __pyx_v_lxml_html = __pyx_t_7;
+            break;
+            default:;
+          }
+          __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        }
+      }
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+      /* "untabulate/html_parser.pyx":37
+ *     try:
+ *         from lxml import html as lxml_html
+ *         tree = lxml_html.fromstring(html_string.encode('utf-8'))             # <<<<<<<<<<<<<<
+ *     except ImportError:
+ *         raise ImportError("lxml is required to parse HTML tables. Install it with 'pip install untabulate[lxml]'")
+*/
+      __pyx_t_7 = __pyx_v_lxml_html;
+      __Pyx_INCREF(__pyx_t_7);
       if (unlikely(__pyx_v_html_string == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "encode");
         __PYX_ERR(0, 37, __pyx_L3_error)
       }
-      __pyx_t_6 = PyUnicode_AsUTF8String(__pyx_v_html_string); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 37, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_8 = 1;
-      #if CYTHON_UNPACK_METHODS
-      if (unlikely(PyMethod_Check(__pyx_t_7))) {
-        __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_7);
-        assert(__pyx_t_5);
-        PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
-        __Pyx_INCREF(__pyx_t_5);
-        __Pyx_INCREF(__pyx__function);
-        __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
-        __pyx_t_8 = 0;
-      }
-      #endif
+      __pyx_t_8 = PyUnicode_AsUTF8String(__pyx_v_html_string); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 37, __pyx_L3_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __pyx_t_9 = 0;
       {
-        PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_t_6};
-        __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (__pyx_t_8*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_t_8};
+        __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_fromstring, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_1);
       }
       __pyx_v_tree = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "cellpath/html_parser.pyx":36
+      /* "untabulate/html_parser.pyx":35
  * 
  *     # Parse HTML
  *     try:             # <<<<<<<<<<<<<<
+ *         from lxml import html as lxml_html
  *         tree = lxml_html.fromstring(html_string.encode('utf-8'))
- *     except Exception as e:
 */
     }
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2908,106 +2927,141 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "cellpath/html_parser.pyx":38
- *     try:
+    /* "untabulate/html_parser.pyx":38
+ *         from lxml import html as lxml_html
  *         tree = lxml_html.fromstring(html_string.encode('utf-8'))
+ *     except ImportError:             # <<<<<<<<<<<<<<
+ *         raise ImportError("lxml is required to parse HTML tables. Install it with 'pip install untabulate[lxml]'")
+ *     except Exception as e:
+*/
+    __pyx_t_10 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_ImportError))));
+    if (__pyx_t_10) {
+      __Pyx_AddTraceback("untabulate.html_parser.parse_html_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_8, &__pyx_t_7) < 0) __PYX_ERR(0, 38, __pyx_L5_except_error)
+      __Pyx_XGOTREF(__pyx_t_1);
+      __Pyx_XGOTREF(__pyx_t_8);
+      __Pyx_XGOTREF(__pyx_t_7);
+
+      /* "untabulate/html_parser.pyx":39
+ *         tree = lxml_html.fromstring(html_string.encode('utf-8'))
+ *     except ImportError:
+ *         raise ImportError("lxml is required to parse HTML tables. Install it with 'pip install untabulate[lxml]'")             # <<<<<<<<<<<<<<
+ *     except Exception as e:
+ *         raise ValueError(f"Failed to parse HTML: {e}") from e
+*/
+      __pyx_t_12 = NULL;
+      __pyx_t_9 = 1;
+      {
+        PyObject *__pyx_callargs[2] = {__pyx_t_12, __pyx_mstate_global->__pyx_kp_u_lxml_is_required_to_parse_HTML_t};
+        __pyx_t_11 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ImportError)), __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+        __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+        if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 39, __pyx_L5_except_error)
+        __Pyx_GOTREF(__pyx_t_11);
+      }
+      __Pyx_Raise(__pyx_t_11, 0, 0, 0);
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      __PYX_ERR(0, 39, __pyx_L5_except_error)
+    }
+
+    /* "untabulate/html_parser.pyx":40
+ *     except ImportError:
+ *         raise ImportError("lxml is required to parse HTML tables. Install it with 'pip install untabulate[lxml]'")
  *     except Exception as e:             # <<<<<<<<<<<<<<
  *         raise ValueError(f"Failed to parse HTML: {e}") from e
  * 
 */
-    __pyx_t_9 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_Exception))));
-    if (__pyx_t_9) {
-      __Pyx_AddTraceback("cellpath.html_parser.parse_html_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_7, &__pyx_t_6) < 0) __PYX_ERR(0, 38, __pyx_L5_except_error)
-      __Pyx_XGOTREF(__pyx_t_1);
+    __pyx_t_10 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_Exception))));
+    if (__pyx_t_10) {
+      __Pyx_AddTraceback("untabulate.html_parser.parse_html_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_8, &__pyx_t_1) < 0) __PYX_ERR(0, 40, __pyx_L5_except_error)
       __Pyx_XGOTREF(__pyx_t_7);
-      __Pyx_XGOTREF(__pyx_t_6);
-      __Pyx_INCREF(__pyx_t_7);
-      __pyx_v_e = __pyx_t_7;
+      __Pyx_XGOTREF(__pyx_t_8);
+      __Pyx_XGOTREF(__pyx_t_1);
+      __Pyx_INCREF(__pyx_t_8);
+      __pyx_v_e = __pyx_t_8;
       /*try:*/ {
 
-        /* "cellpath/html_parser.pyx":39
- *         tree = lxml_html.fromstring(html_string.encode('utf-8'))
+        /* "untabulate/html_parser.pyx":41
+ *         raise ImportError("lxml is required to parse HTML tables. Install it with 'pip install untabulate[lxml]'")
  *     except Exception as e:
  *         raise ValueError(f"Failed to parse HTML: {e}") from e             # <<<<<<<<<<<<<<
  * 
  *     tables = tree.xpath('//table')
 */
-        __pyx_t_10 = NULL;
-        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_v_e, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 39, __pyx_L14_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_12 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Failed_to_parse_HTML, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 39, __pyx_L14_error)
-        __Pyx_GOTREF(__pyx_t_12);
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_8 = 1;
+        __pyx_t_12 = NULL;
+        __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_v_e, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 41, __pyx_L16_error)
+        __Pyx_GOTREF(__pyx_t_13);
+        __pyx_t_14 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Failed_to_parse_HTML, __pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 41, __pyx_L16_error)
+        __Pyx_GOTREF(__pyx_t_14);
+        __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+        __pyx_t_9 = 1;
         {
-          PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_t_12};
-          __pyx_t_5 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (__pyx_t_8*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-          __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 39, __pyx_L14_error)
-          __Pyx_GOTREF(__pyx_t_5);
+          PyObject *__pyx_callargs[2] = {__pyx_t_12, __pyx_t_14};
+          __pyx_t_11 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+          __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+          __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 41, __pyx_L16_error)
+          __Pyx_GOTREF(__pyx_t_11);
         }
-        __Pyx_Raise(__pyx_t_5, 0, 0, __pyx_v_e);
-        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __PYX_ERR(0, 39, __pyx_L14_error)
+        __Pyx_Raise(__pyx_t_11, 0, 0, __pyx_v_e);
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+        __PYX_ERR(0, 41, __pyx_L16_error)
       }
 
-      /* "cellpath/html_parser.pyx":38
- *     try:
- *         tree = lxml_html.fromstring(html_string.encode('utf-8'))
+      /* "untabulate/html_parser.pyx":40
+ *     except ImportError:
+ *         raise ImportError("lxml is required to parse HTML tables. Install it with 'pip install untabulate[lxml]'")
  *     except Exception as e:             # <<<<<<<<<<<<<<
  *         raise ValueError(f"Failed to parse HTML: {e}") from e
  * 
 */
       /*finally:*/ {
-        __pyx_L14_error:;
+        __pyx_L16_error:;
         /*exception exit:*/{
           __Pyx_PyThreadState_declare
           __Pyx_PyThreadState_assign
-          __pyx_t_15 = 0; __pyx_t_16 = 0; __pyx_t_17 = 0; __pyx_t_18 = 0; __pyx_t_19 = 0; __pyx_t_20 = 0;
-          __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+          __pyx_t_5 = 0; __pyx_t_17 = 0; __pyx_t_18 = 0; __pyx_t_19 = 0; __pyx_t_20 = 0; __pyx_t_21 = 0;
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-           __Pyx_ExceptionSwap(&__pyx_t_18, &__pyx_t_19, &__pyx_t_20);
-          if ( unlikely(__Pyx_GetException(&__pyx_t_15, &__pyx_t_16, &__pyx_t_17) < 0)) __Pyx_ErrFetch(&__pyx_t_15, &__pyx_t_16, &__pyx_t_17);
-          __Pyx_XGOTREF(__pyx_t_15);
-          __Pyx_XGOTREF(__pyx_t_16);
+          __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+          __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
+           __Pyx_ExceptionSwap(&__pyx_t_19, &__pyx_t_20, &__pyx_t_21);
+          if ( unlikely(__Pyx_GetException(&__pyx_t_5, &__pyx_t_17, &__pyx_t_18) < 0)) __Pyx_ErrFetch(&__pyx_t_5, &__pyx_t_17, &__pyx_t_18);
+          __Pyx_XGOTREF(__pyx_t_5);
           __Pyx_XGOTREF(__pyx_t_17);
           __Pyx_XGOTREF(__pyx_t_18);
           __Pyx_XGOTREF(__pyx_t_19);
           __Pyx_XGOTREF(__pyx_t_20);
-          __pyx_t_9 = __pyx_lineno; __pyx_t_13 = __pyx_clineno; __pyx_t_14 = __pyx_filename;
+          __Pyx_XGOTREF(__pyx_t_21);
+          __pyx_t_10 = __pyx_lineno; __pyx_t_15 = __pyx_clineno; __pyx_t_16 = __pyx_filename;
           {
             __Pyx_DECREF(__pyx_v_e); __pyx_v_e = 0;
           }
-          __Pyx_XGIVEREF(__pyx_t_18);
           __Pyx_XGIVEREF(__pyx_t_19);
           __Pyx_XGIVEREF(__pyx_t_20);
-          __Pyx_ExceptionReset(__pyx_t_18, __pyx_t_19, __pyx_t_20);
-          __Pyx_XGIVEREF(__pyx_t_15);
-          __Pyx_XGIVEREF(__pyx_t_16);
+          __Pyx_XGIVEREF(__pyx_t_21);
+          __Pyx_ExceptionReset(__pyx_t_19, __pyx_t_20, __pyx_t_21);
+          __Pyx_XGIVEREF(__pyx_t_5);
           __Pyx_XGIVEREF(__pyx_t_17);
-          __Pyx_ErrRestore(__pyx_t_15, __pyx_t_16, __pyx_t_17);
-          __pyx_t_15 = 0; __pyx_t_16 = 0; __pyx_t_17 = 0; __pyx_t_18 = 0; __pyx_t_19 = 0; __pyx_t_20 = 0;
-          __pyx_lineno = __pyx_t_9; __pyx_clineno = __pyx_t_13; __pyx_filename = __pyx_t_14;
+          __Pyx_XGIVEREF(__pyx_t_18);
+          __Pyx_ErrRestore(__pyx_t_5, __pyx_t_17, __pyx_t_18);
+          __pyx_t_5 = 0; __pyx_t_17 = 0; __pyx_t_18 = 0; __pyx_t_19 = 0; __pyx_t_20 = 0; __pyx_t_21 = 0;
+          __pyx_lineno = __pyx_t_10; __pyx_clineno = __pyx_t_15; __pyx_filename = __pyx_t_16;
           goto __pyx_L5_except_error;
         }
       }
     }
     goto __pyx_L5_except_error;
 
-    /* "cellpath/html_parser.pyx":36
+    /* "untabulate/html_parser.pyx":35
  * 
  *     # Parse HTML
  *     try:             # <<<<<<<<<<<<<<
+ *         from lxml import html as lxml_html
  *         tree = lxml_html.fromstring(html_string.encode('utf-8'))
- *     except Exception as e:
 */
     __pyx_L5_except_error:;
     __Pyx_XGIVEREF(__pyx_t_2);
@@ -3018,72 +3072,72 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
     __pyx_L8_try_end:;
   }
 
-  /* "cellpath/html_parser.pyx":41
+  /* "untabulate/html_parser.pyx":43
  *         raise ValueError(f"Failed to parse HTML: {e}") from e
  * 
  *     tables = tree.xpath('//table')             # <<<<<<<<<<<<<<
  *     if not tables:
  *         raise TableNotFoundError("No <table> element found in HTML")
 */
-  __pyx_t_7 = __pyx_v_tree;
-  __Pyx_INCREF(__pyx_t_7);
-  __pyx_t_8 = 0;
+  __pyx_t_8 = __pyx_v_tree;
+  __Pyx_INCREF(__pyx_t_8);
+  __pyx_t_9 = 0;
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_mstate_global->__pyx_kp_u_table};
-    __pyx_t_6 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_xpath, __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 41, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
+    PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_mstate_global->__pyx_kp_u_table};
+    __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_xpath, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_v_tables = __pyx_t_6;
-  __pyx_t_6 = 0;
+  __pyx_v_tables = __pyx_t_1;
+  __pyx_t_1 = 0;
 
-  /* "cellpath/html_parser.pyx":42
+  /* "untabulate/html_parser.pyx":44
  * 
  *     tables = tree.xpath('//table')
  *     if not tables:             # <<<<<<<<<<<<<<
  *         raise TableNotFoundError("No <table> element found in HTML")
  * 
 */
-  __pyx_t_21 = __Pyx_PyObject_IsTrue(__pyx_v_tables); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 42, __pyx_L1_error)
-  __pyx_t_22 = (!__pyx_t_21);
-  if (unlikely(__pyx_t_22)) {
+  __pyx_t_22 = __Pyx_PyObject_IsTrue(__pyx_v_tables); if (unlikely((__pyx_t_22 < 0))) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_23 = (!__pyx_t_22);
+  if (unlikely(__pyx_t_23)) {
 
-    /* "cellpath/html_parser.pyx":43
+    /* "untabulate/html_parser.pyx":45
  *     tables = tree.xpath('//table')
  *     if not tables:
  *         raise TableNotFoundError("No <table> element found in HTML")             # <<<<<<<<<<<<<<
  * 
  *     if all_tables:
 */
-    __pyx_t_7 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_TableNotFoundError); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = 1;
+    __pyx_t_8 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_TableNotFoundError); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_9 = 1;
     #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_1))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_1);
-      assert(__pyx_t_7);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_1);
-      __Pyx_INCREF(__pyx_t_7);
+    if (unlikely(PyMethod_Check(__pyx_t_7))) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
+      assert(__pyx_t_8);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
+      __Pyx_INCREF(__pyx_t_8);
       __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_1, __pyx__function);
-      __pyx_t_8 = 0;
+      __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
+      __pyx_t_9 = 0;
     }
     #endif
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_mstate_global->__pyx_kp_u_No_table_element_found_in_HTML};
-      __pyx_t_6 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_1, __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (__pyx_t_8*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
+      PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_mstate_global->__pyx_kp_u_No_table_element_found_in_HTML};
+      __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_9, (2-__pyx_t_9) | (__pyx_t_9*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
     }
-    __Pyx_Raise(__pyx_t_6, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __PYX_ERR(0, 43, __pyx_L1_error)
+    __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __PYX_ERR(0, 45, __pyx_L1_error)
 
-    /* "cellpath/html_parser.pyx":42
+    /* "untabulate/html_parser.pyx":44
  * 
  *     tables = tree.xpath('//table')
  *     if not tables:             # <<<<<<<<<<<<<<
@@ -3092,7 +3146,7 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
 */
   }
 
-  /* "cellpath/html_parser.pyx":45
+  /* "untabulate/html_parser.pyx":47
  *         raise TableNotFoundError("No <table> element found in HTML")
  * 
  *     if all_tables:             # <<<<<<<<<<<<<<
@@ -3101,19 +3155,19 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
 */
   if (__pyx_v_all_tables) {
 
-    /* "cellpath/html_parser.pyx":46
+    /* "untabulate/html_parser.pyx":48
  * 
  *     if all_tables:
  *         result = []             # <<<<<<<<<<<<<<
  *         for table in tables:
  *             table_elements = []
 */
-    __pyx_t_6 = PyList_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 46, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_v_result = ((PyObject*)__pyx_t_6);
-    __pyx_t_6 = 0;
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_v_result = ((PyObject*)__pyx_t_1);
+    __pyx_t_1 = 0;
 
-    /* "cellpath/html_parser.pyx":47
+    /* "untabulate/html_parser.pyx":49
  *     if all_tables:
  *         result = []
  *         for table in tables:             # <<<<<<<<<<<<<<
@@ -3121,90 +3175,90 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
  *             _parse_single_table(table, table_elements, span_as_label)
 */
     if (likely(PyList_CheckExact(__pyx_v_tables)) || PyTuple_CheckExact(__pyx_v_tables)) {
-      __pyx_t_6 = __pyx_v_tables; __Pyx_INCREF(__pyx_t_6);
-      __pyx_t_23 = 0;
+      __pyx_t_1 = __pyx_v_tables; __Pyx_INCREF(__pyx_t_1);
+      __pyx_t_6 = 0;
       __pyx_t_24 = NULL;
     } else {
-      __pyx_t_23 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_v_tables); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 47, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_24 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_6); if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_tables); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_24 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 49, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_24)) {
-        if (likely(PyList_CheckExact(__pyx_t_6))) {
+        if (likely(PyList_CheckExact(__pyx_t_1))) {
           {
-            Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_6);
+            Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
             #if !CYTHON_ASSUME_SAFE_SIZE
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 47, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 49, __pyx_L1_error)
             #endif
-            if (__pyx_t_23 >= __pyx_temp) break;
+            if (__pyx_t_6 >= __pyx_temp) break;
           }
-          __pyx_t_1 = __Pyx_PyList_GetItemRefFast(__pyx_t_6, __pyx_t_23, __Pyx_ReferenceSharing_OwnStrongReference);
-          ++__pyx_t_23;
+          __pyx_t_7 = __Pyx_PyList_GetItemRefFast(__pyx_t_1, __pyx_t_6, __Pyx_ReferenceSharing_OwnStrongReference);
+          ++__pyx_t_6;
         } else {
           {
-            Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_6);
+            Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
             #if !CYTHON_ASSUME_SAFE_SIZE
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 47, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 49, __pyx_L1_error)
             #endif
-            if (__pyx_t_23 >= __pyx_temp) break;
+            if (__pyx_t_6 >= __pyx_temp) break;
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_1 = __Pyx_NewRef(PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_23));
+          __pyx_t_7 = __Pyx_NewRef(PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6));
           #else
-          __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_6, __pyx_t_23);
+          __pyx_t_7 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_6);
           #endif
-          ++__pyx_t_23;
+          ++__pyx_t_6;
         }
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
       } else {
-        __pyx_t_1 = __pyx_t_24(__pyx_t_6);
-        if (unlikely(!__pyx_t_1)) {
+        __pyx_t_7 = __pyx_t_24(__pyx_t_1);
+        if (unlikely(!__pyx_t_7)) {
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
-            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 47, __pyx_L1_error)
+            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 49, __pyx_L1_error)
             PyErr_Clear();
           }
           break;
         }
       }
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_XDECREF_SET(__pyx_v_table, __pyx_t_1);
-      __pyx_t_1 = 0;
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_XDECREF_SET(__pyx_v_table, __pyx_t_7);
+      __pyx_t_7 = 0;
 
-      /* "cellpath/html_parser.pyx":48
+      /* "untabulate/html_parser.pyx":50
  *         result = []
  *         for table in tables:
  *             table_elements = []             # <<<<<<<<<<<<<<
  *             _parse_single_table(table, table_elements, span_as_label)
  *             result.append(table_elements)
 */
-      __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_XDECREF_SET(__pyx_v_table_elements, ((PyObject*)__pyx_t_1));
-      __pyx_t_1 = 0;
+      __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 50, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_XDECREF_SET(__pyx_v_table_elements, ((PyObject*)__pyx_t_7));
+      __pyx_t_7 = 0;
 
-      /* "cellpath/html_parser.pyx":49
+      /* "untabulate/html_parser.pyx":51
  *         for table in tables:
  *             table_elements = []
  *             _parse_single_table(table, table_elements, span_as_label)             # <<<<<<<<<<<<<<
  *             result.append(table_elements)
  *         return result
 */
-      __pyx_t_1 = __pyx_f_8cellpath_11html_parser__parse_single_table(__pyx_v_table, __pyx_v_table_elements, __pyx_v_span_as_label); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_7 = __pyx_f_10untabulate_11html_parser__parse_single_table(__pyx_v_table, __pyx_v_table_elements, __pyx_v_span_as_label); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 51, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "cellpath/html_parser.pyx":50
+      /* "untabulate/html_parser.pyx":52
  *             table_elements = []
  *             _parse_single_table(table, table_elements, span_as_label)
  *             result.append(table_elements)             # <<<<<<<<<<<<<<
  *         return result
  *     else:
 */
-      __pyx_t_25 = __Pyx_PyList_Append(__pyx_v_result, __pyx_v_table_elements); if (unlikely(__pyx_t_25 == ((int)-1))) __PYX_ERR(0, 50, __pyx_L1_error)
+      __pyx_t_25 = __Pyx_PyList_Append(__pyx_v_result, __pyx_v_table_elements); if (unlikely(__pyx_t_25 == ((int)-1))) __PYX_ERR(0, 52, __pyx_L1_error)
 
-      /* "cellpath/html_parser.pyx":47
+      /* "untabulate/html_parser.pyx":49
  *     if all_tables:
  *         result = []
  *         for table in tables:             # <<<<<<<<<<<<<<
@@ -3212,9 +3266,9 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
  *             _parse_single_table(table, table_elements, span_as_label)
 */
     }
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "cellpath/html_parser.pyx":51
+    /* "untabulate/html_parser.pyx":53
  *             _parse_single_table(table, table_elements, span_as_label)
  *             result.append(table_elements)
  *         return result             # <<<<<<<<<<<<<<
@@ -3226,7 +3280,7 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
     __pyx_r = __pyx_v_result;
     goto __pyx_L0;
 
-    /* "cellpath/html_parser.pyx":45
+    /* "untabulate/html_parser.pyx":47
  *         raise TableNotFoundError("No <table> element found in HTML")
  * 
  *     if all_tables:             # <<<<<<<<<<<<<<
@@ -3235,7 +3289,7 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
 */
   }
 
-  /* "cellpath/html_parser.pyx":53
+  /* "untabulate/html_parser.pyx":55
  *         return result
  *     else:
  *         _parse_single_table(tables[0], elements, span_as_label)             # <<<<<<<<<<<<<<
@@ -3243,14 +3297,14 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
  * 
 */
   /*else*/ {
-    __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_tables, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 53, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_1 = __pyx_f_8cellpath_11html_parser__parse_single_table(__pyx_t_6, __pyx_v_elements, __pyx_v_span_as_label); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_tables, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_7 = __pyx_f_10untabulate_11html_parser__parse_single_table(__pyx_t_1, __pyx_v_elements, __pyx_v_span_as_label); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "cellpath/html_parser.pyx":54
+    /* "untabulate/html_parser.pyx":56
  *     else:
  *         _parse_single_table(tables[0], elements, span_as_label)
  *         return elements             # <<<<<<<<<<<<<<
@@ -3263,7 +3317,7 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
     goto __pyx_L0;
   }
 
-  /* "cellpath/html_parser.pyx":16
+  /* "untabulate/html_parser.pyx":14
  * 
  * 
  * def parse_html_table(str html_string, bint span_as_label=False, bint all_tables=False) -> list:             # <<<<<<<<<<<<<<
@@ -3274,16 +3328,17 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_12);
-  __Pyx_AddTraceback("cellpath.html_parser.parse_html_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_13);
+  __Pyx_XDECREF(__pyx_t_14);
+  __Pyx_AddTraceback("untabulate.html_parser.parse_html_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_elements);
+  __Pyx_XDECREF(__pyx_v_lxml_html);
   __Pyx_XDECREF(__pyx_v_tree);
   __Pyx_XDECREF(__pyx_v_e);
   __Pyx_XDECREF(__pyx_v_tables);
@@ -3295,7 +3350,7 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "cellpath/html_parser.pyx":57
+/* "untabulate/html_parser.pyx":59
  * 
  * 
  * cdef _parse_single_table(object table, list[GridElement] elements, bint span_as_label):             # <<<<<<<<<<<<<<
@@ -3303,7 +3358,7 @@ static PyObject *__pyx_pf_8cellpath_11html_parser_parse_html_table(CYTHON_UNUSED
  *     cdef int row_idx, col_idx, rs, cs, r, c
 */
 
-static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *__pyx_v_table, PyObject *__pyx_v_elements, int __pyx_v_span_as_label) {
+static PyObject *__pyx_f_10untabulate_11html_parser__parse_single_table(PyObject *__pyx_v_table, PyObject *__pyx_v_elements, int __pyx_v_span_as_label) {
   int __pyx_v_row_idx;
   int __pyx_v_col_idx;
   int __pyx_v_rs;
@@ -3344,19 +3399,19 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_parse_single_table", 0);
 
-  /* "cellpath/html_parser.pyx":61
+  /* "untabulate/html_parser.pyx":63
  *     cdef int row_idx, col_idx, rs, cs, r, c
  *     cdef str el_type, label
  *     cdef dict occupied = {}  # (row, col) -> True             # <<<<<<<<<<<<<<
  * 
  *     row_idx = 1
 */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_occupied = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "cellpath/html_parser.pyx":63
+  /* "untabulate/html_parser.pyx":65
  *     cdef dict occupied = {}  # (row, col) -> True
  * 
  *     row_idx = 1             # <<<<<<<<<<<<<<
@@ -3365,7 +3420,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
 */
   __pyx_v_row_idx = 1;
 
-  /* "cellpath/html_parser.pyx":65
+  /* "untabulate/html_parser.pyx":67
  *     row_idx = 1
  * 
  *     for tr in table.xpath('.//tr'):             # <<<<<<<<<<<<<<
@@ -3379,7 +3434,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
     PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_mstate_global->__pyx_kp_u_tr};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_xpath, __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
@@ -3387,9 +3442,9 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
     __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 67, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -3398,7 +3453,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 65, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 67, __pyx_L1_error)
           #endif
           if (__pyx_t_4 >= __pyx_temp) break;
         }
@@ -3408,7 +3463,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_2);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 65, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 67, __pyx_L1_error)
           #endif
           if (__pyx_t_4 >= __pyx_temp) break;
         }
@@ -3419,13 +3474,13 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         #endif
         ++__pyx_t_4;
       }
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
     } else {
       __pyx_t_1 = __pyx_t_5(__pyx_t_2);
       if (unlikely(!__pyx_t_1)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 65, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 67, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
@@ -3435,7 +3490,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
     __Pyx_XDECREF_SET(__pyx_v_tr, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "cellpath/html_parser.pyx":66
+    /* "untabulate/html_parser.pyx":68
  * 
  *     for tr in table.xpath('.//tr'):
  *         col_idx = 1             # <<<<<<<<<<<<<<
@@ -3444,7 +3499,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
 */
     __pyx_v_col_idx = 1;
 
-    /* "cellpath/html_parser.pyx":68
+    /* "untabulate/html_parser.pyx":70
  *         col_idx = 1
  * 
  *         for cell in tr.xpath('./td | ./th'):             # <<<<<<<<<<<<<<
@@ -3458,7 +3513,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
       PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_mstate_global->__pyx_kp_u_td_th};
       __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_xpath, __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
@@ -3466,9 +3521,9 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
       __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_7 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 68, __pyx_L1_error)
+      __pyx_t_7 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 70, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_8 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 68, __pyx_L1_error)
+      __pyx_t_8 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 70, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     for (;;) {
@@ -3477,7 +3532,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_6);
             #if !CYTHON_ASSUME_SAFE_SIZE
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 68, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 70, __pyx_L1_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
@@ -3487,7 +3542,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_6);
             #if !CYTHON_ASSUME_SAFE_SIZE
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 68, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 70, __pyx_L1_error)
             #endif
             if (__pyx_t_7 >= __pyx_temp) break;
           }
@@ -3498,13 +3553,13 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
           #endif
           ++__pyx_t_7;
         }
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
       } else {
         __pyx_t_1 = __pyx_t_8(__pyx_t_6);
         if (unlikely(!__pyx_t_1)) {
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
-            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 68, __pyx_L1_error)
+            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 70, __pyx_L1_error)
             PyErr_Clear();
           }
           break;
@@ -3514,7 +3569,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
       __Pyx_XDECREF_SET(__pyx_v_cell, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "cellpath/html_parser.pyx":70
+      /* "untabulate/html_parser.pyx":72
  *         for cell in tr.xpath('./td | ./th'):
  *             # Skip occupied cells (from previous rowspans)
  *             while (row_idx, col_idx) in occupied:             # <<<<<<<<<<<<<<
@@ -3522,45 +3577,45 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
  *                 col_idx += 1
 */
       while (1) {
-        __pyx_t_1 = __Pyx_PyLong_From_int(__pyx_v_row_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyLong_From_int(__pyx_v_row_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_9 = __Pyx_PyLong_From_int(__pyx_v_col_idx); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 70, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyLong_From_int(__pyx_v_col_idx); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 72, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 70, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 72, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GIVEREF(__pyx_t_1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 70, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 72, __pyx_L1_error);
         __Pyx_GIVEREF(__pyx_t_9);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_9) != (0)) __PYX_ERR(0, 70, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_9) != (0)) __PYX_ERR(0, 72, __pyx_L1_error);
         __pyx_t_1 = 0;
         __pyx_t_9 = 0;
-        __pyx_t_11 = (__Pyx_PyDict_ContainsTF(__pyx_t_10, __pyx_v_occupied, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 70, __pyx_L1_error)
+        __pyx_t_11 = (__Pyx_PyDict_ContainsTF(__pyx_t_10, __pyx_v_occupied, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 72, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         if (!__pyx_t_11) break;
 
-        /* "cellpath/html_parser.pyx":71
+        /* "untabulate/html_parser.pyx":73
  *             # Skip occupied cells (from previous rowspans)
  *             while (row_idx, col_idx) in occupied:
  *                 del occupied[(row_idx, col_idx)]             # <<<<<<<<<<<<<<
  *                 col_idx += 1
  * 
 */
-        __pyx_t_10 = __Pyx_PyLong_From_int(__pyx_v_row_idx); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyLong_From_int(__pyx_v_row_idx); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 73, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_9 = __Pyx_PyLong_From_int(__pyx_v_col_idx); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyLong_From_int(__pyx_v_col_idx); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 73, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_GIVEREF(__pyx_t_10);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_10) != (0)) __PYX_ERR(0, 71, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_10) != (0)) __PYX_ERR(0, 73, __pyx_L1_error);
         __Pyx_GIVEREF(__pyx_t_9);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_9) != (0)) __PYX_ERR(0, 71, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_9) != (0)) __PYX_ERR(0, 73, __pyx_L1_error);
         __pyx_t_10 = 0;
         __pyx_t_9 = 0;
-        if (unlikely((PyDict_DelItem(__pyx_v_occupied, __pyx_t_1) < 0))) __PYX_ERR(0, 71, __pyx_L1_error)
+        if (unlikely((PyDict_DelItem(__pyx_v_occupied, __pyx_t_1) < 0))) __PYX_ERR(0, 73, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "cellpath/html_parser.pyx":72
+        /* "untabulate/html_parser.pyx":74
  *             while (row_idx, col_idx) in occupied:
  *                 del occupied[(row_idx, col_idx)]
  *                 col_idx += 1             # <<<<<<<<<<<<<<
@@ -3570,19 +3625,19 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         __pyx_v_col_idx = (__pyx_v_col_idx + 1);
       }
 
-      /* "cellpath/html_parser.pyx":75
+      /* "untabulate/html_parser.pyx":77
  * 
  *             # Extract attributes
  *             rs = int(cell.get('rowspan', 1) or 1)             # <<<<<<<<<<<<<<
  *             cs = int(cell.get('colspan', 1) or 1)
  *             label = (cell.text_content() or '').strip()
 */
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_cell, __pyx_mstate_global->__pyx_n_u_get); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_cell, __pyx_mstate_global->__pyx_n_u_get); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 77, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_mstate_global->__pyx_tuple[0], NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_mstate_global->__pyx_tuple[0], NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 77, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 75, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 77, __pyx_L1_error)
       if (!__pyx_t_11) {
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       } else {
@@ -3591,31 +3646,31 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         goto __pyx_L9_bool_binop_done;
       }
-      __pyx_t_10 = __Pyx_PyLong_From_long(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyLong_From_long(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 77, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_t_1 = __pyx_t_10;
       __pyx_t_10 = 0;
       __pyx_L9_bool_binop_done:;
-      __pyx_t_10 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 77, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_12 = __Pyx_PyLong_As_int(__pyx_t_10); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 75, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyLong_As_int(__pyx_t_10); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 77, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __pyx_v_rs = __pyx_t_12;
 
-      /* "cellpath/html_parser.pyx":76
+      /* "untabulate/html_parser.pyx":78
  *             # Extract attributes
  *             rs = int(cell.get('rowspan', 1) or 1)
  *             cs = int(cell.get('colspan', 1) or 1)             # <<<<<<<<<<<<<<
  *             label = (cell.text_content() or '').strip()
  * 
 */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_cell, __pyx_mstate_global->__pyx_n_u_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_cell, __pyx_mstate_global->__pyx_n_u_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_mstate_global->__pyx_tuple[1], NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_mstate_global->__pyx_tuple[1], NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 78, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 78, __pyx_L1_error)
       if (!__pyx_t_11) {
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       } else {
@@ -3624,19 +3679,19 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         goto __pyx_L11_bool_binop_done;
       }
-      __pyx_t_9 = __Pyx_PyLong_From_long(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyLong_From_long(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 78, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __pyx_t_10 = __pyx_t_9;
       __pyx_t_9 = 0;
       __pyx_L11_bool_binop_done:;
-      __pyx_t_9 = __Pyx_PyNumber_Int(__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyNumber_Int(__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 78, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_12 = __Pyx_PyLong_As_int(__pyx_t_9); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 76, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyLong_As_int(__pyx_t_9); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 78, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_v_cs = __pyx_t_12;
 
-      /* "cellpath/html_parser.pyx":77
+      /* "untabulate/html_parser.pyx":79
  *             rs = int(cell.get('rowspan', 1) or 1)
  *             cs = int(cell.get('colspan', 1) or 1)
  *             label = (cell.text_content() or '').strip()             # <<<<<<<<<<<<<<
@@ -3650,10 +3705,10 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         PyObject *__pyx_callargs[2] = {__pyx_t_14, NULL};
         __pyx_t_13 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_text_content, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-        if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 77, __pyx_L1_error)
+        if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 79, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
       }
-      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 77, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 79, __pyx_L1_error)
       if (!__pyx_t_11) {
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       } else {
@@ -3662,8 +3717,8 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         goto __pyx_L13_bool_binop_done;
       }
-      __Pyx_INCREF(__pyx_mstate_global->__pyx_kp_u_);
-      __pyx_t_1 = __pyx_mstate_global->__pyx_kp_u_;
+      __Pyx_INCREF(__pyx_mstate_global->__pyx_kp_u__2);
+      __pyx_t_1 = __pyx_mstate_global->__pyx_kp_u__2;
       __pyx_L13_bool_binop_done:;
       __pyx_t_10 = __pyx_t_1;
       __Pyx_INCREF(__pyx_t_10);
@@ -3673,27 +3728,27 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         __pyx_t_9 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_strip, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 77, __pyx_L1_error)
+        if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 79, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
       }
-      if (!(likely(PyUnicode_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_9))) __PYX_ERR(0, 77, __pyx_L1_error)
+      if (!(likely(PyUnicode_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_9))) __PYX_ERR(0, 79, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_label, ((PyObject*)__pyx_t_9));
       __pyx_t_9 = 0;
 
-      /* "cellpath/html_parser.pyx":80
+      /* "untabulate/html_parser.pyx":82
  * 
  *             # Determine element type
  *             if cell.tag == 'th':             # <<<<<<<<<<<<<<
  *                 el_type = 'LB'
  *             elif (rs > 1 or cs > 1) and span_as_label:
 */
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_cell, __pyx_mstate_global->__pyx_n_u_tag); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 80, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_cell, __pyx_mstate_global->__pyx_n_u_tag); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 82, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_11 = (__Pyx_PyUnicode_Equals(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_th, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 80, __pyx_L1_error)
+      __pyx_t_11 = (__Pyx_PyUnicode_Equals(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_th, Py_EQ)); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 82, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       if (__pyx_t_11) {
 
-        /* "cellpath/html_parser.pyx":81
+        /* "untabulate/html_parser.pyx":83
  *             # Determine element type
  *             if cell.tag == 'th':
  *                 el_type = 'LB'             # <<<<<<<<<<<<<<
@@ -3703,7 +3758,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         __Pyx_INCREF(__pyx_mstate_global->__pyx_n_u_LB);
         __Pyx_XDECREF_SET(__pyx_v_el_type, __pyx_mstate_global->__pyx_n_u_LB);
 
-        /* "cellpath/html_parser.pyx":80
+        /* "untabulate/html_parser.pyx":82
  * 
  *             # Determine element type
  *             if cell.tag == 'th':             # <<<<<<<<<<<<<<
@@ -3713,7 +3768,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         goto __pyx_L15;
       }
 
-      /* "cellpath/html_parser.pyx":82
+      /* "untabulate/html_parser.pyx":84
  *             if cell.tag == 'th':
  *                 el_type = 'LB'
  *             elif (rs > 1 or cs > 1) and span_as_label:             # <<<<<<<<<<<<<<
@@ -3736,7 +3791,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
       __pyx_L16_bool_binop_done:;
       if (__pyx_t_11) {
 
-        /* "cellpath/html_parser.pyx":83
+        /* "untabulate/html_parser.pyx":85
  *                 el_type = 'LB'
  *             elif (rs > 1 or cs > 1) and span_as_label:
  *                 el_type = 'LB'             # <<<<<<<<<<<<<<
@@ -3746,7 +3801,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         __Pyx_INCREF(__pyx_mstate_global->__pyx_n_u_LB);
         __Pyx_XDECREF_SET(__pyx_v_el_type, __pyx_mstate_global->__pyx_n_u_LB);
 
-        /* "cellpath/html_parser.pyx":82
+        /* "untabulate/html_parser.pyx":84
  *             if cell.tag == 'th':
  *                 el_type = 'LB'
  *             elif (rs > 1 or cs > 1) and span_as_label:             # <<<<<<<<<<<<<<
@@ -3756,7 +3811,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         goto __pyx_L15;
       }
 
-      /* "cellpath/html_parser.pyx":85
+      /* "untabulate/html_parser.pyx":87
  *                 el_type = 'LB'
  *             else:
  *                 el_type = 'DT'             # <<<<<<<<<<<<<<
@@ -3769,7 +3824,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
       }
       __pyx_L15:;
 
-      /* "cellpath/html_parser.pyx":88
+      /* "untabulate/html_parser.pyx":90
  * 
  *             # Create GridElement
  *             elements.append(GridElement(el_type, row_idx, col_idx, rs, cs, label))             # <<<<<<<<<<<<<<
@@ -3778,33 +3833,33 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
 */
       if (unlikely(__pyx_v_elements == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-        __PYX_ERR(0, 88, __pyx_L1_error)
+        __PYX_ERR(0, 90, __pyx_L1_error)
       }
       __pyx_t_1 = NULL;
-      __pyx_t_10 = __Pyx_PyLong_From_int(__pyx_v_row_idx); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyLong_From_int(__pyx_v_row_idx); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 90, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_13 = __Pyx_PyLong_From_int(__pyx_v_col_idx); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyLong_From_int(__pyx_v_col_idx); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 90, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
-      __pyx_t_14 = __Pyx_PyLong_From_int(__pyx_v_rs); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyLong_From_int(__pyx_v_rs); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 90, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_16 = __Pyx_PyLong_From_int(__pyx_v_cs); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_16 = __Pyx_PyLong_From_int(__pyx_v_cs); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 90, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       __pyx_t_3 = 1;
       {
         PyObject *__pyx_callargs[7] = {__pyx_t_1, __pyx_v_el_type, __pyx_t_10, __pyx_t_13, __pyx_t_14, __pyx_t_16, __pyx_v_label};
-        __pyx_t_9 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_ptype_8cellpath_15projection_grid_GridElement, __pyx_callargs+__pyx_t_3, (7-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+        __pyx_t_9 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_ptype_10untabulate_15projection_grid_GridElement, __pyx_callargs+__pyx_t_3, (7-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-        if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 88, __pyx_L1_error)
+        if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 90, __pyx_L1_error)
         __Pyx_GOTREF((PyObject *)__pyx_t_9);
       }
-      __pyx_t_17 = __Pyx_PyList_Append(__pyx_v_elements, ((PyObject *)__pyx_t_9)); if (unlikely(__pyx_t_17 == ((int)-1))) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_17 = __Pyx_PyList_Append(__pyx_v_elements, ((PyObject *)__pyx_t_9)); if (unlikely(__pyx_t_17 == ((int)-1))) __PYX_ERR(0, 90, __pyx_L1_error)
       __Pyx_DECREF((PyObject *)__pyx_t_9); __pyx_t_9 = 0;
 
-      /* "cellpath/html_parser.pyx":91
+      /* "untabulate/html_parser.pyx":93
  * 
  *             # Mark occupied cells for rowspan (future rows only)
  *             for r in range(row_idx + 1, row_idx + rs):             # <<<<<<<<<<<<<<
@@ -3816,7 +3871,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
       for (__pyx_t_19 = (__pyx_v_row_idx + 1); __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
         __pyx_v_r = __pyx_t_19;
 
-        /* "cellpath/html_parser.pyx":92
+        /* "untabulate/html_parser.pyx":94
  *             # Mark occupied cells for rowspan (future rows only)
  *             for r in range(row_idx + 1, row_idx + rs):
  *                 for c in range(col_idx, col_idx + cs):             # <<<<<<<<<<<<<<
@@ -3828,31 +3883,31 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
         for (__pyx_t_22 = __pyx_v_col_idx; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
           __pyx_v_c = __pyx_t_22;
 
-          /* "cellpath/html_parser.pyx":93
+          /* "untabulate/html_parser.pyx":95
  *             for r in range(row_idx + 1, row_idx + rs):
  *                 for c in range(col_idx, col_idx + cs):
  *                     occupied[(r, c)] = True             # <<<<<<<<<<<<<<
  * 
  *             col_idx += cs
 */
-          __pyx_t_9 = __Pyx_PyLong_From_int(__pyx_v_r); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 93, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyLong_From_int(__pyx_v_r); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 95, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_16 = __Pyx_PyLong_From_int(__pyx_v_c); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 93, __pyx_L1_error)
+          __pyx_t_16 = __Pyx_PyLong_From_int(__pyx_v_c); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 95, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_16);
-          __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 93, __pyx_L1_error)
+          __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 95, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_GIVEREF(__pyx_t_9);
-          if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_9) != (0)) __PYX_ERR(0, 93, __pyx_L1_error);
+          if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_9) != (0)) __PYX_ERR(0, 95, __pyx_L1_error);
           __Pyx_GIVEREF(__pyx_t_16);
-          if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_16) != (0)) __PYX_ERR(0, 93, __pyx_L1_error);
+          if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_16) != (0)) __PYX_ERR(0, 95, __pyx_L1_error);
           __pyx_t_9 = 0;
           __pyx_t_16 = 0;
-          if (unlikely((PyDict_SetItem(__pyx_v_occupied, __pyx_t_14, Py_True) < 0))) __PYX_ERR(0, 93, __pyx_L1_error)
+          if (unlikely((PyDict_SetItem(__pyx_v_occupied, __pyx_t_14, Py_True) < 0))) __PYX_ERR(0, 95, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         }
       }
 
-      /* "cellpath/html_parser.pyx":95
+      /* "untabulate/html_parser.pyx":97
  *                     occupied[(r, c)] = True
  * 
  *             col_idx += cs             # <<<<<<<<<<<<<<
@@ -3861,7 +3916,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
 */
       __pyx_v_col_idx = (__pyx_v_col_idx + __pyx_v_cs);
 
-      /* "cellpath/html_parser.pyx":68
+      /* "untabulate/html_parser.pyx":70
  *         col_idx = 1
  * 
  *         for cell in tr.xpath('./td | ./th'):             # <<<<<<<<<<<<<<
@@ -3871,14 +3926,14 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "cellpath/html_parser.pyx":97
+    /* "untabulate/html_parser.pyx":99
  *             col_idx += cs
  * 
  *         row_idx += 1             # <<<<<<<<<<<<<<
 */
     __pyx_v_row_idx = (__pyx_v_row_idx + 1);
 
-    /* "cellpath/html_parser.pyx":65
+    /* "untabulate/html_parser.pyx":67
  *     row_idx = 1
  * 
  *     for tr in table.xpath('.//tr'):             # <<<<<<<<<<<<<<
@@ -3888,7 +3943,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cellpath/html_parser.pyx":57
+  /* "untabulate/html_parser.pyx":59
  * 
  * 
  * cdef _parse_single_table(object table, list[GridElement] elements, bint span_as_label):             # <<<<<<<<<<<<<<
@@ -3908,7 +3963,7 @@ static PyObject *__pyx_f_8cellpath_11html_parser__parse_single_table(PyObject *_
   __Pyx_XDECREF(__pyx_t_13);
   __Pyx_XDECREF(__pyx_t_14);
   __Pyx_XDECREF(__pyx_t_16);
-  __Pyx_AddTraceback("cellpath.html_parser._parse_single_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("untabulate.html_parser._parse_single_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_el_type);
@@ -3985,27 +4040,27 @@ static int __Pyx_modinit_type_import_code(__pyx_mstatetype *__pyx_mstate) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_import_code", 0);
   /*--- Type import code ---*/
-  __pyx_t_1 = PyImport_ImportModule("cellpath.projection_grid"); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_1 = PyImport_ImportModule("untabulate.projection_grid"); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_mstate->__pyx_ptype_8cellpath_15projection_grid_GridElement = __Pyx_ImportType_3_2_2(__pyx_t_1, "cellpath.projection_grid", "GridElement",
+  __pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_GridElement = __Pyx_ImportType_3_2_2(__pyx_t_1, "untabulate.projection_grid", "GridElement",
   #if defined(PYPY_VERSION_NUM) && PYPY_VERSION_NUM < 0x050B0000
-  sizeof(struct __pyx_obj_8cellpath_15projection_grid_GridElement), __PYX_GET_STRUCT_ALIGNMENT_3_2_2(struct __pyx_obj_8cellpath_15projection_grid_GridElement),
+  sizeof(struct __pyx_obj_10untabulate_15projection_grid_GridElement), __PYX_GET_STRUCT_ALIGNMENT_3_2_2(struct __pyx_obj_10untabulate_15projection_grid_GridElement),
   #elif CYTHON_COMPILING_IN_LIMITED_API
-  sizeof(struct __pyx_obj_8cellpath_15projection_grid_GridElement), __PYX_GET_STRUCT_ALIGNMENT_3_2_2(struct __pyx_obj_8cellpath_15projection_grid_GridElement),
+  sizeof(struct __pyx_obj_10untabulate_15projection_grid_GridElement), __PYX_GET_STRUCT_ALIGNMENT_3_2_2(struct __pyx_obj_10untabulate_15projection_grid_GridElement),
   #else
-  sizeof(struct __pyx_obj_8cellpath_15projection_grid_GridElement), __PYX_GET_STRUCT_ALIGNMENT_3_2_2(struct __pyx_obj_8cellpath_15projection_grid_GridElement),
+  sizeof(struct __pyx_obj_10untabulate_15projection_grid_GridElement), __PYX_GET_STRUCT_ALIGNMENT_3_2_2(struct __pyx_obj_10untabulate_15projection_grid_GridElement),
   #endif
-  __Pyx_ImportType_CheckSize_Warn_3_2_2); if (!__pyx_mstate->__pyx_ptype_8cellpath_15projection_grid_GridElement) __PYX_ERR(1, 4, __pyx_L1_error)
-  __pyx_mstate->__pyx_ptype_8cellpath_15projection_grid_ProjectionGrid = __Pyx_ImportType_3_2_2(__pyx_t_1, "cellpath.projection_grid", "ProjectionGrid",
+  __Pyx_ImportType_CheckSize_Warn_3_2_2); if (!__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_GridElement) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid = __Pyx_ImportType_3_2_2(__pyx_t_1, "untabulate.projection_grid", "ProjectionGrid",
   #if defined(PYPY_VERSION_NUM) && PYPY_VERSION_NUM < 0x050B0000
-  sizeof(struct __pyx_obj_8cellpath_15projection_grid_ProjectionGrid), __PYX_GET_STRUCT_ALIGNMENT_3_2_2(struct __pyx_obj_8cellpath_15projection_grid_ProjectionGrid),
+  sizeof(struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid), __PYX_GET_STRUCT_ALIGNMENT_3_2_2(struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid),
   #elif CYTHON_COMPILING_IN_LIMITED_API
-  sizeof(struct __pyx_obj_8cellpath_15projection_grid_ProjectionGrid), __PYX_GET_STRUCT_ALIGNMENT_3_2_2(struct __pyx_obj_8cellpath_15projection_grid_ProjectionGrid),
+  sizeof(struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid), __PYX_GET_STRUCT_ALIGNMENT_3_2_2(struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid),
   #else
-  sizeof(struct __pyx_obj_8cellpath_15projection_grid_ProjectionGrid), __PYX_GET_STRUCT_ALIGNMENT_3_2_2(struct __pyx_obj_8cellpath_15projection_grid_ProjectionGrid),
+  sizeof(struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid), __PYX_GET_STRUCT_ALIGNMENT_3_2_2(struct __pyx_obj_10untabulate_15projection_grid_ProjectionGrid),
   #endif
-  __Pyx_ImportType_CheckSize_Warn_3_2_2); if (!__pyx_mstate->__pyx_ptype_8cellpath_15projection_grid_ProjectionGrid) __PYX_ERR(1, 13, __pyx_L1_error)
-  __pyx_vtabptr_8cellpath_15projection_grid_ProjectionGrid = (struct __pyx_vtabstruct_8cellpath_15projection_grid_ProjectionGrid*)__Pyx_GetVtable(__pyx_mstate->__pyx_ptype_8cellpath_15projection_grid_ProjectionGrid); if (unlikely(!__pyx_vtabptr_8cellpath_15projection_grid_ProjectionGrid)) __PYX_ERR(1, 13, __pyx_L1_error)
+  __Pyx_ImportType_CheckSize_Warn_3_2_2); if (!__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid) __PYX_ERR(1, 13, __pyx_L1_error)
+  __pyx_vtabptr_10untabulate_15projection_grid_ProjectionGrid = (struct __pyx_vtabstruct_10untabulate_15projection_grid_ProjectionGrid*)__Pyx_GetVtable(__pyx_mstate->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid); if (unlikely(!__pyx_vtabptr_10untabulate_15projection_grid_ProjectionGrid)) __PYX_ERR(1, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -4213,10 +4268,9 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_html_parser(PyObject *__pyx_pyinit
   __pyx_mstatetype *__pyx_mstate = NULL;
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
-  Py_ssize_t __pyx_t_3;
+  PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4279,13 +4333,13 @@ __Pyx_RefNannySetupContext("PyInit_html_parser", 0);
   if (__Pyx_InitConstants(__pyx_mstate) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   stringtab_initialized = 1;
   if (__Pyx_InitGlobals() < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__pyx_module_is_main_cellpath__html_parser) {
+  if (__pyx_module_is_main_untabulate__html_parser) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name, __pyx_mstate_global->__pyx_n_u_main) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "cellpath.html_parser")) {
-      if (unlikely((PyDict_SetItemString(modules, "cellpath.html_parser", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "untabulate.html_parser")) {
+      if (unlikely((PyDict_SetItemString(modules, "untabulate.html_parser", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -4303,116 +4357,87 @@ __Pyx_RefNannySetupContext("PyInit_html_parser", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "cellpath/html_parser.pyx":6
- * """
- * 
- * from lxml import html as lxml_html             # <<<<<<<<<<<<<<
- * 
- * from .projection_grid cimport GridElement
-*/
-  {
-    PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_html};
-    __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_lxml, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
-  }
-  __pyx_t_2 = __pyx_t_1;
-  __Pyx_GOTREF(__pyx_t_2);
-  {
-    PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_html};
-    __pyx_t_3 = 0; {
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_2, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 6, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      switch (__pyx_t_3) {
-        case 0:
-        if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_lxml_html, __pyx_t_4) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
-        break;
-        default:;
-      }
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-  }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "cellpath/html_parser.pyx":11
+  /* "untabulate/html_parser.pyx":9
  * 
  * 
  * class TableNotFoundError(ValueError):             # <<<<<<<<<<<<<<
  *     """Raised when no <table> element is found in the HTML."""
  *     pass
 */
-  __pyx_t_2 = PyTuple_Pack(1, ((PyObject *)(((PyTypeObject*)PyExc_ValueError)))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_Pack(1, ((PyObject *)(((PyTypeObject*)PyExc_ValueError)))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PEP560_update_bases(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PEP560_update_bases(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_CalculateMetaclass(NULL, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_CalculateMetaclass(NULL, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_Py3MetaclassPrepare(__pyx_t_4, __pyx_t_3, __pyx_mstate_global->__pyx_n_u_TableNotFoundError, __pyx_mstate_global->__pyx_n_u_TableNotFoundError, (PyObject *) NULL, __pyx_mstate_global->__pyx_n_u_untabulate_html_parser, __pyx_mstate_global->__pyx_kp_u_Raised_when_no_table_element_is); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_Py3MetaclassPrepare(__pyx_t_5, __pyx_t_4, __pyx_mstate_global->__pyx_n_u_TableNotFoundError, __pyx_mstate_global->__pyx_n_u_TableNotFoundError, (PyObject *) NULL, __pyx_mstate_global->__pyx_n_u_cellpath_html_parser, __pyx_mstate_global->__pyx_kp_u_Raised_when_no_table_element_is); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 11, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  if (__pyx_t_4 != __pyx_t_2) {
-    if (unlikely((PyDict_SetItemString(__pyx_t_6, "__orig_bases__", __pyx_t_2) < 0))) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (__pyx_t_3 != __pyx_t_2) {
+    if (unlikely((PyDict_SetItemString(__pyx_t_5, "__orig_bases__", __pyx_t_2) < 0))) __PYX_ERR(0, 9, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_Py3ClassCreate(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_TableNotFoundError, __pyx_t_4, __pyx_t_6, NULL, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Py3ClassCreate(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_TableNotFoundError, __pyx_t_3, __pyx_t_5, NULL, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_TableNotFoundError, __pyx_t_2) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_TableNotFoundError, __pyx_t_2) < (0)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "cellpath/html_parser.pyx":16
+  /* "untabulate/html_parser.pyx":14
  * 
  * 
  * def parse_html_table(str html_string, bint span_as_label=False, bint all_tables=False) -> list:             # <<<<<<<<<<<<<<
  *     """
  *     Parse HTML table(s) into a list of GridElement instances.
 */
-  __pyx_t_4 = __Pyx_PyBool_FromLong(((int)0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyBool_FromLong(((int)0)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyBool_FromLong(((int)0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyBool_FromLong(((int)0)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_Pack(2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_Pack(2, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_list) < (0)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_8cellpath_11html_parser_1parse_html_table, 0, __pyx_mstate_global->__pyx_n_u_parse_html_table, NULL, __pyx_mstate_global->__pyx_n_u_cellpath_html_parser, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_list) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_10untabulate_11html_parser_1parse_html_table, 0, __pyx_mstate_global->__pyx_n_u_parse_html_table, NULL, __pyx_mstate_global->__pyx_n_u_untabulate_html_parser, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_3);
   #endif
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_t_6);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_5);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_t_5);
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_parse_html_table, __pyx_t_4) < (0)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_parse_html_table, __pyx_t_3) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "cellpath/html_parser.pyx":1
+  /* "untabulate/html_parser.pyx":1
  * # html_parser.pyx             # <<<<<<<<<<<<<<
  * """
  * Fast HTML table parser that produces GridElement instances for use with ProjectionGrid.
 */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_test, __pyx_t_4) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_test, __pyx_t_3) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /*--- Wrapped vars code ---*/
 
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init cellpath.html_parser", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init untabulate.html_parser", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -4426,7 +4451,7 @@ __Pyx_RefNannySetupContext("PyInit_html_parser", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init cellpath.html_parser");
+    PyErr_SetString(PyExc_ImportError, "init untabulate.html_parser");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -4458,25 +4483,25 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "cellpath/html_parser.pyx":75
+  /* "untabulate/html_parser.pyx":77
  * 
  *             # Extract attributes
  *             rs = int(cell.get('rowspan', 1) or 1)             # <<<<<<<<<<<<<<
  *             cs = int(cell.get('colspan', 1) or 1)
  *             label = (cell.text_content() or '').strip()
 */
-  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_rowspan, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_rowspan, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
 
-  /* "cellpath/html_parser.pyx":76
+  /* "untabulate/html_parser.pyx":78
  *             # Extract attributes
  *             rs = int(cell.get('rowspan', 1) or 1)
  *             cs = int(cell.get('colspan', 1) or 1)             # <<<<<<<<<<<<<<
  *             label = (cell.text_content() or '').strip()
  * 
 */
-  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_colspan, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_n_u_colspan, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
   #if CYTHON_IMMORTAL_CONSTANTS
@@ -4502,42 +4527,42 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 8; } index[] = {{0},{22},{32},{179},{52},{1},{1},{8},{28},{7},{11},{5},{2},{2},{20},{18},{10},{18},{20},{18},{7},{7},{1},{8},{10},{8},{3},{4},{11},{13},{5},{4},{4},{9},{8},{13},{10},{15},{8},{16},{3},{11},{14},{12},{6},{6},{7},{12},{10},{13},{5},{5},{14},{6},{3},{8},{12},{2},{4},{6},{5},{160}};
-    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (653 bytes) */
-const char* const cstring = "(\265/\375`\256\002\035\024\000\026\246{6@ss\303t\211\200\343\030\t!\220w\352\324\220\006\305\003\371\223$\262\267\3109\324\325\233V\222\220b\375\271\352\240\237C\311\023\327\330$\204\365\211\312T\305/;\003\375d\000h\000b\000\330g\267\315\335\256\257\222\256\262k\335\267\245_)W\352\353v\366\234e\235%.w\376\351/\216\333\262\262-0,*RFR\332b\377I\361\347\356\252\277\304^\242\325\255\316\264\355\305\276\013\351\227\330\267\377\035Y\332\226\345\356\325o=\363\352\315\341\265$_\243\357\2503NPH$\355\031K\255\357\267\345\225JQuV\331-}\356\342;\253K\247\355\262\314\261V\211/\306#\242\277#\322\345+o\362Q\374IEL]J\214 '$\021\\aM\323\326\203*\020\310\324i\025\2165{\014\204\275\324j\365\t\2328\373_\033-KvTU\246V\246-\317T\256T\236\253\024y\014\375\351\230Z\375q\2614\332K_\376\265V~\372=\267\365\370\261\177{g|\323k\325K\262\306,\277r\362r\353=\313\\l1\367\216\277r\331q\225\334\026\023\035kW\213\236I\353\024\277\365x\261W\316\272\362=FKe\026c\315L\3653\2559\363\2471\323w\227\030\247\345\256\030\361\347\354\342+{\214\363Z1Z\251\345z'\314\224%\237\022\177\2644\272\245\001\233\247\320IyP3\240\005\030\001\212\276\320\347\320\301\331\">\317\3679-\034\\|\302\002p\373 \276\207\203\224\312\251\304;\350\244<'O'\265\341x\300\000\260\023\302\220\3675\005\002\333\211\341D\362\020\004p>n(P\036T\250!\014\370^\274\204N*\340\333\360\014\004R\033J\242dlL\300\020h\360u\236B'E0\000@\220#\301\317\000\200DN\013K\310\342\021zL\204\023\000\241);We\214{B( \204(\306\262\007\220\216NS\0306\003\362rl\361\210E\205\027P\211\0333M\377\2604\0076_A\216H\210\034\030\330`\005D\371B=oo\r\320\356\303\226\250;e<\002\302\036\021x\201m\214\230\001\037\014f\360:\232\377T*\244\200\250\306\266\265\305\265\375\313$\323\r\320\001\314\366\026*<X\373\237\275\361\r\306\220\362f\220\362\367\310\"V\232\347M2\322\323\006\262.P6A\261c\375P\002V\004\364)\312T\302\330\203wP\324Q\004\334\003";
-    PyObject *data = __Pyx_DecompressString(cstring, 653, 3);
+    const struct { const unsigned int length: 8; } index[] = {{1},{22},{32},{179},{52},{0},{1},{8},{85},{30},{7},{11},{5},{2},{2},{20},{18},{10},{18},{18},{7},{7},{1},{8},{10},{8},{3},{4},{11},{13},{5},{4},{4},{9},{8},{13},{10},{15},{8},{16},{3},{11},{14},{12},{6},{6},{7},{12},{10},{13},{5},{5},{14},{6},{3},{8},{12},{2},{4},{22},{6},{5},{179}};
+    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (707 bytes) */
+const char* const cstring = "(\265/\375`\032\003\315\025\000\346g\20160ss\300\300OLj(\204\211Nx\000\257d\252C\353\020F\222D\366\026\251\272\334j\271D\352AcT\356\353\252\376\377?\2657Q\335\356\337\234.\303\262+\267\306i\000n\000f\000\357\227\251k\177\235rW=>\221\360u}\363\236\251\374);\023\237*_\277\267'f\352.\337\307<\306-g\264\271\342\242\202\"E$\205\251\365\307\244\375\313\336\364o\353&9=\343+\231V\355=\020\376\326\236\375+\n\225\234\321\256\236\370\251\243|:o\3704\365gpEa\014\223\223\322\010\373\265\275q}\316|\312&]\001\030\365n\3079\333VkEH\245\223\257|\312Q\342c2$\345\245\304\370aR\n\261\227\3066\234\275\350\022\211R\336v\3318Q\257\211D\230\275\241\227\026\377\236\035\355$or\013\261\366\222\206_\362\234\375\227\262\225\035\347v\242R\323\277\322\230e\315q]Ii8\363+{\345\362;\233\3443\3621\2672\343\020\014\225\221V\371\375\225\322\016q=s\271\366O\375\351\247~\233n\352\031o\377\354\372\344\331\373\245\251\226\332\356\335\376\354\256\333\331\0357\023\335nu\213\216j\352\322>\365X\255\317.\253\375\036#\225\215\212\361\257\234\027\345/\343\225\3570\264;\305h\377\242\252=]\217\021\253Y\214\264\267;+&\203\265\311\261\266\037\251\214\023\273N\345w\325V\354\2522\334\227\340i\201V5aE\010\021\222\300\021\330\340\321\341B*\205\217E\210U\020r\340\003\350\360i\251\250H\276\217\n\344iq:\2400 d\004\326\350\373\233\002\001N\265\240*}\007\002:\0369\023+\320j\304\300\n\000c\002@\215\317@\240\005\001\202@\231\017\301\323\372\030\264\270U\257hpJ\302Qh\000z_\202\247\005\002]\276\003O\213`\000\200`\247\303\320\000@\304N\013\013\213\245\203\325!\301\222\000`i\337[\352z7\003Q( \204(\246\320\016p\022\316$),c\376\201\360\010I9\344\351\220&\217\027)\035\2623o\031\020I\246\273\222\206\216B7\266]\201\210L\010W0\340\301B\020\325\013m\274\2635\200\306\032\266\320\272\247\214`@\230B\003[\260\000\343}\230\000\003\024@h\315\3764\024ZP\236\307\230\265\314\355\303\031u<\330\264A\354\201V0\334i,\016G\203q\0220\316?d:M\031@\372\337G\026\260\322dd\260\352\313+\222/*\207\343c\035\301\003|gda\270\246\033\262*PnC1b\375*\001*\202\376$e""\232\315\330\223w\020\253\245\010\272\007";
+    PyObject *data = __Pyx_DecompressString(cstring, 707, 3);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (729 bytes) */
-const char* const cstring = "BZh91AY&SY\\'\344L\000\000O\377\373\347\317\261*\361\223\244\327\377ot\030\277\377\377\364@@@@@@@@@@@\000@\000@\002]%`\r\210\203PFS\3656\246&\220\364\236\247\244\003M4b4z\206\200\006A\351\250l\215OQ\240\324\3044&F\244\332\236)\350\241\223F\200h\000\r\000\000\000\000\003\203 \321\240\014\232b\032h2\014C\010\032\003F&#@\000\003D\320\232\247\247\252yLj4i\220\006\215\000\000\320\000\r\001\240\r=G\352E\340\376\332\005v\351B\000\334/=\342&\2215\"B\221#P%\303\370\335I\032\324\035S\334\037\0058I\273p\326\361\345\265|)\237\324\026<\246\026AC\316!2\027PN\250\034\254\027e\327\237\255b3\\\324\201\3776\274rU]\363<5\247RA\3468\025\267.\376\364\363\2146R\220Y \313\321hYf\354\275\004\352lL\240$\243\340.\031\226\253)Im\0262c\231\366\373\313>Z\235\236\224\001;)D]\306\013J\30530\254\333'\366\277\303a\26248\234\031eA\310\"b\333]M\006\001\221\207\007\243\n\251\202\310\224\336\305\216|\252\361\217\343$\342p\220\3331\001%h\215\252\300\221\026.\356Wh3g(\020*S\325H\242\372 \303\r\236\230\261@_\207\021\225\025W\215$\016\222a+*a!\201)\325#G\343\262vJ\327\315\372\352\324\270+\335!}\266\000W\013B\220I8\350\244\314\364\272\327\203\\T$Om\327~!\263\367h\322!Z\014H\340\306~\310\036\254\352\215a\362\356\021\330\230z*\240\275F(y@,!U.Tp\014r\2432\002\2042\200\006\002\233\257\261\003N \260l\"\032\351\272\306\260\300\3557x\230\010\302F/4\010\304a#a\010\364\310)-I\201\017'\351\260X@f\353Y\027\337Yl7[\323\006\230\224\210\253\2728\357e\3302\264\320\302\274a \347]\236;E\277\277\275\375'Df*u-Sv\214\256@\315z\261\302c.\204\300\230\244\2550D\2151\014\211\244\034.\264B\213\270\221\220\004e(, \201\301D\301\323k]\r\273\237a\310I\207\354\241\305P\354\272slB\274Q\203\205\035\r\256\000\345M\260\310\262V$\035Bb\232\020\262\013\235\275H\210n\356\245\272\225\232\010OL\350\337\365\354\240\262\000\372\310\262\037\254\\\\Ns\375a}\236_o\204d\311\313%\357\234\020O^*_y\345\231\332SD\356e\330\307A\364#\005\252(\274\375O\210qb\027\0312\rV\206\010\005\3010/\177\213\271\"\234(H.\023\362&\000";
-    PyObject *data = __Pyx_DecompressString(cstring, 729, 2);
+    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (780 bytes) */
+const char* const cstring = "BZh91AY&SYKqb\372\000\000H\377\373\347\317\261*\345\223\244\327\377ot\036\277\377\377\364@@@@@@@@@@@\000@\000@\002}\020\r\266`\324\023B\236\t\224\321\351\212i\246\324\323\32444\365\032\006\215\000\001\211\200\2152zOMA\244\t\204\312z(\321\352\036\240\017S\324\000\000\000\000\000\000\000\0072i\241\220\000\304d\031\0004\301\003\020\r\032h\000\310\032\000\032h\2015=\0054\304\304'\251\240z\206\203@\310\000\000\032\000\r\251\351=C\260\361\367\202h\320\232\265\003!\376\245\004`\200@\264U,\265\313x\242<j\376\225\252\373\241\006\036\326\263\341\031\n\2211U\021\232\267\316M\376P\261\356\217\245R\306?\016\233DP\307\220\303\323+\213&\203\250C\254d4m\327\340\020\301\263\214\325\306\r\210\241\267<S\324U\334\247|\257I\t\354\230\027\357U\336i{\373R\213m\267\002\214\206_\354\231E4\342z\035$T\236`F[\274LE(\034\210q\253\207HB\263\014\\\272\005Y\330\275\266}\235\322\254$\367\025\023\204\204\352g\250\220\274\275\323S\267\213\313\346\3062\017\316\242L\"\367Ci`\010\005\010\220\243=2\220\2037\351xO\313\371\370a\016\323\364\3217\260&\346\352\204\3267&\274\025/:\233}l\370\356\034Z\n \264\244\366u\230\221\260.\323|sf($\204\013\227jmX\2250P\227\342\302\314\025\t\270\344B\352r\037\244\276\330B\217\331\271\315h\214\037\202\2610\r\242\301\002\032\247\225\244Jd~\271\256\013\034Q\rR\346}\234R\303\373p\276%uc`\254\202q\220\274\031ng\"\364m\025_\240\203F,0DC+\234\354uA%UMu\223^u\016(\202\210jrM1\200H\307 \025\004U\370+G\021\211\361\220si\275[Q\350\240w\363\207\222\200\250i\316\n\301\221\220\263\245)\366\010\211\215\362\201\227$0\345\205\004\211\347\002\226D\t\031E\243\354\246\362D\\\244\341\3161\247\250W!27\0054\005\251\032\207\n\324\245i?D\250\216=\025Bh\020\006\314\336\273\001\016<Y\307\004\243\255A\326\003\334l\0204\310)Vh\344%\234\242C1q\017\026X%\\yM\216\360\027\230\326):\2476\020\022\021\013\0332\355\330:\252\366\030\310\203\314\273w\222\220R\265\007\201\030\320\222\r\010[\210^\266v\315@;\241\200\t\2409\350b\240bY\320a+\027LvZ\031Z\014U&\305\332\312X\276t\212l\305A?\326\3050\014\256\r\320u\027""\031\336Ai\306\235\340\245\257{\343\324`&\033\030\253\343\261\014\217uV\320\270\311&\\\324\027\315f\207\352\254\\\224\3635\323\303,\274\364\247_\251n\332N1)\342m$\025\322L\r1\334\370\377\027rE8P\220Kqb\372";
+    PyObject *data = __Pyx_DecompressString(cstring, 780, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (639 bytes) */
-const char* const cstring = "x\332eQMo\0231\020m\245~Dj)\n\007$\204\020.\207FBb\243H\225@\210\217\002mDE\251J\225S9X\316\356\244q\361\332\033{\266\315\"\016\034s\314q\217{\344\230#?#\307\034\373\023\372\023\030;m\005b%{\355y3o\374\336\264\205T\22004,\023\326\001\373\330\371|\360\222\035\032\366\nEW\301\033\006\nR\320\310z&\327\t\223:d\034\032\004\206}\201\354C\201}\243\231t,\001%\273`\005\202*\230C+c\004\353\2234;\332;z\266\375b\233\tb\260p\0061:\346\362n\254\204s\340\230\351\261n.\025\0229\026\031\270\210\355\367Xar\246\341\346i\356\237\002\354\203f\016\320\037XChmP\2404\232S\271\324\247\r\226HKM\3449\370\352\266P\016\242c!\035\261]\370R\375\277<\022p\253\320\263z\225Q\364V$\t'vp6n\306\240T&\260\337\354c\252x\260\313FY1l6\003W\324\304\204\375`\364\353G\024\262\273\235\203\367\234\037\025CZ\273d\006?\204!\036C\257\343\223\311\300\266o\267g\255\261B)\036(\234p\205\216\245\211bcMN~\200\273i\032\375\3254V\204pIr\255\210\241+\342o\261Q.\023\232\363\304\304\234\303\265(\327\263&\365\223\320\247\234\367rM\320)\240'\nd\327\210t\374\266\235DH\235\222\016\3250U~\361\220\311SA\335\350K\001E\030B\270\230$W\020N\326p\352g%\004@\213\224\302\341\255\363\372 .3\031\005-P<\024\221s\374< \3766\310\205\232\327Yp\271B\013\230[m\315\305\\\027\r\373\232\226N\t\364\004\245\004D8\256D\027\224\027\223\005\2669\345\215\005s_Q\220\0034E\364\373\020I\260FB\311\013\013p.T\016n\350]\236.lM\267v\246;'\323\223\257WO\026\226\033\225\270ZYX^\231\325\356\216\212r\255jU\237~]L\304d0[Z\033\275.\027g\265\215\321Y\2718}\320\232\324'O\177\277\273\\\2723\352\214\357\217\007\004-\255\376\304Q\2132\246\033\254Z\254\352\227\024\030\314j\365q}V[\037\355\217\277\314\326\037\225\264=.\007\325\352\264\361\234H\327\357\215\033e\275\334\364\355\006\227\265\207e\253lW\233\325v\365}R\017\261?\353Pi\300";
-    PyObject *data = __Pyx_DecompressString(cstring, 639, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (691 bytes) */
+const char* const cstring = "x\332eRKkSA\024n\241\217@\323J\\\010\"\342\024\244\001\301\033\n\005E|Tm\203\305Zj\351\252U\206\311\275'\315\264\223\231\233\231s\233D\\\270\3142\313\273\274K\227Y\3723\262\314\262?\241?\3013\223>|\\\230\327y|\347|\337\271Q]H\005\tC\303Ra\035\260\017\207\237v_\260=\303^\242h(x\315@A\0334\262\246\311t\302\244\016\021{\006\201aK {\337\307\226\321L:\226\200\222\r\260\002A\365\231C+c\004\353\2034\333\337\336\177\272\361|\203\tB\260p\n1:\346\262F\254\204s\340\230i\262F&\025\0228\366Sp\021\333i\262\276\311\230\206\353\326\334_\t\330\002\315\034\240\277\260\252\320\332\240@i4\247t\251O\252,\221\226\212\310s\360\331u\241\034D\007B:B\353\372T\375?=\"p\303\320\243z\226\321\033\221$\234\300A\365\332\312\207X\350d\004\375\217^,`\371\266\265C\241(\022YWb\213US\231\022\340\324\230i\n\313\024\351s\354\341\276V\235\215k\267\306Z\013\333\212\007P\033\245\375^\255\026P\243\032&\354;\243\243\025\221\311n\035\356\276\343|\277\337\243\265E\022\363=\350\341\0014\017}0\215\245\356Il[k,\325\344\323\306\204\353\353X\232(6\326d\2442\270X\321\316%\tfE\014\r\021\237\305F\271Th\316\023\023s\016W\262\270\2465m?K}\302y3\323\344:\001\364\235\206n\257<\322\361\033h\211\320vJ:\364\034\375\342!\222\267\005U\243\257\r(\302\030\303\303$\231\202p\263\206S=+!8\264h\2239\2101\315\017DR\223\222\321\002\331C\022\251\304\317\203\307\277:\231P\323<\013.Sh\0013\253\255\351Ny\321\357r\005K\267\004\232\202B\202G8\256D\003\224'\223\006\264)\344\265\004S\rQ\220\002H\247\337{H\2045\222\227\264\260\000\267S\214\376\230\342\271P\031\270^*\2605\236Y\033\257m\2167\217\306G\307\227\217g\346\253\205\270\\\230\231_\230\224\226\007_\362\312\244tg\320\317\227\212\365\342\343\317\356H\214:\223\245\362\244\26428\313+\371\352dni\360*\237\365\357\323|v|\177}T\031=\371\365\366bnyp8\2747\354\220kn\361\007\016\326)b\274\302\212\331\242rA\206\316\244T\031\022ry\2603\374<)?\314i{\224w\212\305q\365\031\025(\337\035V\003:\225\356\\\224\036\344\353y\275X-6\212o\243\320N\3477\026\235\221<";
+    PyObject *data = __Pyx_DecompressString(cstring, 691, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (942 bytes) */
-const char* const bytes = "Failed to parse HTML: No <table> element found in HTMLNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Raised when no <table> element is found in the HTML..?add_notesrc/cellpath/html_parser.pyx//table./td | ./th.//trDTLB__Pyx_PyDict_NextRefTableNotFoundErrorall_tablesasyncio.coroutinescellpath.html_parsercline_in_tracebackcolspan__doc__eelementsfromstring__func__gethtmlhtml_string_is_coroutineitemslistlxmllxml_html__main____metaclass____module____mro_entries____name__parse_html_tablepop__prepare____pyx_vtable____qualname__resultreturnrowspan__set_name__setdefaultspan_as_labelstriptabletable_elementstablestag__test__text_contentthtreevaluesxpath\320\000&\320&@\320@Z\320Z[\360\"\000\005'\240a\360\006\000\005\006\330\010\017\210y\230\013\2401\240K\250w\260a\260q\330\004\013\210=\230\001\330\010\016\210j\230\001\320\0311\260\021\260*\270A\340\004\r\210T\220\026\220q\230\001\330\004\007\200t\2101\330\010\016\320\016 \240\001\240\021\340\004\007\200q\330\010\021\220\021\330\010\014\210I\220Q\330\014\035\230Q\330\014\037\230q\240\007\320'7\260q\330\014\022\220'\230\021\230!\330\010\017\210q\340\010\033\2301\230F\240!\2404\240z\260\021\330\010\017\210q";
+    #else /* compression: none (1050 bytes) */
+const char* const bytes = ".Failed to parse HTML: No <table> element found in HTMLNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Raised when no <table> element is found in the HTML.?add_notelxml is required to parse HTML tables. Install it with 'pip install untabulate[lxml]'src/untabulate/html_parser.pyx//table./td | ./th.//trDTLB__Pyx_PyDict_NextRefTableNotFoundErrorall_tablesasyncio.coroutinescline_in_tracebackcolspan__doc__eelementsfromstring__func__gethtmlhtml_string_is_coroutineitemslistlxmllxml_html__main____metaclass____module____mro_entries____name__parse_html_tablepop__prepare____pyx_vtable____qualname__resultreturnrowspan__set_name__setdefaultspan_as_labelstriptabletable_elementstablestag__test__text_contentthtreeuntabulate.html_parservaluesxpath\320\000&\320&@\320@Z\320Z[\360$\000\005'\240a\360\006\000\005\006\330\010\r\210\\\230\021\330\010\017\210y\230\013\2401\240K\250w\260a\260q\330\013\014\330\010\016\210k\230\021\230!\330\004\013\210=\230\001\330\010\016\210j\230\001\320\0311\260\021\260*\270A\340\004\r\210T\220\026\220q\230\001\330\004\007\200t\2101\330\010\016\320\016 \240\001\240\021\340\004\007\200q\330\010\021\220\021\330\010\014\210I\220Q\330\014\035\230Q\330\014\037\230q\240\007\320'7\260q\330\014\022\220'\230\021\230!\330\010\017\210q\340\010\033\2301\230F\240!\2404\240z\260\021\330\010\017\210q";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 61; i++) {
+    for (int i = 0; i < 62; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
-      if (likely(string) && i >= 12) PyUnicode_InternInPlace(&string);
+      if (likely(string) && i >= 13) PyUnicode_InternInPlace(&string);
       if (unlikely(!string)) {
         Py_XDECREF(data);
         __PYX_ERR(0, 1, __pyx_L1_error)
@@ -4545,7 +4570,7 @@ const char* const bytes = "Failed to parse HTML: No <table> element found in HTM
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 61; i < 62; i++) {
+    for (int i = 62; i < 63; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -4556,14 +4581,14 @@ const char* const bytes = "Failed to parse HTML: No <table> element found in HTM
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 62; i++) {
+    for (Py_ssize_t i = 0; i < 63; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 61;
+      PyObject **table = stringtab + 62;
       for (Py_ssize_t i=0; i<1; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         Py_SET_REFCNT(table[i], _Py_IMMORTAL_REFCNT_LOCAL);
@@ -4605,7 +4630,7 @@ typedef struct {
     unsigned int num_kwonly_args : 1;
     unsigned int nlocals : 4;
     unsigned int flags : 10;
-    unsigned int first_line : 5;
+    unsigned int first_line : 4;
 } __Pyx_PyCode_New_function_description;
 /* NewCodeObj.proto */
 static PyObject* __Pyx_PyCode_New(
@@ -4622,9 +4647,9 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 10, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 16};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_html_string, __pyx_mstate->__pyx_n_u_span_as_label, __pyx_mstate->__pyx_n_u_all_tables, __pyx_mstate->__pyx_n_u_elements, __pyx_mstate->__pyx_n_u_tree, __pyx_mstate->__pyx_n_u_e, __pyx_mstate->__pyx_n_u_tables, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_table_2, __pyx_mstate->__pyx_n_u_table_elements};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_cellpath_html_parser_pyx, __pyx_mstate->__pyx_n_u_parse_html_table, __pyx_mstate->__pyx_kp_b_iso88591_ZZ_a_y_1Kwaq_j_1_A_T_q_t1_q_IQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 11, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 14};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_html_string, __pyx_mstate->__pyx_n_u_span_as_label, __pyx_mstate->__pyx_n_u_all_tables, __pyx_mstate->__pyx_n_u_elements, __pyx_mstate->__pyx_n_u_lxml_html, __pyx_mstate->__pyx_n_u_tree, __pyx_mstate->__pyx_n_u_e, __pyx_mstate->__pyx_n_u_tables, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_table_2, __pyx_mstate->__pyx_n_u_table_elements};
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_untabulate_html_parser_pyx, __pyx_mstate->__pyx_n_u_parse_html_table, __pyx_mstate->__pyx_kp_b_iso88591_ZZ_a_y_1Kwaq_k_j_1_A_T_q_t1_q_I, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
@@ -5890,7 +5915,7 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
 }
 #endif
 
-/* PyObjectGetAttrStrNoError (used by GetBuiltinName) */
+/* PyObjectGetAttrStrNoError (used by HasAttr) */
 #if __PYX_LIMITED_VERSION_HEX < 0x030d0000
 static void __Pyx_PyObject_GetAttrStr_ClearAttributeError(void) {
     __Pyx_PyThreadState_declare
@@ -5919,77 +5944,195 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, P
 #endif
 }
 
-/* GetBuiltinName (used by GetModuleGlobalName) */
-static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
-    PyObject* result = __Pyx_PyObject_GetAttrStrNoError(__pyx_mstate_global->__pyx_b, name);
-    if (unlikely(!result) && !PyErr_Occurred()) {
-        PyErr_Format(PyExc_NameError,
-            "name '%U' is not defined", name);
+/* HasAttr (used by ImportImpl) */
+#if __PYX_LIMITED_VERSION_HEX < 0x030d0000
+static CYTHON_INLINE int __Pyx_HasAttr(PyObject *o, PyObject *n) {
+    PyObject *r;
+    if (unlikely(!PyUnicode_Check(n))) {
+        PyErr_SetString(PyExc_TypeError,
+                        "hasattr(): attribute name must be string");
+        return -1;
     }
-    return result;
+    r = __Pyx_PyObject_GetAttrStrNoError(o, n);
+    if (!r) {
+        return (unlikely(PyErr_Occurred())) ? -1 : 0;
+    } else {
+        Py_DECREF(r);
+        return 1;
+    }
 }
-
-/* PyDictVersioning (used by GetModuleGlobalName) */
-#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
-}
-static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
-    PyObject **dictptr = NULL;
-    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
-    if (offset) {
-#if CYTHON_COMPILING_IN_CPYTHON
-        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
-#else
-        dictptr = _PyObject_GetDictPtr(obj);
 #endif
-    }
-    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
-}
-static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
-    PyObject *dict = Py_TYPE(obj)->tp_dict;
-    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
+
+/* ImportImpl (used by Import) */
+static int __Pyx__Import_GetModule(PyObject *qualname, PyObject **module) {
+    PyObject *imported_module = PyImport_GetModule(qualname);
+    if (unlikely(!imported_module)) {
+        *module = NULL;
+        if (PyErr_Occurred()) {
+            return -1;
+        }
         return 0;
-    return obj_dict_version == __Pyx_get_object_dict_version(obj);
+    }
+    *module = imported_module;
+    return 1;
 }
-#endif
-
-/* GetModuleGlobalName */
-#if CYTHON_USE_DICT_VERSIONS
-static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
+static int __Pyx__Import_Lookup(PyObject *qualname, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject **module) {
+    PyObject *imported_module;
+    PyObject *top_level_package_name;
+    Py_ssize_t i;
+    int status, module_found;
+    Py_ssize_t dot_index;
+    module_found = __Pyx__Import_GetModule(qualname, &imported_module);
+    if (unlikely(!module_found || module_found == -1)) {
+        *module = NULL;
+        return module_found;
+    }
+    if (imported_names) {
+        for (i = 0; i < len_imported_names; i++) {
+            PyObject *imported_name = imported_names[i];
+#if __PYX_LIMITED_VERSION_HEX < 0x030d0000
+            int has_imported_attribute = PyObject_HasAttr(imported_module, imported_name);
 #else
-static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
+            int has_imported_attribute = PyObject_HasAttrWithError(imported_module, imported_name);
+            if (unlikely(has_imported_attribute == -1)) goto error;
 #endif
-{
-    PyObject *result;
-#if CYTHON_COMPILING_IN_LIMITED_API
-    if (unlikely(!__pyx_m)) {
-        if (!PyErr_Occurred())
-            PyErr_SetNone(PyExc_NameError);
+            if (!has_imported_attribute) {
+                goto not_found;
+            }
+        }
+        *module = imported_module;
+        return 1;
+    }
+    dot_index = PyUnicode_FindChar(qualname, '.', 0, PY_SSIZE_T_MAX, 1);
+    if (dot_index == -1) {
+        *module = imported_module;
+        return 1;
+    }
+    if (unlikely(dot_index == -2)) goto error;
+    top_level_package_name = PyUnicode_Substring(qualname, 0, dot_index);
+    if (unlikely(!top_level_package_name)) goto error;
+    Py_DECREF(imported_module);
+    status = __Pyx__Import_GetModule(top_level_package_name, module);
+    Py_DECREF(top_level_package_name);
+    return status;
+error:
+    Py_DECREF(imported_module);
+    *module = NULL;
+    return -1;
+not_found:
+    Py_DECREF(imported_module);
+    *module = NULL;
+    return 0;
+}
+static PyObject *__Pyx__Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, PyObject *moddict, int level) {
+    PyObject *module = 0;
+    PyObject *empty_dict = 0;
+    PyObject *from_list = 0;
+    int module_found;
+    if (!qualname) {
+        qualname = name;
+    }
+    module_found = __Pyx__Import_Lookup(qualname, imported_names, len_imported_names, &module);
+    if (likely(module_found == 1)) {
+        return module;
+    } else if (unlikely(module_found == -1)) {
         return NULL;
     }
-    result = PyObject_GetAttr(__pyx_m, name);
-    if (likely(result)) {
-        return result;
-    }
-    PyErr_Clear();
-#elif CYTHON_AVOID_BORROWED_REFS || CYTHON_AVOID_THREAD_UNSAFE_BORROWED_REFS
-    if (unlikely(__Pyx_PyDict_GetItemRef(__pyx_mstate_global->__pyx_d, name, &result) == -1)) PyErr_Clear();
-    __PYX_UPDATE_DICT_CACHE(__pyx_mstate_global->__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return result;
-    }
+    empty_dict = PyDict_New();
+    if (unlikely(!empty_dict))
+        goto bad;
+    if (imported_names) {
+#if CYTHON_COMPILING_IN_CPYTHON
+        from_list = __Pyx_PyList_FromArray(imported_names, len_imported_names);
+        if (unlikely(!from_list))
+            goto bad;
 #else
-    result = _PyDict_GetItem_KnownHash(__pyx_mstate_global->__pyx_d, name, ((PyASCIIObject *) name)->hash);
-    __PYX_UPDATE_DICT_CACHE(__pyx_mstate_global->__pyx_d, result, *dict_cached_value, *dict_version)
-    if (likely(result)) {
-        return __Pyx_NewRef(result);
-    }
-    PyErr_Clear();
+        from_list = PyList_New(len_imported_names);
+        if (unlikely(!from_list)) goto bad;
+        for (Py_ssize_t i=0; i<len_imported_names; ++i) {
+            if (PyList_SetItem(from_list, i, __Pyx_NewRef(imported_names[i])) < 0) goto bad;
+        }
 #endif
-    return __Pyx_GetBuiltinName(name);
+    }
+    if (level == -1) {
+        const char* package_sep = strchr(__Pyx_MODULE_NAME, '.');
+        if (package_sep != (0)) {
+            module = PyImport_ImportModuleLevelObject(
+                name, moddict, empty_dict, from_list, 1);
+            if (unlikely(!module)) {
+                if (unlikely(!PyErr_ExceptionMatches(PyExc_ImportError)))
+                    goto bad;
+                PyErr_Clear();
+            }
+        }
+        level = 0;
+    }
+    if (!module) {
+        module = PyImport_ImportModuleLevelObject(
+            name, moddict, empty_dict, from_list, level);
+    }
+bad:
+    Py_XDECREF(from_list);
+    Py_XDECREF(empty_dict);
+    return module;
 }
+
+/* Import */
+static PyObject *__Pyx_Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, int level) {
+    return __Pyx__Import(name, imported_names, len_imported_names, qualname, __pyx_mstate_global->__pyx_d, level);
+}
+
+/* ImportFrom */
+static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
+    PyObject* value = __Pyx_PyObject_GetAttrStr(module, name);
+    if (unlikely(!value) && PyErr_ExceptionMatches(PyExc_AttributeError)) {
+        const char* module_name_str = 0;
+        PyObject* module_name = 0;
+        PyObject* module_dot = 0;
+        PyObject* full_name = 0;
+        PyErr_Clear();
+        module_name_str = PyModule_GetName(module);
+        if (unlikely(!module_name_str)) { goto modbad; }
+        module_name = PyUnicode_FromString(module_name_str);
+        if (unlikely(!module_name)) { goto modbad; }
+        module_dot = PyUnicode_Concat(module_name, __pyx_mstate_global->__pyx_kp_u_);
+        if (unlikely(!module_dot)) { goto modbad; }
+        full_name = PyUnicode_Concat(module_dot, name);
+        if (unlikely(!full_name)) { goto modbad; }
+        #if (CYTHON_COMPILING_IN_PYPY && PYPY_VERSION_NUM  < 0x07030400) ||\
+                CYTHON_COMPILING_IN_GRAAL
+        {
+            PyObject *modules = PyImport_GetModuleDict();
+            if (unlikely(!modules))
+                goto modbad;
+            value = PyObject_GetItem(modules, full_name);
+        }
+        #else
+        value = PyImport_GetModule(full_name);
+        #endif
+      modbad:
+        Py_XDECREF(full_name);
+        Py_XDECREF(module_dot);
+        Py_XDECREF(module_name);
+    }
+    if (unlikely(!value)) {
+        PyErr_Format(PyExc_ImportError, "cannot import name %S", name);
+    }
+    return value;
+}
+
+/* PyObjectFastCallMethod */
+#if !CYTHON_VECTORCALL || PY_VERSION_HEX < 0x03090000
+static PyObject *__Pyx_PyObject_FastCallMethod(PyObject *name, PyObject *const *args, size_t nargsf) {
+    PyObject *result;
+    PyObject *attr = PyObject_GetAttr(args[0], name);
+    if (unlikely(!attr))
+        return NULL;
+    result = __Pyx_PyObject_FastCall(attr, args+1, nargsf - 1);
+    Py_DECREF(attr);
+    return result;
+}
+#endif
 
 /* GetTopmostException (used by SaveResetException) */
 #if CYTHON_USE_EXC_INFO_STACK && CYTHON_FAST_THREAD_STATE
@@ -6338,18 +6481,77 @@ static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value,
 }
 #endif
 
-/* PyObjectFastCallMethod */
-#if !CYTHON_VECTORCALL || PY_VERSION_HEX < 0x03090000
-static PyObject *__Pyx_PyObject_FastCallMethod(PyObject *name, PyObject *const *args, size_t nargsf) {
-    PyObject *result;
-    PyObject *attr = PyObject_GetAttr(args[0], name);
-    if (unlikely(!attr))
-        return NULL;
-    result = __Pyx_PyObject_FastCall(attr, args+1, nargsf - 1);
-    Py_DECREF(attr);
+/* GetBuiltinName (used by GetModuleGlobalName) */
+static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
+    PyObject* result = __Pyx_PyObject_GetAttrStrNoError(__pyx_mstate_global->__pyx_b, name);
+    if (unlikely(!result) && !PyErr_Occurred()) {
+        PyErr_Format(PyExc_NameError,
+            "name '%U' is not defined", name);
+    }
     return result;
 }
+
+/* PyDictVersioning (used by GetModuleGlobalName) */
+#if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_tp_dict_version(PyObject *obj) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    return likely(dict) ? __PYX_GET_DICT_VERSION(dict) : 0;
+}
+static CYTHON_INLINE PY_UINT64_T __Pyx_get_object_dict_version(PyObject *obj) {
+    PyObject **dictptr = NULL;
+    Py_ssize_t offset = Py_TYPE(obj)->tp_dictoffset;
+    if (offset) {
+#if CYTHON_COMPILING_IN_CPYTHON
+        dictptr = (likely(offset > 0)) ? (PyObject **) ((char *)obj + offset) : _PyObject_GetDictPtr(obj);
+#else
+        dictptr = _PyObject_GetDictPtr(obj);
 #endif
+    }
+    return (dictptr && *dictptr) ? __PYX_GET_DICT_VERSION(*dictptr) : 0;
+}
+static CYTHON_INLINE int __Pyx_object_dict_version_matches(PyObject* obj, PY_UINT64_T tp_dict_version, PY_UINT64_T obj_dict_version) {
+    PyObject *dict = Py_TYPE(obj)->tp_dict;
+    if (unlikely(!dict) || unlikely(tp_dict_version != __PYX_GET_DICT_VERSION(dict)))
+        return 0;
+    return obj_dict_version == __Pyx_get_object_dict_version(obj);
+}
+#endif
+
+/* GetModuleGlobalName */
+#if CYTHON_USE_DICT_VERSIONS
+static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
+#else
+static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
+#endif
+{
+    PyObject *result;
+#if CYTHON_COMPILING_IN_LIMITED_API
+    if (unlikely(!__pyx_m)) {
+        if (!PyErr_Occurred())
+            PyErr_SetNone(PyExc_NameError);
+        return NULL;
+    }
+    result = PyObject_GetAttr(__pyx_m, name);
+    if (likely(result)) {
+        return result;
+    }
+    PyErr_Clear();
+#elif CYTHON_AVOID_BORROWED_REFS || CYTHON_AVOID_THREAD_UNSAFE_BORROWED_REFS
+    if (unlikely(__Pyx_PyDict_GetItemRef(__pyx_mstate_global->__pyx_d, name, &result) == -1)) PyErr_Clear();
+    __PYX_UPDATE_DICT_CACHE(__pyx_mstate_global->__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return result;
+    }
+#else
+    result = _PyDict_GetItem_KnownHash(__pyx_mstate_global->__pyx_d, name, ((PyASCIIObject *) name)->hash);
+    __PYX_UPDATE_DICT_CACHE(__pyx_mstate_global->__pyx_d, result, *dict_cached_value, *dict_version)
+    if (likely(result)) {
+        return __Pyx_NewRef(result);
+    }
+    PyErr_Clear();
+#endif
+    return __Pyx_GetBuiltinName(name);
+}
 
 /* GetItemInt */
 static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
@@ -6566,183 +6768,6 @@ static void* __Pyx_GetVtable(PyTypeObject *type) {
 bad:
     Py_XDECREF(ob);
     return NULL;
-}
-
-/* HasAttr (used by ImportImpl) */
-#if __PYX_LIMITED_VERSION_HEX < 0x030d0000
-static CYTHON_INLINE int __Pyx_HasAttr(PyObject *o, PyObject *n) {
-    PyObject *r;
-    if (unlikely(!PyUnicode_Check(n))) {
-        PyErr_SetString(PyExc_TypeError,
-                        "hasattr(): attribute name must be string");
-        return -1;
-    }
-    r = __Pyx_PyObject_GetAttrStrNoError(o, n);
-    if (!r) {
-        return (unlikely(PyErr_Occurred())) ? -1 : 0;
-    } else {
-        Py_DECREF(r);
-        return 1;
-    }
-}
-#endif
-
-/* ImportImpl (used by Import) */
-static int __Pyx__Import_GetModule(PyObject *qualname, PyObject **module) {
-    PyObject *imported_module = PyImport_GetModule(qualname);
-    if (unlikely(!imported_module)) {
-        *module = NULL;
-        if (PyErr_Occurred()) {
-            return -1;
-        }
-        return 0;
-    }
-    *module = imported_module;
-    return 1;
-}
-static int __Pyx__Import_Lookup(PyObject *qualname, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject **module) {
-    PyObject *imported_module;
-    PyObject *top_level_package_name;
-    Py_ssize_t i;
-    int status, module_found;
-    Py_ssize_t dot_index;
-    module_found = __Pyx__Import_GetModule(qualname, &imported_module);
-    if (unlikely(!module_found || module_found == -1)) {
-        *module = NULL;
-        return module_found;
-    }
-    if (imported_names) {
-        for (i = 0; i < len_imported_names; i++) {
-            PyObject *imported_name = imported_names[i];
-#if __PYX_LIMITED_VERSION_HEX < 0x030d0000
-            int has_imported_attribute = PyObject_HasAttr(imported_module, imported_name);
-#else
-            int has_imported_attribute = PyObject_HasAttrWithError(imported_module, imported_name);
-            if (unlikely(has_imported_attribute == -1)) goto error;
-#endif
-            if (!has_imported_attribute) {
-                goto not_found;
-            }
-        }
-        *module = imported_module;
-        return 1;
-    }
-    dot_index = PyUnicode_FindChar(qualname, '.', 0, PY_SSIZE_T_MAX, 1);
-    if (dot_index == -1) {
-        *module = imported_module;
-        return 1;
-    }
-    if (unlikely(dot_index == -2)) goto error;
-    top_level_package_name = PyUnicode_Substring(qualname, 0, dot_index);
-    if (unlikely(!top_level_package_name)) goto error;
-    Py_DECREF(imported_module);
-    status = __Pyx__Import_GetModule(top_level_package_name, module);
-    Py_DECREF(top_level_package_name);
-    return status;
-error:
-    Py_DECREF(imported_module);
-    *module = NULL;
-    return -1;
-not_found:
-    Py_DECREF(imported_module);
-    *module = NULL;
-    return 0;
-}
-static PyObject *__Pyx__Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, PyObject *moddict, int level) {
-    PyObject *module = 0;
-    PyObject *empty_dict = 0;
-    PyObject *from_list = 0;
-    int module_found;
-    if (!qualname) {
-        qualname = name;
-    }
-    module_found = __Pyx__Import_Lookup(qualname, imported_names, len_imported_names, &module);
-    if (likely(module_found == 1)) {
-        return module;
-    } else if (unlikely(module_found == -1)) {
-        return NULL;
-    }
-    empty_dict = PyDict_New();
-    if (unlikely(!empty_dict))
-        goto bad;
-    if (imported_names) {
-#if CYTHON_COMPILING_IN_CPYTHON
-        from_list = __Pyx_PyList_FromArray(imported_names, len_imported_names);
-        if (unlikely(!from_list))
-            goto bad;
-#else
-        from_list = PyList_New(len_imported_names);
-        if (unlikely(!from_list)) goto bad;
-        for (Py_ssize_t i=0; i<len_imported_names; ++i) {
-            if (PyList_SetItem(from_list, i, __Pyx_NewRef(imported_names[i])) < 0) goto bad;
-        }
-#endif
-    }
-    if (level == -1) {
-        const char* package_sep = strchr(__Pyx_MODULE_NAME, '.');
-        if (package_sep != (0)) {
-            module = PyImport_ImportModuleLevelObject(
-                name, moddict, empty_dict, from_list, 1);
-            if (unlikely(!module)) {
-                if (unlikely(!PyErr_ExceptionMatches(PyExc_ImportError)))
-                    goto bad;
-                PyErr_Clear();
-            }
-        }
-        level = 0;
-    }
-    if (!module) {
-        module = PyImport_ImportModuleLevelObject(
-            name, moddict, empty_dict, from_list, level);
-    }
-bad:
-    Py_XDECREF(from_list);
-    Py_XDECREF(empty_dict);
-    return module;
-}
-
-/* Import */
-static PyObject *__Pyx_Import(PyObject *name, PyObject *const *imported_names, Py_ssize_t len_imported_names, PyObject *qualname, int level) {
-    return __Pyx__Import(name, imported_names, len_imported_names, qualname, __pyx_mstate_global->__pyx_d, level);
-}
-
-/* ImportFrom */
-static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
-    PyObject* value = __Pyx_PyObject_GetAttrStr(module, name);
-    if (unlikely(!value) && PyErr_ExceptionMatches(PyExc_AttributeError)) {
-        const char* module_name_str = 0;
-        PyObject* module_name = 0;
-        PyObject* module_dot = 0;
-        PyObject* full_name = 0;
-        PyErr_Clear();
-        module_name_str = PyModule_GetName(module);
-        if (unlikely(!module_name_str)) { goto modbad; }
-        module_name = PyUnicode_FromString(module_name_str);
-        if (unlikely(!module_name)) { goto modbad; }
-        module_dot = PyUnicode_Concat(module_name, __pyx_mstate_global->__pyx_kp_u__2);
-        if (unlikely(!module_dot)) { goto modbad; }
-        full_name = PyUnicode_Concat(module_dot, name);
-        if (unlikely(!full_name)) { goto modbad; }
-        #if (CYTHON_COMPILING_IN_PYPY && PYPY_VERSION_NUM  < 0x07030400) ||\
-                CYTHON_COMPILING_IN_GRAAL
-        {
-            PyObject *modules = PyImport_GetModuleDict();
-            if (unlikely(!modules))
-                goto modbad;
-            value = PyObject_GetItem(modules, full_name);
-        }
-        #else
-        value = PyImport_GetModule(full_name);
-        #endif
-      modbad:
-        Py_XDECREF(full_name);
-        Py_XDECREF(module_dot);
-        Py_XDECREF(module_name);
-    }
-    if (unlikely(!value)) {
-        PyErr_Format(PyExc_ImportError, "cannot import name %S", name);
-    }
-    return value;
 }
 
 /* Py3UpdateBases */

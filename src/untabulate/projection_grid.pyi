@@ -1,4 +1,4 @@
-"""Type stubs for cellpath.projection_grid"""
+"""Type stubs for untabulate.projection_grid"""
 
 
 class GridElement:

@@ -1,4 +1,3 @@
-from openpyxl import load_workbook
 from .projection_grid cimport GridElement
 
 def parse_xlsx_worksheet(filepath: str, sheet_name: str = None) -> list:
@@ -7,6 +6,11 @@ def parse_xlsx_worksheet(filepath: str, sheet_name: str = None) -> list:
     
     Merged cells are treated as labels (LB), regular cells as data (DT).
     """
+    try:
+        from openpyxl import load_workbook
+    except ImportError:
+        raise ImportError("openpyxl is required to parse Excel files. Install it with 'pip install untabulate[openpyxl]'")
+
     wb = load_workbook(filepath, read_only=True, data_only=True)
     ws = wb[sheet_name] if sheet_name else wb.active
     

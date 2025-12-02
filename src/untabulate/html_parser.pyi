@@ -1,6 +1,6 @@
-"""Type stubs for cellpath.html_parser"""
+"""Type stubs for untabulate.html_parser"""
 
-from cellpath.projection_grid import GridElement
+from untabulate.projection_grid import GridElement
 
 
 class TableNotFoundError(ValueError):

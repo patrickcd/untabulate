@@ -3,8 +3,6 @@
 Fast HTML table parser that produces GridElement instances for use with ProjectionGrid.
 """
 
-from lxml import html as lxml_html
-
 from .projection_grid cimport GridElement
 
 
@@ -29,12 +27,16 @@ def parse_html_table(str html_string, bint span_as_label=False, bint all_tables=
         
     Raises:
         TableNotFoundError: If no <table> element is found in the HTML
+        ImportError: If lxml is not installed
     """
     cdef list[GridElement] elements = []
     
     # Parse HTML
     try:
+        from lxml import html as lxml_html
         tree = lxml_html.fromstring(html_string.encode('utf-8'))
+    except ImportError:
+        raise ImportError("lxml is required to parse HTML tables. Install it with 'pip install untabulate[lxml]'")
     except Exception as e:
         raise ValueError(f"Failed to parse HTML: {e}") from e
     

@@ -6,7 +6,7 @@ __pycache__/
 # C extensions
 *.so
 *.c
-!src/cellpath/*.c
+!src/untabulate/*.c
 
 # Distribution / packaging
 .Python
