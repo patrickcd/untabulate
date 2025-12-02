@@ -4,14 +4,18 @@ from collections import defaultdict
 cdef class GridElement:
     """
     A lightweight element struct for use with ProjectionGrid.
-    
+
     Construct from database rows to avoid SQLAlchemy ORM overhead:
-        elements = [GridElement(el_type, row, col, rowspan, colspan, label) 
+        elements = [GridElement(el_type, row, col, rowspan, colspan,
+                               label)
                     for el_type, row, col, rowspan, colspan, label in cursor]
     """
     # Attributes declared in projection_grid.pxd
-    
-    def __init__(self, str el_type, int row, int col, int rowspan, int colspan, str label):
+
+    def __init__(
+        self, str el_type, int row, int col, int rowspan, int colspan,
+        str label
+    ):
         self.el_type = el_type
         self.row = row
         self.col = col
@@ -27,8 +31,8 @@ cdef class ProjectionGrid:
     Maps each data cell coordinate to the set of headers that govern it.
     Row headers (column 1) apply to all rows from their position downward.
     Column headers apply to the columns they span, for all rows below.
-    
-    Accepts a list of objects with .el_type, .row, .col, .rowspan, .colspan, .label 
+
+    Accepts a list of objects with .el_type, .row, .col, .rowspan, .colspan, .label
     attributes. Use GridElement for maximum performance when fetching from DB.
     """
     # Attributes declared in projection_grid.pxd
@@ -39,22 +43,20 @@ cdef class ProjectionGrid:
         # Initialize Python dicts
         self.row_headers = defaultdict(list)
         self.col_headers = defaultdict(list)
-        
+
         if not elements:
             return
-        
+
         self._build_projections(elements)
 
     cdef _build_projections(self, list elements):
         """Build header projections with semantic scoping."""
-        
-        cdef int r, c, target_row, max_row
+
+        cdef int r, c, max_row
         cdef int el_row, el_col, el_rowspan, el_colspan
         cdef str label
         cdef object el
-        cdef set seen
-        cdef list deduped
-        
+
         # Find max row for propagation
         max_row = 0
         for el in elements:
@@ -62,7 +64,7 @@ cdef class ProjectionGrid:
             if r > max_row:
                 max_row = r
         self._max_row = max_row
-        
+
         # First pass: find the first data row and column to distinguish header rows/cols
         cdef int first_data_row = max_row + 1
         cdef int first_data_col = 2147483647  # Max int
@@ -72,31 +74,33 @@ cdef class ProjectionGrid:
                     first_data_row = el.row
                 if el.col < first_data_col:
                     first_data_col = el.col
-        
+
         # Process each label element
         for el in elements:
             if el.el_type != "LB" or not el.label:
                 continue
-            
+
             label = el.label.strip()
             if not label:
                 continue
-            
+
             el_row = el.row
             el_col = el.col
             el_rowspan = el.rowspan
             el_colspan = el.colspan
-            
+
             if el_col < first_data_col and el_row >= first_data_row:
-                # Row header (left of data, in or after data rows): applies only to the rows it spans
+                # Row header (left of data, in or after data rows):
+                # applies only to the rows it spans
                 for r in range(el_row, el_row + el_rowspan):
                     (<list>self.row_headers[r]).append((el_row, label))
             else:
-                # Column header: applies to the columns it spans
-                # This includes headers above data rows, and headers in data columns (if any)
+                # Column header: applies to the columns it spans.
+                # This includes headers above data rows, and headers in
+                # data columns (if any)
                 for c in range(el_col, el_col + el_colspan):
                     (<list>self.col_headers[c]).append((el_row, label))
-        
+
         self._finalize()
 
     cdef _finalize(self):
@@ -104,7 +108,7 @@ cdef class ProjectionGrid:
         cdef set seen
         cdef list deduped
         cdef int r, c
-        
+
         # Sort and deduplicate row headers
         for r in self.row_headers:
             (<list>self.row_headers[r]).sort(key=lambda x: x[0])
@@ -115,7 +119,7 @@ cdef class ProjectionGrid:
                     deduped.append((row_idx, lbl))
                     seen.add(lbl)
             self.row_headers[r] = deduped
-        
+
         # Sort column headers
         for c in self.col_headers:
             (<list>self.col_headers[c]).sort(key=lambda x: x[0])
@@ -133,8 +137,9 @@ cdef class ProjectionGrid:
         cdef int header_row
         cdef str label
         cdef list headers
-        
-        # 1. Row headers that apply to this row (only if data is not in column 1)
+
+        # 1. Row headers that apply to this row
+        # (only if data is not in column 1)
         if data_col > 1:
             headers = self.row_headers.get(data_row, [])
             for header_row, label in headers:
@@ -142,13 +147,14 @@ cdef class ProjectionGrid:
                     if label not in seen:
                         path.append(label)
                         seen.add(label)
-        
-        # 2. Column headers that apply to this column (only those defined ABOVE this row)
+
+        # 2. Column headers that apply to this column
+        # (only those defined ABOVE this row)
         headers = self.col_headers.get(data_col, [])
         for header_row, label in headers:
             if header_row < data_row:  # Only include headers from above
                 if label not in seen:
                     path.append(label)
                     seen.add(label)
-        
+
         return path

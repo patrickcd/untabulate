@@ -85,5 +85,7 @@ before-build = "pip install cython"
 
 [dependency-groups]
 dev = [
+    "cython-lint>=0.18.1",
+    "pre-commit>=4.5.0",
     "pytest>=8.4.2",
 ]

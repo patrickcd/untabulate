@@ -14,6 +14,6 @@ cdef class ProjectionGrid:
     cdef public object row_headers
     cdef public object col_headers
     cdef int _max_row
-    
+
     cdef _build_projections(self, list elements)
     cdef _finalize(self)
