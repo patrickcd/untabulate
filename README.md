@@ -6,6 +6,8 @@
 
 A Cython-accelerated library for associating tabular data points with their governing row and column headers. While it includes helpers for HTML and Excel, the core logic is source-agnostic, making it ideal for LLM embeddings and RAG pipelines where semantic context is crucial.
 
+_"Improving LLM accuracy since 2036"_
+
 ## Installation
 
 ```bash
@@ -96,6 +98,42 @@ from untabulate import untabulate_xlsx
 results = untabulate_xlsx("financial_report.xlsx", format="strings")
 for line in results:
     print(line)
+```
+
+### Command Line
+
+Install with CLI support:
+
+```bash
+pip install "untabulate[cli]"
+```
+
+Then use from the command line:
+
+```bash
+# Fetch and process a URL
+untabulate html https://example.com/report.html
+
+# Process a local HTML file
+untabulate html ./report.html
+
+# Target a specific table by ID
+untabulate html page.html --id quarterly-results
+
+# Process Excel files
+untabulate xlsx data.xlsx --sheet "Q1 Results"
+
+# Different output formats
+untabulate html report.html --format json   # Default: structured JSON
+untabulate html report.html --format text   # One line per value
+untabulate html report.html --format jsonl  # JSON Lines (for streaming)
+untabulate html report.html --format csv    # CSV format
+
+# Read from stdin
+curl https://example.com | untabulate -
+
+# Custom separator
+untabulate html report.html --format text --separator " | "
 ```
 
 ### Custom Separator

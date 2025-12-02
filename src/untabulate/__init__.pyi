@@ -1,6 +1,6 @@
 """Type stubs for untabulate package."""
 
-from typing import Literal, TypedDict, overload
+from typing import Literal, TypedDict, overload, Protocol, Iterable, runtime_checkable
 
 from untabulate.projection_grid import GridElement as GridElement, ProjectionGrid as ProjectionGrid
 from untabulate.html_parser import parse_html_table as parse_html_table, TableNotFoundError as TableNotFoundError
@@ -13,6 +13,23 @@ __all__: list[str]
 OutputFormat = Literal["dict", "strings", "tuples"]
 
 
+@runtime_checkable
+class CellProtocol(Protocol):
+    """
+    Protocol for table cell objects.
+
+    Any object with these attributes can be passed to untabulate().
+    GridElement implements this protocol.
+    """
+
+    is_header: bool
+    row: int
+    col: int
+    rowspan: int
+    colspan: int
+    value: str
+
+
 class ResultDict(TypedDict):
     path: list[str]
     value: str
@@ -21,7 +38,7 @@ class ResultDict(TypedDict):
 
 @overload
 def untabulate(
-    data: list,
+    data: Iterable[dict | tuple | CellProtocol],
     *,
     format: Literal["dict"] = "dict",
     separator: str = " → ",
@@ -30,7 +47,7 @@ def untabulate(
 
 @overload
 def untabulate(
-    data: list,
+    data: Iterable[dict | tuple | CellProtocol],
     *,
     format: Literal["strings"],
     separator: str = " → ",
@@ -39,7 +56,7 @@ def untabulate(
 
 @overload
 def untabulate(
-    data: list,
+    data: Iterable[dict | tuple | CellProtocol],
     *,
     format: Literal["tuples"],
     separator: str = " → ",
@@ -47,7 +64,7 @@ def untabulate(
 
 
 def untabulate(
-    data: list,
+    data: Iterable[dict | tuple | CellProtocol],
     *,
     format: OutputFormat = "dict",
     separator: str = " → ",
@@ -87,7 +104,7 @@ def untabulate_html(
 ) -> list[tuple[list[str], str]]: ...
 
 
-def untabulate_html(
+    def untabulate_html(
     html: str,
     *,
     format: OutputFormat = "dict",
@@ -102,6 +119,10 @@ def untabulate_xlsx(
     filepath: str,
     *,
     sheet_name: str | None = None,
+    start_row: int = 1,
+    start_col: int = 1,
+    header_rows: int = 1,
+    header_cols: int = 1,
     format: Literal["dict"] = "dict",
     separator: str = " → ",
 ) -> list[ResultDict]: ...
@@ -112,6 +133,10 @@ def untabulate_xlsx(
     filepath: str,
     *,
     sheet_name: str | None = None,
+    start_row: int = 1,
+    start_col: int = 1,
+    header_rows: int = 1,
+    header_cols: int = 1,
     format: Literal["strings"],
     separator: str = " → ",
 ) -> list[str]: ...
@@ -122,6 +147,10 @@ def untabulate_xlsx(
     filepath: str,
     *,
     sheet_name: str | None = None,
+    start_row: int = 1,
+    start_col: int = 1,
+    header_rows: int = 1,
+    header_cols: int = 1,
     format: Literal["tuples"],
     separator: str = " → ",
 ) -> list[tuple[list[str], str]]: ...
@@ -131,6 +160,10 @@ def untabulate_xlsx(
     filepath: str,
     *,
     sheet_name: str | None = None,
+    start_row: int = 1,
+    start_col: int = 1,
+    header_rows: int = 1,
+    header_cols: int = 1,
     format: OutputFormat = "dict",
     separator: str = " → ",
 ) -> list[ResultDict] | list[str] | list[tuple[list[str], str]]: ...

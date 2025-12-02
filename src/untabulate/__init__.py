@@ -13,7 +13,7 @@ Example:
     Revenue → Q2: 120
 """
 
-from typing import Literal
+from typing import Literal, Iterable, Protocol, runtime_checkable
 
 from untabulate.projection_grid import GridElement, ProjectionGrid
 from untabulate.html_parser import parse_html_table, TableNotFoundError
@@ -29,6 +29,8 @@ __all__ = [
     # Core classes
     "GridElement",
     "ProjectionGrid",
+    # Protocol for custom cell types
+    "CellProtocol",
     # HTML parsing
     "parse_html_table",
     "TableNotFoundError",
@@ -37,6 +39,31 @@ __all__ = [
     # Version
     "__version__",
 ]
+
+
+@runtime_checkable
+class CellProtocol(Protocol):
+    """
+    Protocol for table cell objects.
+
+    Any object with these attributes can be passed to untabulate().
+    GridElement implements this protocol.
+
+    Attributes:
+        is_header: True if this cell is a header, False for data cells
+        row: 1-based row index
+        col: 1-based column index
+        rowspan: Number of rows this cell spans (default: 1)
+        colspan: Number of columns this cell spans (default: 1)
+        value: Text content of the cell
+    """
+
+    is_header: bool
+    row: int
+    col: int
+    rowspan: int
+    colspan: int
+    value: str
 
 
 OutputFormat = Literal["dict", "strings", "tuples"]
@@ -84,7 +111,7 @@ def _format_results(
 
 
 def untabulate(
-    data: list,
+    data: Iterable[dict | tuple | CellProtocol],
     *,
     format: OutputFormat = "dict",
     separator: str = " → ",
@@ -93,10 +120,9 @@ def untabulate(
     Extract semantic paths from a list of elements.
 
     Accepts various input formats:
-    - List of GridElement instances
+    - List of GridElement instances (or any object implementing CellProtocol)
     - List of dicts with keys: is_header, row, col, rowspan, colspan, value
     - List of tuples: (is_header, row, col, rowspan, colspan, value)
-    - List of objects with attributes: is_header, row, col, rowspan, colspan, value
 
     Args:
         data: List of elements in any supported format
@@ -214,6 +240,10 @@ def untabulate_xlsx(
     filepath: str,
     *,
     sheet_name: str = None,
+    start_row: int = 1,
+    start_col: int = 1,
+    header_rows: int = 1,
+    header_cols: int = 1,
     format: OutputFormat = "dict",
     separator: str = " → ",
 ) -> list:
@@ -223,6 +253,10 @@ def untabulate_xlsx(
     Args:
         filepath: Path to .xlsx file
         sheet_name: Worksheet name (default: active sheet)
+        start_row: Starting row, 1-indexed (default: 1). Use for tables not at top.
+        start_col: Starting column, 1-indexed (default: 1). Use for tables not at left.
+        header_rows: Number of rows at the top to treat as column headers (default: 1)
+        header_cols: Number of columns on the left to treat as row headers (default: 1)
         format: Output format - "dict", "strings", or "tuples"
         separator: Separator for path components in context strings
 
@@ -240,7 +274,14 @@ def untabulate_xlsx(
         >>> print(results[0])
         'Revenue → Q1: 100'
     """
-    elements = parse_xlsx_worksheet(filepath, sheet_name=sheet_name)
+    elements = parse_xlsx_worksheet(
+        filepath, 
+        sheet_name=sheet_name,
+        start_row=start_row,
+        start_col=start_col,
+        header_rows=header_rows,
+        header_cols=header_cols,
+    )
     grid = ProjectionGrid(elements)
     return _format_results(elements, grid, format, separator)
 

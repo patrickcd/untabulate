@@ -1890,6 +1890,9 @@ static CYTHON_INLINE int __Pyx_ParseKeywords(
 static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
     Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
 
+/* pyint_simplify.proto */
+static CYTHON_INLINE int __Pyx_PyInt_FromNumber(PyObject **number_var, const char *argname, int accept_none);
+
 /* ArgTypeTestFunc.export */
 static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact);
 
@@ -1986,11 +1989,11 @@ static CYTHON_INLINE PyObject* __Pyx_PyLong_AddObjC(PyObject *op1, PyObject *op2
   #define PyRange_Check(obj)  __Pyx_TypeCheck((obj), &PyRange_Type)
 #endif
 
-/* PyObjectFastCallMethod.proto */
+/* PyObjectVectorCallMethodKwBuilder.proto */
 #if CYTHON_VECTORCALL && PY_VERSION_HEX >= 0x03090000
-#define __Pyx_PyObject_FastCallMethod(name, args, nargsf) PyObject_VectorcallMethod(name, args, nargsf, NULL)
+#define __Pyx_Object_VectorcallMethod_CallFromBuilder PyObject_VectorcallMethod
 #else
-static PyObject *__Pyx_PyObject_FastCallMethod(PyObject *name, PyObject *const *args, size_t nargsf);
+static PyObject *__Pyx_Object_VectorcallMethod_CallFromBuilder(PyObject *name, PyObject *const *args, size_t nargsf, PyObject *kwnames);
 #endif
 
 /* RaiseTooManyValuesToUnpack.proto */
@@ -2004,6 +2007,14 @@ static CYTHON_INLINE int __Pyx_IterFinish(void);
 
 /* UnpackItemEndCheck.proto */
 static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected);
+
+/* PyLongBinop.proto */
+#if !CYTHON_COMPILING_IN_PYPY
+static CYTHON_INLINE PyObject* __Pyx_PyLong_SubtractObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
+#else
+#define __Pyx_PyLong_SubtractObjC(op1, op2, intval, inplace, zerodivision_check)\
+    (inplace ? PyNumber_InPlaceSubtract(op1, op2) : PyNumber_Subtract(op1, op2))
+#endif
 
 /* dict_getitem_default.proto */
 static PyObject* __Pyx_PyDict_GetItemDefault(PyObject* d, PyObject* key, PyObject* default_value);
@@ -2049,8 +2060,15 @@ static CYTHON_INLINE void __Pyx_RaiseNoneNotIterableError(void);
 #define __Pyx_PyObject_Unicode(obj)\
     (likely(PyUnicode_CheckExact(obj)) ? __Pyx_NewRef(obj) : PyObject_Str(obj))
 
-/* PyLongCompare.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_EqObjC(PyObject *op1, PyObject *op2, long intval, long inplace);
+/* PyObjectFastCallMethod.proto */
+#if CYTHON_VECTORCALL && PY_VERSION_HEX >= 0x03090000
+#define __Pyx_PyObject_FastCallMethod(name, args, nargsf) PyObject_VectorcallMethod(name, args, nargsf, NULL)
+#else
+static PyObject *__Pyx_PyObject_FastCallMethod(PyObject *name, PyObject *const *args, size_t nargsf);
+#endif
+
+/* py_dict_pop_ignore.proto */
+static CYTHON_INLINE int __Pyx_PyDict_Pop_ignore(PyObject *d, PyObject *key, PyObject *default_value);
 
 /* ListAppend.proto */
 #if CYTHON_USE_PYLIST_INTERNALS && CYTHON_ASSUME_SAFE_MACROS
@@ -2431,7 +2449,7 @@ int __pyx_module_is_main_untabulate__xlsx_parser = 0;
 static PyObject *__pyx_builtin_enumerate;
 /* #### Code section: string_decls ### */
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_filepath, PyObject *__pyx_v_sheet_name); /* proto */
+static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_filepath, PyObject *__pyx_v_sheet_name, PyObject *__pyx_v_start_row, PyObject *__pyx_v_start_col, PyObject *__pyx_v_header_rows, PyObject *__pyx_v_header_cols); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 /* SmallCodeConfig */
@@ -2460,7 +2478,7 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
   PyObject *__pyx_tuple[3];
   PyObject *__pyx_codeobj_tab[1];
-  PyObject *__pyx_string_tab[63];
+  PyObject *__pyx_string_tab[74];
   PyObject *__pyx_number_tab[1];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
@@ -2510,61 +2528,72 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_openpyxl_is_required_to_parse_Ex __pyx_string_tab[5]
 #define __pyx_kp_u_src_untabulate_xlsx_parser_pyx __pyx_string_tab[6]
 #define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[7]
-#define __pyx_n_u_active __pyx_string_tab[8]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[9]
-#define __pyx_n_u_c __pyx_string_tab[10]
-#define __pyx_n_u_cell __pyx_string_tab[11]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[12]
-#define __pyx_n_u_col_idx __pyx_string_tab[13]
-#define __pyx_n_u_colspan __pyx_string_tab[14]
-#define __pyx_n_u_data_only __pyx_string_tab[15]
-#define __pyx_n_u_elements __pyx_string_tab[16]
-#define __pyx_n_u_enumerate __pyx_string_tab[17]
-#define __pyx_n_u_filepath __pyx_string_tab[18]
-#define __pyx_n_u_func __pyx_string_tab[19]
-#define __pyx_n_u_get __pyx_string_tab[20]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[21]
-#define __pyx_n_u_is_header __pyx_string_tab[22]
-#define __pyx_n_u_items __pyx_string_tab[23]
-#define __pyx_n_u_iter_rows __pyx_string_tab[24]
-#define __pyx_n_u_list __pyx_string_tab[25]
-#define __pyx_n_u_load_workbook __pyx_string_tab[26]
-#define __pyx_n_u_main __pyx_string_tab[27]
-#define __pyx_n_u_max_col __pyx_string_tab[28]
-#define __pyx_n_u_max_row __pyx_string_tab[29]
-#define __pyx_n_u_merge_info __pyx_string_tab[30]
-#define __pyx_n_u_merge_range __pyx_string_tab[31]
-#define __pyx_n_u_merged __pyx_string_tab[32]
-#define __pyx_n_u_merged_cells __pyx_string_tab[33]
-#define __pyx_n_u_min_col __pyx_string_tab[34]
-#define __pyx_n_u_min_row __pyx_string_tab[35]
-#define __pyx_n_u_module __pyx_string_tab[36]
-#define __pyx_n_u_name __pyx_string_tab[37]
-#define __pyx_n_u_openpyxl __pyx_string_tab[38]
-#define __pyx_n_u_parse_xlsx_worksheet __pyx_string_tab[39]
-#define __pyx_n_u_pop __pyx_string_tab[40]
-#define __pyx_n_u_pyx_vtable __pyx_string_tab[41]
-#define __pyx_n_u_qualname __pyx_string_tab[42]
-#define __pyx_n_u_r __pyx_string_tab[43]
-#define __pyx_n_u_ranges __pyx_string_tab[44]
-#define __pyx_n_u_read_only __pyx_string_tab[45]
-#define __pyx_n_u_return __pyx_string_tab[46]
-#define __pyx_n_u_row __pyx_string_tab[47]
-#define __pyx_n_u_row_idx __pyx_string_tab[48]
-#define __pyx_n_u_rowspan __pyx_string_tab[49]
-#define __pyx_n_u_set_name __pyx_string_tab[50]
-#define __pyx_n_u_setdefault __pyx_string_tab[51]
-#define __pyx_n_u_sheet_name __pyx_string_tab[52]
-#define __pyx_n_u_start __pyx_string_tab[53]
-#define __pyx_n_u_str __pyx_string_tab[54]
-#define __pyx_n_u_strip __pyx_string_tab[55]
-#define __pyx_n_u_test __pyx_string_tab[56]
-#define __pyx_n_u_untabulate_xlsx_parser __pyx_string_tab[57]
-#define __pyx_n_u_value __pyx_string_tab[58]
-#define __pyx_n_u_values __pyx_string_tab[59]
-#define __pyx_n_u_wb __pyx_string_tab[60]
-#define __pyx_n_u_ws __pyx_string_tab[61]
-#define __pyx_kp_b_iso88591_5_O1_Q_k_az_7_A_1O_2Q_Q_r_a_j_1 __pyx_string_tab[62]
+#define __pyx_n_u_abs_col_idx __pyx_string_tab[8]
+#define __pyx_n_u_abs_row_idx __pyx_string_tab[9]
+#define __pyx_n_u_active __pyx_string_tab[10]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[11]
+#define __pyx_n_u_c __pyx_string_tab[12]
+#define __pyx_n_u_cell __pyx_string_tab[13]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[14]
+#define __pyx_n_u_colspan __pyx_string_tab[15]
+#define __pyx_n_u_data_only __pyx_string_tab[16]
+#define __pyx_n_u_elements __pyx_string_tab[17]
+#define __pyx_n_u_enumerate __pyx_string_tab[18]
+#define __pyx_n_u_excel_col __pyx_string_tab[19]
+#define __pyx_n_u_excel_row __pyx_string_tab[20]
+#define __pyx_n_u_filepath __pyx_string_tab[21]
+#define __pyx_n_u_func __pyx_string_tab[22]
+#define __pyx_n_u_get __pyx_string_tab[23]
+#define __pyx_n_u_header_cols __pyx_string_tab[24]
+#define __pyx_n_u_header_rows __pyx_string_tab[25]
+#define __pyx_n_u_int __pyx_string_tab[26]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[27]
+#define __pyx_n_u_is_header __pyx_string_tab[28]
+#define __pyx_n_u_items __pyx_string_tab[29]
+#define __pyx_n_u_iter_rows __pyx_string_tab[30]
+#define __pyx_n_u_last_header_value __pyx_string_tab[31]
+#define __pyx_n_u_list __pyx_string_tab[32]
+#define __pyx_n_u_load_workbook __pyx_string_tab[33]
+#define __pyx_n_u_main __pyx_string_tab[34]
+#define __pyx_n_u_max_col __pyx_string_tab[35]
+#define __pyx_n_u_max_row __pyx_string_tab[36]
+#define __pyx_n_u_merge_info __pyx_string_tab[37]
+#define __pyx_n_u_merge_range __pyx_string_tab[38]
+#define __pyx_n_u_merged __pyx_string_tab[39]
+#define __pyx_n_u_merged_cells __pyx_string_tab[40]
+#define __pyx_n_u_min_col __pyx_string_tab[41]
+#define __pyx_n_u_min_row __pyx_string_tab[42]
+#define __pyx_n_u_module __pyx_string_tab[43]
+#define __pyx_n_u_name __pyx_string_tab[44]
+#define __pyx_n_u_openpyxl __pyx_string_tab[45]
+#define __pyx_n_u_parse_xlsx_worksheet __pyx_string_tab[46]
+#define __pyx_n_u_pop __pyx_string_tab[47]
+#define __pyx_n_u_pyx_vtable __pyx_string_tab[48]
+#define __pyx_n_u_qualname __pyx_string_tab[49]
+#define __pyx_n_u_r __pyx_string_tab[50]
+#define __pyx_n_u_ranges __pyx_string_tab[51]
+#define __pyx_n_u_read_only __pyx_string_tab[52]
+#define __pyx_n_u_rel_col __pyx_string_tab[53]
+#define __pyx_n_u_rel_row __pyx_string_tab[54]
+#define __pyx_n_u_return __pyx_string_tab[55]
+#define __pyx_n_u_row __pyx_string_tab[56]
+#define __pyx_n_u_rows_iter __pyx_string_tab[57]
+#define __pyx_n_u_rowspan __pyx_string_tab[58]
+#define __pyx_n_u_set_name __pyx_string_tab[59]
+#define __pyx_n_u_setdefault __pyx_string_tab[60]
+#define __pyx_n_u_sheet_name __pyx_string_tab[61]
+#define __pyx_n_u_start __pyx_string_tab[62]
+#define __pyx_n_u_start_col __pyx_string_tab[63]
+#define __pyx_n_u_start_row __pyx_string_tab[64]
+#define __pyx_n_u_str __pyx_string_tab[65]
+#define __pyx_n_u_strip __pyx_string_tab[66]
+#define __pyx_n_u_test __pyx_string_tab[67]
+#define __pyx_n_u_untabulate_xlsx_parser __pyx_string_tab[68]
+#define __pyx_n_u_value __pyx_string_tab[69]
+#define __pyx_n_u_values __pyx_string_tab[70]
+#define __pyx_n_u_wb __pyx_string_tab[71]
+#define __pyx_n_u_ws __pyx_string_tab[72]
+#define __pyx_kp_b_iso88591_q_q_Q_k_az_7_A_1O_2Q_Q_r_a_j_1 __pyx_string_tab[73]
 #define __pyx_int_1 __pyx_number_tab[0]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
@@ -2584,7 +2613,7 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid);
   for (int i=0; i<3; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<63; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<74; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -2612,7 +2641,7 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_ptype_10untabulate_15projection_grid_ProjectionGrid);
   for (int i=0; i<3; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<63; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<74; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -2630,9 +2659,9 @@ return 0;
 /* "untabulate/xlsx_parser.pyx":4
  * 
  * 
- * def parse_xlsx_worksheet(filepath: str, sheet_name: str = None) -> list:             # <<<<<<<<<<<<<<
- *     """
- *     Parse an Excel worksheet into GridElement instances.
+ * def parse_xlsx_worksheet(             # <<<<<<<<<<<<<<
+ *     filepath: str,
+ *     sheet_name: str = None,
 */
 
 /* Python wrapper */
@@ -2643,7 +2672,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_10untabulate_11xlsx_parser_parse_xlsx_worksheet, "\n    Parse an Excel worksheet into GridElement instances.\n\n    Merged cells are treated as headers, regular cells as data.\n    ");
+PyDoc_STRVAR(__pyx_doc_10untabulate_11xlsx_parser_parse_xlsx_worksheet, "\n    Parse an Excel worksheet into GridElement instances.\n\n    Args:\n        filepath: Path to the Excel file (.xlsx)\n        sheet_name: Name of the worksheet to parse. If None, uses the active sheet.\n        start_row: Starting row (1-indexed, default: 1). Use for tables not at top.\n        start_col: Starting column (1-indexed, default: 1). Use for tables not at left.\n        header_rows: Number of rows at the top to treat as column headers (default: 1)\n        header_cols: Number of columns on the left to treat as row headers (default: 1)\n\n    Returns:\n        List of GridElement instances suitable for ProjectionGrid\n\n    Note:\n        Merged cells are always treated as headers regardless of position.\n        Empty cells in header columns inherit values from the cell above.\n    ");
 static PyMethodDef __pyx_mdef_10untabulate_11xlsx_parser_1parse_xlsx_worksheet = {"parse_xlsx_worksheet", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10untabulate_11xlsx_parser_1parse_xlsx_worksheet, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10untabulate_11xlsx_parser_parse_xlsx_worksheet};
 static PyObject *__pyx_pw_10untabulate_11xlsx_parser_1parse_xlsx_worksheet(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
@@ -2654,11 +2683,15 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 ) {
   PyObject *__pyx_v_filepath = 0;
   PyObject *__pyx_v_sheet_name = 0;
+  PyObject *__pyx_v_start_row = 0;
+  PyObject *__pyx_v_start_col = 0;
+  PyObject *__pyx_v_header_rows = 0;
+  PyObject *__pyx_v_header_cols = 0;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   #endif
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[2] = {0,0};
+  PyObject* values[6] = {0,0,0,0,0,0};
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2674,11 +2707,27 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   #endif
   __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_filepath,&__pyx_mstate_global->__pyx_n_u_sheet_name,0};
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_filepath,&__pyx_mstate_global->__pyx_n_u_sheet_name,&__pyx_mstate_global->__pyx_n_u_start_row,&__pyx_mstate_global->__pyx_n_u_start_col,&__pyx_mstate_global->__pyx_n_u_header_rows,&__pyx_mstate_global->__pyx_n_u_header_cols,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
     if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 4, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
+        case  6:
+        values[5] = __Pyx_ArgRef_FASTCALL(__pyx_args, 5);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[5])) __PYX_ERR(0, 4, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  5:
+        values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 4, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  4:
+        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 4, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 4, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
         if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 4, __pyx_L3_error)
@@ -2692,12 +2741,40 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
       if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "parse_xlsx_worksheet", 0) < (0)) __PYX_ERR(0, 4, __pyx_L3_error)
+
+      /* "untabulate/xlsx_parser.pyx":6
+ * def parse_xlsx_worksheet(
+ *     filepath: str,
+ *     sheet_name: str = None,             # <<<<<<<<<<<<<<
+ *     start_row: int = 1,
+ *     start_col: int = 1,
+*/
       if (!values[1]) values[1] = __Pyx_NewRef(((PyObject*)Py_None));
+      if (!values[2]) values[2] = __Pyx_NewRef(((PyObject*)((PyObject*)__pyx_mstate_global->__pyx_int_1)));
+      if (!values[3]) values[3] = __Pyx_NewRef(((PyObject*)((PyObject*)__pyx_mstate_global->__pyx_int_1)));
+      if (!values[4]) values[4] = __Pyx_NewRef(((PyObject*)((PyObject*)__pyx_mstate_global->__pyx_int_1)));
+      if (!values[5]) values[5] = __Pyx_NewRef(((PyObject*)((PyObject*)__pyx_mstate_global->__pyx_int_1)));
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("parse_xlsx_worksheet", 0, 1, 2, i); __PYX_ERR(0, 4, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("parse_xlsx_worksheet", 0, 1, 6, i); __PYX_ERR(0, 4, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
+        case  6:
+        values[5] = __Pyx_ArgRef_FASTCALL(__pyx_args, 5);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[5])) __PYX_ERR(0, 4, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  5:
+        values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 4, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  4:
+        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 4, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 4, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
         if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 4, __pyx_L3_error)
@@ -2709,13 +2786,25 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         default: goto __pyx_L5_argtuple_error;
       }
       if (!values[1]) values[1] = __Pyx_NewRef(((PyObject*)Py_None));
+      if (!values[2]) values[2] = __Pyx_NewRef(((PyObject*)((PyObject*)__pyx_mstate_global->__pyx_int_1)));
+      if (!values[3]) values[3] = __Pyx_NewRef(((PyObject*)((PyObject*)__pyx_mstate_global->__pyx_int_1)));
+      if (!values[4]) values[4] = __Pyx_NewRef(((PyObject*)((PyObject*)__pyx_mstate_global->__pyx_int_1)));
+      if (!values[5]) values[5] = __Pyx_NewRef(((PyObject*)((PyObject*)__pyx_mstate_global->__pyx_int_1)));
     }
     __pyx_v_filepath = ((PyObject*)values[0]);
     __pyx_v_sheet_name = ((PyObject*)values[1]);
+    if (__Pyx_PyInt_FromNumber(&values[2], "start_row", 0) < (0)) __PYX_ERR(0, 7, __pyx_L3_error)
+    __pyx_v_start_row = ((PyObject*)values[2]);
+    if (__Pyx_PyInt_FromNumber(&values[3], "start_col", 0) < (0)) __PYX_ERR(0, 8, __pyx_L3_error)
+    __pyx_v_start_col = ((PyObject*)values[3]);
+    if (__Pyx_PyInt_FromNumber(&values[4], "header_rows", 0) < (0)) __PYX_ERR(0, 9, __pyx_L3_error)
+    __pyx_v_header_rows = ((PyObject*)values[4]);
+    if (__Pyx_PyInt_FromNumber(&values[5], "header_cols", 0) < (0)) __PYX_ERR(0, 10, __pyx_L3_error)
+    __pyx_v_header_cols = ((PyObject*)values[5]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("parse_xlsx_worksheet", 0, 1, 2, __pyx_nargs); __PYX_ERR(0, 4, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("parse_xlsx_worksheet", 0, 1, 6, __pyx_nargs); __PYX_ERR(0, 4, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2726,9 +2815,21 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_filepath), (&PyUnicode_Type), 0, "filepath", 2))) __PYX_ERR(0, 4, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sheet_name), (&PyUnicode_Type), 1, "sheet_name", 2))) __PYX_ERR(0, 4, __pyx_L1_error)
-  __pyx_r = __pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(__pyx_self, __pyx_v_filepath, __pyx_v_sheet_name);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_filepath), (&PyUnicode_Type), 0, "filepath", 2))) __PYX_ERR(0, 5, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_sheet_name), (&PyUnicode_Type), 1, "sheet_name", 2))) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_start_row), (&PyLong_Type), 0, "start_row", 2))) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_start_col), (&PyLong_Type), 0, "start_col", 2))) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_header_rows), (&PyLong_Type), 0, "header_rows", 2))) __PYX_ERR(0, 9, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_header_cols), (&PyLong_Type), 0, "header_cols", 2))) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(__pyx_self, __pyx_v_filepath, __pyx_v_sheet_name, __pyx_v_start_row, __pyx_v_start_col, __pyx_v_header_rows, __pyx_v_header_cols);
+
+  /* "untabulate/xlsx_parser.pyx":4
+ * 
+ * 
+ * def parse_xlsx_worksheet(             # <<<<<<<<<<<<<<
+ *     filepath: str,
+ *     sheet_name: str = None,
+*/
 
   /* function exit code */
   goto __pyx_L0;
@@ -2747,7 +2848,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_filepath, PyObject *__pyx_v_sheet_name) {
+static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_filepath, PyObject *__pyx_v_sheet_name, PyObject *__pyx_v_start_row, PyObject *__pyx_v_start_col, PyObject *__pyx_v_header_rows, PyObject *__pyx_v_header_cols) {
   PyObject *__pyx_v_load_workbook = NULL;
   PyObject *__pyx_v_wb = NULL;
   PyObject *__pyx_v_ws = NULL;
@@ -2759,13 +2860,19 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
   PyObject *__pyx_v_colspan = NULL;
   PyObject *__pyx_v_r = NULL;
   PyObject *__pyx_v_c = NULL;
+  PyObject *__pyx_v_last_header_value = NULL;
   PyObject *__pyx_v_elements = NULL;
-  PyObject *__pyx_v_row_idx = NULL;
+  PyObject *__pyx_v_rows_iter = NULL;
+  PyObject *__pyx_v_abs_row_idx = NULL;
   PyObject *__pyx_v_row = NULL;
-  PyObject *__pyx_v_col_idx = NULL;
+  PyObject *__pyx_v_abs_col_idx = NULL;
   PyObject *__pyx_v_cell = NULL;
+  PyObject *__pyx_v_excel_row = NULL;
+  PyObject *__pyx_v_excel_col = NULL;
   PyObject *__pyx_v_merge_info = NULL;
   PyObject *__pyx_v_value = NULL;
+  PyObject *__pyx_v_rel_row = NULL;
+  PyObject *__pyx_v_rel_col = NULL;
   int __pyx_v_is_header;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -2796,8 +2903,8 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("parse_xlsx_worksheet", 0);
 
-  /* "untabulate/xlsx_parser.pyx":10
- *     Merged cells are treated as headers, regular cells as data.
+  /* "untabulate/xlsx_parser.pyx":30
+ *         Empty cells in header columns inherit values from the cell above.
  *     """
  *     try:             # <<<<<<<<<<<<<<
  *         from openpyxl import load_workbook
@@ -2812,7 +2919,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "untabulate/xlsx_parser.pyx":11
+      /* "untabulate/xlsx_parser.pyx":31
  *     """
  *     try:
  *         from openpyxl import load_workbook             # <<<<<<<<<<<<<<
@@ -2821,14 +2928,14 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
 */
       {
         PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_load_workbook};
-        __pyx_t_5 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_openpyxl, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 11, __pyx_L3_error)
+        __pyx_t_5 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_openpyxl, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 31, __pyx_L3_error)
       }
       __pyx_t_4 = __pyx_t_5;
       __Pyx_GOTREF(__pyx_t_4);
       {
         PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_load_workbook};
         __pyx_t_6 = 0; {
-          __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_imported_names[__pyx_t_6]); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 11, __pyx_L3_error)
+          __pyx_t_7 = __Pyx_ImportFrom(__pyx_t_4, __pyx_imported_names[__pyx_t_6]); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 31, __pyx_L3_error)
           __Pyx_GOTREF(__pyx_t_7);
           switch (__pyx_t_6) {
             case 0:
@@ -2842,8 +2949,8 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "untabulate/xlsx_parser.pyx":10
- *     Merged cells are treated as headers, regular cells as data.
+      /* "untabulate/xlsx_parser.pyx":30
+ *         Empty cells in header columns inherit values from the cell above.
  *     """
  *     try:             # <<<<<<<<<<<<<<
  *         from openpyxl import load_workbook
@@ -2858,7 +2965,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "untabulate/xlsx_parser.pyx":12
+    /* "untabulate/xlsx_parser.pyx":32
  *     try:
  *         from openpyxl import load_workbook
  *     except ImportError:             # <<<<<<<<<<<<<<
@@ -2868,12 +2975,12 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
     __pyx_t_8 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_ImportError))));
     if (__pyx_t_8) {
       __Pyx_AddTraceback("untabulate.xlsx_parser.parse_xlsx_worksheet", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_7, &__pyx_t_9) < 0) __PYX_ERR(0, 12, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_7, &__pyx_t_9) < 0) __PYX_ERR(0, 32, __pyx_L5_except_error)
       __Pyx_XGOTREF(__pyx_t_4);
       __Pyx_XGOTREF(__pyx_t_7);
       __Pyx_XGOTREF(__pyx_t_9);
 
-      /* "untabulate/xlsx_parser.pyx":13
+      /* "untabulate/xlsx_parser.pyx":33
  *         from openpyxl import load_workbook
  *     except ImportError:
  *         raise ImportError(             # <<<<<<<<<<<<<<
@@ -2886,17 +2993,17 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
         PyObject *__pyx_callargs[2] = {__pyx_t_11, __pyx_mstate_global->__pyx_kp_u_openpyxl_is_required_to_parse_Ex};
         __pyx_t_10 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ImportError)), __pyx_callargs+__pyx_t_12, (2-__pyx_t_12) | (__pyx_t_12*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-        if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 13, __pyx_L5_except_error)
+        if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 33, __pyx_L5_except_error)
         __Pyx_GOTREF(__pyx_t_10);
       }
       __Pyx_Raise(__pyx_t_10, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __PYX_ERR(0, 13, __pyx_L5_except_error)
+      __PYX_ERR(0, 33, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
 
-    /* "untabulate/xlsx_parser.pyx":10
- *     Merged cells are treated as headers, regular cells as data.
+    /* "untabulate/xlsx_parser.pyx":30
+ *         Empty cells in header columns inherit values from the cell above.
  *     """
  *     try:             # <<<<<<<<<<<<<<
  *         from openpyxl import load_workbook
@@ -2911,7 +3018,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
     __pyx_L8_try_end:;
   }
 
-  /* "untabulate/xlsx_parser.pyx":17
+  /* "untabulate/xlsx_parser.pyx":37
  *             "with 'pip install untabulate[openpyxl]'")
  * 
  *     wb = load_workbook(filepath, read_only=False, data_only=True)             # <<<<<<<<<<<<<<
@@ -2935,21 +3042,21 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_7, __pyx_v_filepath};
-    __pyx_t_10 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 17, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 37, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_read_only, Py_False, __pyx_t_10, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 17, __pyx_L1_error)
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_data_only, Py_True, __pyx_t_10, __pyx_callargs+2, 1) < (0)) __PYX_ERR(0, 17, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_read_only, Py_False, __pyx_t_10, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 37, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_data_only, Py_True, __pyx_t_10, __pyx_callargs+2, 1) < (0)) __PYX_ERR(0, 37, __pyx_L1_error)
     __pyx_t_9 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_12, (2-__pyx_t_12) | (__pyx_t_12*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_10);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 17, __pyx_L1_error)
+    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 37, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
   }
   __pyx_v_wb = __pyx_t_9;
   __pyx_t_9 = 0;
 
-  /* "untabulate/xlsx_parser.pyx":18
+  /* "untabulate/xlsx_parser.pyx":38
  * 
  *     wb = load_workbook(filepath, read_only=False, data_only=True)
  *     ws = wb[sheet_name] if sheet_name else wb.active             # <<<<<<<<<<<<<<
@@ -2960,17 +3067,17 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
   else
   {
     Py_ssize_t __pyx_temp = __Pyx_PyUnicode_IS_TRUE(__pyx_v_sheet_name);
-    if (unlikely(((!CYTHON_ASSUME_SAFE_SIZE) && __pyx_temp < 0))) __PYX_ERR(0, 18, __pyx_L1_error)
+    if (unlikely(((!CYTHON_ASSUME_SAFE_SIZE) && __pyx_temp < 0))) __PYX_ERR(0, 38, __pyx_L1_error)
     __pyx_t_13 = (__pyx_temp != 0);
   }
 
   if (__pyx_t_13) {
-    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_wb, __pyx_v_sheet_name); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_wb, __pyx_v_sheet_name); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_9 = __pyx_t_4;
     __pyx_t_4 = 0;
   } else {
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_wb, __pyx_mstate_global->__pyx_n_u_active); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_wb, __pyx_mstate_global->__pyx_n_u_active); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_9 = __pyx_t_4;
     __pyx_t_4 = 0;
@@ -2978,28 +3085,28 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
   __pyx_v_ws = __pyx_t_9;
   __pyx_t_9 = 0;
 
-  /* "untabulate/xlsx_parser.pyx":21
+  /* "untabulate/xlsx_parser.pyx":41
  * 
  *     # Build merged cell lookup: (row, col) -> (rowspan, colspan, is_origin)
  *     merged = {}             # <<<<<<<<<<<<<<
  *     for merge_range in ws.merged_cells.ranges:
  *         min_row, min_col = merge_range.min_row, merge_range.min_col
 */
-  __pyx_t_9 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_v_merged = ((PyObject*)__pyx_t_9);
   __pyx_t_9 = 0;
 
-  /* "untabulate/xlsx_parser.pyx":22
+  /* "untabulate/xlsx_parser.pyx":42
  *     # Build merged cell lookup: (row, col) -> (rowspan, colspan, is_origin)
  *     merged = {}
  *     for merge_range in ws.merged_cells.ranges:             # <<<<<<<<<<<<<<
  *         min_row, min_col = merge_range.min_row, merge_range.min_col
  *         rowspan = merge_range.max_row - min_row + 1
 */
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_ws, __pyx_mstate_global->__pyx_n_u_merged_cells); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_ws, __pyx_mstate_global->__pyx_n_u_merged_cells); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_ranges); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_ranges); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
@@ -3007,9 +3114,9 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
     __pyx_t_6 = 0;
     __pyx_t_14 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_14 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_9); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_14 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_9); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 42, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   for (;;) {
@@ -3018,7 +3125,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_9);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 22, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 42, __pyx_L1_error)
           #endif
           if (__pyx_t_6 >= __pyx_temp) break;
         }
@@ -3028,7 +3135,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_9);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 22, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 42, __pyx_L1_error)
           #endif
           if (__pyx_t_6 >= __pyx_temp) break;
         }
@@ -3039,13 +3146,13 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
         #endif
         ++__pyx_t_6;
       }
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
     } else {
       __pyx_t_4 = __pyx_t_14(__pyx_t_9);
       if (unlikely(!__pyx_t_4)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 22, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 42, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
@@ -3055,89 +3162,89 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
     __Pyx_XDECREF_SET(__pyx_v_merge_range, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "untabulate/xlsx_parser.pyx":23
+    /* "untabulate/xlsx_parser.pyx":43
  *     merged = {}
  *     for merge_range in ws.merged_cells.ranges:
  *         min_row, min_col = merge_range.min_row, merge_range.min_col             # <<<<<<<<<<<<<<
  *         rowspan = merge_range.max_row - min_row + 1
  *         colspan = merge_range.max_col - min_col + 1
 */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_merge_range, __pyx_mstate_global->__pyx_n_u_min_row); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_merge_range, __pyx_mstate_global->__pyx_n_u_min_row); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_merge_range, __pyx_mstate_global->__pyx_n_u_min_col); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 23, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_merge_range, __pyx_mstate_global->__pyx_n_u_min_col); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_XDECREF_SET(__pyx_v_min_row, __pyx_t_4);
     __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_min_col, __pyx_t_10);
     __pyx_t_10 = 0;
 
-    /* "untabulate/xlsx_parser.pyx":24
+    /* "untabulate/xlsx_parser.pyx":44
  *     for merge_range in ws.merged_cells.ranges:
  *         min_row, min_col = merge_range.min_row, merge_range.min_col
  *         rowspan = merge_range.max_row - min_row + 1             # <<<<<<<<<<<<<<
  *         colspan = merge_range.max_col - min_col + 1
  *         # Mark origin cell
 */
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_merge_range, __pyx_mstate_global->__pyx_n_u_max_row); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_merge_range, __pyx_mstate_global->__pyx_n_u_max_row); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_4 = PyNumber_Subtract(__pyx_t_10, __pyx_v_min_row); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Subtract(__pyx_t_10, __pyx_v_min_row); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyLong_AddObjC(__pyx_t_4, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyLong_AddObjC(__pyx_t_4, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 44, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_rowspan, __pyx_t_10);
     __pyx_t_10 = 0;
 
-    /* "untabulate/xlsx_parser.pyx":25
+    /* "untabulate/xlsx_parser.pyx":45
  *         min_row, min_col = merge_range.min_row, merge_range.min_col
  *         rowspan = merge_range.max_row - min_row + 1
  *         colspan = merge_range.max_col - min_col + 1             # <<<<<<<<<<<<<<
  *         # Mark origin cell
  *         merged[(min_row, min_col)] = (rowspan, colspan, True)
 */
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_merge_range, __pyx_mstate_global->__pyx_n_u_max_col); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_merge_range, __pyx_mstate_global->__pyx_n_u_max_col); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_4 = PyNumber_Subtract(__pyx_t_10, __pyx_v_min_col); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Subtract(__pyx_t_10, __pyx_v_min_col); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyLong_AddObjC(__pyx_t_4, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyLong_AddObjC(__pyx_t_4, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_colspan, __pyx_t_10);
     __pyx_t_10 = 0;
 
-    /* "untabulate/xlsx_parser.pyx":27
+    /* "untabulate/xlsx_parser.pyx":47
  *         colspan = merge_range.max_col - min_col + 1
  *         # Mark origin cell
  *         merged[(min_row, min_col)] = (rowspan, colspan, True)             # <<<<<<<<<<<<<<
  *         # Mark spanned cells to skip
  *         for r in range(min_row, merge_range.max_row + 1):
 */
-    __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 27, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_INCREF(__pyx_v_rowspan);
     __Pyx_GIVEREF(__pyx_v_rowspan);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_v_rowspan) != (0)) __PYX_ERR(0, 27, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_v_rowspan) != (0)) __PYX_ERR(0, 47, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_colspan);
     __Pyx_GIVEREF(__pyx_v_colspan);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_colspan) != (0)) __PYX_ERR(0, 27, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_colspan) != (0)) __PYX_ERR(0, 47, __pyx_L1_error);
     __Pyx_INCREF(Py_True);
     __Pyx_GIVEREF(Py_True);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, Py_True) != (0)) __PYX_ERR(0, 27, __pyx_L1_error);
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L1_error)
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, Py_True) != (0)) __PYX_ERR(0, 47, __pyx_L1_error);
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_min_row);
     __Pyx_GIVEREF(__pyx_v_min_row);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_min_row) != (0)) __PYX_ERR(0, 27, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_min_row) != (0)) __PYX_ERR(0, 47, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_min_col);
     __Pyx_GIVEREF(__pyx_v_min_col);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_min_col) != (0)) __PYX_ERR(0, 27, __pyx_L1_error);
-    if (unlikely((PyDict_SetItem(__pyx_v_merged, __pyx_t_4, __pyx_t_10) < 0))) __PYX_ERR(0, 27, __pyx_L1_error)
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_min_col) != (0)) __PYX_ERR(0, 47, __pyx_L1_error);
+    if (unlikely((PyDict_SetItem(__pyx_v_merged, __pyx_t_4, __pyx_t_10) < 0))) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "untabulate/xlsx_parser.pyx":29
+    /* "untabulate/xlsx_parser.pyx":49
  *         merged[(min_row, min_col)] = (rowspan, colspan, True)
  *         # Mark spanned cells to skip
  *         for r in range(min_row, merge_range.max_row + 1):             # <<<<<<<<<<<<<<
@@ -3145,9 +3252,9 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
  *                 if (r, c) != (min_row, min_col):
 */
     __pyx_t_4 = NULL;
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_merge_range, __pyx_mstate_global->__pyx_n_u_max_row); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_merge_range, __pyx_mstate_global->__pyx_n_u_max_row); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_11 = __Pyx_PyLong_AddObjC(__pyx_t_7, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyLong_AddObjC(__pyx_t_7, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 49, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_12 = 1;
@@ -3156,12 +3263,12 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
       __pyx_t_10 = __Pyx_PyObject_FastCall((PyObject*)(&PyRange_Type), __pyx_callargs+__pyx_t_12, (3-__pyx_t_12) | (__pyx_t_12*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 29, __pyx_L1_error)
+      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 49, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
     }
-    __pyx_t_11 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_11 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 49, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_15 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_11); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_15 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_11); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 49, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     for (;;) {
       {
@@ -3169,7 +3276,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
         if (unlikely(!__pyx_t_10)) {
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
-            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 29, __pyx_L1_error)
+            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 49, __pyx_L1_error)
             PyErr_Clear();
           }
           break;
@@ -3179,7 +3286,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
       __Pyx_XDECREF_SET(__pyx_v_r, __pyx_t_10);
       __pyx_t_10 = 0;
 
-      /* "untabulate/xlsx_parser.pyx":30
+      /* "untabulate/xlsx_parser.pyx":50
  *         # Mark spanned cells to skip
  *         for r in range(min_row, merge_range.max_row + 1):
  *             for c in range(min_col, merge_range.max_col + 1):             # <<<<<<<<<<<<<<
@@ -3187,9 +3294,9 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
  *                     merged[(r, c)] = (1, 1, False)  # Skip these
 */
       __pyx_t_4 = NULL;
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_merge_range, __pyx_mstate_global->__pyx_n_u_max_col); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 30, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_merge_range, __pyx_mstate_global->__pyx_n_u_max_col); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 50, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_16 = __Pyx_PyLong_AddObjC(__pyx_t_7, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 30, __pyx_L1_error)
+      __pyx_t_16 = __Pyx_PyLong_AddObjC(__pyx_t_7, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 50, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_12 = 1;
@@ -3198,12 +3305,12 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
         __pyx_t_10 = __Pyx_PyObject_FastCall((PyObject*)(&PyRange_Type), __pyx_callargs+__pyx_t_12, (3-__pyx_t_12) | (__pyx_t_12*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-        if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 30, __pyx_L1_error)
+        if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 50, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
       }
-      __pyx_t_16 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 30, __pyx_L1_error)
+      __pyx_t_16 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 50, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
-      __pyx_t_17 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_16); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 30, __pyx_L1_error)
+      __pyx_t_17 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_16); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 50, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       for (;;) {
         {
@@ -3211,7 +3318,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
           if (unlikely(!__pyx_t_10)) {
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
-              if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 30, __pyx_L1_error)
+              if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 50, __pyx_L1_error)
               PyErr_Clear();
             }
             break;
@@ -3221,55 +3328,55 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
         __Pyx_XDECREF_SET(__pyx_v_c, __pyx_t_10);
         __pyx_t_10 = 0;
 
-        /* "untabulate/xlsx_parser.pyx":31
+        /* "untabulate/xlsx_parser.pyx":51
  *         for r in range(min_row, merge_range.max_row + 1):
  *             for c in range(min_col, merge_range.max_col + 1):
  *                 if (r, c) != (min_row, min_col):             # <<<<<<<<<<<<<<
  *                     merged[(r, c)] = (1, 1, False)  # Skip these
  * 
 */
-        __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 31, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 51, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_INCREF(__pyx_v_r);
         __Pyx_GIVEREF(__pyx_v_r);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_v_r) != (0)) __PYX_ERR(0, 31, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_v_r) != (0)) __PYX_ERR(0, 51, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_c);
         __Pyx_GIVEREF(__pyx_v_c);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_c) != (0)) __PYX_ERR(0, 31, __pyx_L1_error);
-        __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 31, __pyx_L1_error)
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_c) != (0)) __PYX_ERR(0, 51, __pyx_L1_error);
+        __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_INCREF(__pyx_v_min_row);
         __Pyx_GIVEREF(__pyx_v_min_row);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_min_row) != (0)) __PYX_ERR(0, 31, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_min_row) != (0)) __PYX_ERR(0, 51, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_min_col);
         __Pyx_GIVEREF(__pyx_v_min_col);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_min_col) != (0)) __PYX_ERR(0, 31, __pyx_L1_error);
-        __pyx_t_7 = PyObject_RichCompare(__pyx_t_10, __pyx_t_4, Py_NE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 31, __pyx_L1_error)
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_min_col) != (0)) __PYX_ERR(0, 51, __pyx_L1_error);
+        __pyx_t_7 = PyObject_RichCompare(__pyx_t_10, __pyx_t_4, Py_NE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 51, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 31, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 51, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         if (__pyx_t_13) {
 
-          /* "untabulate/xlsx_parser.pyx":32
+          /* "untabulate/xlsx_parser.pyx":52
  *             for c in range(min_col, merge_range.max_col + 1):
  *                 if (r, c) != (min_row, min_col):
  *                     merged[(r, c)] = (1, 1, False)  # Skip these             # <<<<<<<<<<<<<<
  * 
- *     elements = []
+ *     # Track last non-empty value in each header column for fill-down
 */
-          __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 32, __pyx_L1_error)
+          __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 52, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_INCREF(__pyx_v_r);
           __Pyx_GIVEREF(__pyx_v_r);
-          if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_r) != (0)) __PYX_ERR(0, 32, __pyx_L1_error);
+          if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_r) != (0)) __PYX_ERR(0, 52, __pyx_L1_error);
           __Pyx_INCREF(__pyx_v_c);
           __Pyx_GIVEREF(__pyx_v_c);
-          if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_c) != (0)) __PYX_ERR(0, 32, __pyx_L1_error);
-          if (unlikely((PyDict_SetItem(__pyx_v_merged, __pyx_t_7, __pyx_mstate_global->__pyx_tuple[0]) < 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+          if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_c) != (0)) __PYX_ERR(0, 52, __pyx_L1_error);
+          if (unlikely((PyDict_SetItem(__pyx_v_merged, __pyx_t_7, __pyx_mstate_global->__pyx_tuple[0]) < 0))) __PYX_ERR(0, 52, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-          /* "untabulate/xlsx_parser.pyx":31
+          /* "untabulate/xlsx_parser.pyx":51
  *         for r in range(min_row, merge_range.max_row + 1):
  *             for c in range(min_col, merge_range.max_col + 1):
  *                 if (r, c) != (min_row, min_col):             # <<<<<<<<<<<<<<
@@ -3278,7 +3385,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
 */
         }
 
-        /* "untabulate/xlsx_parser.pyx":30
+        /* "untabulate/xlsx_parser.pyx":50
  *         # Mark spanned cells to skip
  *         for r in range(min_row, merge_range.max_row + 1):
  *             for c in range(min_col, merge_range.max_col + 1):             # <<<<<<<<<<<<<<
@@ -3288,7 +3395,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
       }
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
 
-      /* "untabulate/xlsx_parser.pyx":29
+      /* "untabulate/xlsx_parser.pyx":49
  *         merged[(min_row, min_col)] = (rowspan, colspan, True)
  *         # Mark spanned cells to skip
  *         for r in range(min_row, merge_range.max_row + 1):             # <<<<<<<<<<<<<<
@@ -3298,7 +3405,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
     }
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-    /* "untabulate/xlsx_parser.pyx":22
+    /* "untabulate/xlsx_parser.pyx":42
  *     # Build merged cell lookup: (row, col) -> (rowspan, colspan, is_origin)
  *     merged = {}
  *     for merge_range in ws.merged_cells.ranges:             # <<<<<<<<<<<<<<
@@ -3308,93 +3415,119 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "untabulate/xlsx_parser.pyx":34
- *                     merged[(r, c)] = (1, 1, False)  # Skip these
+  /* "untabulate/xlsx_parser.pyx":55
+ * 
+ *     # Track last non-empty value in each header column for fill-down
+ *     last_header_value = {}  # col_idx -> value             # <<<<<<<<<<<<<<
+ * 
+ *     elements = []
+*/
+  __pyx_t_9 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __pyx_v_last_header_value = ((PyObject*)__pyx_t_9);
+  __pyx_t_9 = 0;
+
+  /* "untabulate/xlsx_parser.pyx":57
+ *     last_header_value = {}  # col_idx -> value
  * 
  *     elements = []             # <<<<<<<<<<<<<<
- *     for row_idx, row in enumerate(ws.iter_rows(), start=1):
- *         for col_idx, cell in enumerate(row, start=1):
+ *     rows_iter = ws.iter_rows(min_row=start_row, min_col=start_col)
+ *     for abs_row_idx, row in enumerate(rows_iter, start=1):
 */
-  __pyx_t_9 = PyList_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_9 = PyList_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_v_elements = ((PyObject*)__pyx_t_9);
   __pyx_t_9 = 0;
 
-  /* "untabulate/xlsx_parser.pyx":35
+  /* "untabulate/xlsx_parser.pyx":58
  * 
  *     elements = []
- *     for row_idx, row in enumerate(ws.iter_rows(), start=1):             # <<<<<<<<<<<<<<
- *         for col_idx, cell in enumerate(row, start=1):
- *             merge_info = merged.get((row_idx, col_idx))
+ *     rows_iter = ws.iter_rows(min_row=start_row, min_col=start_col)             # <<<<<<<<<<<<<<
+ *     for abs_row_idx, row in enumerate(rows_iter, start=1):
+ *         for abs_col_idx, cell in enumerate(row, start=1):
 */
-  __pyx_t_11 = NULL;
-  __pyx_t_7 = __pyx_v_ws;
-  __Pyx_INCREF(__pyx_t_7);
+  __pyx_t_11 = __pyx_v_ws;
+  __Pyx_INCREF(__pyx_t_11);
   __pyx_t_12 = 0;
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
-    __pyx_t_16 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_iter_rows, __pyx_callargs+__pyx_t_12, (1-__pyx_t_12) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 35, __pyx_L1_error)
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_11, NULL};
+    __pyx_t_16 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
-  }
-  __pyx_t_12 = 1;
-  {
-    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_11, __pyx_t_16};
-    __pyx_t_7 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 35, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_start, __pyx_mstate_global->__pyx_int_1, __pyx_t_7, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 35, __pyx_L1_error)
-    __pyx_t_9 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_builtin_enumerate, __pyx_callargs+__pyx_t_12, (2-__pyx_t_12) | (__pyx_t_12*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_7);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_min_row, __pyx_v_start_row, __pyx_t_16, __pyx_callargs+1, 0) < (0)) __PYX_ERR(0, 58, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_min_col, __pyx_v_start_col, __pyx_t_16, __pyx_callargs+1, 1) < (0)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_Object_VectorcallMethod_CallFromBuilder((PyObject*)__pyx_mstate_global->__pyx_n_u_iter_rows, __pyx_callargs+__pyx_t_12, (1-__pyx_t_12) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_16);
     __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 35, __pyx_L1_error)
+    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+  }
+  __pyx_v_rows_iter = __pyx_t_9;
+  __pyx_t_9 = 0;
+
+  /* "untabulate/xlsx_parser.pyx":59
+ *     elements = []
+ *     rows_iter = ws.iter_rows(min_row=start_row, min_col=start_col)
+ *     for abs_row_idx, row in enumerate(rows_iter, start=1):             # <<<<<<<<<<<<<<
+ *         for abs_col_idx, cell in enumerate(row, start=1):
+ *             # Get actual Excel coordinates for merge lookup
+*/
+  __pyx_t_16 = NULL;
+  __pyx_t_12 = 1;
+  {
+    PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_16, __pyx_v_rows_iter};
+    __pyx_t_11 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_start, __pyx_mstate_global->__pyx_int_1, __pyx_t_11, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_builtin_enumerate, __pyx_callargs+__pyx_t_12, (2-__pyx_t_12) | (__pyx_t_12*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_11);
+    __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
   }
   if (likely(PyList_CheckExact(__pyx_t_9)) || PyTuple_CheckExact(__pyx_t_9)) {
-    __pyx_t_7 = __pyx_t_9; __Pyx_INCREF(__pyx_t_7);
+    __pyx_t_11 = __pyx_t_9; __Pyx_INCREF(__pyx_t_11);
     __pyx_t_6 = 0;
     __pyx_t_14 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 35, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_14 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_7); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 35, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_11 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __pyx_t_14 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_11); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 59, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   for (;;) {
     if (likely(!__pyx_t_14)) {
-      if (likely(PyList_CheckExact(__pyx_t_7))) {
+      if (likely(PyList_CheckExact(__pyx_t_11))) {
         {
-          Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_7);
+          Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_11);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 35, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 59, __pyx_L1_error)
           #endif
           if (__pyx_t_6 >= __pyx_temp) break;
         }
-        __pyx_t_9 = __Pyx_PyList_GetItemRefFast(__pyx_t_7, __pyx_t_6, __Pyx_ReferenceSharing_OwnStrongReference);
+        __pyx_t_9 = __Pyx_PyList_GetItemRefFast(__pyx_t_11, __pyx_t_6, __Pyx_ReferenceSharing_OwnStrongReference);
         ++__pyx_t_6;
       } else {
         {
-          Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_7);
+          Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_11);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 35, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 59, __pyx_L1_error)
           #endif
           if (__pyx_t_6 >= __pyx_temp) break;
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_9 = __Pyx_NewRef(PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_6));
+        __pyx_t_9 = __Pyx_NewRef(PyTuple_GET_ITEM(__pyx_t_11, __pyx_t_6));
         #else
-        __pyx_t_9 = __Pyx_PySequence_ITEM(__pyx_t_7, __pyx_t_6);
+        __pyx_t_9 = __Pyx_PySequence_ITEM(__pyx_t_11, __pyx_t_6);
         #endif
         ++__pyx_t_6;
       }
-      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 35, __pyx_L1_error)
+      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 59, __pyx_L1_error)
     } else {
-      __pyx_t_9 = __pyx_t_14(__pyx_t_7);
+      __pyx_t_9 = __pyx_t_14(__pyx_t_11);
       if (unlikely(!__pyx_t_9)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 35, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 59, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
@@ -3407,40 +3540,40 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 35, __pyx_L1_error)
+        __PYX_ERR(0, 59, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
         __pyx_t_16 = PyTuple_GET_ITEM(sequence, 0);
         __Pyx_INCREF(__pyx_t_16);
-        __pyx_t_11 = PyTuple_GET_ITEM(sequence, 1);
-        __Pyx_INCREF(__pyx_t_11);
+        __pyx_t_7 = PyTuple_GET_ITEM(sequence, 1);
+        __Pyx_INCREF(__pyx_t_7);
       } else {
         __pyx_t_16 = __Pyx_PyList_GetItemRefFast(sequence, 0, __Pyx_ReferenceSharing_SharedReference);
-        if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 35, __pyx_L1_error)
+        if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 59, __pyx_L1_error)
         __Pyx_XGOTREF(__pyx_t_16);
-        __pyx_t_11 = __Pyx_PyList_GetItemRefFast(sequence, 1, __Pyx_ReferenceSharing_SharedReference);
-        if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 35, __pyx_L1_error)
-        __Pyx_XGOTREF(__pyx_t_11);
+        __pyx_t_7 = __Pyx_PyList_GetItemRefFast(sequence, 1, __Pyx_ReferenceSharing_SharedReference);
+        if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
+        __Pyx_XGOTREF(__pyx_t_7);
       }
       #else
-      __pyx_t_16 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 35, __pyx_L1_error)
+      __pyx_t_16 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 59, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
-      __pyx_t_11 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 35, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_11);
+      __pyx_t_7 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
       #endif
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_4 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 35, __pyx_L1_error)
+      __pyx_t_4 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_t_18 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4);
       index = 0; __pyx_t_16 = __pyx_t_18(__pyx_t_4); if (unlikely(!__pyx_t_16)) goto __pyx_L23_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_16);
-      index = 1; __pyx_t_11 = __pyx_t_18(__pyx_t_4); if (unlikely(!__pyx_t_11)) goto __pyx_L23_unpacking_failed;
-      __Pyx_GOTREF(__pyx_t_11);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_18(__pyx_t_4), 2) < (0)) __PYX_ERR(0, 35, __pyx_L1_error)
+      index = 1; __pyx_t_7 = __pyx_t_18(__pyx_t_4); if (unlikely(!__pyx_t_7)) goto __pyx_L23_unpacking_failed;
+      __Pyx_GOTREF(__pyx_t_7);
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_18(__pyx_t_4), 2) < (0)) __PYX_ERR(0, 59, __pyx_L1_error)
       __pyx_t_18 = NULL;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       goto __pyx_L24_unpacking_done;
@@ -3448,32 +3581,32 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_18 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 35, __pyx_L1_error)
+      __PYX_ERR(0, 59, __pyx_L1_error)
       __pyx_L24_unpacking_done:;
     }
-    __Pyx_XDECREF_SET(__pyx_v_row_idx, __pyx_t_16);
+    __Pyx_XDECREF_SET(__pyx_v_abs_row_idx, __pyx_t_16);
     __pyx_t_16 = 0;
-    __Pyx_XDECREF_SET(__pyx_v_row, __pyx_t_11);
-    __pyx_t_11 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_row, __pyx_t_7);
+    __pyx_t_7 = 0;
 
-    /* "untabulate/xlsx_parser.pyx":36
- *     elements = []
- *     for row_idx, row in enumerate(ws.iter_rows(), start=1):
- *         for col_idx, cell in enumerate(row, start=1):             # <<<<<<<<<<<<<<
- *             merge_info = merged.get((row_idx, col_idx))
- * 
+    /* "untabulate/xlsx_parser.pyx":60
+ *     rows_iter = ws.iter_rows(min_row=start_row, min_col=start_col)
+ *     for abs_row_idx, row in enumerate(rows_iter, start=1):
+ *         for abs_col_idx, cell in enumerate(row, start=1):             # <<<<<<<<<<<<<<
+ *             # Get actual Excel coordinates for merge lookup
+ *             excel_row = start_row + abs_row_idx - 1
 */
-    __pyx_t_11 = NULL;
+    __pyx_t_7 = NULL;
     __pyx_t_12 = 1;
     {
-      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_11, __pyx_v_row};
-      __pyx_t_16 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 36, __pyx_L1_error)
+      PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_7, __pyx_v_row};
+      __pyx_t_16 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_start, __pyx_mstate_global->__pyx_int_1, __pyx_t_16, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 36, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_start, __pyx_mstate_global->__pyx_int_1, __pyx_t_16, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 60, __pyx_L1_error)
       __pyx_t_9 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_builtin_enumerate, __pyx_callargs+__pyx_t_12, (2-__pyx_t_12) | (__pyx_t_12*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_16);
-      __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 36, __pyx_L1_error)
+      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
     }
     if (likely(PyList_CheckExact(__pyx_t_9)) || PyTuple_CheckExact(__pyx_t_9)) {
@@ -3481,9 +3614,9 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
       __pyx_t_19 = 0;
       __pyx_t_15 = NULL;
     } else {
-      __pyx_t_19 = -1; __pyx_t_16 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 36, __pyx_L1_error)
+      __pyx_t_19 = -1; __pyx_t_16 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
-      __pyx_t_15 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_16); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 36, __pyx_L1_error)
+      __pyx_t_15 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_16); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 60, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     for (;;) {
@@ -3492,7 +3625,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
           {
             Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_16);
             #if !CYTHON_ASSUME_SAFE_SIZE
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 36, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 60, __pyx_L1_error)
             #endif
             if (__pyx_t_19 >= __pyx_temp) break;
           }
@@ -3502,7 +3635,7 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
           {
             Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_16);
             #if !CYTHON_ASSUME_SAFE_SIZE
-            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 36, __pyx_L1_error)
+            if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 60, __pyx_L1_error)
             #endif
             if (__pyx_t_19 >= __pyx_temp) break;
           }
@@ -3513,13 +3646,13 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
           #endif
           ++__pyx_t_19;
         }
-        if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 36, __pyx_L1_error)
+        if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 60, __pyx_L1_error)
       } else {
         __pyx_t_9 = __pyx_t_15(__pyx_t_16);
         if (unlikely(!__pyx_t_9)) {
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
-            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 36, __pyx_L1_error)
+            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 60, __pyx_L1_error)
             PyErr_Clear();
           }
           break;
@@ -3532,40 +3665,40 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 36, __pyx_L1_error)
+          __PYX_ERR(0, 60, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
-          __pyx_t_11 = PyTuple_GET_ITEM(sequence, 0);
-          __Pyx_INCREF(__pyx_t_11);
+          __pyx_t_7 = PyTuple_GET_ITEM(sequence, 0);
+          __Pyx_INCREF(__pyx_t_7);
           __pyx_t_4 = PyTuple_GET_ITEM(sequence, 1);
           __Pyx_INCREF(__pyx_t_4);
         } else {
-          __pyx_t_11 = __Pyx_PyList_GetItemRefFast(sequence, 0, __Pyx_ReferenceSharing_SharedReference);
-          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 36, __pyx_L1_error)
-          __Pyx_XGOTREF(__pyx_t_11);
+          __pyx_t_7 = __Pyx_PyList_GetItemRefFast(sequence, 0, __Pyx_ReferenceSharing_SharedReference);
+          if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
+          __Pyx_XGOTREF(__pyx_t_7);
           __pyx_t_4 = __Pyx_PyList_GetItemRefFast(sequence, 1, __Pyx_ReferenceSharing_SharedReference);
-          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
+          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
           __Pyx_XGOTREF(__pyx_t_4);
         }
         #else
-        __pyx_t_11 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 36, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_4 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __pyx_t_4 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_10 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 36, __pyx_L1_error)
+        __pyx_t_10 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 60, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_18 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_10);
-        index = 0; __pyx_t_11 = __pyx_t_18(__pyx_t_10); if (unlikely(!__pyx_t_11)) goto __pyx_L27_unpacking_failed;
-        __Pyx_GOTREF(__pyx_t_11);
+        index = 0; __pyx_t_7 = __pyx_t_18(__pyx_t_10); if (unlikely(!__pyx_t_7)) goto __pyx_L27_unpacking_failed;
+        __Pyx_GOTREF(__pyx_t_7);
         index = 1; __pyx_t_4 = __pyx_t_18(__pyx_t_10); if (unlikely(!__pyx_t_4)) goto __pyx_L27_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_4);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_18(__pyx_t_10), 2) < (0)) __PYX_ERR(0, 36, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_18(__pyx_t_10), 2) < (0)) __PYX_ERR(0, 60, __pyx_L1_error)
         __pyx_t_18 = NULL;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         goto __pyx_L28_unpacking_done;
@@ -3573,58 +3706,88 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_18 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 36, __pyx_L1_error)
+        __PYX_ERR(0, 60, __pyx_L1_error)
         __pyx_L28_unpacking_done:;
       }
-      __Pyx_XDECREF_SET(__pyx_v_col_idx, __pyx_t_11);
-      __pyx_t_11 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_abs_col_idx, __pyx_t_7);
+      __pyx_t_7 = 0;
       __Pyx_XDECREF_SET(__pyx_v_cell, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "untabulate/xlsx_parser.pyx":37
- *     for row_idx, row in enumerate(ws.iter_rows(), start=1):
- *         for col_idx, cell in enumerate(row, start=1):
- *             merge_info = merged.get((row_idx, col_idx))             # <<<<<<<<<<<<<<
+      /* "untabulate/xlsx_parser.pyx":62
+ *         for abs_col_idx, cell in enumerate(row, start=1):
+ *             # Get actual Excel coordinates for merge lookup
+ *             excel_row = start_row + abs_row_idx - 1             # <<<<<<<<<<<<<<
+ *             excel_col = start_col + abs_col_idx - 1
+ * 
+*/
+      __pyx_t_9 = PyNumber_Add(__pyx_v_start_row, __pyx_v_abs_row_idx); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 62, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_4 = __Pyx_PyLong_SubtractObjC(__pyx_t_9, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_excel_row, __pyx_t_4);
+      __pyx_t_4 = 0;
+
+      /* "untabulate/xlsx_parser.pyx":63
+ *             # Get actual Excel coordinates for merge lookup
+ *             excel_row = start_row + abs_row_idx - 1
+ *             excel_col = start_col + abs_col_idx - 1             # <<<<<<<<<<<<<<
+ * 
+ *             merge_info = merged.get((excel_row, excel_col))
+*/
+      __pyx_t_4 = PyNumber_Add(__pyx_v_start_col, __pyx_v_abs_col_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 63, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __pyx_t_9 = __Pyx_PyLong_SubtractObjC(__pyx_t_4, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 63, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_excel_col, __pyx_t_9);
+      __pyx_t_9 = 0;
+
+      /* "untabulate/xlsx_parser.pyx":65
+ *             excel_col = start_col + abs_col_idx - 1
+ * 
+ *             merge_info = merged.get((excel_row, excel_col))             # <<<<<<<<<<<<<<
  * 
  *             if merge_info and not merge_info[2]:
 */
-      __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 37, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 65, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __Pyx_INCREF(__pyx_v_row_idx);
-      __Pyx_GIVEREF(__pyx_v_row_idx);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_v_row_idx) != (0)) __PYX_ERR(0, 37, __pyx_L1_error);
-      __Pyx_INCREF(__pyx_v_col_idx);
-      __Pyx_GIVEREF(__pyx_v_col_idx);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_v_col_idx) != (0)) __PYX_ERR(0, 37, __pyx_L1_error);
-      __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_merged, __pyx_t_9, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
+      __Pyx_INCREF(__pyx_v_excel_row);
+      __Pyx_GIVEREF(__pyx_v_excel_row);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_v_excel_row) != (0)) __PYX_ERR(0, 65, __pyx_L1_error);
+      __Pyx_INCREF(__pyx_v_excel_col);
+      __Pyx_GIVEREF(__pyx_v_excel_col);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_v_excel_col) != (0)) __PYX_ERR(0, 65, __pyx_L1_error);
+      __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_merged, __pyx_t_9, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_XDECREF_SET(__pyx_v_merge_info, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "untabulate/xlsx_parser.pyx":39
- *             merge_info = merged.get((row_idx, col_idx))
+      /* "untabulate/xlsx_parser.pyx":67
+ *             merge_info = merged.get((excel_row, excel_col))
  * 
  *             if merge_info and not merge_info[2]:             # <<<<<<<<<<<<<<
  *                 continue  # Skip non-origin merged cells
  * 
 */
-      __pyx_t_20 = __Pyx_PyObject_IsTrue(__pyx_v_merge_info); if (unlikely((__pyx_t_20 < 0))) __PYX_ERR(0, 39, __pyx_L1_error)
+      __pyx_t_20 = __Pyx_PyObject_IsTrue(__pyx_v_merge_info); if (unlikely((__pyx_t_20 < 0))) __PYX_ERR(0, 67, __pyx_L1_error)
       if (__pyx_t_20) {
       } else {
         __pyx_t_13 = __pyx_t_20;
         goto __pyx_L30_bool_binop_done;
       }
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_merge_info, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_merge_info, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 67, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_20 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_20 < 0))) __PYX_ERR(0, 39, __pyx_L1_error)
+      __pyx_t_20 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_20 < 0))) __PYX_ERR(0, 67, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_21 = (!__pyx_t_20);
       __pyx_t_13 = __pyx_t_21;
       __pyx_L30_bool_binop_done:;
       if (__pyx_t_13) {
 
-        /* "untabulate/xlsx_parser.pyx":40
+        /* "untabulate/xlsx_parser.pyx":68
  * 
  *             if merge_info and not merge_info[2]:
  *                 continue  # Skip non-origin merged cells             # <<<<<<<<<<<<<<
@@ -3633,8 +3796,8 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
 */
         goto __pyx_L25_continue;
 
-        /* "untabulate/xlsx_parser.pyx":39
- *             merge_info = merged.get((row_idx, col_idx))
+        /* "untabulate/xlsx_parser.pyx":67
+ *             merge_info = merged.get((excel_row, excel_col))
  * 
  *             if merge_info and not merge_info[2]:             # <<<<<<<<<<<<<<
  *                 continue  # Skip non-origin merged cells
@@ -3642,40 +3805,40 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
 */
       }
 
-      /* "untabulate/xlsx_parser.pyx":44
+      /* "untabulate/xlsx_parser.pyx":72
  *             rowspan, colspan = (
  *                 (merge_info[0], merge_info[1])
  *                 if merge_info             # <<<<<<<<<<<<<<
  *                 else (1, 1)
  *             )
 */
-      __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_v_merge_info); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 44, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_v_merge_info); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 72, __pyx_L1_error)
       if (__pyx_t_13) {
 
-        /* "untabulate/xlsx_parser.pyx":43
+        /* "untabulate/xlsx_parser.pyx":71
  * 
  *             rowspan, colspan = (
  *                 (merge_info[0], merge_info[1])             # <<<<<<<<<<<<<<
  *                 if merge_info
  *                 else (1, 1)
 */
-        __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_merge_info, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 43, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_merge_info, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 71, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_merge_info, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 43, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 43, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_merge_info, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 0, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
+        __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 71, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GIVEREF(__pyx_t_9);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9) != (0)) __PYX_ERR(0, 43, __pyx_L1_error);
-        __Pyx_GIVEREF(__pyx_t_11);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_11) != (0)) __PYX_ERR(0, 43, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9) != (0)) __PYX_ERR(0, 71, __pyx_L1_error);
+        __Pyx_GIVEREF(__pyx_t_7);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_7) != (0)) __PYX_ERR(0, 71, __pyx_L1_error);
         __pyx_t_9 = 0;
-        __pyx_t_11 = 0;
+        __pyx_t_7 = 0;
         __pyx_t_4 = __pyx_t_10;
         __pyx_t_10 = 0;
       } else {
 
-        /* "untabulate/xlsx_parser.pyx":45
+        /* "untabulate/xlsx_parser.pyx":73
  *                 (merge_info[0], merge_info[1])
  *                 if merge_info
  *                 else (1, 1)             # <<<<<<<<<<<<<<
@@ -3691,25 +3854,25 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 42, __pyx_L1_error)
+          __PYX_ERR(0, 70, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         __pyx_t_10 = PyTuple_GET_ITEM(sequence, 0);
         __Pyx_INCREF(__pyx_t_10);
-        __pyx_t_11 = PyTuple_GET_ITEM(sequence, 1);
-        __Pyx_INCREF(__pyx_t_11);
+        __pyx_t_7 = PyTuple_GET_ITEM(sequence, 1);
+        __Pyx_INCREF(__pyx_t_7);
         #else
-        __pyx_t_10 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 42, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 70, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_11 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 42, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
+        __pyx_t_7 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 70, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_7);
         #endif
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 42, __pyx_L1_error)
+        __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 70, __pyx_L1_error)
       }
 
-      /* "untabulate/xlsx_parser.pyx":42
+      /* "untabulate/xlsx_parser.pyx":70
  *                 continue  # Skip non-origin merged cells
  * 
  *             rowspan, colspan = (             # <<<<<<<<<<<<<<
@@ -3718,19 +3881,19 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
 */
       __Pyx_XDECREF_SET(__pyx_v_rowspan, __pyx_t_10);
       __pyx_t_10 = 0;
-      __Pyx_XDECREF_SET(__pyx_v_colspan, __pyx_t_11);
-      __pyx_t_11 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_colspan, __pyx_t_7);
+      __pyx_t_7 = 0;
 
-      /* "untabulate/xlsx_parser.pyx":47
+      /* "untabulate/xlsx_parser.pyx":75
  *                 else (1, 1)
  *             )
  *             value = str(cell.value or "").strip()             # <<<<<<<<<<<<<<
  * 
- *             # Merged cells or column 1 = headers
+ *             # Use relative coordinates (1-indexed from start position)
 */
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_cell, __pyx_mstate_global->__pyx_n_u_value); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_cell, __pyx_mstate_global->__pyx_n_u_value); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 75, __pyx_L1_error)
       if (!__pyx_t_13) {
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       } else {
@@ -3742,104 +3905,291 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
       __Pyx_INCREF(__pyx_mstate_global->__pyx_kp_u__2);
       __pyx_t_10 = __pyx_mstate_global->__pyx_kp_u__2;
       __pyx_L32_bool_binop_done:;
-      __pyx_t_9 = __Pyx_PyObject_Unicode(__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_Unicode(__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_11 = __pyx_t_9;
-      __Pyx_INCREF(__pyx_t_11);
+      __pyx_t_7 = __pyx_t_9;
+      __Pyx_INCREF(__pyx_t_7);
       __pyx_t_12 = 0;
       {
-        PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
+        PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
         __pyx_t_4 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_strip, __pyx_callargs+__pyx_t_12, (1-__pyx_t_12) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-        __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
+        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
       }
-      __Pyx_XDECREF_SET(__pyx_v_value, ((PyObject*)__pyx_t_4));
+      __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "untabulate/xlsx_parser.pyx":50
+      /* "untabulate/xlsx_parser.pyx":78
  * 
- *             # Merged cells or column 1 = headers
- *             is_header = bool(merge_info or col_idx == 1)             # <<<<<<<<<<<<<<
+ *             # Use relative coordinates (1-indexed from start position)
+ *             rel_row = abs_row_idx             # <<<<<<<<<<<<<<
+ *             rel_col = abs_col_idx
  * 
- *             elements.append(
 */
-      __pyx_t_21 = __Pyx_PyObject_IsTrue(__pyx_v_merge_info); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 50, __pyx_L1_error)
+      __Pyx_INCREF(__pyx_v_abs_row_idx);
+      __Pyx_XDECREF_SET(__pyx_v_rel_row, __pyx_v_abs_row_idx);
+
+      /* "untabulate/xlsx_parser.pyx":79
+ *             # Use relative coordinates (1-indexed from start position)
+ *             rel_row = abs_row_idx
+ *             rel_col = abs_col_idx             # <<<<<<<<<<<<<<
+ * 
+ *             # Header if: in header rows, in header columns, or merged
+*/
+      __Pyx_INCREF(__pyx_v_abs_col_idx);
+      __Pyx_XDECREF_SET(__pyx_v_rel_col, __pyx_v_abs_col_idx);
+
+      /* "untabulate/xlsx_parser.pyx":83
+ *             # Header if: in header rows, in header columns, or merged
+ *             is_header = bool(
+ *                 merge_info or             # <<<<<<<<<<<<<<
+ *                 rel_row <= header_rows or
+ *                 rel_col <= header_cols
+*/
+      __pyx_t_21 = __Pyx_PyObject_IsTrue(__pyx_v_merge_info); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 83, __pyx_L1_error)
       if (!__pyx_t_21) {
       } else {
         __pyx_t_13 = __pyx_t_21;
         goto __pyx_L34_bool_binop_done;
       }
-      __pyx_t_4 = __Pyx_PyLong_EqObjC(__pyx_v_col_idx, __pyx_mstate_global->__pyx_int_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 50, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_21 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 50, __pyx_L1_error)
+
+      /* "untabulate/xlsx_parser.pyx":84
+ *             is_header = bool(
+ *                 merge_info or
+ *                 rel_row <= header_rows or             # <<<<<<<<<<<<<<
+ *                 rel_col <= header_cols
+ *             )
+*/
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_rel_row, __pyx_v_header_rows, Py_LE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __pyx_t_21 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 84, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (!__pyx_t_21) {
+      } else {
+        __pyx_t_13 = __pyx_t_21;
+        goto __pyx_L34_bool_binop_done;
+      }
+
+      /* "untabulate/xlsx_parser.pyx":85
+ *                 merge_info or
+ *                 rel_row <= header_rows or
+ *                 rel_col <= header_cols             # <<<<<<<<<<<<<<
+ *             )
+ * 
+*/
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_rel_col, __pyx_v_header_cols, Py_LE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
+      __pyx_t_21 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 85, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_13 = __pyx_t_21;
       __pyx_L34_bool_binop_done:;
+
+      /* "untabulate/xlsx_parser.pyx":82
+ * 
+ *             # Header if: in header rows, in header columns, or merged
+ *             is_header = bool(             # <<<<<<<<<<<<<<
+ *                 merge_info or
+ *                 rel_row <= header_rows or
+*/
       __pyx_v_is_header = (!(!__pyx_t_13));
 
-      /* "untabulate/xlsx_parser.pyx":53
+      /* "untabulate/xlsx_parser.pyx":89
+ * 
+ *             # For header columns (after header rows), fill down empty cells
+ *             if rel_col <= header_cols and rel_row > header_rows:             # <<<<<<<<<<<<<<
+ *                 if value:
+ *                     # Non-empty: remember this value for fill-down
+*/
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_rel_col, __pyx_v_header_cols, Py_LE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
+      __pyx_t_21 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 89, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (__pyx_t_21) {
+      } else {
+        __pyx_t_13 = __pyx_t_21;
+        goto __pyx_L38_bool_binop_done;
+      }
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_rel_row, __pyx_v_header_rows, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
+      __pyx_t_21 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_21 < 0))) __PYX_ERR(0, 89, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __pyx_t_13 = __pyx_t_21;
+      __pyx_L38_bool_binop_done:;
+      if (__pyx_t_13) {
+
+        /* "untabulate/xlsx_parser.pyx":90
+ *             # For header columns (after header rows), fill down empty cells
+ *             if rel_col <= header_cols and rel_row > header_rows:
+ *                 if value:             # <<<<<<<<<<<<<<
+ *                     # Non-empty: remember this value for fill-down
+ *                     last_header_value[rel_col] = value
+*/
+        __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 90, __pyx_L1_error)
+        if (__pyx_t_13) {
+
+          /* "untabulate/xlsx_parser.pyx":92
+ *                 if value:
+ *                     # Non-empty: remember this value for fill-down
+ *                     last_header_value[rel_col] = value             # <<<<<<<<<<<<<<
+ *                     # Clear fill-down values for columns to the right
+ *                     # (a new parent header resets child headers)
+*/
+          if (unlikely((PyDict_SetItem(__pyx_v_last_header_value, __pyx_v_rel_col, __pyx_v_value) < 0))) __PYX_ERR(0, 92, __pyx_L1_error)
+
+          /* "untabulate/xlsx_parser.pyx":95
+ *                     # Clear fill-down values for columns to the right
+ *                     # (a new parent header resets child headers)
+ *                     for c in range(rel_col + 1, header_cols + 1):             # <<<<<<<<<<<<<<
+ *                         last_header_value.pop(c, None)
+ *                 else:
+*/
+          __pyx_t_9 = NULL;
+          __pyx_t_7 = __Pyx_PyLong_AddObjC(__pyx_v_rel_col, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 95, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_7);
+          __pyx_t_10 = __Pyx_PyLong_AddObjC(__pyx_v_header_cols, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 95, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_10);
+          __pyx_t_12 = 1;
+          {
+            PyObject *__pyx_callargs[3] = {__pyx_t_9, __pyx_t_7, __pyx_t_10};
+            __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)(&PyRange_Type), __pyx_callargs+__pyx_t_12, (3-__pyx_t_12) | (__pyx_t_12*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+            __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+            __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+            __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+            if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_4);
+          }
+          __pyx_t_10 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 95, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_10);
+          __pyx_t_17 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_10); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 95, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          for (;;) {
+            {
+              __pyx_t_4 = __pyx_t_17(__pyx_t_10);
+              if (unlikely(!__pyx_t_4)) {
+                PyObject* exc_type = PyErr_Occurred();
+                if (exc_type) {
+                  if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 95, __pyx_L1_error)
+                  PyErr_Clear();
+                }
+                break;
+              }
+            }
+            __Pyx_GOTREF(__pyx_t_4);
+            __Pyx_XDECREF_SET(__pyx_v_c, __pyx_t_4);
+            __pyx_t_4 = 0;
+
+            /* "untabulate/xlsx_parser.pyx":96
+ *                     # (a new parent header resets child headers)
+ *                     for c in range(rel_col + 1, header_cols + 1):
+ *                         last_header_value.pop(c, None)             # <<<<<<<<<<<<<<
+ *                 else:
+ *                     # Empty: use the last value from this column
+*/
+            __pyx_t_8 = __Pyx_PyDict_Pop_ignore(__pyx_v_last_header_value, __pyx_v_c, Py_None); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 96, __pyx_L1_error)
+
+            /* "untabulate/xlsx_parser.pyx":95
+ *                     # Clear fill-down values for columns to the right
+ *                     # (a new parent header resets child headers)
+ *                     for c in range(rel_col + 1, header_cols + 1):             # <<<<<<<<<<<<<<
+ *                         last_header_value.pop(c, None)
+ *                 else:
+*/
+          }
+          __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+
+          /* "untabulate/xlsx_parser.pyx":90
+ *             # For header columns (after header rows), fill down empty cells
+ *             if rel_col <= header_cols and rel_row > header_rows:
+ *                 if value:             # <<<<<<<<<<<<<<
+ *                     # Non-empty: remember this value for fill-down
+ *                     last_header_value[rel_col] = value
+*/
+          goto __pyx_L40;
+        }
+
+        /* "untabulate/xlsx_parser.pyx":99
+ *                 else:
+ *                     # Empty: use the last value from this column
+ *                     value = last_header_value.get(rel_col, "")             # <<<<<<<<<<<<<<
+ * 
+ *             elements.append(
+*/
+        /*else*/ {
+          __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_last_header_value, __pyx_v_rel_col, __pyx_mstate_global->__pyx_kp_u__2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 99, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_10);
+          __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_10);
+          __pyx_t_10 = 0;
+        }
+        __pyx_L40:;
+
+        /* "untabulate/xlsx_parser.pyx":89
+ * 
+ *             # For header columns (after header rows), fill down empty cells
+ *             if rel_col <= header_cols and rel_row > header_rows:             # <<<<<<<<<<<<<<
+ *                 if value:
+ *                     # Non-empty: remember this value for fill-down
+*/
+      }
+
+      /* "untabulate/xlsx_parser.pyx":102
  * 
  *             elements.append(
  *                 GridElement(             # <<<<<<<<<<<<<<
- *                     is_header, row_idx, col_idx, rowspan, colspan, value
+ *                     is_header, rel_row, rel_col, rowspan, colspan, value
  *                 )
 */
-      __pyx_t_9 = NULL;
+      __pyx_t_4 = NULL;
 
-      /* "untabulate/xlsx_parser.pyx":54
+      /* "untabulate/xlsx_parser.pyx":103
  *             elements.append(
  *                 GridElement(
- *                     is_header, row_idx, col_idx, rowspan, colspan, value             # <<<<<<<<<<<<<<
+ *                     is_header, rel_row, rel_col, rowspan, colspan, value             # <<<<<<<<<<<<<<
  *                 )
  *             )
 */
-      __pyx_t_11 = __Pyx_PyBool_FromLong(__pyx_v_is_header); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 54, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_11);
+      __pyx_t_7 = __Pyx_PyBool_FromLong(__pyx_v_is_header); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 103, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_12 = 1;
       {
-        PyObject *__pyx_callargs[7] = {__pyx_t_9, __pyx_t_11, __pyx_v_row_idx, __pyx_v_col_idx, __pyx_v_rowspan, __pyx_v_colspan, __pyx_v_value};
-        __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_ptype_10untabulate_15projection_grid_GridElement, __pyx_callargs+__pyx_t_12, (7-__pyx_t_12) | (__pyx_t_12*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-        __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 53, __pyx_L1_error)
-        __Pyx_GOTREF((PyObject *)__pyx_t_4);
+        PyObject *__pyx_callargs[7] = {__pyx_t_4, __pyx_t_7, __pyx_v_rel_row, __pyx_v_rel_col, __pyx_v_rowspan, __pyx_v_colspan, __pyx_v_value};
+        __pyx_t_10 = __Pyx_PyObject_FastCall((PyObject*)__pyx_mstate_global->__pyx_ptype_10untabulate_15projection_grid_GridElement, __pyx_callargs+__pyx_t_12, (7-__pyx_t_12) | (__pyx_t_12*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+        __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 102, __pyx_L1_error)
+        __Pyx_GOTREF((PyObject *)__pyx_t_10);
       }
 
-      /* "untabulate/xlsx_parser.pyx":52
- *             is_header = bool(merge_info or col_idx == 1)
+      /* "untabulate/xlsx_parser.pyx":101
+ *                     value = last_header_value.get(rel_col, "")
  * 
  *             elements.append(             # <<<<<<<<<<<<<<
  *                 GridElement(
- *                     is_header, row_idx, col_idx, rowspan, colspan, value
+ *                     is_header, rel_row, rel_col, rowspan, colspan, value
 */
-      __pyx_t_22 = __Pyx_PyList_Append(__pyx_v_elements, ((PyObject *)__pyx_t_4)); if (unlikely(__pyx_t_22 == ((int)-1))) __PYX_ERR(0, 52, __pyx_L1_error)
-      __Pyx_DECREF((PyObject *)__pyx_t_4); __pyx_t_4 = 0;
+      __pyx_t_22 = __Pyx_PyList_Append(__pyx_v_elements, ((PyObject *)__pyx_t_10)); if (unlikely(__pyx_t_22 == ((int)-1))) __PYX_ERR(0, 101, __pyx_L1_error)
+      __Pyx_DECREF((PyObject *)__pyx_t_10); __pyx_t_10 = 0;
 
-      /* "untabulate/xlsx_parser.pyx":36
- *     elements = []
- *     for row_idx, row in enumerate(ws.iter_rows(), start=1):
- *         for col_idx, cell in enumerate(row, start=1):             # <<<<<<<<<<<<<<
- *             merge_info = merged.get((row_idx, col_idx))
- * 
+      /* "untabulate/xlsx_parser.pyx":60
+ *     rows_iter = ws.iter_rows(min_row=start_row, min_col=start_col)
+ *     for abs_row_idx, row in enumerate(rows_iter, start=1):
+ *         for abs_col_idx, cell in enumerate(row, start=1):             # <<<<<<<<<<<<<<
+ *             # Get actual Excel coordinates for merge lookup
+ *             excel_row = start_row + abs_row_idx - 1
 */
       __pyx_L25_continue:;
     }
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
 
-    /* "untabulate/xlsx_parser.pyx":35
- * 
+    /* "untabulate/xlsx_parser.pyx":59
  *     elements = []
- *     for row_idx, row in enumerate(ws.iter_rows(), start=1):             # <<<<<<<<<<<<<<
- *         for col_idx, cell in enumerate(row, start=1):
- *             merge_info = merged.get((row_idx, col_idx))
+ *     rows_iter = ws.iter_rows(min_row=start_row, min_col=start_col)
+ *     for abs_row_idx, row in enumerate(rows_iter, start=1):             # <<<<<<<<<<<<<<
+ *         for abs_col_idx, cell in enumerate(row, start=1):
+ *             # Get actual Excel coordinates for merge lookup
 */
   }
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-  /* "untabulate/xlsx_parser.pyx":58
+  /* "untabulate/xlsx_parser.pyx":107
  *             )
  * 
  *     return elements             # <<<<<<<<<<<<<<
@@ -3852,9 +4202,9 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
   /* "untabulate/xlsx_parser.pyx":4
  * 
  * 
- * def parse_xlsx_worksheet(filepath: str, sheet_name: str = None) -> list:             # <<<<<<<<<<<<<<
- *     """
- *     Parse an Excel worksheet into GridElement instances.
+ * def parse_xlsx_worksheet(             # <<<<<<<<<<<<<<
+ *     filepath: str,
+ *     sheet_name: str = None,
 */
 
   /* function exit code */
@@ -3879,13 +4229,19 @@ static PyObject *__pyx_pf_10untabulate_11xlsx_parser_parse_xlsx_worksheet(CYTHON
   __Pyx_XDECREF(__pyx_v_colspan);
   __Pyx_XDECREF(__pyx_v_r);
   __Pyx_XDECREF(__pyx_v_c);
+  __Pyx_XDECREF(__pyx_v_last_header_value);
   __Pyx_XDECREF(__pyx_v_elements);
-  __Pyx_XDECREF(__pyx_v_row_idx);
+  __Pyx_XDECREF(__pyx_v_rows_iter);
+  __Pyx_XDECREF(__pyx_v_abs_row_idx);
   __Pyx_XDECREF(__pyx_v_row);
-  __Pyx_XDECREF(__pyx_v_col_idx);
+  __Pyx_XDECREF(__pyx_v_abs_col_idx);
   __Pyx_XDECREF(__pyx_v_cell);
+  __Pyx_XDECREF(__pyx_v_excel_row);
+  __Pyx_XDECREF(__pyx_v_excel_col);
   __Pyx_XDECREF(__pyx_v_merge_info);
   __Pyx_XDECREF(__pyx_v_value);
+  __Pyx_XDECREF(__pyx_v_rel_row);
+  __Pyx_XDECREF(__pyx_v_rel_col);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -4273,14 +4629,18 @@ __Pyx_RefNannySetupContext("PyInit_xlsx_parser", 0);
   /* "untabulate/xlsx_parser.pyx":4
  * 
  * 
- * def parse_xlsx_worksheet(filepath: str, sheet_name: str = None) -> list:             # <<<<<<<<<<<<<<
- *     """
- *     Parse an Excel worksheet into GridElement instances.
+ * def parse_xlsx_worksheet(             # <<<<<<<<<<<<<<
+ *     filepath: str,
+ *     sheet_name: str = None,
 */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_filepath, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 4, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_sheet_name, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_start_row, __pyx_mstate_global->__pyx_n_u_int) < (0)) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_start_col, __pyx_mstate_global->__pyx_n_u_int) < (0)) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_header_rows, __pyx_mstate_global->__pyx_n_u_int) < (0)) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_header_cols, __pyx_mstate_global->__pyx_n_u_int) < (0)) __PYX_ERR(0, 4, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_list) < (0)) __PYX_ERR(0, 4, __pyx_L1_error)
   __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_10untabulate_11xlsx_parser_1parse_xlsx_worksheet, 0, __pyx_mstate_global->__pyx_n_u_parse_xlsx_worksheet, NULL, __pyx_mstate_global->__pyx_n_u_untabulate_xlsx_parser, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -4340,7 +4700,7 @@ __Pyx_RefNannySetupContext("PyInit_xlsx_parser", 0);
 
 static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 59, __pyx_L1_error)
 
   /* Cached unbound methods */
   __pyx_mstate->__pyx_umethod_PyDict_Type_get.type = (PyObject*)&PyDict_Type;
@@ -4362,36 +4722,36 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "untabulate/xlsx_parser.pyx":32
+  /* "untabulate/xlsx_parser.pyx":52
  *             for c in range(min_col, merge_range.max_col + 1):
  *                 if (r, c) != (min_row, min_col):
  *                     merged[(r, c)] = (1, 1, False)  # Skip these             # <<<<<<<<<<<<<<
  * 
- *     elements = []
+ *     # Track last non-empty value in each header column for fill-down
 */
-  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(3, __pyx_mstate_global->__pyx_int_1, __pyx_mstate_global->__pyx_int_1, Py_False); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(3, __pyx_mstate_global->__pyx_int_1, __pyx_mstate_global->__pyx_int_1, Py_False); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
 
-  /* "untabulate/xlsx_parser.pyx":45
+  /* "untabulate/xlsx_parser.pyx":73
  *                 (merge_info[0], merge_info[1])
  *                 if merge_info
  *                 else (1, 1)             # <<<<<<<<<<<<<<
  *             )
  *             value = str(cell.value or "").strip()
 */
-  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_int_1, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_int_1, __pyx_mstate_global->__pyx_int_1); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
 
   /* "untabulate/xlsx_parser.pyx":4
  * 
  * 
- * def parse_xlsx_worksheet(filepath: str, sheet_name: str = None) -> list:             # <<<<<<<<<<<<<<
- *     """
- *     Parse an Excel worksheet into GridElement instances.
+ * def parse_xlsx_worksheet(             # <<<<<<<<<<<<<<
+ *     filepath: str,
+ *     sheet_name: str = None,
 */
-  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(5, Py_None, ((PyObject*)__pyx_mstate_global->__pyx_int_1), ((PyObject*)__pyx_mstate_global->__pyx_int_1), ((PyObject*)__pyx_mstate_global->__pyx_int_1), ((PyObject*)__pyx_mstate_global->__pyx_int_1)); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[2]);
   #if CYTHON_IMMORTAL_CONSTANTS
@@ -4417,39 +4777,39 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 9; } index[] = {{1},{179},{0},{1},{8},{93},{30},{20},{6},{18},{1},{4},{18},{7},{7},{9},{8},{9},{8},{8},{3},{13},{9},{5},{9},{4},{13},{8},{7},{7},{10},{11},{6},{12},{7},{7},{10},{8},{8},{20},{3},{14},{12},{1},{6},{9},{6},{3},{7},{7},{12},{10},{10},{5},{3},{5},{8},{22},{5},{6},{2},{2},{386}};
-    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (834 bytes) */
-const char* const cstring = "(\265/\375`\204\003\305\031\000\266o\2378\020u\333\000\000P\247P\021\000\201\nV(j\024\212\032\205\202\000\252\275U\257\354\367\312W\374\361\263\211|\0317\376q\223\300=+\360\206\301\351\2432\370\327\002\010\221\003\200N\203\000\205\000\227\000\325%\267\245[_[U\322\276\366\212\221\257s\256]\353\263}y\334}\016\377\3346\312rzm\251\314\023\325\\7\351\021t\353\274\270n\272\361\275\324C\356\327\362\376jk\312I\274\345\366\177e\207=\251\242\221'\375\234\267\345\255\333\326.%UX\352\327\232Z-\325i\251\267\366B\237\345v\2514I1\021\311\211\311\2217\377\326j\336Zz\3667\315\237\252\3667\251\253\274x\265\275\027\271\351j\313\337\370\346\024\037ti\306\252\240\371\272\225\262\346\034\30285\224\261kn\024\333\255\253\325.\234g\326\254\3375\377F\1775u\235\373\203\346\324n\247\232s\265)\307\352\356\353}\237\365\366={\361\244\233n\227r\372\265\325i\2616\244\321\324k4\357y\353\264\232\265\257i\372o\335\035\316X;\341\252]OS\252\372\235\375\372\233\271\265\n\363\362r\346<\345\371\322\36652\242e\355\001\364\363\233\332.E\367\355\252\344*\347!W;\251X\206( \226z*\364\341!\240CiD\301\020D\241p\205W\200\r\245\221\206\027<\203\013_\211`\324\371\024t:I\017\261@\302\371P\237\303g\"\030[` \"J\257\010\213@\n^|\007\005\000\006I\t\331\330\300\207>\205\322\230!\214:\374\"\001)\2414\032\024\000dI\250#\0341\353'\341\006\000\222v\245\\\372;K\211Ns\356\232\267\336\231n\275m\267\355\327s\336\334\355\317\033\375\254\263\245]\213hN\016s\373\177\245'\213\336\371\266\333\360\255,=\267\250/+\000(}\300(DS\3678\006\204\005\303\210\3423T,\021S\372@\377\341-\024\t\255.Q\022\316p\002\336\342\024\022#\304\303\210\352\031\375 \204\341(0\"\21350\214:\275\245\203\204\233\321\267\220\305h\367\tI\302\315%8E&\323\273\220\366\2004c\000\254C\334zM\250\0216\204&>\001\232Z\337\002A\254\245?t-t\361\027\256\301+ \306VX9\007\327\340\013\010\3010f\300\004lB\025\236\301y\300\002\220!\033\251\350\"\252t\204\320\213\000c\276\254\024\013\200y\275\232\300X( \002\343\220a\017\320\316&I\2061s@\230%\rO\215\025f\360\203\025\020\370n\235\007,j""\305\226#\372\357\3413\201\217'\016\010Yi\246k\265\013\211\225\306\204\021\205)6\023\246F\227\270\272\236\234:\210l\342\352\n\205wT\021\222 \222\201\006g_\004\\i)\343\210\304+\242\302\275i\270g\200\321\256D#v$X\034\250\220\n\020\244\003\254)\310^\000\346\346u\264\215\310\351`!(\000~\270\014\207\370U\341\230\242\350\330\016\325\240\336,\341\253\3767M,\346^\013O\212U\326C\377-j\212\373\217\316\345\006\207\251\017n\240\344\204\376Y\346\202RGH,=";
-    PyObject *data = __Pyx_DecompressString(cstring, 834, 3);
+    const struct { const unsigned int length: 10; } index[] = {{1},{179},{0},{1},{8},{93},{30},{20},{11},{11},{6},{18},{1},{4},{18},{7},{9},{8},{9},{9},{9},{8},{8},{3},{11},{11},{3},{13},{9},{5},{9},{17},{4},{13},{8},{7},{7},{10},{11},{6},{12},{7},{7},{10},{8},{8},{20},{3},{14},{12},{1},{6},{9},{7},{7},{6},{3},{9},{7},{12},{10},{10},{5},{9},{9},{3},{5},{8},{22},{5},{6},{2},{2},{560}};
+    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (1004 bytes) */
+const char* const cstring = "(\265/\375`\237\004\025\037\000\3265\2679\000\227\033\374?\225\320\337\372\377\313\367\357W\277\372u\337~\365\267\252\266>\312\344\323f\335r:IRTrrN\341\013\014I47sR&\003\3119,\236g\241se\037\005\232\000\230\000\264\000!!\036\357\032BA\330_-\312\256\337b\256a\0165*\221\317\266\352\365\365}\353<\253\032{7\230\212;\347Y\254a\256oc\270q\010b\373}w\345\205\273\2761\370(\363\374U\215\241\235\355\006\263\277\036\334\373jT\217{\335\270\337\260\202\276~\030\357*\202c\235\315\324W\307\341\350\353\316^gQVg`\355\270\367\253=\231\330k\367\036.\302\274~\373V\222\023\022\220\034\230\234\2729\366^\346\276\327Qc\1779\226e\215\277\332s\335 \221\037]\252\277D\276b\017\336\274\002vs\321c\316\371w1\357\\_\261vdm\010\206\036[\332\335\026k\361\003w\246u\373\341\241}98\033\272\355|i\326\032\201\240\314\210\2036\373]P\373\2365\026\365=\262\276\323\260\317\266g\353w\356\226\343\357\342!k\275-\316\254%\3627\3044q\343\3567\246a\215G\275A{\375\375\366\r\273\221we\330\273\334\333\235\255\366\264\306\236\327\361\316^\0049\350\275\300\354\355\261_\033\310o_\266\032\364l\227\335\031\326\3617|c\275\227_nc\216\265/no]\337\002\013\247g\332\276\313\267\370\020\255\264f\346\177\361{\351R\266Vi\005.\200\306D\371\025\277\247D\225\253.\275h\013\212r\036\230#C\tCv\251\334\t7\236\271\240\224\345*\320\0004u\312L\240\357Q*\244R\030\356\000-2S>D\311J\245\327\234\370\274L S\003i\214D\210\235\"\247G\004\023\016\t#\025\310\202\201\224\005\327\201\232\234\020&Ry\313\t\322\000\005@\320\244\352R\3267\"\021Riw\220\306\376\204\212I\225J\tP\000\031M\004(V\311\252\221\t\003\351\251\\\r\244\t\010\351I\251\333d\266\376\262\326g\356=\277\276{-~\036\367\033\0060\262C\001\244\232`K\0348\027Zp\216\237\242%\003\303q\240,\224\347\004\221`\232\360\316\330\331:9\036\322\213k\301u\350\316\211Ya\366|\324w1\2600Z9X\271\200Z\240\033\347g~\334\310\225\n \325\004\253\231*_\340?\254R\330\217X\245,\256[6t\351-\035T\265\263a\304\224\371\003\277\366]\rik!\205\031\230/\037V2t9\326*\215\235,g\207\371%\221\t]\356$b\372\337\360]]\256\306\2640""\r\376C\227\273(\001ZrV\234.\363\341\333\2445\264\00152c\346\314\367)U'\\\n\r2\177>\313\357(\003r\247\357b9\003~\250\341,\244\214R\204FDh\244\240I\241\0030\2040cv\036\220T\225$i\r\362h\335;\001 E\366\224,\301\343$\352\345C\036;\024\002V\216\376IT\303,\222\377C}|\337\246<P\327\201\000,\347\365\374\214\371\351\263g|^\345H\244\316\230\344\201\\\334\0020$\357\177#V\030\037\016\300\014\255\377\356\367\"`,\223\310\232\371&\316#r\020=\315do\346ig\3729\225_\214\360\243\031,c\245\020\257\020\340\003M\233\233\023\342a\316V\010&\230\207;~O:\234\016\206r\246N\022\304\375&]\330j\017\027\305\\\267\250Pv$\341\024)\347\301\205)\371\347Y\242\224\200\037\230\327\345AeqZ\014t\027\0247;\247$\254\327\262v\177\263\204Dx\243\330\004\377\360S+\347\000\244@\016\016\363\tc\235-\350\321J\240\200\017t\333\315<lV\360\217\272,`P\205}\257\202\326J\350\321?";
+    PyObject *data = __Pyx_DecompressString(cstring, 1004, 3);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (908 bytes) */
-const char* const cstring = "BZh91AY&SY\204\014L\356\000\000[\177\377\377\177\377\272\375\273\276\350\277\271\362j\277\377\377\370\000@@@@@@@@\000@@@\000@\000@\002\335\262\326A\243\001\252z&\206\225?\004\310j\237\252~\230\223\325?R\003CC\324z\021\223\324\017S\3241\014\206\217P?SMOiM\351O\324\032\2324i4\304\023Bd\364Se\017P\000\000\000\000\000\000\000\0004\016\000\032\006\200hh\000\000i\210h\323@\000\000\006\206@\000\030jz\251\351\246)\224=\020\000\364\203\322h\000\000\032\000\000\000\000\000\017\022\036[\010\223pF#\0069QR@\360\022\177\"yS\240\220'\206\003*\332\343*,\27750\"Q6\260\230\345Y\332\345\212\231U\000/]\263\2501\306\035\022\010\322\316V\033\334\314\272\035\005\364\006\336i\304\364\202\374\231t\0336\021\233w\363\243\016l\353\030T\204\212L\212\3144\266\341\314\260Y(j\324q\rr<S\230\037\233lR\272\350\224me|?\216\355\303\363\025\360\363d\371X\0359;\301\220\352\314HE\260K\240\237\206\340\334\305q\314\221\315`:G\006\230\037\231\315\014G\320/Xb\241j\3630;,\304\022\024\"\260\374\271\225TJL\306\3055T\036\005\366\2641H!\237E-\005ML&\003\0011\244\324Pw\343Q\350\363\257\366\203u\355\331\023\003\025\327\224\306\365`PXDR\326)\002\026y\301\030\214M!4\370\347\212\363\346R9\231\017\\\221k\322\312\205e\020\266\200\271k:-0M\206L\244J\203\227M\363\022&`_\206\364\t\224\306Q\361\032\215\354\004B\303\020\236\262up\302\342\250\0334\243SV\033:\027F\205UQ\272\013a\036\271\001\003R$`\364\316\206U\021R\177l_F\253Z\233\311\340\020\\T\n\001b_74m\204\235}a\2570\273#\204\331\014\020pJ\250c\247\246\002\374\357+\222e\245\272\"\t\316\023Q\226Gl\002l\356\014\017\013\234\027\003b\237\006\204\306-\0175\033l\243\001\266(\3637.\001\204\246p\334\341\014\310\023\t\000\260\360RH+\006T\202\214X\246GZ1\300\006L\311!\213,\177\207\214P-\314Xn\000S2\306+\266\220\271:\206\nU\321-\364Y\262\225\2744\\CY9\"\0018@+\034\001`\300-Hmy\200\3200\200\362}\221Y\034\230\246\002\236\022i\006\212\250\007\253<\336E\216\022QT\nT\312\225\203z\222pY\276\254\225\232\233\252J5Z\322j\203\326\213\264\216@];\201\240\203\225\n\030\243\245\3669\023L\266`\0366""\214%me\0350\366G\034E\365Wp{Eo[\001*v\\*@K^\305\243\250\355\366Ur\337p\222\343\340\371\321\256\240\221\355`i\374\303\333\356\336\341!\267\276\247\000\305z4\360\204\214J|2`7\034-\024\343\213\265\305\3418\354\273\317\363\262\203U\223\354\177\217\336CA\252\221W\354q\303\372\307\343\267d\370<\027?\220U\236\313d=z\017\376\305\326\337\357\0104\343\036)\345\237\373N\236_}\027n\327E\275[\243\222\2159J\212\351\237\321\253\253\\\301;QE\253\377\206\243oY%\226Z\355\371:\353\340T\347\004\250Ice\224.\301\023IJG@\273\222)\302\204\204 bgp";
-    PyObject *data = __Pyx_DecompressString(cstring, 908, 2);
+    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1076 bytes) */
+const char* const cstring = "BZh91AY&SY\200\231>(\000\000\203\377\377\377\177\377\376\367\377\276\354\277\257\376\352\277\377\377\370@@@@@@@@@\000@@@\000@\000P\003~\346F\353\006\330p\206\252y\t6M@\323\320\321=&\230\232d\320h\001\247\242\r\0314\304\310\310\001\241\247\244\320\323i4\311\350\324\032\2114\320\236\322\023\365L\236\215\031!\241\243@4\321\204h\310\001\240\310\030\230\232\001\202d4\032a\251\350&\204\004M\t\246j\236\320\221\372\220\000\000\000\000\000\000\000\000\000?T\320\340\000\000\006\200\000\000\032\000h\000\006\200\000\032\000\000\000\006\204\251\372hA\036(\3204\311\352\r\000\000\001\240\000\000\000\000\000\000h\320\255cf\014\300\330\023\275\375\276\025:\200\300E\t\340~\231\004\021\020\300i_\304Lx c\001 h\033\204\322\213\024\033\240\302P\231\022K\344\033\202\371u\277\347\342\255\024c&~9\2008\3349\032\342\375\0030\312,\342\255\241\006vb\3333\013t%\323\273\007\250\230\236GA\204rG\302D\030\223pG\010\"\033\266\257b\351m\311\026\345\331\273\275n\343R\217\323\217\026\212s\005\027\261q\214+P\324\363\221p\3570=\021\010\r4\024\241\314E\345\013G\356\266C5\271\205\n\243^S\220\346\203\304\314\\\364\n\342Fe0\353.n\017\265\352\250\347gR:\nWR\252/\r\301\366\035\366\304\273 6\223w\267'\3076\016/x\242\216R\021I\226\231\215\224\021\271$Hq\267\203\372\352n~\251R\225\333\313}\360\232\346\370\004F\265\2033\311\005\177\202\266\006v\212\271\260\254\0010Um\233m\013\025!/\345K\207\221\000\373`\265\352\236Q\300\221G$\343\213\204\001\3028\n+\037Q03H\355\303\340\264\024 \240\201\216?\026~Pr\221\3762a\313\265\322|F\030f\213\001TA\024(\310p\036a\306\020\272\242\250XQ\323\300\200\032\352\334\020\273U\003\222\321\t\341$\243[\205\322\266\003r\025\370r\201H\027~\333\315\025\004\235\255\255\204ed\267<\263\315\247r-\202\027\343 \"\264\2420\263\305\3602.\2272S\364\340\374Xl\342\303Y\260\004&\"X !\005\337\204\334u\343\031\353\320\036\214\023M\367p;]\252\350\024\316\313;>v\034\234\225:\251\211\347`\374\370\002\202\010\201~2\231\342~Q\t\007P!BceSR\026QW\224p\215\002\215&}\025\336g\306(\3154\260S%\361\2471mp#|\200\202""\200\341\026\226\256\234\013I\206\211-\375#\033\020\000\365v\212\014U\215\372\212\241\260:\345v\350\200\211\267*\241\311\323\010(\221\032\214\307Y-\014G\255\314\224V\022\304\305\202u\307\324\036\017\207\250\237JF\200p\034\002I\210\204\037i\004S\rJ\002\206I\247\004-\212\313\246\302\250\265\304\301\0201\270;\355\257\\X\236\225\261\2219\n;cv\025@\317*6A\0329\270\363\261\276ackI\3447\246^B\251D\032Kc)\235\374\267\303\320Zr\212\254\232\352a8\216\2147XR\\*e\324\302\376\213}\027\360\336\033\034\267\202\260\310\301Pe,3\336\030\300(\231\016\326\360\322\307\232\346\331\253\2666\313H_\311\373\t\016M\034\301-i\202\237D\272\244\022'\264\250\322a\010\321J\243,\202\241\342\204\306\223g\316/o]\0251\311\253\020vO\004\216B\215\262\213\221\324\277\336\314\000ZW\t\343X\322\255\335\351\014\254=}r\310X>QjRTe8\343~C\304\327t,\364\332\302\355\221Eu\315\273\200^\242\250N\235\322;\216\233\250\013\0267\334eU\212\364XJ*_\325\246\260B_1l,\312zEf\200\304\354\032z\230XI\3040\204,\310o\351\240e\006t\231\177\004\263\250\020:\004\312F\177$d1\r\013V\026Z\302\220\207\253\020&h\345\231q\255k8\023\027\177\342\356H\247\n\022\020\023'\305\000";
+    PyObject *data = __Pyx_DecompressString(cstring, 1076, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (828 bytes) */
-const char* const cstring = "x\332]R\301n\024G\0205\304F\273x\214m0\216ld\245\rQ\254\200\262h\201(\240\034\"\307\030D\"\201\035)R\020\212Z=3\265\336\306\275\335\263\335=\336\235\344\007\3468\307>\316\261\217s\334c>\301\3079\356'\360\t\251\031\233\200\262\207\252\332\236\367\352U\275\356\336ke\201\330!\263\344 \263C%\t7$\006\301C\320\314\202\310\210\261\232G\026t\003\222\344\350\360\350\273'O\237\020&c\242\341=D\326\020\223\206\221`\306\200!j@\302\224\013\313%\261Y\002\246G^\rH\246R\"\001bb\025I\020\3679\301\016A\022\003\266)\310\036\223RYf\271\222\024\351\\\236\354\221\230k\024\341g\320\260_0a\240\367\023\213c\212@P\t\310$\233\212ff\r\343\024\241\227\"\332\0009\234F \310\200\213v\014i,\023\210\264d\302\355\220\354%<!\374\3620\225\226\205\251\300}\337}l\371\347\236\321\321\303O\037\036N\205\231\322\266\261\356!\200\322#\014G\331s\364\206\276\206\251\375\r\006\254\235\223\231LF\\\365\"\245U\212F\200\211p\016\021\t,)\307\3054\213 d\321i\244\004\345\361\024\223I\320Nf\031URd `\004\322\032\220\351\250\275\203f\203\204\331!\245\203TF\224\236\200\245\334\320\377\372c=\004\026\203\346\026F\006\203\246ZM\214\340\306\n\305b:Q\3724T\352\224\322\021C}\214S$\213&!\0165N\232\271\006\352\242\322L\236@[\306\027\2216\323\233\0212\033\022&$a\023\025\247\002(\376$\033a\376\350[\353\020m\315jt\315\020\300&*\241\264\361\354\014\335\274 \215S&.\210\272\0254\0327h\327\327`S-Q\243\221A{\232U\320\036J\361\221\\ja\025\243\333\251\260m\373\366\024/R[|\252\315kE5\213\007\224~\272\276\336g\327w\306D\nm0\223pb\316\027\356\225\337\373\240z\363O\377C\260\260t\255\356\254\234\257\354\270\343z9\250;7\362S\267^\007+\037\256-,]\317w\nV\374Un\373\037\252\373\263\375z\261\233\337\314\373\371\233\363;\017\374#\177\334@n\344\307\365b'_-\264\333)Y\335Y/\266\335\217\345\373jy\326\257;7\213\007\356m\031\372Nu\265\332\375\337\3379*\205E\027Y\334g\263+\363N\220\037\026\267Q.+\227\375\263\352\347\212\325\301Z\261T\374\356v\335\263\362W\304\\\235\355\326k\033\305Aa\334\327\216\227\343zc\333\335u\007nRF\376\226\337\237/\256\346\343f\226n""\361\245\353\226\353\345\335\362\027\037W\337\314\256\324\330\373U\361\007j\2632\365/p\224`\313m:[>*\337z6\017V\363\277\261c\\\336\367\373\376\270^[\237\007\267\213&\343*}\367\274\274\356w}\277\276\265Qon9\374\326L0v\213\356e\371\030\2057\375\030mX\331\302\203}\367\316\177\341\237V\217+\326\240^\272~\275v\007\303\306W.\363\335jk\366-\372\335YX\n\362\376\277R\000\3063";
-    PyObject *data = __Pyx_DecompressString(cstring, 828, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (985 bytes) */
+const char* const cstring = "x\332]SAo\3336\030\215\2638p\022;\261\033\307\213\323\005c\202mY\322\325\205\273\016k\261\001C\232fE\261\255\213\267\025\333P\014\004-\321\261j\231\264I*\266\266\313\216:\352\310\243\216:\352\350\343~B\216:\372'\344'\354\243\344\242A}\370\364$\276\217\357\275\217t\353%W\024\251>Q\350\314W}\316\220#\221M]\247K\005Q\324\365\221T\302\261\024\025\206\304\320\305\371\305\375G\217\037!\302l$\350\033j)\211\244\327\265\\\"%\225\210\367P\327s\\\3450\244\374\021\225-\364\242\207|\356!F\251\215\024G#\340\335nP}\312\220\244\312\000tD\030\343\212(\2073\014\355\016\273<B\266#@\304\271\242\246\373{\342J\332\372\216\3306\006\"\345#\312F\376\3245\236\005\035{@]\210\010I\321\371\324\242.\3529nf\203IE\\`*4qT\037\035\215\234\021r\026\037=\246H\327s!\357\353\267[\376u$\205\365\340\335\302\203\251+\2478\333X\264\200\200\361\005\224\013\377\031\314\006\277\244S\365\013\355\221\256\304\026w\261cO\r\024|\222\301\314=\221>\263\034\336\262\270\340\036\214\207J\013\334\271\226\013\020;\020W\020\213v\2115\200\r\344\010\246K\024\301\234\271>u\351\2202%)\363\206\331\221P\023\313\350\344\000TL\304\021Q}\214{\036\2630\276\2440LbSaXr\001\201'\035\246\260c<.<\000\316W\035E\207\022JN\203\243Q\213\005|E\\\017n\203T.'6\236p1\350r>\300xH\3004\324\251\3210\017h\004\177\227&L\217\347H\020vI3h\347\025\233\310r\010\235\246\t\036fDx\310m\317\245\030~\214\014\341\371\366\010\262a\343l\356F\027\202P5\342#\214\315\370\257\340`\362\246\261G\334\274Qd\202R\200\363lt\"\237\223\310\247$\250\362\0043\000\"b\023\326\000\0305\306p\377\026\332\200l8H\317U\231\\\366\025\356\210PY\311\346\231\001\323\252\204\371k\200\037\005\024\214\337\335\225\326\255\273\222\315/+r\322\235\310\177\013\351\346V\272R\r\013\351\312V0^\224ZX\313Kq\365\346\263\245\342jZ\252\\W\366u'\335(\247\245\315`\240ki\271r\263\272T\\\017\366C\022\376\035\355\305_''\263\323te-\270\023\264\203\237\257\357\336\213\037\306\035C\331\014:\351J)\330\n\205\336\217HZ\252\205{\372\233\350M\2621k\247\245;\341=\375g\324\215K\311rr\360\336\353\034\224\272\341\032t9""\261?+\314K\345\340<\334\0019?\332\210\237$O\023\222\226\253a1|\245\017\364\223\350\007\340,\317\016\322j=<\013\245\376D;\3218\255\357\351C}\246'\221\025o\307\247\306MS\027\346y\306j\270\034\236\350S\375G\364:)\315\n\306c%\374]\277\210:\321 i$\343\024\364~\322\273Q3>\210\277JV\0232/\357\352\365\3500\3721\363z\373e^n\352\206V\321C\330\2520/o\005\377\200\276\035\235\304\247q'\255\326\346\345\235\320<!x[?\213\326a\303v\272]O\033M\rk\306\357X\257\350\347\321\227`\263\021\217\301f\345\303\020\3025Bbp\023\026O\323\352]\335N\253\273\372\003\375-\004\313@\373\246\264T\251\006S\210\373Ed\307\237'\207\t\360\266\303\366\274\376i\226\242\006\355;M]\324\257\242\203\3501\034\310\257Iy\366tF\322\335\343\270\036wb+g\354_\177t?\376-\251%\307\263\266\361\363\334(\031\271\372\307\332\217\327\222\346\354\370?\243U,\007\355\377\001\323\3341\214";
+    PyObject *data = __Pyx_DecompressString(cstring, 985, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (1156 bytes) */
-const char* const bytes = ".Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.?add_noteopenpyxl is required to parse Excel files. Install it with 'pip install untabulate[openpyxl]'src/untabulate/xlsx_parser.pyx__Pyx_PyDict_NextRefactiveasyncio.coroutinesccellcline_in_tracebackcol_idxcolspandata_onlyelementsenumeratefilepath__func__get_is_coroutineis_headeritemsiter_rowslistload_workbook__main__max_colmax_rowmerge_infomerge_rangemergedmerged_cellsmin_colmin_row__module____name__openpyxlparse_xlsx_worksheetpop__pyx_vtable____qualname__rrangesread_onlyreturnrowrow_idxrowspan__set_name__setdefaultsheet_namestartstrstrip__test__untabulate.xlsx_parservaluevalueswbws\320\000#\2405\250\014\260O\3001\360\014\000\005\006\330\010\r\320\r\035\230Q\330\013\014\330\010\016\210k\230\021\330\014\r\360\006\000\005\n\210\035\220a\220z\240\032\2507\260*\270A\330\004\t\210\022\2101\210O\320\033+\2502\250Q\360\006\000\005\016\210Q\330\004\010\210\017\220r\230\035\240a\330\010\021\220\032\230;\240j\260\013\2701\330\010\022\220+\230Y\240b\250\010\260\002\260!\330\010\022\220+\230Y\240b\250\010\260\002\260!\340\010\016\210b\220\t\230\035\240i\250y\270\001\340\010\014\210E\220\025\220a\220y\240\013\2509\260B\260a\330\014\020\220\005\220U\230!\2309\240K\250y\270\002\270!\330\020\024\220C\220s\230$\230i\240q\330\024\032\230\"\230C\230w\240c\250\023\250A\340\004\017\210q\330\004\010\210\t\220\027\230\t\240\021\240\"\240J\250d\260&\270\001\330\010\014\210I\220X\230Y\240a\240u\250F\260!\330\014\031\230\026\230t\2402\240Y\250a\340\014\017\210{\230$\230d\240*\250A\250Q\330\020\021\340\014\025\220Q\330\020\021\220\032\2301\230D\240\n\250!\2501\330\023\024\330\026\031\230\021\340\014\024\220C\220q\230\004\230G\2403\240c\250\026\250q\360\006\000\r\031\230\004\230A\230[\250\003\2508\2603\260a\340\014\024\220G\2301\330\020\033\2301\330\024\037\230y\250\t\260\031\270)\3001\360\010\000\005\014\2101";
+    #else /* compression: none (1439 bytes) */
+const char* const bytes = ".Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.?add_noteopenpyxl is required to parse Excel files. Install it with 'pip install untabulate[openpyxl]'src/untabulate/xlsx_parser.pyx__Pyx_PyDict_NextRefabs_col_idxabs_row_idxactiveasyncio.coroutinesccellcline_in_tracebackcolspandata_onlyelementsenumerateexcel_colexcel_rowfilepath__func__getheader_colsheader_rowsint_is_coroutineis_headeritemsiter_rowslast_header_valuelistload_workbook__main__max_colmax_rowmerge_infomerge_rangemergedmerged_cellsmin_colmin_row__module____name__openpyxlparse_xlsx_worksheetpop__pyx_vtable____qualname__rrangesread_onlyrel_colrel_rowreturnrowrows_iterrowspan__set_name__setdefaultsheet_namestartstart_colstart_rowstrstrip__test__untabulate.xlsx_parservaluevalueswbws\200\001\330\016\017\330\004\020\220\001\330\004\017\210q\330\004\017\210q\330\004\021\220\021\330\004\021\220\021\330\005\006\360&\000\005\006\330\010\r\320\r\035\230Q\330\013\014\330\010\016\210k\230\021\330\014\r\360\006\000\005\n\210\035\220a\220z\240\032\2507\260*\270A\330\004\t\210\022\2101\210O\320\033+\2502\250Q\360\006\000\005\016\210Q\330\004\010\210\017\220r\230\035\240a\330\010\021\220\032\230;\240j\260\013\2701\330\010\022\220+\230Y\240b\250\010\260\002\260!\330\010\022\220+\230Y\240b\250\010\260\002\260!\340\010\016\210b\220\t\230\035\240i\250y\270\001\340\010\014\210E\220\025\220a\220y\240\013\2509\260B\260a\330\014\020\220\005\220U\230!\2309\240K\250y\270\002\270!\330\020\024\220C\220s\230$\230i\240q\330\024\032\230\"\230C\230w\240c\250\023\250A\360\006\000\005\031\230\001\340\004\017\210q\330\004\020\220\002\220*\230A\230X\240[\260\010\270\001\330\004\010\210\r\220W\230I\240Q\240k\260\026\260q\330\010\014\210M\230\030\240\031\250!\2505\260\006\260a\340\014\030\230\n\240\"\240L\260\002\260!\330\014\030\230\n\240\"\240L\260\002\260!\340\014\031\230\026\230t\2402\240[\260\001\340\014\017""\210{\230$\230d\240*\250A\250Q\330\020\021\340\014\025\220Q\330\020\021\220\032\2301\230D\240\n\250!\2501\330\023\024\330\026\031\230\021\340\014\024\220C\220q\230\004\230G\2403\240c\250\026\250q\360\006\000\r\027\220a\330\014\026\220a\360\006\000\r\031\230\004\230A\330\020\033\2301\330\020\030\230\003\230<\240q\330\020\030\230\003\2301\360\010\000\r\020\210x\220s\230,\240d\250(\260\"\260A\330\020\023\2201\340\024%\240Q\240k\260\021\360\006\000\025\031\230\005\230U\240!\2408\2502\250S\260\014\270B\270a\330\030)\250\024\250Q\250c\260\021\360\006\000\025\035\320\034-\250T\260\021\260)\2701\340\014\024\220G\2301\330\020\033\2301\330\024\037\230y\250\t\260\031\270)\3001\360\010\000\005\014\2101";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 62; i++) {
+    for (int i = 0; i < 73; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
       if (likely(string) && i >= 7) PyUnicode_InternInPlace(&string);
@@ -4460,7 +4820,7 @@ const char* const bytes = ".Note that Cython is deliberately stricter than PEP-4
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 62; i < 63; i++) {
+    for (int i = 73; i < 74; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -4471,14 +4831,14 @@ const char* const bytes = ".Note that Cython is deliberately stricter than PEP-4
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 63; i++) {
+    for (Py_ssize_t i = 0; i < 74; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 62;
+      PyObject **table = stringtab + 73;
       for (Py_ssize_t i=0; i<1; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         Py_SET_REFCNT(table[i], _Py_IMMORTAL_REFCNT_LOCAL);
@@ -4515,7 +4875,7 @@ const char* const bytes = ".Note that Cython is deliberately stricter than PEP-4
 }
 /* #### Code section: init_codeobjects ### */
 typedef struct {
-    unsigned int argcount : 2;
+    unsigned int argcount : 3;
     unsigned int num_posonly_args : 1;
     unsigned int num_kwonly_args : 1;
     unsigned int nlocals : 5;
@@ -4537,9 +4897,9 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 21, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_filepath, __pyx_mstate->__pyx_n_u_sheet_name, __pyx_mstate->__pyx_n_u_load_workbook, __pyx_mstate->__pyx_n_u_wb, __pyx_mstate->__pyx_n_u_ws, __pyx_mstate->__pyx_n_u_merged, __pyx_mstate->__pyx_n_u_merge_range, __pyx_mstate->__pyx_n_u_min_row, __pyx_mstate->__pyx_n_u_min_col, __pyx_mstate->__pyx_n_u_rowspan, __pyx_mstate->__pyx_n_u_colspan, __pyx_mstate->__pyx_n_u_r, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_elements, __pyx_mstate->__pyx_n_u_row_idx, __pyx_mstate->__pyx_n_u_row, __pyx_mstate->__pyx_n_u_col_idx, __pyx_mstate->__pyx_n_u_cell, __pyx_mstate->__pyx_n_u_merge_info, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_is_header};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_untabulate_xlsx_parser_pyx, __pyx_mstate->__pyx_n_u_parse_xlsx_worksheet, __pyx_mstate->__pyx_kp_b_iso88591_5_O1_Q_k_az_7_A_1O_2Q_Q_r_a_j_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 31, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 4};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_filepath, __pyx_mstate->__pyx_n_u_sheet_name, __pyx_mstate->__pyx_n_u_start_row, __pyx_mstate->__pyx_n_u_start_col, __pyx_mstate->__pyx_n_u_header_rows, __pyx_mstate->__pyx_n_u_header_cols, __pyx_mstate->__pyx_n_u_load_workbook, __pyx_mstate->__pyx_n_u_wb, __pyx_mstate->__pyx_n_u_ws, __pyx_mstate->__pyx_n_u_merged, __pyx_mstate->__pyx_n_u_merge_range, __pyx_mstate->__pyx_n_u_min_row, __pyx_mstate->__pyx_n_u_min_col, __pyx_mstate->__pyx_n_u_rowspan, __pyx_mstate->__pyx_n_u_colspan, __pyx_mstate->__pyx_n_u_r, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_last_header_value, __pyx_mstate->__pyx_n_u_elements, __pyx_mstate->__pyx_n_u_rows_iter, __pyx_mstate->__pyx_n_u_abs_row_idx, __pyx_mstate->__pyx_n_u_row, __pyx_mstate->__pyx_n_u_abs_col_idx, __pyx_mstate->__pyx_n_u_cell, __pyx_mstate->__pyx_n_u_excel_row, __pyx_mstate->__pyx_n_u_excel_col, __pyx_mstate->__pyx_n_u_merge_info, __pyx_mstate->__pyx_n_u_value, __pyx_mstate->__pyx_n_u_rel_row, __pyx_mstate->__pyx_n_u_rel_col, __pyx_mstate->__pyx_n_u_is_header};
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_untabulate_xlsx_parser_pyx, __pyx_mstate->__pyx_n_u_parse_xlsx_worksheet, __pyx_mstate->__pyx_kp_b_iso88591_q_q_Q_k_az_7_A_1O_2Q_Q_r_a_j_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
@@ -5796,6 +6156,46 @@ static void __Pyx_RaiseArgtupleInvalid(
                  (num_expected == 1) ? "" : "s", num_found);
 }
 
+/* pybuiltin_invalid (used by pyint_simplify) */
+static void __Pyx_PyBuiltin_Invalid(PyObject *obj, const char *type_name, const char *argname) {
+    __Pyx_TypeName obj_type_name = __Pyx_PyType_GetFullyQualifiedName(Py_TYPE(obj));
+    if (argname) {
+        PyErr_Format(PyExc_TypeError,
+            "Argument '%.200s' has incorrect type (expected %.200s, got " __Pyx_FMT_TYPENAME ")",
+            argname, type_name, obj_type_name
+        );
+    } else {
+        PyErr_Format(PyExc_TypeError,
+            "Expected %.200s, got " __Pyx_FMT_TYPENAME,
+            type_name, obj_type_name
+        );
+    }
+    __Pyx_DECREF_TypeName(obj_type_name);
+}
+
+/* pyint_simplify */
+static CYTHON_INLINE int __Pyx_PyInt_FromNumber(PyObject **number_var, const char *argname, int accept_none) {
+    PyObject *number = *number_var;
+    if (likely((accept_none && number == Py_None) || PyLong_CheckExact(number))) {
+        return 0;
+    }
+    PyObject *int_object;
+    if (likely(PyNumber_Check(number))) {
+        int_object = PyNumber_Long(number);
+        if (unlikely(!int_object)) goto bad;
+    } else {
+        __Pyx_PyBuiltin_Invalid(number, "int", argname);
+        goto bad;
+    }
+    *number_var = int_object;
+    Py_DECREF(number);
+    return 0;
+bad:
+    *number_var = NULL;
+    Py_DECREF(number);
+    return -1;
+}
+
 /* ArgTypeTestFunc (used by ArgTypeTest) */
 static int __Pyx__ArgTypeTest(PyObject *obj, PyTypeObject *type, const char *name, int exact)
 {
@@ -6464,15 +6864,15 @@ static CYTHON_INLINE PyObject* __Pyx_PyLong_AddObjC(PyObject *op1, PyObject *op2
 }
 #endif
 
-/* PyObjectFastCallMethod */
+/* PyObjectVectorCallMethodKwBuilder */
 #if !CYTHON_VECTORCALL || PY_VERSION_HEX < 0x03090000
-static PyObject *__Pyx_PyObject_FastCallMethod(PyObject *name, PyObject *const *args, size_t nargsf) {
+static PyObject *__Pyx_Object_VectorcallMethod_CallFromBuilder(PyObject *name, PyObject *const *args, size_t nargsf, PyObject *kwnames) {
     PyObject *result;
-    PyObject *attr = PyObject_GetAttr(args[0], name);
-    if (unlikely(!attr))
+    PyObject *obj = PyObject_GetAttr(args[0], name);
+    if (unlikely(!obj))
         return NULL;
-    result = __Pyx_PyObject_FastCall(attr, args+1, nargsf - 1);
-    Py_DECREF(attr);
+    result = __Pyx_Object_Vectorcall_CallFromBuilder(obj, args+1, nargsf-1, kwnames);
+    Py_DECREF(obj);
     return result;
 }
 #endif
@@ -6514,6 +6914,105 @@ static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected) {
     }
     return __Pyx_IterFinish();
 }
+
+/* PyLongBinop */
+#if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_Fallback___Pyx_PyLong_SubtractObjC(PyObject *op1, PyObject *op2, int inplace) {
+    return (inplace ? PyNumber_InPlaceSubtract : PyNumber_Subtract)(op1, op2);
+}
+#if CYTHON_USE_PYLONG_INTERNALS
+static PyObject* __Pyx_Unpacked___Pyx_PyLong_SubtractObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check) {
+    CYTHON_MAYBE_UNUSED_VAR(inplace);
+    CYTHON_UNUSED_VAR(zerodivision_check);
+    const long b = intval;
+    long a;
+    const PY_LONG_LONG llb = intval;
+    PY_LONG_LONG lla;
+    if (unlikely(__Pyx_PyLong_IsZero(op1))) {
+        return PyLong_FromLong(-intval);
+    }
+    const int is_positive = __Pyx_PyLong_IsPos(op1);
+    const digit* digits = __Pyx_PyLong_Digits(op1);
+    const Py_ssize_t size = __Pyx_PyLong_DigitCount(op1);
+    if (likely(size == 1)) {
+        a = (long) digits[0];
+        if (!is_positive) a *= -1;
+    } else {
+        switch (size) {
+            case 2:
+                if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                    a = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                    if (!is_positive) a *= -1;
+                    goto calculate_long;
+                } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                    lla = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                    if (!is_positive) lla *= -1;
+                    goto calculate_long_long;
+                }
+                break;
+            case 3:
+                if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                    a = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                    if (!is_positive) a *= -1;
+                    goto calculate_long;
+                } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                    lla = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                    if (!is_positive) lla *= -1;
+                    goto calculate_long_long;
+                }
+                break;
+            case 4:
+                if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                    a = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                    if (!is_positive) a *= -1;
+                    goto calculate_long;
+                } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                    lla = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                    if (!is_positive) lla *= -1;
+                    goto calculate_long_long;
+                }
+                break;
+        }
+        return PyLong_Type.tp_as_number->nb_subtract(op1, op2);
+    }
+    calculate_long:
+        {
+            long x;
+            x = a - b;
+            return PyLong_FromLong(x);
+        }
+    calculate_long_long:
+        {
+            PY_LONG_LONG llx;
+            llx = lla - llb;
+            return PyLong_FromLongLong(llx);
+        }
+    
+}
+#endif
+static PyObject* __Pyx_Float___Pyx_PyLong_SubtractObjC(PyObject *float_val, long intval, int zerodivision_check) {
+    CYTHON_UNUSED_VAR(zerodivision_check);
+    const long b = intval;
+    double a = __Pyx_PyFloat_AS_DOUBLE(float_val);
+        double result;
+        
+        result = ((double)a) - (double)b;
+        return PyFloat_FromDouble(result);
+}
+static CYTHON_INLINE PyObject* __Pyx_PyLong_SubtractObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check) {
+    CYTHON_MAYBE_UNUSED_VAR(intval);
+    CYTHON_UNUSED_VAR(zerodivision_check);
+    #if CYTHON_USE_PYLONG_INTERNALS
+    if (likely(PyLong_CheckExact(op1))) {
+        return __Pyx_Unpacked___Pyx_PyLong_SubtractObjC(op1, op2, intval, inplace, zerodivision_check);
+    }
+    #endif
+    if (PyFloat_CheckExact(op1)) {
+        return __Pyx_Float___Pyx_PyLong_SubtractObjC(op1, intval, zerodivision_check);
+    }
+    return __Pyx_Fallback___Pyx_PyLong_SubtractObjC(op1, op2, inplace);
+}
+#endif
 
 /* PyObjectCall2Args (used by CallUnboundCMethod1) */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
@@ -6712,65 +7211,38 @@ static CYTHON_INLINE void __Pyx_RaiseNoneNotIterableError(void) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
 }
 
-/* PyLongCompare */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_EqObjC(PyObject *op1, PyObject *op2, long intval, long inplace) {
-    CYTHON_MAYBE_UNUSED_VAR(intval);
-    CYTHON_UNUSED_VAR(inplace);
-    if (op1 == op2) {
-        Py_RETURN_TRUE;
-    }
-    #if CYTHON_USE_PYLONG_INTERNALS
-    if (likely(PyLong_CheckExact(op1))) {
-        int unequal;
-        unsigned long uintval;
-        Py_ssize_t size = __Pyx_PyLong_DigitCount(op1);
-        const digit* digits = __Pyx_PyLong_Digits(op1);
-        if (intval == 0) {
-            if (__Pyx_PyLong_IsZero(op1) == 1) Py_RETURN_TRUE; else Py_RETURN_FALSE;
-        } else if (intval < 0) {
-            if (__Pyx_PyLong_IsNonNeg(op1))
-                Py_RETURN_FALSE;
-            intval = -intval;
-        } else {
-            if (__Pyx_PyLong_IsNeg(op1))
-                Py_RETURN_FALSE;
-        }
-        uintval = (unsigned long) intval;
-#if PyLong_SHIFT * 4 < SIZEOF_LONG*8
-        if (uintval >> (PyLong_SHIFT * 4)) {
-            unequal = (size != 5) || (digits[0] != (uintval & (unsigned long) PyLong_MASK))
-                 | (digits[1] != ((uintval >> (1 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[2] != ((uintval >> (2 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[3] != ((uintval >> (3 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[4] != ((uintval >> (4 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK));
-        } else
+/* PyObjectFastCallMethod */
+#if !CYTHON_VECTORCALL || PY_VERSION_HEX < 0x03090000
+static PyObject *__Pyx_PyObject_FastCallMethod(PyObject *name, PyObject *const *args, size_t nargsf) {
+    PyObject *result;
+    PyObject *attr = PyObject_GetAttr(args[0], name);
+    if (unlikely(!attr))
+        return NULL;
+    result = __Pyx_PyObject_FastCall(attr, args+1, nargsf - 1);
+    Py_DECREF(attr);
+    return result;
+}
 #endif
-#if PyLong_SHIFT * 3 < SIZEOF_LONG*8
-        if (uintval >> (PyLong_SHIFT * 3)) {
-            unequal = (size != 4) || (digits[0] != (uintval & (unsigned long) PyLong_MASK))
-                 | (digits[1] != ((uintval >> (1 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[2] != ((uintval >> (2 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[3] != ((uintval >> (3 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK));
-        } else
-#endif
-#if PyLong_SHIFT * 2 < SIZEOF_LONG*8
-        if (uintval >> (PyLong_SHIFT * 2)) {
-            unequal = (size != 3) || (digits[0] != (uintval & (unsigned long) PyLong_MASK))
-                 | (digits[1] != ((uintval >> (1 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[2] != ((uintval >> (2 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK));
-        } else
-#endif
-#if PyLong_SHIFT * 1 < SIZEOF_LONG*8
-        if (uintval >> (PyLong_SHIFT * 1)) {
-            unequal = (size != 2) || (digits[0] != (uintval & (unsigned long) PyLong_MASK))
-                 | (digits[1] != ((uintval >> (1 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK));
-        } else
-#endif
-            unequal = (size != 1) || (((unsigned long) digits[0]) != (uintval & (unsigned long) PyLong_MASK));
-        if (unequal == 0) Py_RETURN_TRUE; else Py_RETURN_FALSE;
-    }
+
+/* py_dict_pop_ignore */
+static CYTHON_INLINE int __Pyx_PyDict_Pop_ignore(PyObject *d, PyObject *key, PyObject *default_value) {
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030d00A2 || defined(PyDict_Pop)
+    int result = PyDict_Pop(d, key, NULL);
+    CYTHON_UNUSED_VAR(default_value);
+    return (unlikely(result == -1)) ? -1 : 0;
+#else
+    PyObject *value;
+    CYTHON_UNUSED_VAR(default_value);
+    #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX < 0x030d0000
+    value = _PyDict_Pop(d, key, Py_None);
+    #else
+    value = __Pyx_CallUnboundCMethod2(&__pyx_mstate_global->__pyx_umethod_PyDict_Type_pop, d, key, Py_None);
     #endif
-    if (PyFloat_CheckExact(op1)) {
-        const long b = intval;
-        double a = __Pyx_PyFloat_AS_DOUBLE(op1);
-        if ((double)a == (double)b) Py_RETURN_TRUE; else Py_RETURN_FALSE;
-    }
-    return (
-        PyObject_RichCompare(op1, op2, Py_EQ));
+    if (unlikely(value == NULL))
+        return -1;
+    Py_DECREF(value);
+    return 0;
+#endif
 }
 
 /* TypeImport */

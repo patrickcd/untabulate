@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "untabulate"
-version = "0.1.0"
+version = "0.2.3"
 description = "Untabulate grid data for friendly llm embedddings or similar analysis"
 readme = "README.md"
 license = "MIT"
@@ -44,6 +44,7 @@ lxml = ["lxml>=4.9.0"]
 openpyxl = ["openpyxl>=3.1.0"]
 html = ["lxml>=4.9.0"]
 excel = ["openpyxl>=3.1.0"]
+cli = ["click>=8.0.0", "lxml>=4.9.0"]
 dev = [
     "pytest>=7.0",
     "pytest-cov>=4.0",
@@ -52,6 +53,7 @@ dev = [
     "twine",
     "lxml>=4.9.0",
     "openpyxl>=3.1.0",
+    "click>=8.0.0",
 ]
 
 [project.urls]
@@ -59,6 +61,9 @@ Homepage = "https://github.com/patrick/untabulate"
 Documentation = "https://github.com/patrick/untabulate#readme"
 Repository = "https://github.com/patrick/untabulate.git"
 Issues = "https://github.com/patrick/untabulate/issues"
+
+[project.scripts]
+untabulate = "untabulate.cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
