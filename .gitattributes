@@ -1,0 +1,5 @@
+# Auto detect text files and normalize line endings to LF
+* text=auto
+
+# HTML fixtures should use Unix line endings
+tests/fixtures/*.html text eol=lf

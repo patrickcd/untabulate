@@ -19,7 +19,7 @@ FIXTURES_DIR = Path(__file__).parent / "fixtures"
 @pytest.fixture(scope="module")
 def tables_html():
     """Load the HTML fixtures file."""
-    return (FIXTURES_DIR / "tables.html").read_text()
+    return (FIXTURES_DIR / "tables.html").read_text(encoding="utf-8")
 
 
 @pytest.fixture(scope="module")
