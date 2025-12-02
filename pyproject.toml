@@ -1,0 +1,87 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel", "cython>=3.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cellpath"
+version = "0.1.0"
+description = "Cython-accelerated library for extracting semantic context from HTML tables"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "Patrick", email = "patrick@example.com" }
+]
+keywords = [
+    "tables",
+    "html",
+    "xlsx",
+    "excel",
+    "parsing",
+    "headers",
+    "semantic",
+    "llm",
+    "rag",
+    "embeddings",
+    "cython",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Cython",
+    "Topic :: Text Processing :: Markup :: HTML",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = [
+    "lxml>=4.9.0",
+    "openpyxl>=3.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "cython>=3.0",
+    "build",
+    "twine",
+]
+
+[project.urls]
+Homepage = "https://github.com/patrick/cellpath"
+Documentation = "https://github.com/patrick/cellpath#readme"
+Repository = "https://github.com/patrick/cellpath.git"
+Issues = "https://github.com/patrick/cellpath/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.cibuildwheel]
+build = "cp39-* cp310-* cp311-* cp312-*"
+skip = "*-musllinux_*"
+
+[tool.cibuildwheel.linux]
+before-build = "pip install cython"
+
+[tool.cibuildwheel.macos]
+before-build = "pip install cython"
+
+[tool.cibuildwheel.windows]
+before-build = "pip install cython"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+]
