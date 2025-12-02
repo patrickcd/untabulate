@@ -14,7 +14,7 @@ def parse_xlsx_worksheet(filepath: str, sheet_name: str = None) -> list:
             "openpyxl is required to parse Excel files. Install it "
             "with 'pip install untabulate[openpyxl]'")
 
-    wb = load_workbook(filepath, read_only=True, data_only=True)
+    wb = load_workbook(filepath, read_only=False, data_only=True)
     ws = wb[sheet_name] if sheet_name else wb.active
 
     # Build merged cell lookup: (row, col) -> (rowspan, colspan, is_origin)

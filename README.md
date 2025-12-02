@@ -46,38 +46,82 @@ This library address such problems.
 ## Quick Start
 
 ```python
-from untabulate import parse_html_table, ProjectionGrid
+from untabulate import untabulate_html
 
-# Parse HTML table into GridElement structs
 html = """
 <table>
     <tr><th></th><th>Q1</th><th>Q2</th></tr>
     <tr><th>Revenue</th><td>100</td><td>120</td></tr>
-    <tr><th>North America</th><td>40</td><td>50</td></tr>
+    <tr><th>Costs</th><td>60</td><td>70</td></tr>
 </table>
 """
-elements = parse_html_table(html)
 
-# Build the semantic grid
-grid = ProjectionGrid(elements)
+# Get all data with semantic context in one call
+for item in untabulate_html(html, format="strings"):
+    print(item)
 
-# Get hierarchical path for any cell
-path = grid.get_path(row=3, col=2)
-# → ["Revenue", "North America", "Q1"]
+# Output:
+# Revenue → Q1: 100
+# Revenue → Q2: 120
+# Costs → Q1: 60
+# Costs → Q2: 70
+```
 
-# Format for LLM context
-context = " → ".join(path) + ": 40"
-# → "Revenue → North America → Q1: 40"
+### Output Formats
+
+Choose the format that fits your use case:
+
+```python
+from untabulate import untabulate_html
+
+html = "<table><tr><th></th><th>Q1</th></tr><tr><th>Revenue</th><td>100</td></tr></table>"
+
+# Strings - ready for embeddings
+untabulate_html(html, format="strings")
+# → ["Revenue → Q1: 100"]
+
+# Dicts - structured data with metadata
+untabulate_html(html, format="dict")
+# → [{"path": ["Revenue", "Q1"], "value": "100", "context": "Revenue → Q1: 100"}]
+
+# Tuples - lightweight path/value pairs
+untabulate_html(html, format="tuples")
+# → [(["Revenue", "Q1"], "100")]
 ```
 
 ### Excel Files
 
 ```python
-from untabulate import parse_xlsx_worksheet, ProjectionGrid
+from untabulate import untabulate_xlsx
 
-elements = parse_xlsx_worksheet("financial_report.xlsx", sheet_name="Q1 Results")
-grid = ProjectionGrid(elements)
-path = grid.get_path(row=5, col=3)
+results = untabulate_xlsx("financial_report.xlsx", format="strings")
+for line in results:
+    print(line)
+```
+
+### Custom Separator
+
+```python
+untabulate_html(html, format="strings", separator=" | ")
+# → ["Revenue | Q1: 100"]
+```
+
+## Working with Custom Data Sources
+
+Use `untabulate()` with any data source - dicts, tuples, or objects:
+
+```python
+from untabulate import untabulate
+
+# From database rows or API responses
+data = [
+    {"el_type": "LB", "row": 1, "col": 2, "label": "Q1"},
+    {"el_type": "LB", "row": 2, "col": 1, "label": "Revenue"},
+    {"el_type": "DT", "row": 2, "col": 2, "label": "100"},
+]
+
+results = untabulate(data, format="strings")
+# → ["Revenue → Q1: 100"]
 ```
 
 ## Algorithm: Semantic Header Scoping
@@ -99,39 +143,60 @@ When you query `get_path(row=3, col=2)`, you get all headers that govern that ce
 
 ## API Reference
 
-### `parse_html_table(html_string, span_as_label=False, all_tables=False)`
+### High-Level Functions
 
-Parse HTML table(s) into GridElement instances.
+#### `untabulate_html(html, *, format="dict", separator=" → ", span_as_label=False, all_tables=False)`
 
-- **html_string**: HTML string containing `<table>` elements
+Parse HTML and extract data with semantic paths in one step.
+
+- **html**: HTML string containing table(s)
+- **format**: `"dict"`, `"strings"`, or `"tuples"`
+- **separator**: Path separator for context strings
 - **span_as_label**: Treat cells with rowspan/colspan > 1 as headers
-- **all_tables**: Parse all tables (default: first only)
-- **Returns**: List of `GridElement` instances
+- **all_tables**: Parse all tables (returns list of lists)
+- **Returns**: List of results in the specified format
 - **Raises**: `TableNotFoundError` if no table found
 
-### `parse_xlsx_worksheet(filepath, sheet_name=None)`
+#### `untabulate_xlsx(filepath, *, sheet_name=None, format="dict", separator=" → ")`
 
-Parse an Excel worksheet into GridElement instances.
+Parse Excel and extract data with semantic paths in one step.
 
 - **filepath**: Path to `.xlsx` file
 - **sheet_name**: Worksheet name (default: active sheet)
-- **Returns**: List of `GridElement` instances
+- **format**: `"dict"`, `"strings"`, or `"tuples"`
+- **separator**: Path separator for context strings
+- **Returns**: List of results in the specified format
 
-### `ProjectionGrid(elements)`
+#### `untabulate(data, *, format="dict", separator=" → ")`
+
+Extract semantic paths from any data source.
+
+- **data**: List of dicts, tuples, objects, or `GridElement` instances
+- **format**: `"dict"`, `"strings"`, or `"tuples"`
+- **separator**: Path separator for context strings
+- **Returns**: List of results in the specified format
+
+### Low-Level API
+
+For advanced use cases, you can use the lower-level components directly:
+
+#### `parse_html_table(html_string, span_as_label=False, all_tables=False)`
+
+Parse HTML table(s) into GridElement instances.
+
+#### `parse_xlsx_worksheet(filepath, sheet_name=None)`
+
+Parse an Excel worksheet into GridElement instances.
+
+#### `ProjectionGrid(elements)`
 
 Build a semantic header projection from elements.
 
-- **elements**: List of `GridElement` instances
-
-### `ProjectionGrid.get_path(data_row, data_col)`
+#### `ProjectionGrid.get_path(data_row, data_col)`
 
 Get headers governing a cell position.
 
-- **data_row**: 1-based row index
-- **data_col**: 1-based column index
-- **Returns**: List of header labels in hierarchical order
-
-### `GridElement(el_type, row, col, rowspan, colspan, label)`
+#### `GridElement(el_type, row, col, rowspan, colspan, label)`
 
 Lightweight element for table cells.
 
