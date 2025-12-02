@@ -63,12 +63,15 @@ cdef class ProjectionGrid:
                 max_row = r
         self._max_row = max_row
         
-        # First pass: find the first data row to distinguish header rows
+        # First pass: find the first data row and column to distinguish header rows/cols
         cdef int first_data_row = max_row + 1
+        cdef int first_data_col = 2147483647  # Max int
         for el in elements:
             if el.el_type == "DT":
                 if el.row < first_data_row:
                     first_data_row = el.row
+                if el.col < first_data_col:
+                    first_data_col = el.col
         
         # Process each label element
         for el in elements:
@@ -84,13 +87,13 @@ cdef class ProjectionGrid:
             el_rowspan = el.rowspan
             el_colspan = el.colspan
             
-            if el_col == 1 and el_row >= first_data_row:
-                # Row header in column 1 (in or after data rows): applies only to the rows it spans
+            if el_col < first_data_col and el_row >= first_data_row:
+                # Row header (left of data, in or after data rows): applies only to the rows it spans
                 for r in range(el_row, el_row + el_rowspan):
                     (<list>self.row_headers[r]).append((el_row, label))
             else:
                 # Column header: applies to the columns it spans
-                # This includes col 1 headers that are above the data rows
+                # This includes headers above data rows, and headers in data columns (if any)
                 for c in range(el_col, el_col + el_colspan):
                     (<list>self.col_headers[c]).append((el_row, label))
         

@@ -20,11 +20,12 @@ def parse_html_table(str html_string, bint span_as_label=False, bint all_tables=
     Args:
         html_string: HTML string containing one or more <table> elements
         span_as_label: If True, treat cells with rowspan/colspan > 1 as labels (LB)
-        all_tables: If True, parse all tables and return combined elements.
+        all_tables: If True, parse all tables and return a list of lists of elements.
                     If False (default), parse only the first table.
         
     Returns:
-        List of GridElement instances suitable for ProjectionGrid
+        List of GridElement instances suitable for ProjectionGrid.
+        If all_tables=True, returns a list of lists of GridElement instances.
         
     Raises:
         TableNotFoundError: If no <table> element is found in the HTML
@@ -42,12 +43,15 @@ def parse_html_table(str html_string, bint span_as_label=False, bint all_tables=
         raise TableNotFoundError("No <table> element found in HTML")
     
     if all_tables:
+        result = []
         for table in tables:
-            _parse_single_table(table, elements, span_as_label)
+            table_elements = []
+            _parse_single_table(table, table_elements, span_as_label)
+            result.append(table_elements)
+        return result
     else:
         _parse_single_table(tables[0], elements, span_as_label)
-        
-    return elements
+        return elements
 
 
 cdef _parse_single_table(object table, list[GridElement] elements, bint span_as_label):
@@ -64,6 +68,7 @@ cdef _parse_single_table(object table, list[GridElement] elements, bint span_as_
         for cell in tr.xpath('./td | ./th'):
             # Skip occupied cells (from previous rowspans)
             while (row_idx, col_idx) in occupied:
+                del occupied[(row_idx, col_idx)]
                 col_idx += 1
 
             # Extract attributes
@@ -82,8 +87,8 @@ cdef _parse_single_table(object table, list[GridElement] elements, bint span_as_
             # Create GridElement
             elements.append(GridElement(el_type, row_idx, col_idx, rs, cs, label))
             
-            # Mark occupied cells for rowspan/colspan
-            for r in range(row_idx, row_idx + rs):
+            # Mark occupied cells for rowspan (future rows only)
+            for r in range(row_idx + 1, row_idx + rs):
                 for c in range(col_idx, col_idx + cs):
                     occupied[(r, c)] = True
             
