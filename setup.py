@@ -5,7 +5,7 @@ This file is needed for building Cython extensions. The package metadata
 is defined in pyproject.toml.
 """
 
-from setuptools import setup, Extension
+from setuptools import setup, Extension # type: ignore
 from Cython.Build import cythonize
 
 extensions = [

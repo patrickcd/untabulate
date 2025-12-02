@@ -63,14 +63,6 @@ def untabulate(
 ) -> list[tuple[list[str], str]]: ...
 
 
-def untabulate(
-    data: Iterable[dict | tuple | CellProtocol],
-    *,
-    format: OutputFormat = "dict",
-    separator: str = " → ",
-) -> list[ResultDict] | list[str] | list[tuple[list[str], str]]: ...
-
-
 @overload
 def untabulate_html(
     html: str,
@@ -102,16 +94,6 @@ def untabulate_html(
     span_as_label: bool = False,
     all_tables: bool = False,
 ) -> list[tuple[list[str], str]]: ...
-
-
-    def untabulate_html(
-    html: str,
-    *,
-    format: OutputFormat = "dict",
-    separator: str = " → ",
-    span_as_label: bool = False,
-    all_tables: bool = False,
-) -> list[ResultDict] | list[str] | list[tuple[list[str], str]] | list[list]: ...
 
 
 @overload
@@ -154,16 +136,3 @@ def untabulate_xlsx(
     format: Literal["tuples"],
     separator: str = " → ",
 ) -> list[tuple[list[str], str]]: ...
-
-
-def untabulate_xlsx(
-    filepath: str,
-    *,
-    sheet_name: str | None = None,
-    start_row: int = 1,
-    start_col: int = 1,
-    header_rows: int = 1,
-    header_cols: int = 1,
-    format: OutputFormat = "dict",
-    separator: str = " → ",
-) -> list[ResultDict] | list[str] | list[tuple[list[str], str]]: ...

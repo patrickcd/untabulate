@@ -13,6 +13,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from typing import cast
 from urllib.parse import urlparse
 
 import click
@@ -46,7 +47,7 @@ def extract_table_by_id(html: str, table_id: str) -> str:
         )
     
     tree = lxml_html.fromstring(html.encode("utf-8"))
-    tables = tree.xpath(f"//table[@id='{table_id}']")
+    tables = cast(list, tree.xpath(f"//table[@id='{table_id}']"))
     
     if not tables:
         raise click.ClickException(f"No table found with id='{table_id}'")
