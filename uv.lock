@@ -129,6 +129,18 @@ wheels = [
 ]
 
 [[package]]
+name = "click"
+version = "8.3.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/3d/fa/656b739db8587d7b5dfa22e22ed02566950fbfbcdc20311993483657a5c0/click-8.3.1.tar.gz", hash = "sha256:12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a", size = 295065, upload-time = "2025-11-15T20:45:42.706Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/98/78/01c019cdb5d6498122777c1a43056ebb3ebfeef2076d9d026bfe15583b2b/click-8.3.1-py3-none-any.whl", hash = "sha256:981153a64e25f12d547d3426c367a4857371575ee7ad18df2a6183ab0545b2a6", size = 108274, upload-time = "2025-11-15T20:45:41.139Z" },
+]
+
+[[package]]
 name = "colorama"
 version = "0.4.6"
 source = { registry = "https://pypi.org/simple" }
@@ -514,6 +526,15 @@ wheels = [
 ]
 
 [[package]]
+name = "lxml-stubs"
+version = "0.5.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/99/da/1a3a3e5d159b249fc2970d73437496b908de8e4716a089c69591b4ffa6fd/lxml-stubs-0.5.1.tar.gz", hash = "sha256:e0ec2aa1ce92d91278b719091ce4515c12adc1d564359dfaf81efa7d4feab79d", size = 14778, upload-time = "2024-01-10T09:37:46.521Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1f/c9/e0f8e4e6e8a69e5959b06499582dca6349db6769cc7fdfb8a02a7c75a9ae/lxml_stubs-0.5.1-py3-none-any.whl", hash = "sha256:1f689e5dbc4b9247cb09ae820c7d34daeb1fdbd1db06123814b856dae7787272", size = 13584, upload-time = "2024-01-10T09:37:44.931Z" },
+]
+
+[[package]]
 name = "markdown-it-py"
 version = "4.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -868,12 +889,17 @@ wheels = [
 
 [[package]]
 name = "untabulate"
-version = "0.1.0"
+version = "0.2.3"
 source = { editable = "." }
 
 [package.optional-dependencies]
+cli = [
+    { name = "click" },
+    { name = "lxml" },
+]
 dev = [
     { name = "build" },
+    { name = "click" },
     { name = "cython" },
     { name = "lxml" },
     { name = "openpyxl" },
@@ -897,6 +923,7 @@ openpyxl = [
 [package.dev-dependencies]
 dev = [
     { name = "cython-lint" },
+    { name = "lxml-stubs" },
     { name = "pre-commit" },
     { name = "pytest" },
 ]
@@ -904,7 +931,10 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "build", marker = "extra == 'dev'" },
+    { name = "click", marker = "extra == 'cli'", specifier = ">=8.0.0" },
+    { name = "click", marker = "extra == 'dev'", specifier = ">=8.0.0" },
     { name = "cython", marker = "extra == 'dev'", specifier = ">=3.0" },
+    { name = "lxml", marker = "extra == 'cli'", specifier = ">=4.9.0" },
     { name = "lxml", marker = "extra == 'dev'", specifier = ">=4.9.0" },
     { name = "lxml", marker = "extra == 'html'", specifier = ">=4.9.0" },
     { name = "lxml", marker = "extra == 'lxml'", specifier = ">=4.9.0" },
@@ -915,11 +945,12 @@ requires-dist = [
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0" },
     { name = "twine", marker = "extra == 'dev'" },
 ]
-provides-extras = ["lxml", "openpyxl", "html", "excel", "dev"]
+provides-extras = ["lxml", "openpyxl", "html", "excel", "cli", "dev"]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "cython-lint", specifier = ">=0.18.1" },
+    { name = "lxml-stubs", specifier = ">=0.5.1" },
     { name = "pre-commit", specifier = ">=4.5.0" },
     { name = "pytest", specifier = ">=8.4.2" },
 ]
