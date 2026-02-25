@@ -165,18 +165,18 @@ results = untabulate(data, format="strings")
 
 The `ProjectionGrid` uses a simple but effective scoping rule:
 
-1. **Row headers** (column 1) propagate **downward** to all rows below them
-2. **Column headers** apply to the columns they **span**
+1. **Row headers** (left of data) apply to the **rows they span** (via `rowspan`)
+2. **Column headers** (above data) apply to the **columns they span** (via `colspan`)
 
 This captures hierarchical relationships naturally:
 
 ```
-Row 1: "Revenue" in col 1      → applies to rows 1, 2, 3, 4...
-Row 2: "North America" in col 1 → applies to rows 2, 3, 4...
-Row 3: "Europe" in col 1        → applies to rows 3, 4...
+Row 2: "Revenue" (rowspan=3, col 1)      → applies to rows 2, 3, 4
+Row 2: "North America" (rowspan=1, col 2) → applies to row 2 only
+Row 3: "Europe" (rowspan=1, col 2)        → applies to row 3 only
 ```
 
-When you query `get_path(row=3, col=2)`, you get all headers that govern that cell: `["Revenue", "North America", "Q1"]`
+When you query `get_path(row=3, col=3)`, you get all headers that govern that cell: `["Revenue", "Europe", "Q1"]`
 
 ## API Reference
 
