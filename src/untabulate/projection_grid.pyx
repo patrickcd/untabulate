@@ -1,4 +1,6 @@
-from collections import defaultdict
+from operator import itemgetter as _itemgetter
+
+cdef object _by_row = _itemgetter(0)
 
 
 cdef class GridElement:
@@ -50,8 +52,8 @@ cdef class ProjectionGrid:
         """Initializes the ProjectionGrid with semantic header scoping."""
 
         # Initialize Python dicts
-        self.row_headers = defaultdict(list)
-        self.col_headers = defaultdict(list)
+        self.row_headers = {}
+        self.col_headers = {}
 
         if not elements:
             return
@@ -64,25 +66,24 @@ cdef class ProjectionGrid:
         cdef int r, c, max_row
         cdef int el_row, el_col, el_rowspan, el_colspan
         cdef str value
-        cdef object el
+        cdef GridElement el
 
-        # Find max row for propagation
+        # Single pass: find max row and first data row/col
         max_row = 0
+        cdef int first_data_row = 2147483647  # Max int
+        cdef int first_data_col = 2147483647  # Max int
         for el in elements:
             r = el.row + el.rowspan - 1
             if r > max_row:
                 max_row = r
-        self._max_row = max_row
-
-        # First pass: find the first data row and column to distinguish header rows/cols
-        cdef int first_data_row = max_row + 1
-        cdef int first_data_col = 2147483647  # Max int
-        for el in elements:
             if not el.is_header:
                 if el.row < first_data_row:
                     first_data_row = el.row
                 if el.col < first_data_col:
                     first_data_col = el.col
+        self._max_row = max_row
+        if first_data_row == 2147483647:
+            first_data_row = max_row + 1
 
         # Process each header element
         for el in elements:
@@ -102,12 +103,16 @@ cdef class ProjectionGrid:
                 # Row header (left of data, in or after data rows):
                 # applies only to the rows it spans
                 for r in range(el_row, el_row + el_rowspan):
+                    if r not in self.row_headers:
+                        self.row_headers[r] = []
                     (<list>self.row_headers[r]).append((el_row, value))
             else:
                 # Column header: applies to the columns it spans.
                 # This includes headers above data rows, and headers in
                 # data columns (if any)
                 for c in range(el_col, el_col + el_colspan):
+                    if c not in self.col_headers:
+                        self.col_headers[c] = []
                     (<list>self.col_headers[c]).append((el_row, value))
 
         self._finalize()
@@ -120,7 +125,7 @@ cdef class ProjectionGrid:
 
         # Sort and deduplicate row headers
         for r in self.row_headers:
-            (<list>self.row_headers[r]).sort(key=lambda x: x[0])
+            (<list>self.row_headers[r]).sort(key=_by_row)
             seen = set()
             deduped = []
             for row_idx, lbl in self.row_headers[r]:
@@ -131,7 +136,7 @@ cdef class ProjectionGrid:
 
         # Sort column headers
         for c in self.col_headers:
-            (<list>self.col_headers[c]).sort(key=lambda x: x[0])
+            (<list>self.col_headers[c]).sort(key=_by_row)
 
     def get_path(self, int data_row, int data_col):
         """

@@ -65,7 +65,7 @@ cdef _parse_single_table(object table, list[GridElement] elements, bint span_as_
     cdef int row_idx, col_idx, rs, cs, r, c
     cdef bint is_header
     cdef str value
-    cdef dict occupied = {}  # (row, col) -> True
+    cdef set occupied = set()
 
     row_idx = 1
 
@@ -75,7 +75,7 @@ cdef _parse_single_table(object table, list[GridElement] elements, bint span_as_
         for cell in tr.xpath("./td | ./th"):
             # Skip occupied cells (from previous rowspans)
             while (row_idx, col_idx) in occupied:
-                del occupied[(row_idx, col_idx)]
+                occupied.discard((row_idx, col_idx))
                 col_idx += 1
 
             # Extract attributes
@@ -97,7 +97,7 @@ cdef _parse_single_table(object table, list[GridElement] elements, bint span_as_
             # Mark occupied cells for rowspan (future rows only)
             for r in range(row_idx + 1, row_idx + rs):
                 for c in range(col_idx, col_idx + cs):
-                    occupied[(r, c)] = True
+                    occupied.add((r, c))
 
             col_idx += cs
 
