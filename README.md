@@ -4,9 +4,18 @@
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A Cython-accelerated library for associating tabular data points with their governing row and column headers. While it includes helpers for HTML and Excel, the core logic is source-agnostic, making it ideal for LLM embeddings and RAG pipelines where semantic context is crucial.
+**Extract table cell values with their row and column headers in Python.**
 
-_"Improving LLM accuracy since 2036"_
+Untabulate maps every data cell in a table to the row headers and column headers that govern it, producing semantic paths like `Revenue → North America → Q1: 40`. It handles hierarchical headers, merged cells (`rowspan`/`colspan`), and works with HTML tables, Excel spreadsheets, or any custom data source.
+
+Built for LLM embeddings, RAG pipelines, and any workflow where a bare cell value is meaningless without its header context.
+
+## Use Cases
+
+- **LLM & RAG pipelines** — convert table cells into semantic strings for vector embeddings
+- **HTML table scraping** — associate each scraped value with its row and column headers
+- **Excel data extraction** — flatten spreadsheets with merged/hierarchical headers
+- **Data flattening** — turn any 2D table with multi-level headers into flat key-value pairs
 
 ## Installation
 
@@ -29,7 +38,7 @@ To include both:
 pip install "untabulate[lxml,openpyxl]"
 ```
 
-## The Problem
+## The Problem: Table Cells Without Header Context
 
 When you extract data from a table like this:
 
@@ -39,10 +48,11 @@ When you extract data from a table like this:
 |           |North America | 40  | 50 |
 |           | Europe       | 60  | 70  |
 
-Traditional parsers give you `value=40` at position `(3, 3)`. But for LLM embeddings, you need:
+Traditional parsers give you `value=40` at position `(3, 3)`. But for LLM embeddings, semantic search, or readable output, you need the value associated with its headers:
 
 > **Revenue → North America → Q1: 40**
 
+Untabulate solves this by projecting row and column headers onto every data cell automatically, even when headers span multiple rows or columns.
 
 ## Quick Start
 
@@ -143,7 +153,7 @@ untabulate_html(html, format="strings", separator=" | ")
 # → ["Revenue | Q1: 100"]
 ```
 
-## Working with Custom Data Sources
+## Working with Any Data Source
 
 Use `untabulate()` with any data source - dicts, tuples, or objects:
 
@@ -161,14 +171,14 @@ results = untabulate(data, format="strings")
 # → ["Revenue → Q1: 100"]
 ```
 
-## Algorithm: Semantic Header Scoping
+## How It Works: Semantic Header Projection Algorithm
 
 The `ProjectionGrid` uses a simple but effective scoping rule:
 
 1. **Row headers** (left of data) apply to the **rows they span** (via `rowspan`)
 2. **Column headers** (above data) apply to the **columns they span** (via `colspan`)
 
-This captures hierarchical relationships naturally:
+This captures hierarchical and merged header relationships naturally:
 
 ```
 Row 2: "Revenue" (rowspan=3, col 1)      → applies to rows 2, 3, 4
@@ -246,18 +256,18 @@ Lightweight element for table cells.
 
 ~1M cells/second on typical hardware. The Cython implementation provides ~30% speedup over pure Python, but the main win is the O(n) algorithm vs O(n²) naive approaches.
 
-## Why This Matters for LLMs
+## Why Untabulate Helps with LLM Embeddings and RAG
 
-Embedding models need semantic context, not coordinates. When chunking documents for RAG:
+Embedding models need semantic context, not coordinates. When chunking documents for retrieval-augmented generation:
 
-❌ `"40"` - meaningless without context  
-❌ `"cell (3,2): 40"` - coordinates don't help  
-✅ `"Revenue → North America → Q1: 40"` - full semantic path
+❌ `"40"` — meaningless without context
+❌ `"cell (3,2): 40"` — coordinates don't help similarity search
+✅ `"Revenue → North America → Q1: 40"` — full semantic path with headers
 
 This enables:
 - Better vector similarity for table-based questions
-- Accurate retrieval of specific data points
-- Natural language grounding for structured data
+- Accurate retrieval of specific data points from tables
+- Natural language grounding for structured and tabular data
 
 ## Development
 
