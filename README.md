@@ -286,7 +286,7 @@ python -m build
 
 ## Sponsor
 
-- Fluvial Diligence [TPRM and Vendor Assessment platform](https://www.fluvialdiligence.com/) 
+- RiskNodes [Agentic Intelligence Risk Management](https://www.risknodes.io/) 
 
 ## License
 
