@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "untabulate"
-version = "0.2.6"
+version = "0.3.0"
 description = "Untabulate grid data for friendly llm embedddings or similar analysis"
 readme = "README.md"
 license = "MIT"
